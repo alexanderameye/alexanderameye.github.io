@@ -1,0 +1,119 @@
+{
+    "docs": [
+        {
+            "location": "/",
+            "text": "Welcome",
+            "title": "Welcome"
+        },
+        {
+            "location": "/#welcome",
+            "text": "",
+            "title": "Welcome"
+        },
+        {
+            "location": "/setup/",
+            "text": "Setup",
+            "title": "Setup"
+        },
+        {
+            "location": "/setup/#setup",
+            "text": "",
+            "title": "Setup"
+        },
+        {
+            "location": "/quickstart/",
+            "text": "Quick-Start",
+            "title": "Quick-Start"
+        },
+        {
+            "location": "/quickstart/#quick-start",
+            "text": "",
+            "title": "Quick-Start"
+        },
+        {
+            "location": "/doorrotation/",
+            "text": "Door Rotation",
+            "title": "Rotations"
+        },
+        {
+            "location": "/doorrotation/#door-rotation",
+            "text": "",
+            "title": "Door Rotation"
+        },
+        {
+            "location": "/doortrigger/",
+            "text": "Trigger Zones\n\n\nThis door system heavily relies on trigger zones to create proper player-door interaction.\nTrigger zones are drawn as colored volumes (boxes or spheres) in the scene. You can position/rotate/scale them however you want and change\ntheir visual appearance.\n\n\n\n\nEvery trigger you see, is connected to a rotation block of a door. Looped and swing rotations both have 2 trigger zones. Single rotations have 1 trigger zone.\nTrigger zones will automatically be added to your scene/hierarchy whenever you create a rotation. You also have the option to\nadd multiple trigger zones that control the same rotation.\n\n\n\n\nTrigger Component\n\n\nEvery trigger zone has a 'Door Trigger' component attached to it. This component allows you to control how the trigger zone behaves.\nTrigger zones continuously check a certain set of conditions. If all conditions are met, the trigger zone sends a signal to the door, and a rotation will take place.\n\n\n\n\n\n\nTip:\n\nCollapse the collider component in order to not see its wireframe.\n\n\n\n\nYou can set what the zones look for in order to allow a rotation. You can also determine the visual appearance of the trigger zone.\nIt's advised to keep a certain continuity in the coloring of your trigger zones to make it easier to tell them apart at a glance.\n\n\nPlayer Requirements\n\n\n\n\n\n\n\n\nRequirement\n\n\nDescription\n\n\nTakes\n\n\n\n\n\n\n\n\n\n\nTag\n\n\nDoes the object that entered the trigger zone have a certain tag?\n\n\nTag\n\n\n\n\n\n\nName\n\n\nDoes the object that entered the trigger zone has a certain name?\n\n\nString\n\n\n\n\n\n\nLooking At\n\n\nIs the player looking at a certain object?\n\n\nGameObject\n\n\n\n\n\n\nPressed\n\n\nHas the user pressed a certain key?\n\n\nKeyCode String\n\n\n\n\n\n\nScript\n\n\nDoes the player have a certain script component?\n\n\nMonoBehaviour\n\n\n\n\n\n\nIs Object\n\n\nIS there a certain object in the trigger zone?\n\n\nGameObject",
+            "title": "Trigger Zones"
+        },
+        {
+            "location": "/doortrigger/#trigger-zones",
+            "text": "This door system heavily relies on trigger zones to create proper player-door interaction.\nTrigger zones are drawn as colored volumes (boxes or spheres) in the scene. You can position/rotate/scale them however you want and change\ntheir visual appearance.   Every trigger you see, is connected to a rotation block of a door. Looped and swing rotations both have 2 trigger zones. Single rotations have 1 trigger zone.\nTrigger zones will automatically be added to your scene/hierarchy whenever you create a rotation. You also have the option to\nadd multiple trigger zones that control the same rotation.",
+            "title": "Trigger Zones"
+        },
+        {
+            "location": "/doortrigger/#trigger-component",
+            "text": "Every trigger zone has a 'Door Trigger' component attached to it. This component allows you to control how the trigger zone behaves.\nTrigger zones continuously check a certain set of conditions. If all conditions are met, the trigger zone sends a signal to the door, and a rotation will take place.    Tip: \nCollapse the collider component in order to not see its wireframe.   You can set what the zones look for in order to allow a rotation. You can also determine the visual appearance of the trigger zone.\nIt's advised to keep a certain continuity in the coloring of your trigger zones to make it easier to tell them apart at a glance.",
+            "title": "Trigger Component"
+        },
+        {
+            "location": "/doortrigger/#player-requirements",
+            "text": "Requirement  Description  Takes      Tag  Does the object that entered the trigger zone have a certain tag?  Tag    Name  Does the object that entered the trigger zone has a certain name?  String    Looking At  Is the player looking at a certain object?  GameObject    Pressed  Has the user pressed a certain key?  KeyCode String    Script  Does the player have a certain script component?  MonoBehaviour    Is Object  IS there a certain object in the trigger zone?  GameObject",
+            "title": "Player Requirements"
+        },
+        {
+            "location": "/doordetection/",
+            "text": "Door Detection",
+            "title": "Door Detection"
+        },
+        {
+            "location": "/doordetection/#door-detection",
+            "text": "",
+            "title": "Door Detection"
+        },
+        {
+            "location": "/faq/",
+            "text": "FAQ\n\n\nQ:\n I get the error 'tag D not defined'\n\n\nA:\n\n\nQ:\n\n\nA:\n\n\nQ:\n\n\nA:",
+            "title": "FAQ"
+        },
+        {
+            "location": "/faq/#faq",
+            "text": "Q:  I get the error 'tag D not defined'  A:  Q:  A:  Q:  A:",
+            "title": "FAQ"
+        },
+        {
+            "location": "/license/",
+            "text": "Third Party Licenses\n\n\nSeveral pieces of code and libraries have been used in this project. I'd like to take the time\nto mention those tools here.\n\n\nReorderable Lists\n\n\nQuaternion Extension",
+            "title": "Third-Party Licenses"
+        },
+        {
+            "location": "/license/#third-party-licenses",
+            "text": "Several pieces of code and libraries have been used in this project. I'd like to take the time\nto mention those tools here.",
+            "title": "Third Party Licenses"
+        },
+        {
+            "location": "/license/#reorderable-lists",
+            "text": "",
+            "title": "Reorderable Lists"
+        },
+        {
+            "location": "/license/#quaternion-extension",
+            "text": "",
+            "title": "Quaternion Extension"
+        },
+        {
+            "location": "/support/",
+            "text": "Support and Contact\n\n\nIf you are experiencing technical issues or bugs, don't hesitate to reach out to me!\nThe best way is to contact me through email but you could also always contact me through the unity forums.\nIf you'd like to request a feature, you can do that by contacting me through mail or posting something on the forum.\n\n\n\n\nNote:\n\nWhen contacting me, please include the invoice number of the asset you purchased.\n\n\n\n\nHelpful Links\n\n\n\n\nEmail\n\n\nForum\n\n\nTwitter\n\n\nTrello Board",
+            "title": "Support and Contact"
+        },
+        {
+            "location": "/support/#support-and-contact",
+            "text": "If you are experiencing technical issues or bugs, don't hesitate to reach out to me!\nThe best way is to contact me through email but you could also always contact me through the unity forums.\nIf you'd like to request a feature, you can do that by contacting me through mail or posting something on the forum.   Note: \nWhen contacting me, please include the invoice number of the asset you purchased.",
+            "title": "Support and Contact"
+        },
+        {
+            "location": "/support/#helpful-links",
+            "text": "Email  Forum  Twitter  Trello Board",
+            "title": "Helpful Links"
+        }
+    ]
+}

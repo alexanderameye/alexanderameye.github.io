@@ -160,18 +160,6 @@
 
 
   <li class="md-nav__item">
-    <a href="../setup/" title="Setup" class="md-nav__link">
-      Setup
-    </a>
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item">
     <a href="../quickstart/" title="Quick-Start" class="md-nav__link">
       Quick-Start
     </a>
@@ -216,10 +204,49 @@
       
     
     
+      <label class="md-nav__link md-nav__link--active" for="toc">
+        Door Detection
+      </label>
+    
     <a href="./" title="Door Detection" class="md-nav__link md-nav__link--active">
       Door Detection
     </a>
     
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#detection-component" title="Detection Component" class="md-nav__link">
+    Detection Component
+  </a>
+  
+</li>
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../doorsound/" title="Door Sound" class="md-nav__link">
+      Door Sound
+    </a>
   </li>
 
     
@@ -276,6 +303,20 @@
     
   
   
+    <label class="md-nav__title" for="toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#detection-component" title="Detection Component" class="md-nav__link">
+    Detection Component
+  </a>
+  
+</li>
+      
+      
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -287,7 +328,42 @@
               
                 
                 
-                <h1 id="door-detection"><img alt="DoorDetection" src="../img/detection.png" /> <strong>Door Detection</strong></h1>
+                <h1 id="door-detection"><strong>Door Detection</strong></h1>
+<p>When setting up the doors in your game, you should add the Door Detection component to your player. This component
+allows the player to detect doors in your scene. It ray-casts continuously and checks what objects are in front of him/her.</p>
+<h2 id="detection-component"><strong>Detection Component</strong></h2>
+<p>In the detection component, you have a reach variable. This variable determines how close to the door the player needs to be in order
+to be able to move it. You can display a visualization of that 'reach' in your scene if you'd like to.</p>
+<p><img alt="Trigger Zones" src="../img/trigger_script.png" /></p>
+<p>There are also some slots where you can put text-prefabs that will be shown whenever a certain stage of the rotation is reached.
+For example you could display 'Press "E" to open' whenever your player is looking at a door. You can also leave these slots
+empty.</p>
+<blockquote>
+<p><strong>Important:</strong>
+Make sure the 'Reach' variable is not set to zero.'.</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th align="left">Prefab</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Looking at</td>
+<td align="left">Does the object that entered the trigger zone have a certain tag?</td>
+</tr>
+<tr>
+<td align="left">In Zone</td>
+<td align="left">Does the object that entered the trigger zone has a certain name?</td>
+</tr>
+<tr>
+<td align="left">Chrosshair</td>
+<td align="left">Is the player looking at a certain object?</td>
+</tr>
+</tbody>
+</table>
                 
                   
                 
@@ -321,13 +397,13 @@
           </a>
         
         
-          <a href="../faq/" title="FAQ" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../doorsound/" title="Door Sound" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                FAQ
+                Door Sound
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">

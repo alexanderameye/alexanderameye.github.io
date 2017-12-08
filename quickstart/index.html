@@ -158,18 +158,6 @@
       
       
 
-
-  <li class="md-nav__item">
-    <a href="../setup/" title="Setup" class="md-nav__link">
-      Setup
-    </a>
-  </li>
-
-    
-      
-      
-      
-
   
 
 
@@ -180,9 +168,43 @@
       
     
     
+      <label class="md-nav__link md-nav__link--active" for="toc">
+        Quick-Start
+      </label>
+    
     <a href="./" title="Quick-Start" class="md-nav__link md-nav__link--active">
       Quick-Start
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#importing-and-initial-setup" title="Importing and initial setup" class="md-nav__link">
+    Importing and initial setup
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#basic-setup" title="Basic setup" class="md-nav__link">
+    Basic setup
+  </a>
+  
+</li>
+      
+      
+      
+    </ul>
+  
+</nav>
     
   </li>
 
@@ -219,6 +241,18 @@
   <li class="md-nav__item">
     <a href="../doordetection/" title="Door Detection" class="md-nav__link">
       Door Detection
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../doorsound/" title="Door Sound" class="md-nav__link">
+      Door Sound
     </a>
   </li>
 
@@ -276,6 +310,27 @@
     
   
   
+    <label class="md-nav__title" for="toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#importing-and-initial-setup" title="Importing and initial setup" class="md-nav__link">
+    Importing and initial setup
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#basic-setup" title="Basic setup" class="md-nav__link">
+    Basic setup
+  </a>
+  
+</li>
+      
+      
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -287,7 +342,38 @@
               
                 
                 
-                <h1 id="quick-start"><img alt="QuickStart" src="../img/question.png" /> <strong>Quick-Start</strong></h1>
+                <h1 id="quick-start"><strong>Quick-Start</strong></h1>
+<h2 id="importing-and-initial-setup"><strong>Importing and initial setup</strong></h2>
+<p>First of all, import the asset into your project. The asset will create a folder 'Ameye' under your Assets directory.
+I strongly advise you to not mess around too much with this folder structure since some scripts
+depend on that structure (ie the icons).</p>
+<p><img alt="Tag Creation" src="../img/tag_creation.png" /></p>
+<p>After you've imported the asset, you'll need to create the tag 'Door'. You can simply do this by doing
+Tools&gt;Alex's Door System&gt;Create Door tag. Alternatively you could manually create the tag by doing Edit&gt;Project Settings&gt;Tags and Layers.</p>
+<h2 id="basic-setup"><strong>Basic setup</strong></h2>
+<p>Now that we're done setting up the asset, we can actually start creating some doors!
+We will first create a player in our scene. Make sure that the player can move around and look around
+in your scene. If you want to, you can use the player prefab that is included in the asset. Notice that the
+player has the <a href="https://alexanderameye.github.io/doordetection/">door detection component</a> attached to it. If
+you are using your own player controller, make sure to add this door detection component as well.
+In the inspector of the detection component, make sure that the reach variable is set to 5.</p>
+<p><img alt="Player Prefab" src="../img/player_prefab.png" /></p>
+<p>Now our player is done and we can start creating a door! Just create a basic door shape out of a default cube and place it in your scene.
+After you have a door you're happy with, add the <a href="https://alexanderameye.github.io/doorrotation/">door rotation component</a> to it. The hierarchy structure
+around your door will automatically be changed.</p>
+<p><img alt="The door rotation component" src="../img/door.png" /></p>
+<p>Take a look at the door rotation component. We will be adding a single rotation to it by pressing the green 'plus' button on
+the Rotation Timeline. After we've added a rotation block, there will appear a blue zone in the scene and the hierarchy around
+your door will change again. Let's set the values of the rotation block to an initial angle of 0, a final angle of 90, a speed of 2 and
+a smooth ease-in ease-out curve.</p>
+<p><img alt="The rotation timeline" src="../img/rotation_timeline.png" /></p>
+<p>Now that our rotation itself is set up, we will take a look at that blue zone that just spawned. This zone is a <a href="https://alexanderameye.github.io/doortrigger/">trigger zone</a>
+and it will control our rotation. Select the 'Move Trigger' in the hierarchy 'and take a look at the inspector window.
+We will ask for our player to press "E" in order to rotate the door so toggle 'Pressed' and put the letter 'e' in the field that appears.
+If you'd like to you can resize the trigger zone a bit so it's a bit bigger.</p>
+<p><img alt="The Move Trigger" src="../img/move_trigger.png" /></p>
+<p>We've set up everything needed so let's hit play! As expected we can enter the blue trigger zone, and when we press 'E',
+the door will rotate 90 degrees with a speed of 2 (duration of 0.5 seconds).</p>
                 
                   
                 
@@ -306,7 +392,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../setup/" title="Setup" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href=".." title="Welcome" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -315,7 +401,7 @@
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                Setup
+                Welcome
               </span>
             </div>
           </a>

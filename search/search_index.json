@@ -2,27 +2,17 @@
     "docs": [
         {
             "location": "/",
-            "text": "Welcome",
+            "text": "Welcome\n\n\nHello and welcome to the documentation of Alex's Door System!\nHere you'll find more information\nabout every aspect of the asset as well as a Quick-Start guide, an FAQ-section and a Support and Contact section.\n\n\n\n\nQuick-Start\n\n\nFAQ\n\n\nSupport and Contact",
             "title": "Welcome"
         },
         {
             "location": "/#welcome",
-            "text": "",
+            "text": "Hello and welcome to the documentation of Alex's Door System!\nHere you'll find more information\nabout every aspect of the asset as well as a Quick-Start guide, an FAQ-section and a Support and Contact section.   Quick-Start  FAQ  Support and Contact",
             "title": "Welcome"
         },
         {
-            "location": "/setup/",
-            "text": "Setup",
-            "title": "Setup"
-        },
-        {
-            "location": "/setup/#setup",
-            "text": "",
-            "title": "Setup"
-        },
-        {
             "location": "/quickstart/",
-            "text": "Quick-Start",
+            "text": "Quick-Start\n\n\nImporting and initial setup\n\n\nFirst of all, import the asset into your project. The asset will create a folder 'Ameye' under your Assets directory.\nI strongly advise you to not mess around too much with this folder structure since some scripts\ndepend on that structure (ie the icons).\n\n\n\n\nAfter you've imported the asset, you'll need to create the tag 'Door'. You can simply do this by doing\nTools>Alex's Door System>Create Door tag. Alternatively you could manually create the tag by doing Edit>Project Settings>Tags and Layers.\n\n\nBasic setup\n\n\nNow that we're done setting up the asset, we can actually start creating some doors!\nWe will first create a player in our scene. Make sure that the player can move around and look around\nin your scene. If you want to, you can use the player prefab that is included in the asset. Notice that the\nplayer has the \ndoor detection component\n attached to it. If\nyou are using your own player controller, make sure to add this door detection component as well.\nIn the inspector of the detection component, make sure that the reach variable is set to 5.\n\n\n\n\nNow our player is done and we can start creating a door! Just create a basic door shape out of a default cube and place it in your scene.\nAfter you have a door you're happy with, add the \ndoor rotation component\n to it. The hierarchy structure\naround your door will automatically be changed.\n\n\n\n\nTake a look at the door rotation component. We will be adding a single rotation to it by pressing the green 'plus' button on\nthe Rotation Timeline. After we've added a rotation block, there will appear a blue zone in the scene and the hierarchy around\nyour door will change again. Let's set the values of the rotation block to an initial angle of 0, a final angle of 90, a speed of 2 and\na smooth ease-in ease-out curve.\n\n\n\n\nNow that our rotation itself is set up, we will take a look at that blue zone that just spawned. This zone is a \ntrigger zone\n\nand it will control our rotation. Select the 'Move Trigger' in the hierarchy 'and take a look at the inspector window.\nWe will ask for our player to press \"E\" in order to rotate the door so toggle 'Pressed' and put the letter 'e' in the field that appears.\nIf you'd like to you can resize the trigger zone a bit so it's a bit bigger.\n\n\n\n\nWe've set up everything needed so let's hit play! As expected we can enter the blue trigger zone, and when we press 'E',\nthe door will rotate 90 degrees with a speed of 2 (duration of 0.5 seconds).",
             "title": "Quick-Start"
         },
         {
@@ -31,8 +21,18 @@
             "title": "Quick-Start"
         },
         {
+            "location": "/quickstart/#importing-and-initial-setup",
+            "text": "First of all, import the asset into your project. The asset will create a folder 'Ameye' under your Assets directory.\nI strongly advise you to not mess around too much with this folder structure since some scripts\ndepend on that structure (ie the icons).   After you've imported the asset, you'll need to create the tag 'Door'. You can simply do this by doing\nTools>Alex's Door System>Create Door tag. Alternatively you could manually create the tag by doing Edit>Project Settings>Tags and Layers.",
+            "title": "Importing and initial setup"
+        },
+        {
+            "location": "/quickstart/#basic-setup",
+            "text": "Now that we're done setting up the asset, we can actually start creating some doors!\nWe will first create a player in our scene. Make sure that the player can move around and look around\nin your scene. If you want to, you can use the player prefab that is included in the asset. Notice that the\nplayer has the  door detection component  attached to it. If\nyou are using your own player controller, make sure to add this door detection component as well.\nIn the inspector of the detection component, make sure that the reach variable is set to 5.   Now our player is done and we can start creating a door! Just create a basic door shape out of a default cube and place it in your scene.\nAfter you have a door you're happy with, add the  door rotation component  to it. The hierarchy structure\naround your door will automatically be changed.   Take a look at the door rotation component. We will be adding a single rotation to it by pressing the green 'plus' button on\nthe Rotation Timeline. After we've added a rotation block, there will appear a blue zone in the scene and the hierarchy around\nyour door will change again. Let's set the values of the rotation block to an initial angle of 0, a final angle of 90, a speed of 2 and\na smooth ease-in ease-out curve.   Now that our rotation itself is set up, we will take a look at that blue zone that just spawned. This zone is a  trigger zone \nand it will control our rotation. Select the 'Move Trigger' in the hierarchy 'and take a look at the inspector window.\nWe will ask for our player to press \"E\" in order to rotate the door so toggle 'Pressed' and put the letter 'e' in the field that appears.\nIf you'd like to you can resize the trigger zone a bit so it's a bit bigger.   We've set up everything needed so let's hit play! As expected we can enter the blue trigger zone, and when we press 'E',\nthe door will rotate 90 degrees with a speed of 2 (duration of 0.5 seconds).",
+            "title": "Basic setup"
+        },
+        {
             "location": "/doorrotation/",
-            "text": "Door Rotation",
+            "text": "Door Rotation\n\n\nAngle Settings\n\n\nSpeed Curves",
             "title": "Rotations"
         },
         {
@@ -41,13 +41,23 @@
             "title": "Door Rotation"
         },
         {
+            "location": "/doorrotation/#angle-settings",
+            "text": "",
+            "title": "Angle Settings"
+        },
+        {
+            "location": "/doorrotation/#speed-curves",
+            "text": "",
+            "title": "Speed Curves"
+        },
+        {
             "location": "/doortrigger/",
-            "text": "Trigger Zones\n\n\nThis door system heavily relies on trigger zones to create proper player-door interaction.\nTrigger zones are drawn as colored volumes (boxes or spheres) in the scene. You can position/rotate/scale them however you want and change\ntheir visual appearance.\n\n\n\n\nEvery trigger you see, is connected to a rotation block of a door. Looped and swing rotations both have 2 trigger zones. Single rotations have 1 trigger zone.\nTrigger zones will automatically be added to your scene/hierarchy whenever you create a rotation. You also have the option to\nadd multiple trigger zones that control the same rotation.\n\n\n\n\nTrigger Component\n\n\nEvery trigger zone has a 'Door Trigger' component attached to it. This component allows you to control how the trigger zone behaves.\nTrigger zones continuously check a certain set of conditions. If all conditions are met, the trigger zone sends a signal to the door, and a rotation will take place.\n\n\n\n\n\n\nTip:\n\nCollapse the collider component in order to not see its wireframe.\n\n\n\n\nYou can set what the zones look for in order to allow a rotation. You can also determine the visual appearance of the trigger zone.\nIt's advised to keep a certain continuity in the coloring of your trigger zones to make it easier to tell them apart at a glance.\n\n\nPlayer Requirements\n\n\n\n\n\n\n\n\nRequirement\n\n\nDescription\n\n\nTakes\n\n\n\n\n\n\n\n\n\n\nTag\n\n\nDoes the object that entered the trigger zone have a certain tag?\n\n\nTag\n\n\n\n\n\n\nName\n\n\nDoes the object that entered the trigger zone has a certain name?\n\n\nString\n\n\n\n\n\n\nLooking At\n\n\nIs the player looking at a certain object?\n\n\nGameObject\n\n\n\n\n\n\nPressed\n\n\nHas the user pressed a certain key?\n\n\nKeyCode String\n\n\n\n\n\n\nScript\n\n\nDoes the player have a certain script component?\n\n\nMonoBehaviour\n\n\n\n\n\n\nIs Object\n\n\nIS there a certain object in the trigger zone?\n\n\nGameObject",
+            "text": "Trigger Zones\n\n\nThis door system heavily relies on trigger zones to create proper player-door interactions.\nTrigger zones are drawn as colored volumes (boxes or spheres) in the scene. You can position/rotate/scale them however you want and change\ntheir visual appearance.\n\n\n\n\nEvery trigger you see, is connected to a rotation block of a door. Looped and swing rotations both have 2 trigger zones. Single rotations have 1 trigger zone.\nTrigger zones will automatically be added to your scene/hierarchy whenever you create a rotation. You also have the option to\nadd multiple trigger zones that control the same rotation.\n\n\n\n\nTrigger Component\n\n\nEvery trigger zone has a 'Door Trigger' component attached to it. This component allows you to control how the trigger zone behaves.\nTrigger zones continuously check a certain set of conditions. If all conditions are met, the trigger zone sends a signal to the door, and a rotation will take place.\n\n\n\n\n\n\nTip:\n\nCollapse the collider component in order to not see its wireframe.\n\n\n\n\nYou can set what the zones look for in order to allow a rotation. You can also determine the visual appearance of the trigger zone.\nIt's advised to keep a certain continuity in the coloring of your trigger zones to make it easier to tell them apart at a glance.\n\n\nPlayer Requirements\n\n\n\n\n\n\n\n\nRequirement\n\n\nDescription\n\n\nTakes\n\n\n\n\n\n\n\n\n\n\nTag\n\n\nDoes the object that entered the trigger zone have a certain tag?\n\n\nTag\n\n\n\n\n\n\nName\n\n\nDoes the object that entered the trigger zone has a certain name?\n\n\nString\n\n\n\n\n\n\nLooking At\n\n\nIs the player looking at a certain object?\n\n\nGameObject\n\n\n\n\n\n\nPressed\n\n\nHas the user pressed a certain key?\n\n\nKeyCode String\n\n\n\n\n\n\nScript\n\n\nDoes the player have a certain script component?\n\n\nMonoBehaviour\n\n\n\n\n\n\nIs Object\n\n\nIs there a certain object in the trigger zone?\n\n\nGameObject",
             "title": "Trigger Zones"
         },
         {
             "location": "/doortrigger/#trigger-zones",
-            "text": "This door system heavily relies on trigger zones to create proper player-door interaction.\nTrigger zones are drawn as colored volumes (boxes or spheres) in the scene. You can position/rotate/scale them however you want and change\ntheir visual appearance.   Every trigger you see, is connected to a rotation block of a door. Looped and swing rotations both have 2 trigger zones. Single rotations have 1 trigger zone.\nTrigger zones will automatically be added to your scene/hierarchy whenever you create a rotation. You also have the option to\nadd multiple trigger zones that control the same rotation.",
+            "text": "This door system heavily relies on trigger zones to create proper player-door interactions.\nTrigger zones are drawn as colored volumes (boxes or spheres) in the scene. You can position/rotate/scale them however you want and change\ntheir visual appearance.   Every trigger you see, is connected to a rotation block of a door. Looped and swing rotations both have 2 trigger zones. Single rotations have 1 trigger zone.\nTrigger zones will automatically be added to your scene/hierarchy whenever you create a rotation. You also have the option to\nadd multiple trigger zones that control the same rotation.",
             "title": "Trigger Zones"
         },
         {
@@ -57,18 +67,33 @@
         },
         {
             "location": "/doortrigger/#player-requirements",
-            "text": "Requirement  Description  Takes      Tag  Does the object that entered the trigger zone have a certain tag?  Tag    Name  Does the object that entered the trigger zone has a certain name?  String    Looking At  Is the player looking at a certain object?  GameObject    Pressed  Has the user pressed a certain key?  KeyCode String    Script  Does the player have a certain script component?  MonoBehaviour    Is Object  IS there a certain object in the trigger zone?  GameObject",
+            "text": "Requirement  Description  Takes      Tag  Does the object that entered the trigger zone have a certain tag?  Tag    Name  Does the object that entered the trigger zone has a certain name?  String    Looking At  Is the player looking at a certain object?  GameObject    Pressed  Has the user pressed a certain key?  KeyCode String    Script  Does the player have a certain script component?  MonoBehaviour    Is Object  Is there a certain object in the trigger zone?  GameObject",
             "title": "Player Requirements"
         },
         {
             "location": "/doordetection/",
-            "text": "Door Detection",
+            "text": "Door Detection\n\n\nWhen setting up the doors in your game, you should add the Door Detection component to your player. This component\nallows the player to detect doors in your scene. It ray-casts continuously and checks what objects are in front of him/her.\n\n\nDetection Component\n\n\nIn the detection component, you have a reach variable. This variable determines how close to the door the player needs to be in order\nto be able to move it. You can display a visualization of that 'reach' in your scene if you'd like to.\n\n\n\n\nThere are also some slots where you can put text-prefabs that will be shown whenever a certain stage of the rotation is reached.\nFor example you could display 'Press \"E\" to open' whenever your player is looking at a door. You can also leave these slots\nempty.\n\n\n\n\nImportant:\n\nMake sure the 'Reach' variable is not set to zero.'.\n\n\n\n\n\n\n\n\n\n\nPrefab\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nLooking at\n\n\nDoes the object that entered the trigger zone have a certain tag?\n\n\n\n\n\n\nIn Zone\n\n\nDoes the object that entered the trigger zone has a certain name?\n\n\n\n\n\n\nChrosshair\n\n\nIs the player looking at a certain object?",
             "title": "Door Detection"
         },
         {
             "location": "/doordetection/#door-detection",
-            "text": "",
+            "text": "When setting up the doors in your game, you should add the Door Detection component to your player. This component\nallows the player to detect doors in your scene. It ray-casts continuously and checks what objects are in front of him/her.",
             "title": "Door Detection"
+        },
+        {
+            "location": "/doordetection/#detection-component",
+            "text": "In the detection component, you have a reach variable. This variable determines how close to the door the player needs to be in order\nto be able to move it. You can display a visualization of that 'reach' in your scene if you'd like to.   There are also some slots where you can put text-prefabs that will be shown whenever a certain stage of the rotation is reached.\nFor example you could display 'Press \"E\" to open' whenever your player is looking at a door. You can also leave these slots\nempty.   Important: \nMake sure the 'Reach' variable is not set to zero.'.      Prefab  Description      Looking at  Does the object that entered the trigger zone have a certain tag?    In Zone  Does the object that entered the trigger zone has a certain name?    Chrosshair  Is the player looking at a certain object?",
+            "title": "Detection Component"
+        },
+        {
+            "location": "/doorsound/",
+            "text": "Door Sound",
+            "title": "Door Sound"
+        },
+        {
+            "location": "/doorsound/#door-sound",
+            "text": "",
+            "title": "Door Sound"
         },
         {
             "location": "/faq/",
@@ -82,12 +107,12 @@
         },
         {
             "location": "/license/",
-            "text": "Third Party Licenses\n\n\nSeveral pieces of code and libraries have been used in this project. I'd like to take the time\nto mention those tools here.\n\n\nReorderable Lists\n\n\nQuaternion Extension",
+            "text": "Third Party Licenses\n\n\nSeveral pieces of code and libraries have been used in this project. I'd like to take the time\nto mention these tools here.\n\n\nReorderable Lists\n\n\nQuaternion Extension\n\n\nConditional Hide",
             "title": "Third-Party Licenses"
         },
         {
             "location": "/license/#third-party-licenses",
-            "text": "Several pieces of code and libraries have been used in this project. I'd like to take the time\nto mention those tools here.",
+            "text": "Several pieces of code and libraries have been used in this project. I'd like to take the time\nto mention these tools here.",
             "title": "Third Party Licenses"
         },
         {
@@ -101,13 +126,18 @@
             "title": "Quaternion Extension"
         },
         {
+            "location": "/license/#conditional-hide",
+            "text": "",
+            "title": "Conditional Hide"
+        },
+        {
             "location": "/support/",
-            "text": "Support and Contact\n\n\nIf you are experiencing technical issues or bugs, don't hesitate to reach out to me!\nThe best way is to contact me through email but you could also always contact me through the unity forums.\nIf you'd like to request a feature, you can do that by contacting me through mail or posting something on the forum.\n\n\n\n\nNote:\n\nWhen contacting me, please include the invoice number of the asset you purchased.\n\n\n\n\nHelpful Links\n\n\n\n\nEmail\n\n\nForum\n\n\nTwitter\n\n\nTrello Board",
+            "text": "Support and Contact\n\n\nIf you are experiencing technical issues or bugs, don't hesitate to reach out to me!\nThe easiest way is to contact me through email but you can also contact me through the unity forums or Twitter.\nIf you'd like to request a feature, you can do that by contacting me through mail or posting something on the forum.\n\n\n\n\nNote:\n\nWhen contacting me, please include the invoice number of the asset you purchased.\n\n\n\n\nHelpful Links\n\n\n\n\nEmail\n\n\nForum\n\n\nTwitter\n\n\nTrello Board",
             "title": "Support and Contact"
         },
         {
             "location": "/support/#support-and-contact",
-            "text": "If you are experiencing technical issues or bugs, don't hesitate to reach out to me!\nThe best way is to contact me through email but you could also always contact me through the unity forums.\nIf you'd like to request a feature, you can do that by contacting me through mail or posting something on the forum.   Note: \nWhen contacting me, please include the invoice number of the asset you purchased.",
+            "text": "If you are experiencing technical issues or bugs, don't hesitate to reach out to me!\nThe easiest way is to contact me through email but you can also contact me through the unity forums or Twitter.\nIf you'd like to request a feature, you can do that by contacting me through mail or posting something on the forum.   Note: \nWhen contacting me, please include the invoice number of the asset you purchased.",
             "title": "Support and Contact"
         },
         {

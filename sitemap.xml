@@ -11,14 +11,6 @@
 
     
     <url>
-     <loc>/setup/</loc>
-     <lastmod>2017-12-08</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-    
-
-    
-    <url>
      <loc>/quickstart/</loc>
      <lastmod>2017-12-08</lastmod>
      <changefreq>daily</changefreq>
@@ -44,6 +36,14 @@
     
     <url>
      <loc>/doordetection/</loc>
+     <lastmod>2017-12-08</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+    <url>
+     <loc>/doorsound/</loc>
      <lastmod>2017-12-08</lastmod>
      <changefreq>daily</changefreq>
     </url>

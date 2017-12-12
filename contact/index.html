@@ -32,7 +32,7 @@
     
     
       
-        <title>Trigger Zones - Alex's Door System Documentation</title>
+        <title>Contact - Alexander Ameye</title>
       
     
     
@@ -69,7 +69,7 @@
   <nav class="md-header-nav md-grid">
     <div class="md-flex">
       <div class="md-flex__cell md-flex__cell--shrink">
-        <a href=".." title="Alex's Door System Documentation" class="md-header-nav__button md-logo">
+        <a href=".." title="Alexander Ameye" class="md-header-nav__button md-logo">
           
             <i class="md-icon"></i>
           
@@ -84,7 +84,7 @@
             
               
             
-            Trigger Zones
+            Contact
           
         </span>
       </div>
@@ -137,7 +137,7 @@
         <i class="md-icon"></i>
       
     </span>
-    Alex's Door System Documentation
+    Alexander Ameye
   </label>
   
   <ul class="md-nav__list" data-md-scrollfix>
@@ -158,30 +158,6 @@
       
       
 
-
-  <li class="md-nav__item">
-    <a href="../quickstart/" title="Quick-Start" class="md-nav__link">
-      Quick-Start
-    </a>
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item">
-    <a href="../doorrotation/" title="Rotations" class="md-nav__link">
-      Rotations
-    </a>
-  </li>
-
-    
-      
-      
-      
-
   
 
 
@@ -193,11 +169,11 @@
     
     
       <label class="md-nav__link md-nav__link--active" for="toc">
-        Trigger Zones
+        Contact
       </label>
     
-    <a href="./" title="Trigger Zones" class="md-nav__link md-nav__link--active">
-      Trigger Zones
+    <a href="./" title="Contact" class="md-nav__link md-nav__link--active">
+      Contact
     </a>
     
       
@@ -211,15 +187,8 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#trigger-component" title="Trigger Component" class="md-nav__link">
-    Trigger Component
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#player-requirements" title="Player Requirements" class="md-nav__link">
-    Player Requirements
+  <a href="#helpful-links" title="Helpful Links" class="md-nav__link">
+    Helpful Links
   </a>
   
 </li>
@@ -230,66 +199,6 @@
   
 </nav>
     
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item">
-    <a href="../doordetection/" title="Door Detection" class="md-nav__link">
-      Door Detection
-    </a>
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item">
-    <a href="../doorsound/" title="Door Sound" class="md-nav__link">
-      Door Sound
-    </a>
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item">
-    <a href="../faq/" title="FAQ" class="md-nav__link">
-      FAQ
-    </a>
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item">
-    <a href="../license/" title="Third-Party Licenses" class="md-nav__link">
-      Third-Party Licenses
-    </a>
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item">
-    <a href="../support/" title="Support and Contact" class="md-nav__link">
-      Support and Contact
-    </a>
   </li>
 
     
@@ -314,15 +223,8 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#trigger-component" title="Trigger Component" class="md-nav__link">
-    Trigger Component
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#player-requirements" title="Player Requirements" class="md-nav__link">
-    Player Requirements
+  <a href="#helpful-links" title="Helpful Links" class="md-nav__link">
+    Helpful Links
   </a>
   
 </li>
@@ -342,67 +244,14 @@
               
                 
                 
-                <h1 id="trigger-zones"><strong>Trigger Zones</strong></h1>
-<p>This door system heavily relies on trigger zones to create proper player-door interactions.
-Trigger zones are drawn as colored volumes (boxes or spheres) in the scene. You can position/rotate/scale them however you want and change
-their visual appearance.</p>
-<p><img alt="Trigger Zones" src="../img/trigger_zones.jpg" /></p>
-<p>Every trigger you see, is connected to a rotation block of a door. Looped and swing rotations both have 2 trigger zones. Single rotations have 1 trigger zone.
-Trigger zones will automatically be added to your scene/hierarchy whenever you create a rotation. You also have the option to
-add multiple trigger zones that control the same rotation.</p>
-<p><img alt="Trigger Zone Hierarchy" src="../img/trigger_zone_hierarchy.jpg" /></p>
-<h2 id="trigger-component"><strong>Trigger Component</strong></h2>
-<p>Every trigger zone has a 'Door Trigger' component attached to it. This component allows you to control how the trigger zone behaves.
-Trigger zones continuously check a certain set of conditions. If all conditions are met, the trigger zone sends a signal to the door, and a rotation will take place.</p>
-<p><img alt="Trigger Zones" src="../img/trigger_script.png" /></p>
-<blockquote>
-<p><strong>Tip:</strong>
-Collapse the collider component in order to not see its wireframe.</p>
-</blockquote>
-<p>You can set what the zones look for in order to allow a rotation. You can also determine the visual appearance of the trigger zone.
-It's advised to keep a certain continuity in the coloring of your trigger zones to make it easier to tell them apart at a glance.</p>
-<h2 id="player-requirements"><strong>Player Requirements</strong></h2>
-<table>
-<thead>
-<tr>
-<th align="left">Requirement</th>
-<th align="left">Description</th>
-<th align="left">Takes</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="left">Tag</td>
-<td align="left">Does the object that entered the trigger zone have a certain tag?</td>
-<td align="left">Tag</td>
-</tr>
-<tr>
-<td align="left">Name</td>
-<td align="left">Does the object that entered the trigger zone has a certain name?</td>
-<td align="left">String</td>
-</tr>
-<tr>
-<td align="left">Looking At</td>
-<td align="left">Is the player looking at a certain object?</td>
-<td align="left">GameObject</td>
-</tr>
-<tr>
-<td align="left">Pressed</td>
-<td align="left">Has the user pressed a certain key?</td>
-<td align="left"><a href="https://docs.unity3d.com/ScriptReference/KeyCode.html">KeyCode String</a></td>
-</tr>
-<tr>
-<td align="left">Script</td>
-<td align="left">Does the player have a certain script component?</td>
-<td align="left">MonoBehaviour</td>
-</tr>
-<tr>
-<td align="left">Is Object</td>
-<td align="left">Is there a certain object in the trigger zone?</td>
-<td align="left">GameObject</td>
-</tr>
-</tbody>
-</table>
+                <h1 id="contact"><strong>Contact</strong></h1>
+<p>The easiest way is to contact me through email but you can also contact me through the unity forums or Twitter.</p>
+<h2 id="helpful-links">Helpful Links</h2>
+<ul>
+<li><a href="../alexanderameye@gmail.com">Email</a></li>
+<li><a href="https://forum.unity.com/members/alexanderameye.482782/">Forum</a></li>
+<li><a href="https://twitter.com/BlueTokioUnity">Twitter</a></li>
+</ul>
                 
                   
                 
@@ -421,7 +270,7 @@ It's advised to keep a certain continuity in the coloring of your trigger zones 
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../doorrotation/" title="Rotations" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href=".." title="Welcome" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -430,25 +279,11 @@ It's advised to keep a certain continuity in the coloring of your trigger zones 
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                Rotations
+                Welcome
               </span>
             </div>
           </a>
         
-        
-          <a href="../doordetection/" title="Door Detection" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
-            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
-              <span class="md-flex__ellipsis">
-                <span class="md-footer-nav__direction">
-                  Next
-                </span>
-                Door Detection
-              </span>
-            </div>
-            <div class="md-flex__cell md-flex__cell--shrink">
-              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
-            </div>
-          </a>
         
       </nav>
     </div>

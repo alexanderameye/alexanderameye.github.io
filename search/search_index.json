@@ -2,28 +2,23 @@
     "docs": [
         {
             "location": "/",
-            "text": "Welcome\n\n\nHello and welcome to the documentation of Alex's Door System!\nHere you'll find more information\nabout every aspect of the asset as well as a Quick-Start guide, an FAQ-section and a Support and Contact section.\n\n\n\n\nQuick-Start\n\n\nFAQ\n\n\nSupport and Contact",
+            "text": "Welcome\n\n\nHello and welcome to my website! Here are some of the projects that I have worked on.\n\n\n\n\nProjects\n\n\nAlex's Door System\n\n\nRockStudio\n\n\nFree Prefab Painter",
             "title": "Welcome"
         },
         {
             "location": "/#welcome",
-            "text": "Hello and welcome to the documentation of Alex's Door System!\nHere you'll find more information\nabout every aspect of the asset as well as a Quick-Start guide, an FAQ-section and a Support and Contact section.   Quick-Start  FAQ  Support and Contact",
+            "text": "Hello and welcome to my website! Here are some of the projects that I have worked on.   Projects  Alex's Door System  RockStudio  Free Prefab Painter",
             "title": "Welcome"
         },
         {
             "location": "/contact/",
-            "text": "Contact\n\n\nThe easiest way is to contact me through email but you can also contact me through the unity forums or Twitter.\n\n\nHelpful Links\n\n\n\n\nEmail\n\n\nForum\n\n\nTwitter",
-            "title": "Contact"
+            "text": "Contact\n\n\nThe easiest way is to contact me through email but you can also contact me through the unity forums or Twitter.\n\n\n\n\nUseful Links\n\n\nEmail\n\n\nForum\n\n\nTwitter\n\n\nTrello Board\n\n\nRoadmap\n\n\nWrite a Review",
+            "title": "Support and Contact"
         },
         {
             "location": "/contact/#contact",
-            "text": "The easiest way is to contact me through email but you can also contact me through the unity forums or Twitter.",
+            "text": "The easiest way is to contact me through email but you can also contact me through the unity forums or Twitter.   Useful Links  Email  Forum  Twitter  Trello Board  Roadmap  Write a Review",
             "title": "Contact"
-        },
-        {
-            "location": "/contact/#helpful-links",
-            "text": "Email  Forum  Twitter",
-            "title": "Helpful Links"
         }
     ]
 }

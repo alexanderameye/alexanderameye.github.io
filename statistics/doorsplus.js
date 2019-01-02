@@ -20,7 +20,7 @@ google.charts.load('current', {'packages':['bar']});
 
         var options = {
           chart: {
-            title: 'Monthly Downloads',
+            title: 'Doors+ Pro',
             subtitle: 'Monthly downloads of Doors+ Lite from 2015-present.',
           }
         };
@@ -29,3 +29,4 @@ google.charts.load('current', {'packages':['bar']});
 
         chart.draw(data, google.charts.Bar.convertOptions(options));
       }
+

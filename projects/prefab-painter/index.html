@@ -1,411 +1,240 @@
 
-
-
-
-<!doctype html>
-<html lang="en" class="no-js">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width,initial-scale=1">
-      <meta http-equiv="x-ua-compatible" content="ie=edge">
-      
-      
-      
-      
-        <meta name="lang:clipboard.copy" content="Copy to clipboard">
-      
-        <meta name="lang:clipboard.copied" content="Copied to clipboard">
-      
-        <meta name="lang:search.language" content="en">
-      
-        <meta name="lang:search.pipeline.stopwords" content="True">
-      
-        <meta name="lang:search.pipeline.trimmer" content="True">
-      
-        <meta name="lang:search.result.none" content="No matching documents">
-      
-        <meta name="lang:search.result.one" content="1 matching document">
-      
-        <meta name="lang:search.result.other" content="# matching documents">
-      
-        <meta name="lang:search.tokenizer" content="[\s\-]+">
-      
-      <link rel="shortcut icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-3.2.0">
-    
-    
-      
-        <title>Alexander Ameye</title>
-      
-    
-    
-      <link rel="stylesheet" href="../assets/stylesheets/application.572ca0f0.css">
-      
-        <link rel="stylesheet" href="../assets/stylesheets/application-palette.22915126.css">
-      
-      
+		<title>Water breakdown</title>
+		
+		<meta charset="utf-8" />
+
+		<meta property="og:title" content="Owen Deey is a Canadian game developer"/> 
+		<meta property="og:site_name" content="Alexander Ameye"/> 
+		<meta property="og:type" content="website"/>
+		<meta property="og:url" content="https://alexanderameye.github.io/projects/"/> 
+
+		<meta name="description" content=""/>
+		<meta name="author" content="Alexander ameye"/>
+		
+		 <style type="text/css">
+        p.p1 {
+            margin: 0.0px 0.0px 0.0px 0.0px;
+            font: 13.0px Arial
+        }
         
+        p.p2 {
+            margin: 0.0px 0.0px 0.0px 0.0px;
+            font: 13.0px Arial;
+            min-height: 14.0px
+        }
         
-        <meta name="theme-color" content="#2196f3">
-      
-    
-    
-      <script src="../assets/javascripts/modernizr.8c900955.js"></script>
-    
-    
-      
-        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
-        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
-      
-    
-    <link rel="stylesheet" href="../assets/fonts/material-icons.css">
-    
-    
-    
-  </head>
+        a:link {
+            color: #FF2222;
+            text-decoration: none;
+			font-weight: bold;
+        }
+        
+        a:visited {
+            color: #FF2222;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        pre {
+            font: 13.0px Courier;
+            width: 800px;
+            position: relative;
+            white-space: -moz-pre-wrap;
+            /* Mozilla, supported since 1999 */
+            white-space: -pre-wrap;
+            /* Opera */
+            white-space: -o-pre-wrap;
+            /* Opera */
+            white-space: pre-wrap;
+            /* CSS3 - Text module (Candidate Recommendation) http://www.w3.org/TR/css3-text/#white-space */
+            word-wrap: break-word;
+            /* IE 5.5+ */
+        }
+        
+        span.white {
+            color: white;
+        }
+        
+        p span.show {
+            display: none;
+        }
+        
+        p:hover span.show {
+            display: inline;
+        }
+        
+        p:hover span.noshow {
+            display: none;
+        }
+    </style>
+	
+	<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-37607166-4', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+	</head>
+
+  <body>
+<pre>
+<h1>Shadergraph Water</h1><a href="../index.html">Back to projects</a>
+
+<img src="assets/flag.png">
+<i>The final effect</i>
+
+<b>Here’s a breakdown of how I created the water surface shader for my current project. It was created using C++, OpenGL and GLSL, but it should be easy to bring over the same ideas to whichever engine you’re using. Enjoy!</b>
+
+<h1>Surface</h1><h2>Mesh</h2><img src="water_assets/water_tessellate0.gif">
+<i>Changing the density value of the surface</i>
+
+The main water surface is built from a single tessellated plane that gets constructed at runtime when the water entity is created, or when any of the parameters affecting the tessellation are changed. The size and density of the plane is controlled by a 2D density value and a 2D sizing value.
+
+This static geometry is then sent into the shader pipeline where the vertex shader, geometry shader and fragment shader all perform functions that are vital to the final look of the water.
+
+<h2>Vertex shader</h2><img src="water_assets/water_sine0.gif">
+<i>Sine wave displacment with wireframe on/off</i>
+
+The vertex shader handles displacement of the water surface. Displacement values are generated using a combination of sine waves and <a href="https://en.wikipedia.org/wiki/Trochoidal_wave" target="_blank">Gerstner waves</a> (<a href="http://karmaninteractive.com/labs/2014/11/2/ocean-simulation-pt3-gerstner-waves" target="_blank">here's a good overview from Karman Interactive</a>). The sine wave is fairly straightforward, but since it’s so even and smooth I keep the amplitude fairly low and just use it to create small variations. 
+
+
+<img src="water_assets/water_gerst0_0.gif">
+<i>Gerstner wave displacment, modifying the Q value</i>
+
+The bulk of the displacement is done by the Gerstner wave. At a very basic level Gerstner waves combine a sine wave and cosine wave to create a cresting waveform that is much closer to a genuine water surface than what you get with regular sine waves alone. The wave equation has a parameter “Q” which allows us to control how sharp we want the crests to be, and rather than simply affecting the Y-axis of the vertices it also changes how the planar XZ dimension of the vertices moves in relation to the wave. This will be important when we get to texturing and the edge foam effect.
+
+<h2>Geometry shader</h2><img src="water_assets/water_normals1.gif">
+<i>Generated surface normals (flickering is caused by gif compression)</i>
+
+The geometry shader is used to rebuild the normals after they’ve been displaced in the vertex shader. This is essential since once we’ve moved the vertices around the original normals become completely invalid. The first time I implemented this design I didn’t have the ability to use geometry shaders and was forced to re-calculate the normals on the CPU which was incredibly slow, but with this relatively short shader I can take in triangles from the vertex shader and spit out the same triangles with correct normals for the fragment shader to consume.
+
+<h2>Fragment shader</h2><img src="water_assets/water_fragment0_0.gif">
+<i>Blending applied, refraction enabled, normal map applied. 
+The background surface has been given a grid texture to demonstrate the refraction effect.</i>
+
+The fragment shader is where all the pretty stuff happens after the vertex and geometry shaders have built the proper wave geometry for us. I won’t go over most of the lighting and materials stuff since it’s outside the scope of this write-up, and if you’re using an engine like Unreal or Unity I assume that stuff is built into the pipeline. In my case the bulk of it is automatically generated from a library of shader snippets loaded from a JSON file at runtime. 
+
+The plane geometry that we generate at the beginning is also given texture coordinates based on the size/density of the surface as well as a scaling factor that I specify. Using a diffuse texture on the surface looks a little bizarre in most scenarios, but using a normal map is really helpful to get a more textured look to the blending and refractions that I’ll talk about next. 
+
+I specify three parameters for how the water should blend overtop of the scene: 
+
+<b>Blend</b>: this is used to control a mix() function that combines the water surface RGB value and the current scene RGB value.
+
+<b>Mix</b>: controls how much the water RGB color should be multiplied with the background color. This basically controls how much of a tint gets applied to the scene underneath the water.
+
+<b>Refraction</b>: this controls the strength of the offset that is applied to the scene when viewed through the water surface. The actual GLSL refract() function isn’t used, I just offset the UV we use to sample the background based on this parameter and the current XZ value of the surface normal.
+
+<h1>Foam</h1>A great way to add more visual interest to a water surface is to add a fringe around objects that are penetrating the surface. From here on I’ll just refer to it as “foam” since that’s basically what we’re trying to recreate. I find foam also helps ground the water in the world rather than having it look like a separate effect drawn overtop. The following is all performed in the fragment shader after regular lighting and material blending has been done.
+
+<h2>Depth comparison</h2>
+<img src="water_assets/depth_before.png"> <img src="water_assets/depth_after.png">
+<i>A visualization of the depth buffer before and after the water is drawn</i>
+
+The technique that I use utilizes the depth buffer to compare how close the water surface is to the objects penetrating the surface and then uses that value to determine where foam should be rendered. 
+
+The main disadvantage of this technique (compared to other methods such as building foam skirts for each object by hand) is that the edges of objects, especially at right-angles, do not have foam applied to them. This is a relatively minor drawback, compared to the main advantage of this technique: it’s entirely dynamic and you can insert/extract/move/animate any of the objects in the water and the foam will react accordingly.
+
+<img src="water_assets/diagram0.png">
+<i>A visual breakdown of how we decide where to draw foam</i>
+
+
+<img src="water_assets/nofoam.png">
+<i>No foam is drawn because the shader does not detect an object close to the surface</i>
+
+Now that we know where to draw the foam, the following steps show how to achieve the look of the foam.
+
+<h2>Step 1: Simple falloff</h2><img src="water_assets/water_foam1_0.gif">
+<i>Basic linear falloff</i>
+
+Once we’ve done a depth comparison to see if we should draw foam at this pixel, we need to figure out how much foam to draw. 
+
+We check our depth comparison value against our falloff distance value (which controls how far the foam effect should extend) and simply do a linear gradient so if we’re right up against an object we have a foam value of 1.0 and if we’re at the far edge of the falloff distance we should have a foam value of 0.0. I’ve also added a falloff bias parameter so that if you want a thick, hard edged foam (for a more cartoony look) you can squeeze the gradient to be full strength across the whole distance.
+
+<img src="water_assets/water_foamBias1.gif">
+<i>Falloff bias = 1.0</i>
+
+<h2>Step 2: Leading edge falloff</h2><img src="water_assets/water_foamLeading0_1.gif">
+<i>Leading edge falloff applied</i>
+
+Since we have a foam value of 1.0 if we’re up against an object, it draws a very hard edge where the surface intersects the object. To remedy this I added a leading edge falloff parameter which creates a gradient that goes from 1.0 at the foam peak to 0.0 at the edge of the object. This is a much smaller distance since we just want to soften the edge a bit. If the pixel lies within this range then we modulate the alpha value of the water surface at the pixel.
+
+<h2>Step 3: Foam texture</h2><img src="water_assets/water_foamPattern0_0.gif">
+<i>Foam pattern</i>
+
+The final touch is a texture effect which gives the foam a bit more realism and movement. 
+
+I created a 256x256 texture in Photoshop by drawing tiling white circles of varying size on a black background, blurring it, and then multiplying it by [255,0,0] to get a red channel. Then I did the same with [0,0,255] to get a blue channel and combined them additively. This will be the texture that we sample in the fragment shader to achieve the foam texture.
+
+<img src="water_assets/water_foam.png">
+<i>Tiling foam mask</i>
+
+I sample the texture twice (once for the red channel, once for the blue channel) using texture coordinates created from a combination of surface texture coordinates, a foam scaling parameter, a foam scrolling parameter, and some trigonometric values. 
+
+The trigonometric values help to remove any tiling artifacts that may show up. Since the sampled texture is relatively small it can be very easy to create a foam effect that is obviously tiling across a large surface, so the sine and cosine values help to resolve this. 
+
+A nice side effect of using the surface texture coordinates here is that since they are tied to the vertices, they move around when the vertices get displaced causing the foam to ebb and flow with the water displacement!
+
+<h3>GLSL snippet for generating foam</h2><hr>
+<code>vec2 scaledUV = surfaceUV * edgePatternScale; 
+
+// Sample the mask
+float channelA = texture(maskSampler, scaledUV - vec2(edgePatternScroll, cos(surfaceUV.x))).r; 
+float channelB = texture(maskSampler, scaledUV * 0.5 + vec2(sin(surfaceUV.y), edgePatternScroll)).b; 
+		
+// Modify it to our liking
+float mask = (channelA + channelB) * 0.95;
+mask = pow(mask, 2);
+mask = clamp(mask, 0, 1);
+		
+// Is this pixel in the leading edge?
+if(depthDifference < falloffDistance * leadingEdgeFalloff)
+{
+	// Modulate the surface alpha and the mask strength
+	float leading = depthDifference / (falloffDistance * leadingEdgeFalloff);
+	fragColor.a *= leading;
+	mask *= leading;
+}
+	
+// Calculate linear falloff value
+float falloff = 1.0 - (depthDifference / falloffDistance) + edgeFalloffBias;
+
+// Color the foam, blend based on alpha
+vec3 edge = edgeFalloffColor.rgb * falloff * edgeFalloffColor.a;
+
+// Subtract mask value from foam gradient, then add the foam value to the final pixel color
+fragColor.rgb += clamp(edge - vec3(mask), 0.0, 1.0);
+</code>
+<hr>
+
+Once I’ve got the two texture samples I combine them. The 0.95 value and the pow() function have no basis other than they make the effect look good. Working on an effect like this is all about finding which numbers make it look the best, so feel free to experiment with other values or add any other equations you want. These two lines give us a pseudo-clamped value with a bit more softness than you would get with a standard clamp. By clamping the value of two blurred circles we get a nice blobby, fluid motion as they move past each other, similar to metaballs. 
+
+In the end what this pattern value will give us is a sort of circular cookie cutter that we can use to punch holes in our foam skirt and create the final effect. As a small addition I also use the leading edge falloff I mentioned earlier to modulate the strength of the foam cutout so that we get less of a cutout effect the closer we get to an object.
+
+Finally we take our base gradient falloff value we calculated first, subtract our foam pattern, clamp the end result and add it to our fragment value which is then output to the screen.
+
+
+<img src="water_assets/water4_0.gif">
+<i>The final effect</i>
+
+<b>That’s all there is! I tried to include as much relevant info as I could, but since I know a lot of people will be using different pipelines I tried to keep it fairly general. If you enjoyed this or found it useful, let me know! If you’ve got any question feel free to reach out to me on twitter at <a href="https://twitter.com/owendeery" target="_blank">@owendeery</a>. Thanks!</b>
+
+
+<a href="../index.html">Back to projects</a>
+  <hr>
+  <a href="http://www.twitter.com/owendeery" target="_blank">@owendeery</a>
+  <a href="mailto:owen.deery@gmail.com">owen.deery@gmail.com</a> 
+  </pre>
   
-    
-    
-    <body dir="ltr" data-md-color-primary="blue" data-md-color-accent="blue">
-  
-    <svg class="md-svg">
-      <defs>
-        
-        
-          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448"
-    viewBox="0 0 416 448" id="__github">
-  <path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19-18.125
-        8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19 18.125-8.5
-        18.125 8.5 10.75 19 3.125 20.5zM320 304q0 10-3.125 20.5t-10.75
-        19-18.125 8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19
-        18.125-8.5 18.125 8.5 10.75 19 3.125 20.5zM360
-        304q0-30-17.25-51t-46.75-21q-10.25 0-48.75 5.25-17.75 2.75-39.25
-        2.75t-39.25-2.75q-38-5.25-48.75-5.25-29.5 0-46.75 21t-17.25 51q0 22 8
-        38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0
-        37.25-1.75t35-7.375 30.5-15 20.25-25.75 8-38.375zM416 260q0 51.75-15.25
-        82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5-41.75
-        1.125q-19.5 0-35.5-0.75t-36.875-3.125-38.125-7.5-34.25-12.875-30.25-20.25-21.5-28.75q-15.5-30.75-15.5-82.75
-        0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25
-        30.875q36.75-8.75 77.25-8.75 37 0 70 8 26.25-20.5
-        46.75-30.25t47.25-9.75q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34
-        99.5z" />
-</svg>
-        
-      </defs>
-    </svg>
-    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
-    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
-    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
-    
-    
-      <header class="md-header" data-md-component="header">
-  <nav class="md-header-nav md-grid">
-    <div class="md-flex">
-      <div class="md-flex__cell md-flex__cell--shrink">
-        <a href=".." title="Alexander Ameye" class="md-header-nav__button md-logo">
-          
-            <i class="md-icon">home</i>
-          
-        </a>
-      </div>
-      <div class="md-flex__cell md-flex__cell--shrink">
-        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
-      </div>
-      <div class="md-flex__cell md-flex__cell--stretch">
-        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
-          
-            
-              <span class="md-header-nav__topic">
-                Alexander Ameye
-              </span>
-              <span class="md-header-nav__topic">
-                Statistics
-              </span>
-            
-          
-        </div>
-      </div>
-      <div class="md-flex__cell md-flex__cell--shrink">
-        
-          
-            <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
-            
-<div class="md-search" data-md-component="search" role="dialog">
-  <label class="md-search__overlay" for="__search"></label>
-  <div class="md-search__inner" role="search">
-    <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
-      <label class="md-icon md-search__icon" for="__search"></label>
-      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
-        &#xE5CD;
-      </button>
-    </form>
-    <div class="md-search__output">
-      <div class="md-search__scrollwrap" data-md-scrollfix>
-        <div class="md-search-result" data-md-component="result">
-          <div class="md-search-result__meta">
-            Type to start searching
-          </div>
-          <ol class="md-search-result__list"></ol>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-          
-        
-      </div>
-      
-        <div class="md-flex__cell md-flex__cell--shrink">
-          <div class="md-header-nav__source">
-            
-
-
-  
-
-
-  <a href="https://github.com/AlexanderAmeye/" title="Go to repository" class="md-source" data-md-source="github">
-    
-      <div class="md-source__icon">
-        <svg viewBox="0 0 24 24" width="24" height="24">
-          <use xlink:href="#__github" width="24" height="24"></use>
-        </svg>
-      </div>
-    
-    <div class="md-source__repository">
-      GitHub
-    </div>
-  </a>
-
-          </div>
-        </div>
-      
-    </div>
-  </nav>
-</header>
-    
-    <div class="md-container">
-      
-        
-      
-      
-      <main class="md-main">
-        <div class="md-main__inner md-grid" data-md-component="container">
-          
-            
-              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
-                <div class="md-sidebar__scrollwrap">
-                  <div class="md-sidebar__inner">
-                    <nav class="md-nav md-nav--primary" data-md-level="0">
-  <label class="md-nav__title md-nav__title--site" for="__drawer">
-    <a href=".." title="Alexander Ameye" class="md-nav__button md-logo">
-      
-        <i class="md-icon">home</i>
-      
-    </a>
-    Alexander Ameye
-  </label>
-  
-    <div class="md-nav__source">
-      
-
-
-  
-
-
-  <a href="https://github.com/AlexanderAmeye/" title="Go to repository" class="md-source" data-md-source="github">
-    
-      <div class="md-source__icon">
-        <svg viewBox="0 0 24 24" width="24" height="24">
-          <use xlink:href="#__github" width="24" height="24"></use>
-        </svg>
-      </div>
-    
-    <div class="md-source__repository">
-      GitHub
-    </div>
-  </a>
-
-    </div>
-  
-  <ul class="md-nav__list" data-md-scrollfix>
-    
-      
-      
-      
-
-
-  <li class="md-nav__item">
-    <a href=".." title="Welcome" class="md-nav__link">
-      Welcome
-    </a>
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item">
-    <a href="../contact/" title="Support and Contact" class="md-nav__link">
-      Support and Contact
-    </a>
-  </li>
-
-    
-      
-      
-      
-
-  
-
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-    
-    
-    <a href="./" title="Statistics" class="md-nav__link md-nav__link--active">
-      Statistics
-    </a>
-    
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item">
-    <a href="../chartjs/" title="Chart.js" class="md-nav__link">
-      Chart.js
-    </a>
-  </li>
-
-    
-  </ul>
-</nav>
-                  </div>
-                </div>
-              </div>
-            
-            
-          
-          <div class="md-content">
-            <article class="md-content__inner md-typeset">
-              
-                
-                  <a href="https://github.com/AlexanderAmeye/edit/master/docs/statistics/index.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
-                
-                
-                  <h1>Statistics</h1>
-                
-                <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-
-<script src="doorslite.js"></script>
-
-<div id="columnchart_material" style="width: 1000px; height: 500px;"></div>
-
-<div id="assetSales2017" style="width: 1000px; height: 500px;"></div>
-
-<div id="assetSales2018" style="width: 1000px; height: 500px;"></div>
-
-<div id="assetSales2019" style="width: 1000px; height: 500px;"></div>
-
-<div id="overallSales" style="width: 1000px; height: 500px;"></div>
-                
-                  
-                
-              
-              
-                
-
-
-              
-            </article>
-          </div>
-        </div>
-      </main>
-      
-        
-<footer class="md-footer">
-  
-    <div class="md-footer-nav">
-      <nav class="md-footer-nav__inner md-grid">
-        
-          <a href="../contact/" title="Support and Contact" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
-            <div class="md-flex__cell md-flex__cell--shrink">
-              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
-            </div>
-            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
-              <span class="md-flex__ellipsis">
-                <span class="md-footer-nav__direction">
-                  Previous
-                </span>
-                Support and Contact
-              </span>
-            </div>
-          </a>
-        
-        
-          <a href="../chartjs/" title="Chart.js" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
-            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
-              <span class="md-flex__ellipsis">
-                <span class="md-footer-nav__direction">
-                  Next
-                </span>
-                Chart.js
-              </span>
-            </div>
-            <div class="md-flex__cell md-flex__cell--shrink">
-              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
-            </div>
-          </a>
-        
-      </nav>
-    </div>
-  
-  <div class="md-footer-meta md-typeset">
-    <div class="md-footer-meta__inner md-grid">
-      <div class="md-footer-copyright">
-        
-        powered by
-        <a href="https://www.mkdocs.org">MkDocs</a>
-        and
-        <a href="https://squidfunk.github.io/mkdocs-material/">
-          Material for MkDocs</a>
-      </div>
-      
-        
-  <div class="md-footer-social">
-    <link rel="stylesheet" href="../assets/fonts/font-awesome.css">
-    
-      <a href="https://github.com/AlexanderAmeye" class="md-footer-social__link fa fa-github"></a>
-    
-      <a href="https://be.linkedin.com/in/alexander-ameye-067a0b70" class="md-footer-social__link fa fa-linkedin"></a>
-    
-      <a href="https://twitter.com/alexanderameye" class="md-footer-social__link fa fa-twitter"></a>
-    
-  </div>
-
-      
-    </div>
-  </div>
-</footer>
-      
-    </div>
-    
-      <script src="../assets/javascripts/application.b41f3d20.js"></script>
-      
-      <script>app.initialize({version:"1.0.4",url:{base:".."}})</script>
-      
-    
-    
-      
-    
   </body>
 </html>

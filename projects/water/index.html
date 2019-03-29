@@ -7,23 +7,22 @@
 		<meta charset="utf-8" />
 
 		<meta property="og:title" content="Owen Deey is a Canadian game developer"/> 
-		<meta property="og:site_name" content="Owen Deery"/> 
+		<meta property="og:site_name" content="Alexander Ameye"/> 
 		<meta property="og:type" content="website"/>
-		<meta property="og:url" content="http://www.fire-face.com/personal"/> 
-		<meta property="og:image" content="http://www.fire-face.com/assets/preview.jpg"/>
-		
+		<meta property="og:url" content="https://alexanderameye.github.io/projects/"/> 
+
 		<meta name="description" content=""/>
-		<meta name="author" content="Owen Deery"/>
+		<meta name="author" content="Alexander ameye"/>
 		
 		 <style type="text/css">
         p.p1 {
             margin: 0.0px 0.0px 0.0px 0.0px;
-            font: 13.0px Courier
+            font: 13.0px Arial
         }
         
         p.p2 {
             margin: 0.0px 0.0px 0.0px 0.0px;
-            font: 13.0px Courier;
+            font: 13.0px Arial;
             min-height: 14.0px
         }
         
@@ -90,21 +89,80 @@
 
   <body>
 <pre>
-<h1>Shadergraph Water</h1><a href="../index.html">Back to projects</a>
+<h1>Creating A Water Shader</h1><a href="../index.html">Back to projects</a>
 
-<img src="assets/flag.png">
-<i>The final effect</i>
 
-<b>Here’s a breakdown of how I created the water surface shader for my current project. It was created using C++, OpenGL and GLSL, but it should be easy to bring over the same ideas to whichever engine you’re using. Enjoy!</b>
+The scene depth node accesses the camera's depth buffer using an input UV. The input UV
+represents the normalized screen coordinates.
 
-<h1>Surface</h1><h2>Mesh</h2><img src="water_assets/water_tessellate0.gif">
+You have several sampling modes. Linear01 will return the depth in a linear way between 0 and 1.
+Raw will return a raw depth value. Eye will return a depth converted to view/eye space.
+
+In our case (LWRP) we use Linear01.
+
+So we have a depth output between 0 and 1.
+
+We then multiply this value with the value of the camera's far clip plane. The far clip plane
+is furthest point relative to the camera that drawing will occur. 
+
+Let's say this point is at a distance of 500 from the camera. We now get a depth value between 0 and 500.
+
+Instead of multiplying with the far plane distance, we can also just skip this multiplication
+and use the Eye sampling mode.
+
+
+
+
+
+
+
+
+
+<img src="assets/depth.png">
+<i>Final effect</i>
+
+<b>Here’s a breakdown of how you can create a water shader in Unity using Shader-Graph. Enjoy!</b>
+
+<h1>Depth</h1><img src="assets/depth-profile.png">
 <i>Changing the density value of the surface</i>
 
-The main water surface is built from a single tessellated plane that gets constructed at runtime when the water entity is created, or when any of the parameters affecting the tessellation are changed. The size and density of the plane is controlled by a 2D density value and a 2D sizing value.
+Let's say we use the height position of our water plane as a reference (in red), this will be value ZERO. Now we go over our whole surface of interest,
+and we want to go as low as possible without having any geometry above us. This will give us the line in blue. This line can give us a whole lot of information.
+When the blue line is below the red line, that means we are in the water and the higher the difference is between the 2 lines, the deeper we are.
+If the blue line is above the red line, that means we are above the water.
+
+
+The way we create this foam line around the dog is by reading the depth
+at every vertex on the mesh, and using that depth value to output a color.
+ Specifically, we read the camera’s depth texture to find out how far away
+  each vertex is from the camera. When an object is in the water, it shortens the distance.
+We can now go through every point of our plane and find the corresponding point on the blue surface and get the value.
+
+If the value is negative, we draw it blue because that means the viewer sees water. The more negative the value, the darker the blue will be.
+
+When the value is positive, we draw it transparent because that means another object is in the way so we don't draw water.
+
+If the value is negative and goes to positive or the other way around, we draw foam.
+
+
+We want to change the color of the water based on the depth of the water at that position. For this we use
+the scene camera which is able to render a 'depth texture'.
+
+The depth texture is a texture that shows the scene in black and white. Closer objects will be rendered in black while far objects
+will be rendered in white.
+
+Make sure to allow the camera to render the depth texture in the SRP asset.
+
+Later in our shader graph we use this texture.
+If the color of the depth texture is black (close object) the color will be 'shallow water', if the color
+of the depth texture is white (far object) the color will be 'deep water'.
+
+We can of course use more than 2 colors and lerp between multiple colors.
+
 
 This static geometry is then sent into the shader pipeline where the vertex shader, geometry shader and fragment shader all perform functions that are vital to the final look of the water.
 
-<h2>Vertex shader</h2><img src="water_assets/water_sine0.gif">
+<h2>Vertex shader</h2><img src="assets/depth_graph.png">
 <i>Sine wave displacment with wireframe on/off</i>
 
 The vertex shader handles displacement of the water surface. Displacement values are generated using a combination of sine waves and <a href="https://en.wikipedia.org/wiki/Trochoidal_wave" target="_blank">Gerstner waves</a> (<a href="http://karmaninteractive.com/labs/2014/11/2/ocean-simulation-pt3-gerstner-waves" target="_blank">here's a good overview from Karman Interactive</a>). The sine wave is fairly straightforward, but since it’s so even and smooth I keep the amplitude fairly low and just use it to create small variations. 

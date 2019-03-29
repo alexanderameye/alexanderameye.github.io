@@ -97,9 +97,9 @@ google.charts.load('current', {'packages':['corechart']});
 
         var data = google.visualization.arrayToDataTable([
           ['Month', 'Doors+ Pro', 'RockStudio', { role: 'annotation' } ],
-          ['January', 0, 1, ''],
-          ['February', 0, 0, ''],
-          ['March', 0, 0, ''],
+          ['January', 5, 2, ''],
+          ['February', 6, 4, ''],
+          ['March', 7, 6, ''],
           ['April', 0, 0, ''],
           ['May', 0, 0, ''],
           ['June', 0, 0, ''],

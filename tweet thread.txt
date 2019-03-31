@@ -1,5 +1,5 @@
 Want to create a stylized water shader with @unity3d shadergraph? Here's
-how you can! #unitytips #madewithunity Full explanation here: https://alexanderameye.github.io/
+how you can! #unitytips #madewithunity Full explanation here: https://alexanderameye.github.io/ 
 
 finaleffect.mp4
 
@@ -27,7 +27,6 @@ Finally we add some waves by offsetting the y position of the vertices in our wa
 a simple sine wave but of course you can go more complex for better results!
 
 waves.mp4
-
 
 For the full explanation of the effect and the node setup check out my page!
 https://alexanderameye.github.io/

@@ -1,0 +1,33 @@
+Want to create a stylized water shader with @unity3d shadergraph? Here's
+how you can! #unitytips #madewithunity Full explanation here: https://alexanderameye.github.io/
+
+finaleffect.mp4
+
+
+First, let's figure out the depth of our water. 
+We can do this by subtracting the alpha component of the screen position
+from the scene depth. We also multiply by a depth range property from some more control and clamp the result.
+
+reading_depth.mp4
+
+
+Next, we use our clamped depth and use it to lerp between a shallow and deep water color. We also
+use the clamped depth and plug it into the alpha slot of our material.
+
+
+more_control.mp4
+
+
+Let's add foam lines! What we do is define a foam size variable and use it to add a foam line to the lerped
+color output. We clamp the result and put it in the albedo slot of our material. 
+
+foam_lines.mp4
+
+Finally we add some waves by offsetting the y position of the vertices in our water plane. I did this with
+a simple sine wave but of course you can go more complex for better results!
+
+waves.mp4
+
+
+For the full explanation of the effect and the node setup check out my page!
+https://alexanderameye.github.io/

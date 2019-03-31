@@ -1,0 +1,209 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>Stylized Water Shader</title>
+
+    <meta charset="utf-8" />
+
+    <meta property="og:title" content="Alexander Ameye" />
+    <meta property="og:site_name" content="Alexander Ameye" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://alexanderameye.github.io/projects/" />
+
+    <meta name="description" content="" />
+    <meta name="author" content="Alexander ameye" />
+
+    <style type="text/css">
+        p.p1 {
+            margin: 0.0px 0.0px 0.0px 0.0px;
+            font: 13.0px Arial
+        }
+
+        p.p2 {
+            margin: 0.0px 0.0px 0.0px 0.0px;
+            font: 13.0px Arial;
+            min-height: 14.0px
+        }
+
+        a:link {
+            color:blue;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        a:visited {
+            color:blue;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        pre {
+            font: 13.0px Courier;
+            width: 800px;
+            position: relative;
+            white-space: -moz-pre-wrap;
+            /* Mozilla, supported since 1999 */
+            white-space: -pre-wrap;
+            /* Opera */
+            white-space: -o-pre-wrap;
+            /* Opera */
+            white-space: pre-wrap;
+            /* CSS3 - Text module (Candidate Recommendation) http://www.w3.org/TR/css3-text/#white-space */
+            word-wrap: break-word;
+            /* IE 5.5+ */
+        }
+
+        span.white {
+            color: white;
+        }
+
+        p span.show {
+            display: none;
+        }
+
+        p:hover span.show {
+            display: inline;
+        }
+
+        p:hover span.noshow {
+            display: none;
+        }
+    </style>
+
+</head>
+
+<body>
+    <pre>
+<h1>Creating A Water Shader</h1><a href="../index.html">Back to projects</a>
+
+<p1 style="color:#FF2222"><b>Disclaimer:</b></p1> I really don't know much about shaders. This is the first shader I've created and even 
+though I'm happy with the result, some parts have some weird quirks. You can treat this as a tutorial 
+if you want to but I'm not claiming to be a teacher. If you have some comments about the shader or see 
+some things I'm doing wrong, please send me a private message.
+<br>
+<h1>Introduction</h1>Here is a breakdown of how I created a stylized water shader in Unity3D using shader graph. This was 
+created using Unity 2019.1 LWRP. Below is the final effect I achieved. Enjoy!
+
+
+<img src="assets/waves.gif" width="350" height="350">
+<i>The Final Shader</i>
+<br>
+<h1>Setup</h1>For this shader, we will be using a LWRP <b><i>PBR shader</i></b> with its surface set to transparent. Also don't forget to enable access to the depth texture in your camera settings. Next, create a material that 
+uses the water shader and put it in your scene. Open up the shader in the shader graph editor and we're good to go!
+
+<img src="assets/shader_setup.png" width="439" height="226">
+<i>A PBR graph master node with a transparent surface.</i>
+<br>
+<h1>Depth Textures</h1><img src="assets/depth_buffer_texture.jpeg" height="367" width = "500">
+<i>A depth texture from the Sponza Palace scene.</i>
+
+First let's explain what a depth texture is. A depth texture is a texture that gets its value from the camera's <a href="https://en.wikipedia.org/wiki/Z-buffering" target="_blank" style="color:blue">depth buffer</a>. The texture displays the depth of the scene by using a color gradient between black and white.
+
+The scene depth can be read in shader graph using the <a href="https://docs.unity3d.com/Packages/com.unity.shadergraph@5.10/manual/Scene-Depth-Node.html"  target="_blank" style="color:blue">scene depth node</a>. This node has 3 sampling modes. 
+<style type="text/css">
+    .tg  {border-collapse:collapse;border-spacing:0;}
+    .tg td{font-family:Arial, sans-serif;font-size:14px;padding:6px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+    .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:6px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+    .tg .tg-3izb{font-family:"Courier New", Courier, monospace !important;;background-color:#efefef;border-color:inherit;text-align:left;vertical-align:top}
+    .tg .tg-9gth{font-family:"Courier New", Courier, monospace !important;;border-color:inherit;text-align:left;vertical-align:top}
+    </style>
+    <table class="tg">
+      <tr>
+        <th class="tg-9gth"><span style="font-weight:bold">Sampling Mode</span></th>
+        <th class="tg-9gth"><span style="font-weight:bold">Description</span></th>
+      </tr>
+      <tr>
+        <td class="tg-3izb">Linear 01</td>
+        <td class="tg-3izb">Returns a linear depth value between 0 and 1.<br>Colorization depends on the camera's far-plane value.<br></td>
+      </tr>
+      <tr>
+        <td class="tg-9gth">Raw</td>
+        <td class="tg-9gth">Returns the raw depth value.</td>
+      </tr>
+      <tr>
+        <td class="tg-3izb">Eye</td>
+        <td class="tg-3izb">Returns the depth value converted to view space.</td>
+      </tr>
+    </table>
+<br>
+<h1>Reading Depth</h1><img src="assets/reading_depth.gif" width="350" height="350">
+<i>Reading the depth of our water.</i>
+
+The first step in creating our water surface is being able to correctly read the depth of the water. We will be doing this by accessing the camera's depth buffer. To read and use the depth of our scene and water plane, we will be using the following set of nodes. You could call them our depth-nodes. 🍎
+
+<img src="assets/depth_nodes.png">
+<i>Our node setup to read depth.</i>
+
+These nodes go through the following steps.
+
+<b>1.</b> The scene depth node accesses the camera's depth texture and returns a value in eye/view space. 
+   Instead of using the Eye sampling mode you can also use Linear 01, but in that case don't 
+   forget to multiply with the far-plane value of the camera.
+
+<b>2.</b> The <a href="https://docs.unity3d.com/Packages/com.unity.shadergraph@5.10/manual/Screen-Position-Node.html"  target="_blank" style="color:blue">screen position node</a> gets the position of our water plane. We extract the alpha value 
+   from it since that value holds the depth information.
+
+<b>3.</b> We subtract the water plane's position from the scene depth which gives us a positive value. If the 
+   value is > 0, that means an object is in the water at that position. If the value is 0, that means 
+   there is no object in the water covering our view.
+
+<b>4.</b> Finally we multiply our output with an offset value for some control. We turn this variable into a property for our shader called 'Depth Range'.
+
+To visualize this effect we take the output of our node group and clamp the result to [0,1]. We then use that clamped value to lerp between 2 colors and plug this into the albedo slot of our material.
+<br>
+<h1>More Control</h1><img src="assets/more_control.gif" width="350" height="350">
+<i>Using depth to create some basic water.</i>
+
+First we take the output of our previous depth node group and clamp the result to [0,1]. We then use that clamped value to lerp between a shallow water and a deep water color. The output goes to the albedo slot of our material. You can also add a smoothstep node for a better-looking result.
+
+We also take this clamped output and remap it using a <a href="https://docs.unity3d.com/Packages/com.unity.shadergraph@5.10/manual/Remap-Node.html"  target="_blank" style="color:blue">remap node</a> to limit our values to a chosen 
+interval. We define a property 'Max Depth' as the maximum input value and limit the output value to [0,1]. The output of this remapping gets put into the alpha slot of our material.
+
+<img src="assets/more_control.png"><i>Using our depth output for more control.</i>
+
+After setting the shallow and deep water to some blue colors we get a promising result!
+<br>
+<h1>Foam Lines</h1><img src="assets/foam_lines.gif" width="350" height="350">
+<i>Foam lines.</i>
+
+Next step is foam! We want to add foam lines where objects are sticking out of the water. Of course 
+the depth that we read is something that we can use for this! We take our clamped depth output and 
+remap it again just like we did in the previous section for depth. This time we define a property 'Foam Size' as the maximum input value and limit the output value to [0,1]. We also add a <a href="https://docs.unity3d.com/Packages/com.unity.shadergraph@5.10/manual/One-Minus-Node.html"  target="_blank" style="color:blue">one-minus node</a>.
+
+We multiply this result by a foam strength variable and clamp the output to [0,1].
+
+<img src="assets/foam.png"><i>Using our depth output to draw foam.</i>
+
+Now we have to take the output of this group of foam nodes and connect them to our material. 
+We will do this in the following way.
+
+<img src="assets/foam_total.png">
+<i>Connecting up.</i>
+
+Basically we add the output of the color lerping nodes and the foam nodes, clamp the result and link it up to the albedo slot of our material.
+<br>
+<h1>What's left?</h1><img src="assets/waves.gif" width="350" height="350">
+
+
+
+This is the end of the breakdown, however, there are still some things I would like to add in the 
+future. I will be adding more parts to this tutorial as I add more features to the shader. I will be creating more little breakdowns when I learn more about shaders.
+
+This water shader could be further enhanced by things like enhanced foam rendering, foam textures, 
+more realistic waves, refraction, reflections etc. A good starting point might be this <a href="https://catlikecoding.com/unity/tutorials/flow/"  target="_blank" style="color:blue">catlike coding tutorial</a>.
+
+This shader is not yet finished for me and I will look at it again soon.
+
+I'd also like to mention that the layout of this little breakdown was inspired by <a href="http://fire-face.com/personal/water/index.html" target="_blank" style="color:blue">Owen Deery's work</a>.
+
+<hr>
+<a href="http://www.twitter.com/alexanderameye" target="_blank">@alexanderameye</a>
+<a href="mailto:alexanderameye@gmail.com">alexanderameye@gmail.com</a>
+
+</body>
+
+</html>

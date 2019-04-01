@@ -1,0 +1,45 @@
+Caustics:
+
+have a caustic texture that you distort
+apply on material using triplanar mapping
+only gets drawn on objects that 'touch the water'
+water touching is determined by world position (y=0) with an offset
+
+
+
+
+Vertex Offset:
+
+Gerstner Waves
+
+vertices not only up and down but also left and right movement (real 3d waves)
+
+important to recalculate normals
+
+
+
+
+Color:
+
+color gradient based on distance from camera. So not only color varation in depth but also in distance from player
+or camera
+
+you can make material unlit and fake the litness
+
+
+add fresnel to depth fade to remove some artifact
+
+use a scene color node and tint the water based on that scene color
+use scene color node as base
+
+
+
+Reflections:
+
+fake texture on top
+
+
+Refraction:
+
+distance mask, only make refractions where the player is + fresnel
+

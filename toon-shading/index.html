@@ -108,9 +108,9 @@ width: auto;
     <pre>
 <h1>Toon Shading</h1><a href="../index.html">Back to projects</a>
 
-<b>Disclaimer: </b>This tutorial makes use of some custom function nodes to get lighting information. Shader graph is still in preview and this method will <b>most likely</b> break in future versions.
+<p1 style="color:#FF2222"><b>Important:</b></p1> This tutorial makes use of some custom function nodes to get lighting information. Shader graph is still in preview and this method will <b>most likely</b> break in future versions. I do some <i>hacky</i> stuff in this tutorial and in general this is not recommended.
 
-<img src="assets/rim-effect.gif" width="350" height="350">
+<img src="assets/Ice-toon 2.gif">
 <i>The final effect.</i>
 
 <h1>Setup</h1>For this shader, we will be using a LWRP <b><i>Unlit shader</i></b>. I am using LWRP/Shadergraph version 5.10.0 in Unity 2019.1b. You also need a directional light in your scene.
@@ -139,7 +139,7 @@ In the Blinn-Phong model, an extra vector H is calculated which is called the 'h
 What we do in this formula is we take the sum of the vectors V and L and we normalize the result to a
 unit vector by dividing the result by its length.
 
-<div>For more useful vector algebra check <a href="https://en.wikipedia.org/wiki/Z-buffering" target="_blank" style="color:blue">this page</a>.
+<div>For more useful vector algebra check <a href="../vector-algebra/index.html" target="_blank" style="color:blue">this page</a>.
 </div>
 
 Now that we calculated this extra vector H, we no longer need to calculate the dot product of R and V, but instead, we can calculate the dot product of N and H. N is the surface normal vector. This is good because this method is more performance-efficient when the camera and light are far away from the surface which if often the case. When camera (V) and light (L) are far away from eachother, their halfway vector becomes very stable since the vectors V and L are converging. Because this vector H becomes very stable, we don't have to calculate it often.
@@ -150,19 +150,24 @@ Now that we have a shading model to work with, let's get started!
 
 So what do we do?... Custom nodes!
 
-Create a new <a href="https://en.wikipedia.org/wiki/Z-buffering" target="_blank" style="color:blue">custom function node</a>. We will define 3 outputs. Direction, Color and Attenuation. Direction and Color are pretty self-explanatory. Attenuation is "the gradual loss of flux intensity through a medium". In more human language this is basically how much the intensity of the light weakens when you go further from the source. 
+Create a new custom function node. We will define 3 outputs. Direction, Color and Attenuation. Direction and Color are pretty self-explanatory. Attenuation is "the gradual loss of flux intensity through a medium". In more human language this is basically how much the intensity of the light weakens when you go further from the source. 
 
 <img src="assets/custom-function-node.png">
 
 Our custom node refers to a file called <i>MainLight.hlsl</i> with a function named <i>GetLightingInformation</i>. You can create this file and put it wherever you want. You can also name it however you want, choose the extension you want and choose the function name you want.
 
-Create the file and refer to it in the node. Open the file and put the following code in it.
+Create the file, put it in your unity project and refer to it in the node. Open the file and put the following code in it. (Only this function, no other code!) 
+
+You can also get the code here <a href="https://pastebin.com/cP42bskG">https://pastebin.com/cP42bskG</a>
 
 <img src="assets/function-code.png" width="653" height="220">
 
 We don't to anything magical here. We create the function with its outputs, create a light and access its variables. I also converted the custom function node to a subgraph name 'Main Light'.
 
 <img src="assets/subgraph.png">
+
+
+<p1 style="color:#FF2222"><b>Important:</b></p1> You will probably be getting an error message in your project about an unknown identifier. This is because shader graph doesn't <i>really</i> know anything about lighting information so it has no clue what to draw in the shader preview window. To fix this we need to do some <i>hacky stuff</i>. Read more <a href="../preview-lighting/index.html" target="_blank" style="color:blue">here</a>.
 
 <h1>Step 2: Directional Lighting And Mid Color</h1>The first step of creating a toon shader is determining what parts of our surface will be lit/unlit. We can figure this out by comparing the direction of the light to the normal vector of the surface of our object. Here, 'comparing' means taking the dot product. When the light direction and the surface's normal vector are aligned, that means that the light is directly shining on the surface and thus that part of the surface is maximally lit. We use the following nodes.
 

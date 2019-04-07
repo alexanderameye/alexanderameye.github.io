@@ -91,12 +91,42 @@
 </head>
 
 <body>
+
+    <pre>
 Hey, this is a quick tutorial on how to make it so that the shader graph preview will react to our custom lighting node.
+
+<img src="assets/code.png">
+
+So in our code we have a section #ifdef SHADERGRAPH_PREVIEW that will be used for preview the output of the shader. Here we provide some <i>fake</i> values that the shader will use, so the preview will not be accurate but at least we will not get any more errors. 
+
+However, there is one more thing that we need to do.
+
+First, locate the shadergraph folder in your unity project under 'packages'. Right click the folder and click 'show in explorer'. This will open up your file explorer.
+
+<img src="assets/packages.png">
+<img src="assets/explorer.png">
+
+Next, take that shadergraph folder and put it in the 'Packages' folder. This packages folder is at the same folder level of the assets folder. It should look like this now.
+
+<img src="assets/folder.png">
+
+Shader Playground is my Unity project. This will make it so that shadergraph is now embedded in our project and no longer read only.
+
+Next, go to Editor/Data/Util/GraphUtil.cs in that shader graph folder. Open the file and around line 1084, add these lines of code. 
+
+<img src="assets/extra-code.png">
+
+
+This will make it so that the preview will compile correctly and we will no longer get any errors
+
+I know that this is super hacky but hey, it works! (For now)
+
+Thank you Ciro Continisio for providing me with extra information about this topic.
 
 <hr>
 <a href="http://www.twitter.com/alexanderameye" target="_blank">@alexanderameye</a>
 <a href="mailto:alexanderameye@gmail.com">alexanderameye@gmail.com</a>
-
+</pre>
 </body>
 
 </html>

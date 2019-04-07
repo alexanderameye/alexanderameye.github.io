@@ -92,7 +92,9 @@
 
 <body>
     <pre>
-<h1>Reading Depth</h1><a href="../index.html">Back to projects</a>
+<h1>Water Part 1: Reading Depth</h1><a href="../index.html">Back to projects</a>
+
+<a href="../stylized-water-shader/index.html">Part 2: Adding Foam</a>
 
 This article will focus on reading depth in Unity. It will cover using the depth buffer and creating a shader that reads depth.
 
@@ -143,11 +145,22 @@ position of the vertex of an object and converts it to eye/view space. So if we 
 nodes together, we need to make sure that the scene depth node also works in eye/view space.
 
 <b>Why do we use the alpha component?</b>
-The screen position node returns a vector4 (x,y,z,a). We use the alpha component because
+The screen position node returns a vector4 (x,y,z,a). We use the alpha component because this component holds the depth values.
 
+<h1>Blending Colors</h1>An even better node setup is this.
 
-<h1>Reading Depth in Unity</h1>
+<img src="assets/advanced_depth.png">
+So we divide the result of our subtraction by a <i><b>range</b></i> variable. This allows us to choose the 'maximum 
+depth' of our water after which the color will no longer become darker. Here is a gif of me adjusting 
+this range variable. As I increase the range, we are able to see the whole volume of water more clearly.
 
+<img src="assets/range_variable.gif" width="350" height="350">
+
+To blend between 2 colors we simply take the clamped output of our depth nodes and use it as a lerp factor between 2 colors.
+
+<img src="assets/color_blending.png">
+
+The clamped depth output is always a value between 0 and 1, so we can take this output as the lerp factor. We also add a smoothstep node to make the color transition even smoother.
 
 
 <hr>

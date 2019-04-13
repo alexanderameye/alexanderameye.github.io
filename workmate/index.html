@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="icon" type="image/png" href="assets/workmate.png" sizes="32x32" />
+    <title>Workmate</title>
+    <style type="text/css">
+        p.p1 {
+            margin: 0.0px 0.0px 0.0px 0.0px;
+            font: 13.0px Arial
+        }
+
+        p.p2 {
+            margin: 0.0px 0.0px 0.0px 0.0px;
+            font: 13.0px Arial;
+            min-height: 14.0px
+        }
+
+ 
+
+        a:link {
+            color: blue;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        a:visited {
+            color: blue;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        pre {
+            font: 13.0px Courier;
+            width: 800px;
+            position: relative;
+            white-space: -moz-pre-wrap;
+            /* Mozilla, supported since 1999 */
+            white-space: -pre-wrap;
+            /* Opera */
+            white-space: -o-pre-wrap;
+            /* Opera */
+            white-space: pre-wrap;
+            /* CSS3 - Text module (Candidate Recommendation) http://www.w3.org/TR/css3-text/#white-space */
+            word-wrap: break-word;
+            /* IE 5.5+ */
+        }
+
+        span.white {
+            color: white;
+        }
+
+        p span.show {
+            display: none;
+        }
+
+        p:hover span.show {
+            display: inline;
+        }
+
+        p:hover span.noshow {
+            display: none;
+        }
+
+        form  { display: table;      }
+p     { display: table-row;  }
+label { display: table-cell; }
+input { display: table-cell; }
+    </style>
+</head>
+
+<body>
+        <pre>
+            <div class="container">
+        <h1 style="color:blue;">Workmate Question Manager</h1>
+        <form method="POST" action = "http://192.168.1.49/connect/addquestion.php">
+                <p>
+                        <label for="a">Title:</label>
+                        <input id="a" type="text" name="title">
+                      </p>
+                      <p>
+                        <label for="b">Answers:</label>
+                        <input id="b" type="text" name="answers">
+                        <br>
+                      </p>
+                   
+            <input type="submit" value="Add Question">
+        </form>
+    </div>
+
+        <hr>
+<a href="http://www.twitter.com/alexanderameye" target="_blank">@alexanderameye</a>
+<a href="mailto:alexanderameye@gmail.com">alexanderameye@gmail.com</a>
+</pre>
+</body>
+</html>

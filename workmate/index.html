@@ -85,8 +85,7 @@
 
 <body onload="getIP()">
     <pre><h1 style="color:blue;">Workmate Admin</h1>
-        <p><label for="current_ip">Current IP Address: </label><label id="current_ip" type="text" name="ipaddress"></p>
-        <p><input id="new_ip" type="text" name="ipaddress"><button onclick="changeIP()">Change</button></p>
+        <p><label for="current_ip">Current IP Address: </label><input id="current_ip" type="text" name="ipaddress"></input></p>
         <h2>Questions</h2><div class="container"><form method="POST" id="add_question_form" action ="javascript:callPHP(addquestion)"><p><label for="a">Title:</label>
                         <input id="a" type="text" name="title">
                       </p>
@@ -117,18 +116,6 @@
 <h2>Change Password</h2>
 
 <script type="text/javascript">
-
-function getIP()
-{
-    var textFile = "ip.txt";
-    var file = new File(textFile);
-    file.open("r");
-    var str = file.readln();
-    file.close();
-    alert(str);
-}
-
-
 function callPHP(action)
 {
     if(action == adduser)

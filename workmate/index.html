@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <link rel="icon" type="image/png" href="assets/workmate.png" sizes="32x32" />
     <title>Workmate</title>
@@ -15,7 +16,7 @@
             min-height: 14.0px
         }
 
- 
+
 
         a:link {
             color: blue;
@@ -64,15 +65,26 @@
             display: none;
         }
 
-        form  { display: table;      }
-p     { display: table-row;  }
-label { display: table-cell; }
-input { display: table-cell; }
+        form {
+            display: table;
+        }
+
+        p {
+            display: table-row;
+        }
+
+        label {
+            display: table-cell;
+        }
+
+        input {
+            display: table-cell;
+        }
     </style>
 </head>
 
 <body>
-        <pre><h1 style="color:blue;">Workmate Question Manager</h1><div class="container"> <form method="POST" action = "http://192.168.1.49/connect/addquestion.php"><p><label for="a">Title:</label>
+    <pre><h1 style="color:blue;">Workmate Admin</h1><h2>Questions</h2><div class="container"><form method="POST" action ="http://192.168.1.26/connect/addquestion.php"><p><label for="a">Title:</label>
                         <input id="a" type="text" name="title">
                       </p>
                       <p>
@@ -80,12 +92,23 @@ input { display: table-cell; }
                         <input id="b" type="text" name="answers">
                         <br>
                       </p><input type="submit" value="Add Question">
-        </form>
-    </div>
-
+        </form> </div><h2>Users</h2><div class="container"><form method="POST" action = "http://192.168.1.26/connect/adduser.php"><p><label for="username">Username:</label>
+            <input id="username" type="text" name="username">
+          </p>
+          <p>
+            <label for="email">Email:</label>
+            <input id="email" type="text" name="email">
+          </p><p>
+                <label for="password">Password:</label>
+                <input id="password" type="text" name="password">
+                <br>
+              </p><input type="submit" value="Add User">
+</form> </div>
+   
         <hr>
 <a href="http://www.twitter.com/alexanderameye" target="_blank">@alexanderameye</a>
 <a href="mailto:alexanderameye@gmail.com">alexanderameye@gmail.com</a>
 </pre>
 </body>
+
 </html>

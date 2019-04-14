@@ -7,16 +7,16 @@
     <style type="text/css">
         p.p1 {
             margin: 0.0px 0.0px 0.0px 0.0px;
-            font: 13.0px Arial
+            font: 13.0px Arial;
+            text-align: justify;
         }
 
         p.p2 {
             margin: 0.0px 0.0px 0.0px 0.0px;
             font: 13.0px Arial;
-            min-height: 14.0px
+            min-height: 14.0px;
+            text-align: justify;
         }
-
-
 
         a:link {
             color: blue;
@@ -37,6 +37,7 @@
             font: 13.0px Courier;
             width: 800px;
             position: relative;
+            text-align: justify;
             white-space: -moz-pre-wrap;
             /* Mozilla, supported since 1999 */
             white-space: -pre-wrap;
@@ -84,50 +85,17 @@
 </head>
 
 <body>
-    <pre><h1 style="color:blue;">Workmate Admin</h1><h2>Polls</h2><div class="container"><form method="POST" id="add_question_form" action ="http://192.168.1.49/connect/addquestion.php"><p><label for="a">Title:</label>
-                        <input id="a" type="text" name="title">
-                        <br>
-                      </p>
-                      <input type="submit" value="Add Poll">
-        </form> </div>
-        <h2>Add User</h2><div class="container"><form method="POST" id="add_user_form" action = "http://192.168.1.49/connect/adduser.php"><p><label for="username">Username:</label>
-            <input id="username" type="text" name="username">
-          </p>
-          <p>
-            <label for="email">Email:</label>
-            <input id="email" type="email" name="email">
-          </p><p>
-                <label for="password">Password:</label>
-                <input id="password" type="text" name="password">
-                <br>
-              </p><input type="submit" value="Add User">
-</form> </div>
+<pre><h1 style="color:blue;">Project Details</h1><a href="../index.html">Back to menu</a>
 
-<h2>Remove User</h2><div class="container"><form method="POST" id="remove_user_form" action = "http://192.168.1.49/connect/removeuser.php"><p><label for="email">Email:</label>
-    <input id="email" type="email" name="email">
-    <br>
-  </p>
-  <input type="submit" value="Remove User">
-</form> </div>
+<h2>The Databases</h2>Right now, Workmate has 4 databases. <i>Users</i>, <i>Polls</i>, <i>Options</i> and <i>Votes</i>. The relationship view of all the tables in our database looks like this.
+    
+<img src="assets/relationship_view.png">
 
-<h2>Change Password</h2><div class="container"><form method="POST" id="change_password_form" action = "http://192.168.1.49/connect/changepassword.php"><p><label for="email">Email:</label>
-    <input id="email" type="email" name="email">
-  </p>
-  <p>
-        <label for="new_password">New Password:</label>
-        <input id="new_password" type="text" name="new_password">
-        <br>
-      </p><input type="submit" value="Update Password">
-</form> </div>
+A poll has an id and a title. Each option of a poll holds a reference to a poll. The option itself also has an id and a text. A vote holds a reference to the user that voted, the option that was voted on, and in turn also the poll that that option was a part of.
 
-<script type="text/javascript">
-
-</script>
-   
-        <hr>
+<hr>
 <a href="http://www.twitter.com/alexanderameye" target="_blank">@alexanderameye</a>
 <a href="mailto:alexanderameye@gmail.com">alexanderameye@gmail.com</a>
 </pre>
 </body>
-
 </html>

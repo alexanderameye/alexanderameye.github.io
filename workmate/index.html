@@ -2,8 +2,32 @@
 <html>
 
 <head>
-    <link rel="icon" type="image/png" href="assets/workmate.png" sizes="32x32" />
-    <title>Workmate</title>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-137365487-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-137365487-1');
+    </script>
+
+    <link rel="icon" type="image/png" href="assets/icon.png" sizes="32x32" />
+    <title>Reading Depth</title>
+
+    <meta charset="utf-8" />
+
+    <meta property="og:title" content="Alexander Ameye" />
+    <meta property="og:site_name" content="Alexander Ameye" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://alexanderameye.github.io/reading-depth/" />
+
+    <meta name="description" content="" />
+    <meta name="author" content="Alexander ameye" />
+
     <style type="text/css">
         p.p1 {
             margin: 0.0px 0.0px 0.0px 0.0px;
@@ -15,8 +39,6 @@
             font: 13.0px Arial;
             min-height: 14.0px
         }
-
-
 
         a:link {
             color: blue;
@@ -64,67 +86,17 @@
         p:hover span.noshow {
             display: none;
         }
-
-        form {
-            display: table;
-        }
-
-        p {
-            display: table-row;
-        }
-
-        label {
-            display: table-cell;
-        }
-
-        input {
-            display: table-cell;
-        }
     </style>
+
 </head>
 
 <body>
-    <pre><h1 style="color:blue;">Workmate Admin</h1><h2>Polls</h2><div class="container"><form method="POST" id="add_question_form" action ="http://192.168.1.49/connect/addquestion.php"><p><label for="a">Title:</label>
-                        <input id="a" type="text" name="title">
-                        <br>
-                      </p>
-                      <input type="submit" value="Add Poll">
-        </form> </div>
-        <h2>Add User</h2><div class="container"><form method="POST" id="add_user_form" action = "http://192.168.1.49/connect/adduser.php"><p><label for="username">Username:</label>
-            <input id="username" type="text" name="username">
-          </p>
-          <p>
-            <label for="email">Email:</label>
-            <input id="email" type="email" name="email">
-          </p><p>
-                <label for="password">Password:</label>
-                <input id="password" type="text" name="password">
-                <br>
-              </p><input type="submit" value="Add User">
-</form> </div>
+    <pre>
+<h1 style="color:blue;">Workmate</h1><a href="../workmate/project/index.html">Project Details</a>
 
-<h2>Remove User</h2><div class="container"><form method="POST" id="remove_user_form" action = "http://192.168.1.49/connect/removeuser.php"><p><label for="email">Email:</label>
-    <input id="email" type="email" name="email">
-    <br>
-  </p>
-  <input type="submit" value="Remove User">
-</form> </div>
+<a href="../workmate/admin/index.html">Admin Panel</a>
 
-<h2>Change Password</h2><div class="container"><form method="POST" id="change_password_form" action = "http://192.168.1.49/connect/changepassword.php"><p><label for="email">Email:</label>
-    <input id="email" type="email" name="email">
-  </p>
-  <p>
-        <label for="new_password">New Password:</label>
-        <input id="new_password" type="text" name="new_password">
-        <br>
-      </p><input type="submit" value="Update Password">
-</form> </div>
-
-<script type="text/javascript">
-
-</script>
-   
-        <hr>
+<hr>
 <a href="http://www.twitter.com/alexanderameye" target="_blank">@alexanderameye</a>
 <a href="mailto:alexanderameye@gmail.com">alexanderameye@gmail.com</a>
 </pre>

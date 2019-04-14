@@ -84,11 +84,9 @@
 </head>
 
 <body>
-    
-        <p><input id="ip" type="text" name="ipaddress"><button onclick="changeIP()">Change IP</button></p>
-                
-    
-    <pre><h1 style="color:blue;">Workmate Admin</h1><h2>Questions</h2><div class="container"><form method="POST" id="add_question_form" action ="http://192.168.1.26/connect/addquestion.php"><p><label for="a">Title:</label>
+    <pre><h1 style="color:blue;">Workmate Admin</h1>
+        <p><label for="ip">IP Address:</label><input id="ip" type="text" name="ipaddress"></p>
+        <h2>Questions</h2><div class="container"><form method="POST" id="add_question_form" action ="javascript:callPHP(addquestion)"><p><label for="a">Title:</label>
                         <input id="a" type="text" name="title">
                       </p>
                       <p>
@@ -96,7 +94,7 @@
                         <input id="b" type="text" name="answers">
                         <br>
                       </p><input type="submit" value="Add Question">
-        </form> </div><h2>Add User</h2><div class="container"><form method="POST" id="add_user_form" action = "http://192.168.1.26/connect/adduser.php"><p><label for="username">Username:</label>
+        </form> </div><h2>Add User</h2><div class="container"><form method="POST" id="add_user_form" action = "javascript:callPHP(adduser)"><p><label for="username">Username:</label>
             <input id="username" type="text" name="username">
           </p>
           <p>
@@ -117,12 +115,18 @@
 
 <h2>Change Password</h2>
 
-
 <script>
-function changeIP()
+function callPHP(action)
 {
-    document.getElementById("add_question_form").action = "http://" + document.getElementById("ip").value + "/connect/addquestion.php";
-    document.getElementById("add_user_form").action = "http://" + document.getElementById("ip").value + "/connect/adduser.php";
+    if(filename == "adduser")
+    {
+        window.location="http://" + document.getElementById("ip").value + "/connect/adduser.php";
+    }
+
+    if(filename == "addquestion")
+    {
+        window.location="http://" + document.getElementById("ip").value + "/connect/addquestion.php";
+    }
 }
 </script>
    

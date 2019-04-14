@@ -83,10 +83,8 @@
     </style>
 </head>
 
-<body onload="getIP()">
-    <pre><h1 style="color:blue;">Workmate Admin</h1>
-        <p><label for="current_ip">Current IP Address: </label><input id="current_ip" type="text" name="ipaddress"></input></p>
-        <h2>Questions</h2><div class="container"><form method="POST" id="add_question_form" action ="javascript:callPHP(addquestion)"><p><label for="a">Title:</label>
+<body>
+    <pre><h1 style="color:blue;">Workmate Admin</h1><h2>Questions</h2><div class="container"><form method="POST" id="add_question_form" action ="http://192.168.1.49/connect/addquestion.php"><p><label for="a">Title:</label>
                         <input id="a" type="text" name="title">
                       </p>
                       <p>
@@ -94,12 +92,13 @@
                         <input id="b" type="text" name="answers">
                         <br>
                       </p><input type="submit" value="Add Question">
-        </form> </div><h2>Add User</h2><div class="container"><form method="POST" id="add_user_form" action = "javascript:adduser()"><p><label for="username">Username:</label>
+        </form> </div>
+        <h2>Add User</h2><div class="container"><form method="POST" id="add_user_form" action = "http://192.168.1.49/connect/adduser.php"><p><label for="username">Username:</label>
             <input id="username" type="text" name="username">
           </p>
           <p>
             <label for="email">Email:</label>
-            <input id="email" type="text" name="email">
+            <input id="email" type="email" name="email">
           </p><p>
                 <label for="password">Password:</label>
                 <input id="password" type="text" name="password">
@@ -107,7 +106,13 @@
               </p><input type="submit" value="Add User">
 </form> </div>
 
-<h2>Remove User</h2>
+<h2>Remove User</h2><div class="container"><form method="POST" id="remove_user_form" action = "http://192.168.1.49/connect/removeuser.php"><p><label for="email">Email:</label>
+    <input id="email" type="email" name="email">
+    <br>
+  </p>
+  <input type="submit" value="Remove User">
+</form> </div>
+
 
 <h2>Lost Email?</h2>
 
@@ -116,23 +121,7 @@
 <h2>Change Password</h2>
 
 <script type="text/javascript">
-function callPHP(action)
-{
-    if(action == adduser)
-    {
-        
-    }
 
-    if(action == addquestion)
-    {
-        window.location="http://" + document.getElementById("current_ip").value + "/connect/addquestion.php";
-    }
-}
-
-function adduser()
-{
-    window.location="http://" + document.getElementById("current_ip").value + "/connect/adduser.php";
-}
 </script>
    
         <hr>

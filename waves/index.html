@@ -200,19 +200,77 @@ This looks alright but this is not how water waves look in the real world, we ca
 <h1>Gerstner Waves</h1><div>Want to <a href="#gerstner_theory_shortcut" style="color:blue">skip theory</a>?
 </div>
 
-In a real ocean, water particles not only move up-and-down, but also left-and-right. We can simulate this movement by letting our particles follow a circular path, this movement is described by a Gerstner Wave. A Gerstner Wave is a solution for the wave equation.
+In a real ocean, water particles not only move up-and-down, but also left-and-right. We can simulate this movement by letting our particles follow a circular path, this movement is described by a Gerstner Wave. A Gerstner Wave is a solution for the wave equation. In the graphic below, you can see this circular path of a 'top water particle'. Particles that are locater deeper in the body of water also follow this circular path but the radius of these paths decreases the deeper you go in the body of water.
 
 <img src="assets/trochoidal_wave.gif" width="300" heigh="300">
 
-Gerstner waves are also called trochoidal waves. A trochoid is a curve that is described by a fixed point on a circle as it rolls along a straight line. You see where the name comes from.
+Gerstner waves are also called trochoidal waves. A trochoid is a curve that is described by a fixed point on a circle as it rolls along a straight line. Knowing this, you can see where the name 'trochoidal wave' comes from.
 
+Mathematically we can describe a circular motion as follows using a initial offset x0 on the x-axis.
+
+x = acos(kx-wt) + x0
+y = asin(kx-wt)<style type="text/css">
+  .tg  {border-collapse:collapse;border-spacing:0;}
+  .tg td{font-family:Arial, sans-serif;font-size:14px;padding:4px 3px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+  .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:4px 3px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+  .tg .tg-pik4{font-family:"Courier New", Courier, monospace !important;;background-color:#ffffff;border-color:inherit;text-align:left;vertical-align:top}
+  .tg .tg-3izb{font-family:"Courier New", Courier, monospace !important;;background-color:#efefef;border-color:inherit;text-align:left;vertical-align:top}
+  .tg .tg-ilsr{font-weight:bold;font-family:"Courier New", Courier, monospace !important;;background-color:#ffffff;border-color:inherit;text-align:left;vertical-align:top}
+  </style>
+  <table class="tg">
+    <tr>
+      <th class="tg-ilsr">Variable</th>
+      <th class="tg-ilsr">Description</th>
+    </tr>
+    <tr>
+      <td class="tg-3izb">a</td>
+      <td class="tg-3izb">Amplitude</td>
+    </tr>
+    <tr>
+      <td class="tg-pik4">k</td>
+      <td class="tg-pik4">Wavenumber</td>
+    </tr>
+    <tr>
+      <td class="tg-3izb">w</td>
+      <td class="tg-3izb">Angular Frequency</td>
+    </tr>
+    <tr>
+      <td class="tg-pik4">λ</td>
+      <td class="tg-pik4">Wavelength Lambda</td>
+    </tr>
+    <tr>
+      <td class="tg-3izb">f</td>
+      <td class="tg-3izb">Frequency</td>
+    </tr>
+  </table>
+
+We transform this into the following equations.
+
+x = acos(k(x-vt)) + x0
+y = asin(k(x-vt)) + y0
 <a name="gerstner_theory_shortcut"></a>
+Now that we have the equation for this circular motion, let's use it in shader graph. Our node setup looks like this.
+
+<img src="assets/gerstner_wave_nodes.png">
+
+We get the following result which already looks a bit better than a simple sine wave.
+
+<img src="assets/single_gerstner.gif" width="300" heigh="300">
+
+<h1>Multiple Waves</h1>By adding together multiple Gerstner waves, they will interact and we will get a more interesting wave pattern.
+
+
+<h1>Fast Fourier Transform Waves</h1>
 
 <h1>Sources</h1><a href="https://en.wikipedia.org/wiki/Mechanical_wave" target="_blank">https://en.wikipedia.org/wiki/Mechanical_wave</a>
 <a href="https://en.wikipedia.org/wiki/Wind_wave" target="_blank">https://en.wikipedia.org/wiki/Wind_wave</a>
 <a href="https://catlikecoding.com/unity/tutorials/flow/waves/" target="_blank">https://catlikecoding.com/unity/tutorials/flow/waves/</a>
 <a href="https://en.wikipedia.org/wiki/Trochoid" target="_blank">https://en.wikipedia.org/wiki/Trochoid</a>
 <a href="https://www.reddit.com/r/interestingasfuck/comments/afefxk/how_particles_move_on_a_wave_in_a_liquid/" target="_blank">https://www.reddit.com/r/interestingasfuck/comments/afefxk/how_particles_move_on_a_wave_in_a_liquid/</a>
+<a href="https://labs.karmaninteractive.com/ocean-simulation-pt-3-gerstner-waves-a747069e1b59" target="_blank">https://labs.karmaninteractive.com/ocean-simulation-pt-3-gerstner-waves-a747069e1b59</a>
+<a href="https://labs.karmaninteractive.com/ocean-simulation-pt-4-fft-waves-90fdd55c7f25" target="_blank">https://labs.karmaninteractive.com/ocean-simulation-pt-4-fft-waves-90fdd55c7f25</a>
+
+
 <hr>
 <a href="http://www.twitter.com/alexanderameye" target="_blank">@alexanderameye</a>
 <a href="mailto:alexanderameye@gmail.com">alexanderameye@gmail.com</a>

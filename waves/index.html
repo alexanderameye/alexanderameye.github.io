@@ -111,73 +111,103 @@ width: auto;
     <pre>
 <h1>Water 2: Waves</h1><a href="../index.html">Back to projects</a>
 
-<img src="assets/sine_wave.gif" width="300" heigh="300">
-<i>The final effect.</i>
-
 <h1>Setup</h1>Before we add waves to our shader, we need to have a tessellated plane. We would use the basic Unity plane, but it does not have enough vertices to get the smooth wave movement we want. If you want to know how to create a tessellated plane, be sure to check out the previous tutorial.
 
-<h1>What Are Waves?</h1><div>Want to <a href="#tutorial-shortcut" style="color:blue">skip theory</a>?
+<img src="assets/tessellated_plane.gif" width="300" heigh="300">
+<i>A tessellated plane</i>
+
+<h1>What Are Waves?</h1><div>Want to <a href="#waves_theory_shortcut" style="color:blue">skip theory</a>?
 </div>
-When thinking about (mechanical) waves in the context of water, we could see them as <i><b>the propagation
-of energy through a medium (the water)</b></i>. When the energy reaches a certain water particle, that particle gets <b><i>excited</i></b> and moves upwards. When we send this energy through the medium in an oscillating way, the movement of the particles will be oscillating as well. Mechanical waves transport energy. 
+When thinking about (mechanical) waves in the context of water, we can see them as <i><b>the propagation
+of energy through a medium</b></i>. When the energy reaches a certain water particle, that particle gets <b><i>excited</i></b> and moves upwards. Mechanical waves transport energy. 
 
 <img src="assets/wave_motion.jpg" width="546" height="193">
 <i>Wave Propagation</i>
 
-The profile of the wave will depend on the variation of the energy source. When we look at water waves in particular, wind is usually the energy source that causes wave propagation. The image below shows the absolute movement of a single particle in a body of water. As you can see it not only moves up an down but it follows an almost circular path and has displacement on 2 axes.
+When we look at ocean waves (where wind is the energy source), we see that the displacement of a water particle not only happens in the y direction, but also in the x direction. It follows an almost circular path.
 
 <img src="assets/water_wave.gif">
-<i>Water Wave</i>
+<i>Ocean Wave</i>
 
-<h1>Simple Waves</h1>When simulating waves in a shader, we will be changing the position (x,y,z) of every single vertex point of our water plane over time (t). We will start by creating a simple sine wave. A sine wave has several properties, we can present a sine wave as follows.
+<h1>Simulating Simple Waves</h1>When simulating waves in a shader, we will be changing the position (x,y,z) of every single vertex point of our water plane over time (t). We will start by creating a simple sine wave movement. A travelling sine wave can be represented in the following way.
 
-y(t) = asin(wt + c) + d
+y(x,t) = asin(kx-wt)<style type="text/css">
+    .tg  {border-collapse:collapse;border-spacing:0;}
+    .tg td{font-family:Arial, sans-serif;font-size:14px;padding:4px 3px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+    .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:4px 3px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+    .tg .tg-pik4{font-family:"Courier New", Courier, monospace !important;;background-color:#ffffff;border-color:inherit;text-align:left;vertical-align:top}
+    .tg .tg-3izb{font-family:"Courier New", Courier, monospace !important;;background-color:#efefef;border-color:inherit;text-align:left;vertical-align:top}
+    .tg .tg-ilsr{font-weight:bold;font-family:"Courier New", Courier, monospace !important;;background-color:#ffffff;border-color:inherit;text-align:left;vertical-align:top}
+    </style>
+    <table class="tg">
+      <tr>
+        <th class="tg-ilsr">Variable</th>
+        <th class="tg-ilsr">Description</th>
+      </tr>
+      <tr>
+        <td class="tg-3izb">a</td>
+        <td class="tg-3izb">Amplitude</td>
+      </tr>
+      <tr>
+        <td class="tg-pik4">k</td>
+        <td class="tg-pik4">Wavenumber</td>
+      </tr>
+      <tr>
+        <td class="tg-3izb">w</td>
+        <td class="tg-3izb">Angular Frequency</td>
+      </tr>
+      <tr>
+        <td class="tg-pik4">λ</td>
+        <td class="tg-pik4">Wavelength Lambda</td>
+      </tr>
+      <tr>
+        <td class="tg-3izb">f</td>
+        <td class="tg-3izb">Frequency</td>
+      </tr>
+    </table>
 
-OR
+the following relationships also exist<style type="text/css">
+    .tg  {border-collapse:collapse;border-spacing:0;}
+    .tg td{font-family:Arial, sans-serif;font-size:14px;padding:4px 3px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+    .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:4px 3px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+    .tg .tg-pik4{font-family:"Courier New", Courier, monospace !important;;background-color:#ffffff;border-color:inherit;text-align:left;vertical-align:top}
+    </style>
+    <table class="tg">
+      <tr>
+        <th class="tg-pik4">w = 2πf</th>
+      </tr>
+      <tr>
+        <td class="tg-pik4">f = 1/λ</td>
+      </tr>
+      <tr>
+        <td class="tg-pik4">k = 2π/λ</td>
+      </tr>
+    </table>
+Using those relationships, and by introducing a speed variable v, we can rewrite the previous equation as follows. We also add an initial offset y0.
 
-y(x) = asin(wx + c) + d
-
-where
-
-a = amplitude
-w = angular frequency
-c = phase offset (θ, theta)
-d = vertical offset (y0)
-
-the following relationships also exist
-
-w = 2πf where f = frequency
-f = 1/T (T = period, for y(t))
-f = 1/λ (λ = wavelength, lambda, for y(x))
-
-In the image below you can see that it is important to differentiate between a sine wave y(t) and y(x). In the case of y(t), we talk about the <i><b>time</b></i> between 2 high points and call that the <i><b>period T</b></i>. In the case of y(x) we talk about the <i><b>distance</b></i> between 2 high points and call that the <i><b>wavelength λ</b></i>.
-<img src="assets/sine.gif">
-
-<a name="tutorial-shortcut"></a>
-Now let's move our water plane using a sine wave in shader graph. Our node setup looks like this.
+y(x,t) = asin(k(x-vt)) + y0
+<a name="waves_theory_shortcut"></a>
+Now that we have the equation for a travelling sine wave, let's use it shader graph. Our node setup looks like this.
 
 <img src="assets/sine_wave_nodes.png">
 
-Basically we just convert the following formula into nodes.
-
-y(x,t) = asin[(2π/λ)(vt+x)]+y0
-
-The y position of each vertex depends on the x position of the vertex and the time. We introduce a speed variable v that will control <i>how fast time progresses</i>. We get the following result.
+We do nothing more than translating the equation into nodes. We get the following result.
 
 <img src="assets/sine_wave.gif" width="300" heigh="300">
 
 This looks alright but this is not how water waves look in the real world, we can do better!
 
-<h1>More Complex Waves</h1>
+<h1>Gerstner Waves</h1><div>Want to <a href="#gerstner_theory_shortcut" style="color:blue">skip theory</a>?
+</div>
 
-<h1>Gerstner Waves</h1>
-
-
+Gerstner waves are also called trochoidal waves. A trochoid is a curve that is described by a fixed point on a circle as it rolls along a straight line.
+<a name="gerstner_theory_shortcut"></a>
 
 <h1>Sources</h1>
 <a href="https://en.wikipedia.org/wiki/Mechanical_wave" target="_blank">https://en.wikipedia.org/wiki/Mechanical_wave</a>
 <a href="https://en.wikipedia.org/wiki/Wind_wave" target="_blank">https://en.wikipedia.org/wiki/Wind_wave</a>
 <a href="https://catlikecoding.com/unity/tutorials/flow/waves/" target="_blank">https://catlikecoding.com/unity/tutorials/flow/waves/</a>
+<a href="https://en.wikipedia.org/wiki/Trochoid" targer="_blank">https://en.wikipedia.org/wiki/Trochoid</a>
 
 <hr>
 <a href="http://www.twitter.com/alexanderameye" target="_blank">@alexanderameye</a>

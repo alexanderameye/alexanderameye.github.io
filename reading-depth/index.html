@@ -113,10 +113,16 @@ width: auto;
 
 <body>
     <pre>
-<h1>Water Part 1: Reading Depth</h1><a href="../index.html">Back to projects</a>
-<a href="../stylized-water-shader/index.html">Part 2: Adding Foam</a>
+<h1>Water Part 3: Depth</h1><a href="../index.html">Back to projects</a>
+<a href="../waves/index.html">Part 2: Waves</a>
+<a href="../foam/index.html">Part 4: Foam</a>
 
-This article will explain how to read depth in Unity LWRP. I will be using the depth buffer to read depth and use those values to create a basic water shader.
+<h1>Setup</h1>For this shader, we will be using a LWRP <b><i>PBR shader</i></b> with its surface set to transparent. Also don't forget to enable access to the depth texture in your camera settings. Next, create a material that 
+uses the water shader and put it in your scene. Open up the shader in the shader graph editor and we're good to go!
+
+<img src="assets/shader_setup.png" width="439" height="226">
+<i>A PBR graph master node with a transparent surface.</i>
+
 <h1>Depth Textures</h1><img src="assets/depth_buffer_texture.jpeg" height="367" width = "500">
 <i>A depth-texture view from the famous Sponza Palace scene.</i>
 
@@ -186,7 +192,13 @@ lerp factor between the 2 colors.
 
 The clamped depth output is always a value between 0 and 1, so we can take this output as the lerp factor. We also add a smoothstep node to make the color transition even smoother. The output of our color lerping nodes go into the albedo slot of our material.
 
-<a href="../stylized-water-shader/index.html">Part 2: Adding Foam</a>
+<h1>More Control</h1>In the next section we will be controlling the alpha component of our material.
+
+Before, we used the output of our depth nodes to lerp between 2 colors. Now we will also use that output and remap it using a <a href="https://docs.unity3d.com/Packages/com.unity.shadergraph@5.10/manual/Remap-Node.html"  target="_blank" style="color:blue">remap node</a> to limit our values to a chosen interval. We define a property 'Max Depth' as the maximum input value and limit the output value to [0,1]. The output of this remapping gets put into the alpha slot of our material.
+
+<img src="assets/more_control.png"><i>Using our depth output for more control.</i>
+
+<a href="../foam/index.html">Part 4: Foam</a>
 
 <hr>
 <a href="http://www.twitter.com/alexanderameye" target="_blank">@alexanderameye</a>

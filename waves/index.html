@@ -113,7 +113,7 @@ width: auto;
 <a href="../tessellation/index.html">Part 1: Tessellated Plane</a>
 <a href="../reading-depth/index.html">Part 3: Depth</a>
 
-<h1>Setup</h1>Before we add waves to our shader, we need to have a tessellated plane. We would use the basic Unity plane, but it does not have enough vertices to get the smooth wave movement we want. If you want to know how to create a tessellated plane, be sure to check out the previous tutorial.
+<h1>Setup</h1>Before we add waves to our shader, we need to have a tessellated plane. We could use the basic Unity plane, but it does not have enough vertices to get the smooth wave movement we want. If you want to know how to create a tessellated plane, be sure to check out the previous tutorial.
 
 <img src="assets/tessellated_plane.gif" width="300" heigh="300">
 <i>A tessellated plane</i>
@@ -131,9 +131,9 @@ When we look at ocean waves (where wind is the energy source), we see that the d
 <img src="assets/water_wave.gif">
 <i>Ocean Wave</i>
 
-<h1>Simulating Simple Waves</h1>When simulating waves in a shader, we will be changing the position (x,y,z) of every single vertex point of our water plane over time (t). We will start by creating a simple sine wave movement. A travelling sine wave can be represented in the following way.
+<h1>Simulating Simple Waves</h1>When simulating waves in a shader, we will be changing the position (x,y,z) of every single vertex point of our water plane over time (t). We will start by creating a simple sine wave movement where every particle just goes up and down. A travelling sine wave is represented by the following equation.
 
-y(x,t) = asin(kx-wt)<style type="text/css">
+y(x,t) = asin(kx-wt+φ)<style type="text/css">
     .tg  {border-collapse:collapse;border-spacing:0;}
     .tg td{font-family:Arial, sans-serif;font-size:14px;padding:4px 3px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
     .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:4px 3px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
@@ -152,7 +152,7 @@ y(x,t) = asin(kx-wt)<style type="text/css">
       </tr>
       <tr>
         <td class="tg-pik4">k</td>
-        <td class="tg-pik4">Wavenumber</td>
+        <td class="tg-pik4">Wave Number</td>
       </tr>
       <tr>
         <td class="tg-3izb">w</td>
@@ -165,6 +165,10 @@ y(x,t) = asin(kx-wt)<style type="text/css">
       <tr>
         <td class="tg-3izb">f</td>
         <td class="tg-3izb">Frequency</td>
+      </tr>
+      <tr>
+        <td class="tg-pik4">φ</td>
+        <td class="tg-pik4">Phase Angle</td>
       </tr>
     </table>
 

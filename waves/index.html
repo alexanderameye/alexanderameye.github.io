@@ -113,27 +113,27 @@ width: auto;
 <a href="../tessellation/index.html">Part 1: Tessellated Plane</a>
 <a href="../reading-depth/index.html">Part 3: Depth</a>
 
-<h1>Setup</h1>Before we add waves to our shader, we need to have a tessellated plane. We could use the basic Unity plane, but it does not have enough vertices to get the smooth wave movement we want. If you want to know how to create a tessellated plane, be sure to check out the previous tutorial.
+<h1>Setup</h1>Before we want to start working with waves, we need to have a tessellated plane with a decent amount of vertex points to manipulate. We could use the basic Unity plane, but it does not have enough vertices to get the smooth wave movement we want. If you want to know how to create a tessellated plane, be sure to check out the previous tutorial.
 
 <img src="assets/tessellated_plane.gif" width="300" heigh="300">
 <i>A tessellated plane</i>
 
-<h1>What Are Waves?</h1><div>Want to <a href="#waves_theory_shortcut" style="color:blue">skip theory</a>?
+
+<h1>Waves</h1><div>Want to <a href="#waves_theory_shortcut" style="color:blue">skip theory</a>?
 </div>
 When thinking about (mechanical) waves in the context of water, we can see them as <i><b>the propagation
-of energy through a medium</b></i>. When the energy reaches a certain water particle, that particle gets <b><i>excited</i></b> and moves upwards. Mechanical waves transport energy. 
+of energy through a medium</b></i>. When the energy reaches a certain water particle, that particle gets <b><i>excited</i></b> and moves upwards. When the energy has passed again, the particle will move downwards again.
 
 <img src="assets/wave_motion.jpg" width="546" height="193">
-<i>Wave Propagation</i>
 
-When we look at ocean waves (where wind is the energy source), we see that the displacement of a water particle not only happens in the y direction, but also in the x direction. It follows an almost circular path.
+When we look at waves in the water (where wind is the energy source), we see that the displacement of a water particle not only happens in the y direction (up and down), but also in the x direction (left and right). One particle follows an almost circular path.
 
 <img src="assets/water_wave.gif">
-<i>Ocean Wave</i>
 
-<h1>Simulating Simple Waves</h1>When simulating waves in a shader, we will be changing the position (x,y,z) of every single vertex point of our water plane over time (t). We will start by creating a simple sine wave movement where every particle just goes up and down. A travelling sine wave is represented by the following equation.
 
-y(x,t) = asin(kx-wt+φ)<style type="text/css">
+<h1>Sine Waves</h1>When simulating waves in a shader, we will be changing the position (x,y,z) of every single vertex point of our water plane over time (t). We will start by creating a simple sine wave movement where every particle just goes up and down. A travelling sine wave is represented by the following equation.
+
+y(x,t) = asin(k(x-vt))<style type="text/css">
     .tg  {border-collapse:collapse;border-spacing:0;}
     .tg td{font-family:Arial, sans-serif;font-size:14px;padding:4px 3px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
     .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:4px 3px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
@@ -155,8 +155,8 @@ y(x,t) = asin(kx-wt+φ)<style type="text/css">
         <td class="tg-pik4">Wave Number</td>
       </tr>
       <tr>
-        <td class="tg-3izb">w</td>
-        <td class="tg-3izb">Angular Frequency</td>
+        <td class="tg-3izb">v</td>
+        <td class="tg-3izb">Speed</td>
       </tr>
       <tr>
         <td class="tg-pik4">λ</td>
@@ -167,37 +167,46 @@ y(x,t) = asin(kx-wt+φ)<style type="text/css">
         <td class="tg-3izb">Frequency</td>
       </tr>
       <tr>
-        <td class="tg-pik4">φ</td>
-        <td class="tg-pik4">Phase Angle</td>
+        <td class="tg-pik4">w</td>
+        <td class="tg-pik4">Angular Frequency</td>
       </tr>
     </table>
-
 the following relationships also exist<style type="text/css">
-    .tg  {border-collapse:collapse;border-spacing:0;}
-    .tg td{font-family:Arial, sans-serif;font-size:14px;padding:4px 3px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
-    .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:4px 3px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
-    .tg .tg-pik4{font-family:"Courier New", Courier, monospace !important;;background-color:#ffffff;border-color:inherit;text-align:left;vertical-align:top}
-    </style>
-    <table class="tg">
-      <tr>
-        <th class="tg-pik4">w = 2πf</th>
-      </tr>
-      <tr>
-        <td class="tg-pik4">f = 1/λ</td>
-      </tr>
-      <tr>
-        <td class="tg-pik4">k = 2π/λ</td>
-      </tr>
-    </table>
-Using those relationships, and by introducing a speed variable v, we can rewrite the previous equation as follows. We also add an initial offset y0.
+      .tg  {border-collapse:collapse;border-spacing:0;}
+      .tg td{font-family:Arial, sans-serif;font-size:14px;padding:4px 3px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+      .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:4px 3px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+      .tg .tg-pik4{font-family:"Courier New", Courier, monospace !important;;background-color:#ffffff;border-color:inherit;text-align:left;vertical-align:top}
+      </style>
+      <table class="tg">
+        <tr>
+          <th class="tg-pik4">w = 2πf</th>
+        </tr>
+        <tr>
+          <td class="tg-pik4">f = 1/λ</td>
+        </tr>
+        <tr>
+          <td class="tg-pik4">k = 2π/λ</td>
+        </tr>
+      </table>
+So we can represent k in our equation by 2π/λ.
 
-y(x,t) = asin(k(x-vt)) + y0
-<a name="waves_theory_shortcut"></a>
-Now that we have the equation for a travelling sine wave, let's use it shader graph. Our node setup looks like this.
+<div style="color:blue"><b>Why is this the equation of a travelling sine wave?</b>
+<div id="popup" style="text-align: justify; border: 0px ;padding:0px;color:black">
+If you are not familiar with this equation of a travelling sine wave, here is a <a href="https://www.youtube.com/watch?v=GxAyRJjCAsQ" target="_blank">good video</a> that explains it. You can also watch <a href="https://www.youtube.com/watch?v=xcSVFnBQY-c" target="_blank">this one</a>.
+</div>
+</div>
+Now that we have an equation, let's make our shader. Of course you could translate this equation directly into nodes using the position nodes and a whole bunch of arithmetic math nodes, but for such a relatively simple equation we would need at least 10-15 nodes. I think it's better to do this with a custom function node where we can write our equation in HLSL.
 
-<img src="assets/sine_wave_nodes.png">
+<img src="assets/sine_function.png">
 
-We do nothing more than translating the equation into nodes. We get the following result.
+We add a custom function node to our graph and in the node UI, we refer to a .hlsl file called 'Sine Wave' that has a function SineWave. We also define the inputs and outputs. Our custom function node will take a wavelength, speed, amplitude and position variable.
+
+<img src="assets/code_function.png">
+
+Our SineWave function first calculates the value of k (2π/λ) and then puts it in the equation. This method only takes 1 node that calculates the sine wave and the HLSL code itself is only a few lines, elegant!
+
+<img src="assets/sine_wave_output.png">
+We link up this custom node by adding it to the object's position and plugging the result into the position slot of the master node.
 
 <img src="assets/sine_wave.gif" width="300" heigh="300">
 
@@ -266,9 +275,7 @@ We get the following result which already looks a bit better than a simple sine 
 <h1>Multiple Waves</h1>By adding together multiple Gerstner waves, they will interact and we will get a more interesting wave pattern.
 
 
-<h1>Fast Fourier Transform Waves</h1>
-
-<div>This article is under construction.
+<h1>Fast Fourier Transform Waves</h1><div>This section is under construction.
 </div>
 
 <a href="../tessellation/index.html">Part 1: Tessellated Plane</a>
@@ -281,7 +288,8 @@ We get the following result which already looks a bit better than a simple sine 
 <a href="https://www.reddit.com/r/interestingasfuck/comments/afefxk/how_particles_move_on_a_wave_in_a_liquid/" target="_blank">https://www.reddit.com/r/interestingasfuck/comments/afefxk/how_particles_move_on_a_wave_in_a_liquid/</a>
 <a href="https://labs.karmaninteractive.com/ocean-simulation-pt-3-gerstner-waves-a747069e1b59" target="_blank">https://labs.karmaninteractive.com/ocean-simulation-pt-3-gerstner-waves-a747069e1b59</a>
 <a href="https://labs.karmaninteractive.com/ocean-simulation-pt-4-fft-waves-90fdd55c7f25" target="_blank">https://labs.karmaninteractive.com/ocean-simulation-pt-4-fft-waves-90fdd55c7f25</a>
-
+<a href="https://www.youtube.com/watch?v=GxAyRJjCAsQ" target="_blank">https://www.youtube.com/watch?v=GxAyRJjCAsQ</a>
+<a href="https://www.youtube.com/watch?v=xcSVFnBQY-c" target="_blank">https://www.youtube.com/watch?v=xcSVFnBQY-c</a>
 
 <hr>
 <a href="http://www.twitter.com/alexanderameye" target="_blank">@alexanderameye</a>

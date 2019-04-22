@@ -173,8 +173,8 @@ This might look a bit overwhelming at first but let's go through it step by step
    perceived depth is not dependent on the viewing direction
 <b>4.</b> We clamp the output to [0,1]
 
-<div><a href="#tutorial-shortcut" onclick="popup()" style="color:blue">How do we know what (sampling) mode to pick?</a>
-<div id="popup" style="text-align: justify; border: 0px ;padding:0px">
+<div style="color:blue"><b>How do we know what (sampling) mode to pick?</b>
+<div id="popup" style="text-align: justify; border: 0px ;padding:0px;color:black">
 When we subtract 2 values from eachother, we need to make sure that they use the same coordinate 
 system, otherwise the result won't make sense. Internally, the screen position node takes the 
 world position of the vertex of an object and converts it to eye/view space. So if we want to 

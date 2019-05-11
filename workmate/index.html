@@ -2,32 +2,8 @@
 <html>
 
 <head>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-137365487-1"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-        gtag('js', new Date());
-
-        gtag('config', 'UA-137365487-1');
-    </script>
-
-    <link rel="icon" type="image/png" href="assets/icon.png" sizes="32x32" />
-    <title>Reading Depth</title>
-
-    <meta charset="utf-8" />
-
-    <meta property="og:title" content="Alexander Ameye" />
-    <meta property="og:site_name" content="Alexander Ameye" />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://alexanderameye.github.io/reading-depth/" />
-
-    <meta name="description" content="" />
-    <meta name="author" content="Alexander ameye" />
-
+    <link rel="icon" type="image/png" href="assets/workmate.png" sizes="32x32" />
+    <title>Workmate</title>
     <style type="text/css">
         p.p1 {
             margin: 0.0px 0.0px 0.0px 0.0px;
@@ -39,6 +15,8 @@
             font: 13.0px Arial;
             min-height: 14.0px
         }
+
+
 
         a:link {
             color: blue;
@@ -86,17 +64,53 @@
         p:hover span.noshow {
             display: none;
         }
-    </style>
 
+        form {
+            display: table;
+        }
+
+        p {
+            display: table-row;
+        }
+
+        label {
+            display: table-cell;
+        }
+
+        input {
+            display: table-cell;
+        }
+    </style>
 </head>
 
 <body>
-    <pre>
-<h1 style="color:blue;">Workmate</h1><a href="../workmate/project/index.html">Project Details</a>
+    <pre><h1 style="color:blue;">Workmate Admin</h1><a href="../index.html">Back to menu</a>
+        
+        <h2>Add User</h2><div class="container"><form method="POST" id="add_user_form" action = "JavaScript:addUserUrl()"><p><label for="username">Username:</label>
+            <input id="username" type="text" name="username">
+          </p>
+          <p>
+            <label for="email">Email:</label>
+            <input id="email" type="email" name="email">
+          </p><p>
+                <label for="password">Password:</label>
+                <input id="password" type="text" name="password">
+                <br>
+              </p><input type="submit" value="Add User">
+</form> </div>
 
-<a href="../workmate/admin/index.html">Admin Panel</a>
+<script>
+function addUserUrl() {
+    var url = "https://studev.groept.be/api/a18_sd308/AddUser/"
+    var email = document.getElementById("email").value;
+    var password = document.getElementById("password").value;
+    var username = document.getElementById("username").value;
+    return url + username + "/" + email + "/" + password;
+  }
+</script>
 
-<hr>
+
+        <hr>
 <a href="http://www.twitter.com/alexanderameye" target="_blank">@alexanderameye</a>
 <a href="mailto:alexanderameye@gmail.com">alexanderameye@gmail.com</a>
 </pre>

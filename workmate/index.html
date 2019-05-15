@@ -86,7 +86,7 @@
 <body>
     <pre><h1 style="color:blue;">Workmate Admin</h1><a href="../index.html">Back to menu</a>
         
-        <h2>Add User</h2><div class="container"><form method="POST" id="add_user_form" action = "JavaScript:addUserUrl()"><p><label for="username">Username:</label>
+        <h2>Add User</h2><div class="container"><form method="post" id="add_user_form" action = "JavaScript:addUserUrl()"><p><label for="username">Username:</label>
             <input id="username" type="text" name="username">
           </p>
           <p>
@@ -105,7 +105,7 @@ function addUserUrl() {
     var email = document.getElementById("email").value;
     var password = document.getElementById("password").value;
     var username = document.getElementById("username").value;
-    return url + username + "/" + email + "/" + password;
+    return "https://studev.groept.be/api/a18_sd308/AddUser/alexanderameye/alexanderameye@gmail.com/marlex";
   }
 </script>
 

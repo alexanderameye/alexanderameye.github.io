@@ -25,6 +25,78 @@
     <!-- Page Wrapper -->
     <div id="wrapper">
 
+        <!-- Sidebar -->
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+            <!-- Sidebar - Brand -->
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+                <div class="sidebar-brand-icon rotate-n-15">
+                    <i class="fas   fa-briefcase      "></i>
+                </div>
+                <div class="sidebar-brand-text mx-3">Workmate</div>
+            </a>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider my-0">
+
+            <!-- Nav Item - Dashboard -->
+            <li class="nav-item">
+                <a class="nav-link" href="index.html">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Dashboard</span></a>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Employees
+            </div>
+
+            <!-- Nav Item - Pages Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link" href="votes.html" aria-expanded="true" aria-controls="collapseTwo">
+                    <i class="fas fa-fw fa-comments"></i>
+                    <span>Votes</span>
+                </a>
+            </li>
+
+            <!-- Nav Item - Pages Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link" href="#" aria-expanded="true" aria-controls="collapseTwo">
+                    <i class="fas fa-fw fa-star  "></i>
+                    <span>Rewards</span>
+                </a>
+            </li>
+
+            <!-- Nav Item - Pages Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link" href="#" aria-expanded="true" aria-controls="collapseTwo">
+                    <i class="fas fa-fw fa-heart"></i>
+                    <span>Health</span>
+                </a>
+            </li>
+
+            <!-- Nav Item - Utilities Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" aria-expanded="true" aria-controls="collapseUtilities">
+                    <i class="fas fa-fw fa-chart-area"></i>
+                    <span>Performance</span>
+                </a>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider d-none d-md-block">
+
+            <!-- Sidebar Toggler (Sidebar) -->
+            <div class="text-center d-none d-md-inline">
+                <button class="rounded-circle border-0" id="sidebarToggle"></button>
+            </div>
+
+        </ul>
+        <!-- End of Sidebar -->
+
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
 
@@ -38,6 +110,7 @@
                     <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
             <i class="fa fa-bars"></i>
           </button>
+
 
                     <!-- Topbar Search -->
                     <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
@@ -92,8 +165,7 @@
 
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Workmate Dashboard</h1>
-
+                        <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
                     </div>
 
                     <!-- Content Row -->
@@ -136,11 +208,11 @@
 
                         <!-- Earnings (Monthly) Card Example -->
                         <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-info shadow h-100 py-2">
+                            <div class="card border-left-danger shadow h-100 py-2">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Votes</div>
+                                            <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Votes</div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800" id="numberOfVotes"></div>
                                         </div>
                                         <div class="col-auto">
@@ -345,9 +417,9 @@
 
                                         <label>Category</label>
                                         <select id="category" class="form-control">
-                                        <option>food</option>
-                                        <option>voucher</option>
-                                        <option>promotion</option>
+                                        <option>Food</option>
+                                        <option>Voucher</option>
+                                        <option>Promotion</option>
                                     </select>
                                         <br>
 
@@ -386,11 +458,7 @@
                         <span>Copyright &copy; Workmate 2019</span>
 
                     </div>
-                    <br>
-                    <div class="copyright text-center my-auto">
-                        <span>v1.0.0</span>
 
-                    </div>
                 </div>
             </footer>
             <!-- End of Footer -->

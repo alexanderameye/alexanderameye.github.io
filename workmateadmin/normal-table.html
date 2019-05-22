@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Buttons | Notika - Notika Admin Template</title>
+    <title>Normal Table | Notika - Notika Admin Template</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- favicon
@@ -33,16 +33,16 @@
     <!-- normalize CSS
 		============================================ -->
     <link rel="stylesheet" href="css/normalize.css">
+	<!-- wave CSS
+		============================================ -->
+    <link rel="stylesheet" href="css/wave/waves.min.css">
+    <link rel="stylesheet" href="css/wave/button.css">
     <!-- mCustomScrollbar CSS
 		============================================ -->
     <link rel="stylesheet" href="css/scrollbar/jquery.mCustomScrollbar.min.css">
     <!-- Notika icon CSS
 		============================================ -->
     <link rel="stylesheet" href="css/notika-custom-icon.css">
-    <!-- wave CSS
-		============================================ -->
-    <link rel="stylesheet" href="css/wave/waves.min.css">
-    <link rel="stylesheet" href="css/wave/button.css">
     <!-- main CSS
 		============================================ -->
     <link rel="stylesheet" href="css/main.css">
@@ -241,19 +241,19 @@
                                                 <div class="lead-content">
                                                     <p>Social Internet Projects</p>
                                                 </div>
-                                                <div class="progress-bar wow fadeInLeft" data-progress="93%" style="width: 93%;" data-wow-duration="1.5s" data-wow-delay="1.2s"><span>93%</span> </div>
+                                                <div class="progress-bar wow fadeInLeft" data-progress="75%" style="width: 75%;" data-wow-duration="1.5s" data-wow-delay="1.2s"><span>75%</span> </div>
                                             </div>
                                             <div class="progress">
                                                 <div class="lead-content">
-                                                    <p>Bootstrap Admin Template</p>
+                                                    <p>Bootstrap Admin</p>
                                                 </div>
-                                                <div class="progress-bar wow fadeInLeft" data-progress="93%" style="width: 93%;" data-wow-duration="1.5s" data-wow-delay="1.2s"><span>93%</span> </div>
+                                                <div class="progress-bar wow fadeInLeft" data-progress="65%" style="width: 65%;" data-wow-duration="1.5s" data-wow-delay="1.2s"><span>65%</span> </div>
                                             </div>
                                             <div class="progress progress-bt">
                                                 <div class="lead-content">
-                                                    <p>Youtube Client App</p>
+                                                    <p>Youtube App</p>
                                                 </div>
-                                                <div class="progress-bar wow fadeInLeft" data-progress="93%" style="width: 93%;" data-wow-duration="1.5s" data-wow-delay="1.2s"><span>93%</span> </div>
+                                                <div class="progress-bar wow fadeInLeft" data-progress="55%" style="width: 55%;" data-wow-duration="1.5s" data-wow-delay="1.2s"><span>55%</span> </div>
                                             </div>
                                         </div>
                                     </div>
@@ -461,11 +461,11 @@
                         </li>
                         <li><a data-toggle="tab" href="#Charts"><i class="notika-icon notika-bar-chart"></i> Charts</a>
                         </li>
-                        <li><a data-toggle="tab" href="#Tables"><i class="notika-icon notika-windows"></i> Tables</a>
+                        <li class="active"><a data-toggle="tab" href="#Tables"><i class="notika-icon notika-windows"></i> Tables</a>
                         </li>
                         <li><a data-toggle="tab" href="#Forms"><i class="notika-icon notika-form"></i> Forms</a>
                         </li>
-                        <li class="active"><a data-toggle="tab" href="#Appviews"><i class="notika-icon notika-app"></i> App views</a>
+                        <li><a data-toggle="tab" href="#Appviews"><i class="notika-icon notika-app"></i> App views</a>
                         </li>
                         <li><a data-toggle="tab" href="#Page"><i class="notika-icon notika-support"></i> Pages</a>
                         </li>
@@ -525,7 +525,7 @@
                                 </li>
                             </ul>
                         </div>
-                        <div id="Tables" class="tab-pane notika-tab-menu-bg animated flipInX">
+                        <div id="Tables" class="tab-pane active notika-tab-menu-bg animated flipInX">
                             <ul class="notika-main-menu-dropdown">
                                 <li><a href="normal-table.html">Normal Table</a>
                                 </li>
@@ -543,7 +543,7 @@
                                 </li>
                             </ul>
                         </div>
-                        <div id="Appviews" class="tab-pane active notika-tab-menu-bg animated flipInX">
+                        <div id="Appviews" class="tab-pane notika-tab-menu-bg animated flipInX">
                             <ul class="notika-main-menu-dropdown">
                                 <li><a href="notification.html">Notifications</a>
                                 </li>
@@ -599,10 +599,10 @@
 							<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 								<div class="breadcomb-wp">
 									<div class="breadcomb-icon">
-										<i class="notika-icon notika-app"></i>
+										<i class="notika-icon notika-windows"></i>
 									</div>
 									<div class="breadcomb-ctn">
-										<h2>Buttons</h2>
+										<h2>Normal Table</h2>
 										<p>Welcome to Notika <span class="bread-ntd">Admin Template</span></p>
 									</div>
 								</div>
@@ -619,224 +619,477 @@
 		</div>
 	</div>
 	<!-- Breadcomb area End-->
-    <!-- Button area Start-->
-    <div class="buttons-area">
+    <!-- Normal Table area Start-->
+    <div class="normal-table-area">
         <div class="container">
             <div class="row">
-                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                    <div class="btn-demo-notika">
-                        <div class="notika-btn-hd">
-							<h2>Bootstrap Color Schemes</h2>
-							<p>Use any of the available button classes to quickly create a styled button.</p>
-						</div>
-                        <div class="btn-list">
-                            <button class="btn btn-default notika-btn-default">Default</button>
-                            <button class="btn btn-info notika-btn-info">Info</button>
-                            <button class="btn btn-primary notika-btn-primary">Primary</button>
-                            <button class="btn btn-success notika-btn-success">Success</button>
-                            <button class="btn btn-warning notika-btn-warning">Warning</button>
-                            <button class="btn btn-danger notika-btn-danger">Danger</button>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="normal-table-list">
+                        <div class="basic-tb-hd">
+                            <h2>Basic Table</h2>
+                            <p>Basic example without any additional modification classes</p>
                         </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                    <div class="btn-demo-notika sm-res-mg-t-30">
-						<div class="notika-btn-hd">
-							<h2>Disable Stat</h2>
-							<p>Use any of the available button classes to quickly create a disable Stat button.</p>
-						</div>
-                        <div class="btn-list">
-                            <button class="btn btn-default notika-btn-default" disabled="disabled">Default</button>
-                            <button class="btn btn-info notika-btn-info" disabled="disabled">Info</button>
-                            <button class="btn btn-primary notika-btn-primary" disabled="disabled">Primary</button>
-                            <button class="btn btn-success notika-btn-success" disabled="disabled">Success</button>
-                            <button class="btn btn-warning notika-btn-warning" disabled="disabled">Warning</button>
-                            <button class="btn btn-danger notika-btn-danger" disabled="disabled">Danger</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                    <div class="btn-demo-notika mg-t-30">
-						<div class="notika-btn-hd">
-							<h2>Button Sizes</h2>
-							<p>Fancy larger or smaller buttons? Add the button sizing classes (<code>.btn-lg, .btn-sm, .btn-xs</code>). </p>
-						</div>
-                        <div class="btn-list">
-                            <button class="btn btn-primary notika-btn-primary btn-lg">Large</button>
-                            <button class="btn btn-primary notika-btn-primary">Default</button>
-                            <button class="btn btn-primary notika-btn-primary btn-sm">Small</button>
-                            <button class="btn btn-primary notika-btn-primary btn-xs">Extra Small</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                    <div class="btn-demo-notika mg-t-30">
-						<div class="notika-btn-hd">
-							<h2>Button Toolbars</h2>
-							<p>Combine sets of <code>.btn-group</code> into a <code>.btn-toolbar</code> for more complex components. </p>
-						</div>
-                        <div class="btn-toolbar" role="toolbar">
-                            <div class="btn-group notika-group-btn">
-                                <button type="button" class="btn btn-default notika-gp-default">1</button>
-                                <button type="button" class="btn btn-default notika-gp-default">2</button>
-                                <button type="button" class="btn btn-default notika-gp-default">3</button>
-                            </div>
-                            <div class="btn-group notika-group-btn">
-                                <button type="button" class="btn btn-default notika-gp-default">4</button>
-                                <button type="button" class="btn btn-default notika-gp-default">5</button>
-                                <button type="button" class="btn btn-default notika-gp-default">6</button>
-                            </div>
-                            <div class="btn-group notika-group-btn">
-                                <button type="button" class="btn btn-default notika-gp-default">7</button>
-                                <button type="button" class="btn btn-default notika-gp-default">8</button>
-                                <button type="button" class="btn btn-default notika-gp-default">9</button>
-                            </div>
-                        </div>
-                        <div class="btn-toolbar" role="toolbar">
-                            <div class="btn-group notika-tl-btn">
-                                <button type="button" class="btn btn-primary notika-gp-primary">1</button>
-                                <button type="button" class="btn btn-primary notika-gp-primary">2</button>
-                                <button type="button" class="btn btn-primary notika-gp-primary">3</button>
-                            </div>
-                            <div class="btn-group notika-tl-btn">
-                                <button type="button" class="btn btn-primary notika-gp-primary">4</button>
-                                <button type="button" class="btn btn-primary notika-gp-primary">5</button>
-                                <button type="button" class="btn btn-primary notika-gp-primary">6</button>
-                            </div>
-                            <div class="btn-group notika-tl-btn">
-                                <button type="button" class="btn btn-primary notika-gp-primary">7</button>
-                                <button type="button" class="btn btn-primary notika-gp-primary">8</button>
-                                <button type="button" class="btn btn-primary notika-gp-primary">9</button>
-                            </div>
+                        <div class="bsc-tbl">
+                            <table class="table table-sc-ex">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>First Name</th>
+                                        <th>Last Name</th>
+                                        <th>Username</th>
+                                        <th>Nickname</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Alexandra</td>
+                                        <td>Christopher</td>
+                                        <td>@makinton</td>
+                                        <td>Ducky</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>Madeleine</td>
+                                        <td>Hollaway</td>
+                                        <td>@hollway</td>
+                                        <td>Cheese</td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td>Sebastian</td>
+                                        <td>Johnston</td>
+                                        <td>@sebastian</td>
+                                        <td>Jaycee</td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td>Mitchell</td>
+                                        <td>Christin</td>
+                                        <td>@mitchell4u</td>
+                                        <td>AdskiDeAnus</td>
+                                    </tr>
+                                    <tr>
+                                        <td>5</td>
+                                        <td>Elizabeth</td>
+                                        <td>Belkitt</td>
+                                        <td>@belkitt</td>
+                                        <td>Goat</td>
+                                    </tr>
+                                    <tr>
+                                        <td>6</td>
+                                        <td>Benjamin</td>
+                                        <td>Parnell</td>
+                                        <td>@wayne234</td>
+                                        <td>Pokie</td>
+                                    </tr>
+                                    <tr>
+                                        <td>7</td>
+                                        <td>Katherine</td>
+                                        <td>Buckland</td>
+                                        <td>@anitabelle</td>
+                                        <td>Wokie</td>
+                                    </tr>
+                                    <tr>
+                                        <td>8</td>
+                                        <td>Nicholas</td>
+                                        <td>Walmart</td>
+                                        <td>@mwalmart</td>
+                                        <td>Spike</td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div class="btn-demo-notika mg-t-30">
-						<div class="notika-btn-hd">
-							<h2>Optional Material Design Colors</h2>
-							<p>Use any of the available button classes (<code>.notika-btn-cyan, .notika-btn-teal, .notika-btn-orange</code>) to quickly create a Material Design Colors button.</p>
-						</div>
-                        <div class="material-design-btn">
-                            <button class="btn notika-btn-cyan">Cyan</button>
-                            <button class="btn notika-btn-teal">Teal</button>
-                            <button class="btn notika-btn-amber">Amber</button>
-                            <button class="btn notika-btn-orange">Orange</button>
-                            <button class="btn notika-btn-deeporange">Deep Orange</button>
-                            <button class="btn notika-btn-red">Red</button>
-                            <button class="btn notika-btn-pink">Pink</button>
-                            <button class="btn notika-btn-lightblue">Light Blue</button>
-                            <button class="btn notika-btn-blue">Blue</button>
-                            <button class="btn notika-btn-indigo btn-reco-mg btn-button-mg">Indigo</button>
-                            <button class="btn notika-btn-lime btn-reco-mg btn-button-mg">Lime</button>
-                            <button class="btn notika-btn-lightgreen btn-reco-mg btn-button-mg">Light Green</button>
-                            <button class="btn notika-btn-green btn-reco-mg btn-button-mg">Green</button>
-                            <button class="btn notika-btn-purple btn-reco-mg btn-button-mg">Purple</button>
-                            <button class="btn notika-btn-deeppurple btn-reco-mg btn-button-mg">Deep Purple</button>
-                            <button class="btn notika-btn-gray btn-reco-mg btn-button-mg">Gray</button>
-                            <button class="btn notika-btn-bluegray btn-reco-mg btn-button-mg">Blue Gray</button>
-                            <button class="btn notika-btn-black btn-reco-mg btn-button-mg">Black</button>
+                    <div class="normal-table-list mg-t-30">
+                        <div class="basic-tb-hd">
+                            <h2>Striped rows</h2>
+                            <p>Add Classes (<code>.table-striped</code>) to any table row within the tbody</p>
+                        </div>
+                        <div class="bsc-tbl-st">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>First Name</th>
+                                        <th>Last Name</th>
+                                        <th>Username</th>
+                                        <th>Nickname</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Alexandra</td>
+                                        <td>Christopher</td>
+                                        <td>@makinton</td>
+                                        <td>Ducky</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>Madeleine</td>
+                                        <td>Hollaway</td>
+                                        <td>@hollway</td>
+                                        <td>Cheese</td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td>Sebastian</td>
+                                        <td>Johnston</td>
+                                        <td>@sebastian</td>
+                                        <td>Jaycee</td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td>Mitchell</td>
+                                        <td>Christin</td>
+                                        <td>@mitchell4u</td>
+                                        <td>AdskiDeAnus</td>
+                                    </tr>
+                                    <tr>
+                                        <td>5</td>
+                                        <td>Elizabeth</td>
+                                        <td>Belkitt</td>
+                                        <td>@belkitt</td>
+                                        <td>Goat</td>
+                                    </tr>
+                                    <tr>
+                                        <td>6</td>
+                                        <td>Benjamin</td>
+                                        <td>Parnell</td>
+                                        <td>@wayne234</td>
+                                        <td>Pokie</td>
+                                    </tr>
+                                    <tr>
+                                        <td>7</td>
+                                        <td>Katherine</td>
+                                        <td>Buckland</td>
+                                        <td>@anitabelle</td>
+                                        <td>Wokie</td>
+                                    </tr>
+                                    <tr>
+                                        <td>8</td>
+                                        <td>Nicholas</td>
+                                        <td>Walmart</td>
+                                        <td>@mwalmart</td>
+                                        <td>Spike</td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div class="btn-demo-notika mg-t-30">
-						<div class="notika-btn-hd">
-							<h2>Button Icons</h2>
-							<p>You can refer the Icons page for the complete list of Font Icons which are inspired by Material Design.</p>
-						</div>
-                        <div class="button-icon-btn">
-                            <button class="btn btn-default btn-icon-notika"><i class="notika-icon notika-house"></i> Home</button>
-                            <button class="btn btn-default btn-icon-notika"><i class="notika-icon notika-search"></i> Search</button>
-                            <button class="btn btn-default btn-icon-notika"><i class="notika-icon notika-menu"></i> More</button>
-                            <button class="btn btn-default btn-icon-notika"><i class="notika-icon notika-right-arrow"></i> Forward</button>
-                            <button class="btn btn-default btn-icon-notika"><i class="notika-icon notika-left-arrow"></i> Back</button>
-                            <button class="btn btn-default btn-icon-notika"><i class="notika-icon notika-refresh"></i> Sync</button>
-                            <button class="btn btn-default btn-icon-notika"><i class="notika-icon notika-checked"></i> Check</button>
-                            <button class="btn btn-default btn-icon-notika"><i class="notika-icon notika-close"></i> Close</button>
-                            <button class="btn btn-default btn-icon-notika"><i class="notika-icon notika-menus"></i> Menu</button>
-                            <button class="btn btn-default btn-icon-notika"><i class="notika-icon notika-star"></i> Apps</button>
-                            <button class="btn btn-default btn-icon-notika"><i class="notika-icon notika-down-arrow"></i> Done</button>
-                            <button class="btn btn-default btn-icon-notika"><i class="notika-icon notika-up-arrow"></i> Up</button>
-                            <button class="btn btn-default btn-icon-notika"><i class="notika-icon notika-next"></i> Get</button>
-                            <button class="btn btn-default btn-icon-notika"><i class="notika-icon notika-phone"></i> Call</button>
+                    <div class="normal-table-list mg-t-30">
+                        <div class="basic-tb-hd">
+                            <h2>Bordered table</h2>
+                            <p>Tables with borders on all possible sides of the Table and Cells (<code>.table-bordered</code>).</p>
                         </div>
-                        <div class="button-icon-btn mg-t-30 butt-mg-t-20">
-                            <button class="btn btn-default btn-icon-notika"><i class="notika-icon notika-house"></i></button>
-                            <button class="btn btn-default btn-icon-notika"><i class="notika-icon notika-search"></i></button>
-                            <button class="btn btn-default btn-icon-notika"><i class="notika-icon notika-menu"></i></button>
-                            <button class="btn btn-default btn-icon-notika"><i class="notika-icon notika-right-arrow"></i></button>
-                            <button class="btn btn-default btn-icon-notika"><i class="notika-icon notika-left-arrow"></i></button>
-                            <button class="btn btn-default btn-icon-notika"><i class="notika-icon notika-refresh"></i></button>
-                            <button class="btn btn-default btn-icon-notika"><i class="notika-icon notika-checked"></i></button>
-                            <button class="btn btn-default btn-icon-notika"><i class="notika-icon notika-close"></i></button>
-                            <button class="btn btn-default btn-icon-notika"><i class="notika-icon notika-menus"></i></button>
-                            <button class="btn btn-default btn-icon-notika"><i class="notika-icon notika-star"></i></button>
-                            <button class="btn btn-default btn-icon-notika"><i class="notika-icon notika-down-arrow"></i></button>
-                            <button class="btn btn-default btn-icon-notika"><i class="notika-icon notika-up-arrow"></i></button>
-                            <button class="btn btn-default btn-icon-notika"><i class="notika-icon notika-next"></i></button>
-                            <button class="btn btn-default btn-icon-notika"><i class="notika-icon notika-phone"></i></button>
+                        <div class="bsc-tbl-bdr">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>First Name</th>
+                                        <th>Last Name</th>
+                                        <th>Username</th>
+                                        <th>Nickname</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Alexandra</td>
+                                        <td>Christopher</td>
+                                        <td>@makinton</td>
+                                        <td>Ducky</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>Madeleine</td>
+                                        <td>Hollaway</td>
+                                        <td>@hollway</td>
+                                        <td>Cheese</td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td>Sebastian</td>
+                                        <td>Johnston</td>
+                                        <td>@sebastian</td>
+                                        <td>Jaycee</td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td>Mitchell</td>
+                                        <td>Christin</td>
+                                        <td>@mitchell4u</td>
+                                        <td>AdskiDeAnus</td>
+                                    </tr>
+                                    <tr>
+                                        <td>5</td>
+                                        <td>Elizabeth</td>
+                                        <td>Belkitt</td>
+                                        <td>@belkitt</td>
+                                        <td>Goat</td>
+                                    </tr>
+                                    <tr>
+                                        <td>6</td>
+                                        <td>Benjamin</td>
+                                        <td>Parnell</td>
+                                        <td>@wayne234</td>
+                                        <td>Pokie</td>
+                                    </tr>
+                                    <tr>
+                                        <td>7</td>
+                                        <td>Katherine</td>
+                                        <td>Buckland</td>
+                                        <td>@anitabelle</td>
+                                        <td>Wokie</td>
+                                    </tr>
+                                    <tr>
+                                        <td>8</td>
+                                        <td>Nicholas</td>
+                                        <td>Walmart</td>
+                                        <td>@mwalmart</td>
+                                        <td>Spike</td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
-                        <div class="button-icon-btn sm-res-mg-t-30">
-                            <button class="btn btn-primary primary-icon-notika"><i class="notika-icon notika-house"></i></button>
-                            <button class="btn btn-info info-icon-notika"><i class="notika-icon notika-search"></i></button>
-                            <button class="btn btn-success success-icon-notika"><i class="notika-icon notika-menu"></i></button>
-                            <button class="btn btn-warning warning-icon-notika"><i class="notika-icon notika-right-arrow"></i></button>
-                            <button class="btn btn-danger danger-icon-notika"><i class="notika-icon notika-left-arrow"></i></button>
-                            <button class="btn btn-teal teal-icon-notika"><i class="notika-icon notika-refresh"></i></button>
-                            <button class="btn btn-orange orange-icon-notika"><i class="notika-icon notika-checked"></i></button>
-                            <button class="btn btn-cyan cyan-icon-notika"><i class="notika-icon notika-close"></i></button>
-                            <button class="btn btn-lightgreen lightgreen-icon-notika"><i class="notika-icon notika-menus"></i></button>
-                            <button class="btn btn-lime lime-icon-notika"><i class="notika-icon notika-star"></i></button>
-                            <button class="btn btn-amber amber-icon-notika"><i class="notika-icon notika-down-arrow"></i></button>
-                            <button class="btn btn-gray gray-icon-notika"><i class="notika-icon notika-up-arrow"></i></button>
-                            <button class="btn btn-lightblue lightblue-icon-notika"><i class="notika-icon notika-next"></i></button>
-                            <button class="btn btn-deeporange deeporange-icon-notika"><i class="notika-icon notika-phone"></i></button>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="normal-table-list mg-t-30">
+                        <div class="basic-tb-hd">
+                            <h2>Hover Row</h2>
+                            <p>Enable a hover state (<code>.table-hover</code>) on table rows within a tbody</p>
                         </div>
-                        <div class="button-icon-btn button-icon-btn-rd mg-t-30 butt-mg-t-20">
-                            <button class="btn btn-default btn-icon-notika"><i class="notika-icon notika-house"></i></button>
-                            <button class="btn btn-default btn-icon-notika"><i class="notika-icon notika-search"></i></button>
-                            <button class="btn btn-default btn-icon-notika"><i class="notika-icon notika-menu"></i></button>
-                            <button class="btn btn-default btn-icon-notika"><i class="notika-icon notika-right-arrow"></i></button>
-                            <button class="btn btn-default btn-icon-notika"><i class="notika-icon notika-left-arrow"></i></button>
-                            <button class="btn btn-default btn-icon-notika"><i class="notika-icon notika-refresh"></i></button>
-                            <button class="btn btn-default btn-icon-notika"><i class="notika-icon notika-checked"></i></button>
-                            <button class="btn btn-default btn-icon-notika"><i class="notika-icon notika-close"></i></button>
-                            <button class="btn btn-default btn-icon-notika"><i class="notika-icon notika-menus"></i></button>
-                            <button class="btn btn-default btn-icon-notika"><i class="notika-icon notika-star"></i></button>
-                            <button class="btn btn-default btn-icon-notika"><i class="notika-icon notika-down-arrow"></i></button>
-                            <button class="btn btn-default btn-icon-notika"><i class="notika-icon notika-up-arrow"></i></button>
-                            <button class="btn btn-default btn-icon-notika"><i class="notika-icon notika-next"></i></button>
-                            <button class="btn btn-default btn-icon-notika"><i class="notika-icon notika-phone"></i></button>
+                        <div class="bsc-tbl-hvr">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>First Name</th>
+                                        <th>Last Name</th>
+                                        <th>Username</th>
+                                        <th>Nickname</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Alexandra</td>
+                                        <td>Christopher</td>
+                                        <td>@makinton</td>
+                                        <td>Ducky</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>Madeleine</td>
+                                        <td>Hollaway</td>
+                                        <td>@hollway</td>
+                                        <td>Cheese</td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td>Sebastian</td>
+                                        <td>Johnston</td>
+                                        <td>@sebastian</td>
+                                        <td>Jaycee</td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td>Mitchell</td>
+                                        <td>Christin</td>
+                                        <td>@mitchell4u</td>
+                                        <td>AdskiDeAnus</td>
+                                    </tr>
+                                    <tr>
+                                        <td>5</td>
+                                        <td>Elizabeth</td>
+                                        <td>Belkitt</td>
+                                        <td>@belkitt</td>
+                                        <td>Goat</td>
+                                    </tr>
+                                    <tr>
+                                        <td>6</td>
+                                        <td>Benjamin</td>
+                                        <td>Parnell</td>
+                                        <td>@wayne234</td>
+                                        <td>Pokie</td>
+                                    </tr>
+                                    <tr>
+                                        <td>7</td>
+                                        <td>Katherine</td>
+                                        <td>Buckland</td>
+                                        <td>@anitabelle</td>
+                                        <td>Wokie</td>
+                                    </tr>
+                                    <tr>
+                                        <td>8</td>
+                                        <td>Nicholas</td>
+                                        <td>Walmart</td>
+                                        <td>@mwalmart</td>
+                                        <td>Spike</td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
-                        <div class="button-icon-btn button-icon-btn-cl sm-res-mg-t-30">
-                            <button class="btn btn-primary primary-icon-notika btn-reco-mg btn-button-mg"><i class="notika-icon notika-house"></i></button>
-                            <button class="btn btn-info info-icon-notika btn-reco-mg btn-button-mg"><i class="notika-icon notika-search"></i></button>
-                            <button class="btn btn-success success-icon-notika btn-reco-mg btn-button-mg"><i class="notika-icon notika-menu"></i></button>
-                            <button class="btn btn-warning warning-icon-notika btn-reco-mg btn-button-mg"><i class="notika-icon notika-right-arrow"></i></button>
-                            <button class="btn btn-danger danger-icon-notika btn-reco-mg btn-button-mg"><i class="notika-icon notika-left-arrow"></i></button>
-                            <button class="btn btn-teal teal-icon-notika btn-reco-mg btn-button-mg"><i class="notika-icon notika-refresh"></i></button>
-                            <button class="btn btn-orange orange-icon-notika btn-reco-mg btn-button-mg"><i class="notika-icon notika-checked"></i></button>
-                            <button class="btn btn-cyan cyan-icon-notika btn-reco-mg btn-button-mg"><i class="notika-icon notika-close"></i></button>
-                            <button class="btn btn-lightgreen lightgreen-icon-notika btn-reco-mg btn-button-mg"><i class="notika-icon notika-menus"></i></button>
-                            <button class="btn btn-lime lime-icon-notika btn-reco-mg btn-button-mg"><i class="notika-icon notika-star"></i></button>
-                            <button class="btn btn-amber amber-icon-notika btn-reco-mg btn-button-mg"><i class="notika-icon notika-down-arrow"></i></button>
-                            <button class="btn btn-gray gray-icon-notika btn-reco-mg btn-button-mg"><i class="notika-icon notika-up-arrow"></i></button>
-                            <button class="btn btn-lightblue lightblue-icon-notika btn-reco-mg btn-button-mg"><i class="notika-icon notika-next"></i></button>
-                            <button class="btn btn-deeporange deeporange-icon-notika btn-reco-mg btn-button-mg"><i class="notika-icon notika-phone"></i></button>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="normal-table-list mg-t-30">
+                        <div class="basic-tb-hd">
+                            <h2>Table Condensed</h2>
+                            <p>Make tables more compact by cutting cell padding in half (<code>.table-condensed</code>).</p>
+                        </div>
+                        <div class="bsc-tbl-cds">
+                            <table class="table table-condensed">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>First Name</th>
+                                        <th>Last Name</th>
+                                        <th>Username</th>
+                                        <th>Nickname</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Alexandra</td>
+                                        <td>Christopher</td>
+                                        <td>@makinton</td>
+                                        <td>Ducky</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>Madeleine</td>
+                                        <td>Hollaway</td>
+                                        <td>@hollway</td>
+                                        <td>Cheese</td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td>Sebastian</td>
+                                        <td>Johnston</td>
+                                        <td>@sebastian</td>
+                                        <td>Jaycee</td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td>Mitchell</td>
+                                        <td>Christin</td>
+                                        <td>@mitchell4u</td>
+                                        <td>AdskiDeAnus</td>
+                                    </tr>
+                                    <tr>
+                                        <td>5</td>
+                                        <td>Elizabeth</td>
+                                        <td>Belkitt</td>
+                                        <td>@belkitt</td>
+                                        <td>Goat</td>
+                                    </tr>
+                                    <tr>
+                                        <td>6</td>
+                                        <td>Benjamin</td>
+                                        <td>Parnell</td>
+                                        <td>@wayne234</td>
+                                        <td>Pokie</td>
+                                    </tr>
+                                    <tr>
+                                        <td>7</td>
+                                        <td>Katherine</td>
+                                        <td>Buckland</td>
+                                        <td>@anitabelle</td>
+                                        <td>Wokie</td>
+                                    </tr>
+                                    <tr>
+                                        <td>8</td>
+                                        <td>Nicholas</td>
+                                        <td>Walmart</td>
+                                        <td>@mwalmart</td>
+                                        <td>Spike</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="normal-table-list mg-t-30">
+                        <div class="basic-tb-hd">
+                            <h2>Contextual classes</h2>
+                            <p>Use contextual classes (<code>.info, .warning, .success, .danger</code>) to color table rows or individual cells.</p>
+                        </div>
+                        <div class="bsc-tbl-cls">
+                            <table class="table table-cl">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>First Name</th>
+                                        <th>Last Name</th>
+                                        <th>Username</th>
+                                        <th>Nickname</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="active">
+                                        <td>1</td>
+                                        <td>Alexandra</td>
+                                        <td>Christopher</td>
+                                        <td>@makinton</td>
+                                        <td>Ducky</td>
+                                    </tr>
+                                    <tr class="info">
+                                        <td>3</td>
+                                        <td>Sebastian</td>
+                                        <td>Johnston</td>
+                                        <td>@sebastian</td>
+                                        <td>Jaycee</td>
+                                    </tr>
+                                    <tr class="warning">
+                                        <td>4</td>
+                                        <td>Mitchell</td>
+                                        <td>Christin</td>
+                                        <td>@mitchell4u</td>
+                                        <td>AdskiDeAnus</td>
+                                    </tr>
+                                    <tr class="success">
+                                        <td>2</td>
+                                        <td>Madeleine</td>
+                                        <td>Hollaway</td>
+                                        <td>@hollway</td>
+                                        <td>Cheese</td>
+                                    </tr>
+                                    <tr class="danger">
+                                        <td>5</td>
+                                        <td>Elizabeth</td>
+                                        <td>Belkitt</td>
+                                        <td>@belkitt</td>
+                                        <td>Goat</td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Button area End-->
+    <!-- Normal Table area End-->
     <!-- Start Footer area-->
     <div class="footer-copyright-area">
         <div class="container">
@@ -900,7 +1153,7 @@
     <!--  todo JS
 		============================================ -->
     <script src="js/todo/jquery.todo.js"></script>
-    <!--  wave JS
+	<!--  wave JS
 		============================================ -->
     <script src="js/wave/waves.min.js"></script>
     <script src="js/wave/wave-active.js"></script>

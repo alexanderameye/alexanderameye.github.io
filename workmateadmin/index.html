@@ -292,7 +292,7 @@
 
                                     var url = "https://studev.groept.be/api/a18_sd308/GetNumberOfVotes";
                                     $.getJSON(url + "/.php", function(data) {
-                                        document.getElementById("numberOfVotes").innerHTML = data[0]["COUNT(*)"].toString();
+                                        document.getElementById("numberOfVotes").innerHTML = data[0]["COUNT(DISTINCT questions_question_id, users_email)"].toString();
                                     });
 
                                     var a = document.getElementById("addUser");

@@ -2,6 +2,9 @@
 <html>
 
 <head>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
     <link rel="icon" type="image/png" href="assets/workmate.png" sizes="32x32" />
     <title>Workmate</title>
     <style type="text/css">
@@ -9,30 +12,28 @@
             margin: 0.0px 0.0px 0.0px 0.0px;
             font: 13.0px Arial
         }
-
+        
         p.p2 {
             margin: 0.0px 0.0px 0.0px 0.0px;
             font: 13.0px Arial;
             min-height: 14.0px
         }
-
-
-
+        
         a:link {
             color: blue;
             text-decoration: none;
             font-weight: bold;
         }
-
+        
         a:visited {
             color: blue;
             text-decoration: none;
         }
-
+        
         a:hover {
             text-decoration: underline;
         }
-
+        
         pre {
             font: 13.0px Courier;
             width: 800px;
@@ -48,35 +49,35 @@
             word-wrap: break-word;
             /* IE 5.5+ */
         }
-
+        
         span.white {
             color: white;
         }
-
+        
         p span.show {
             display: none;
         }
-
+        
         p:hover span.show {
             display: inline;
         }
-
+        
         p:hover span.noshow {
             display: none;
         }
-
+        
         form {
             display: table;
         }
-
+        
         p {
             display: table-row;
         }
-
+        
         label {
             display: table-cell;
         }
-
+        
         input {
             display: table-cell;
         }
@@ -85,29 +86,42 @@
 
 <body>
     <pre><h1 style="color:blue;">Workmate Admin</h1><a href="../index.html">Back to menu</a>
-        
-        <h2>Add User</h2><div class="container"><form method="post" id="add_user_form" action = "JavaScript:addUserUrl()"><p><label for="username">Username:</label>
-            <input id="username" type="text" name="username">
-          </p>
-          <p>
-            <label for="email">Email:</label>
-            <input id="email" type="email" name="email">
-          </p><p>
-                <label for="password">Password:</label>
-                <input id="password" type="text" name="password">
-                <br>
-              </p><input type="submit" value="Add User">
-</form> </div>
 
-<script>
-function addUserUrl() {
-    var url = "https://studev.groept.be/api/a18_sd308/AddUser/"
-    var email = document.getElementById("email").value;
-    var password = document.getElementById("password").value;
-    var username = document.getElementById("username").value;
-    return "https://studev.groept.be/api/a18_sd308/AddUser/alexanderameye/alexanderameye@gmail.com/marlex";
-  }
-</script>
+        <h2>Add User</h2><div class="container"><form id="add_user_form" action = "javascript: AddUser()">
+            <p><label for="username">Username:</label>
+            <input id="username" type="text" name="username"></p>
+            <p><label for="email">Email:</label>
+            <input id="email" type="email" name="email"></p>
+            <p><label for="password">Password:</label>
+            <input id="password" type="text" name="password">
+            <br>
+        </p>
+            <input type="submit" value="Add User"></form> </div>
+
+
+        <h2>Add Question</h2><div class="container"><form id="add_question_form" action = "javascript: AddQuestion()">
+            <p><label for="title">Title:</label>
+            <input id="title" type="text" name="title"></p>
+            <p><label for="type">Type:</label><select id="type" name="type" type="type">
+                        <option value="Select" type="text">Select</option>
+                        <option value="MultiSelect" type="text">MultiSelect</option>
+                        <option value="String" type="text">String</option>
+                      </select></p>
+            
+            <p><label for="options">Options:</label>
+                <input id="options" type="text" name="options">
+
+    <button onclick="addItem()" type="button">Add option</button>
+    <button onclick="removeItem()" type="button">Remove option</button>
+    <ul id="options-list"></ul></p>
+    <p><label for="reward">Reward:</label>
+        <input id="reward" type="text" name="reward">
+            <br>
+        </p>
+            <input type="submit" value="Add Question"></form> </div>
+
+    
+    <script src="script.js"></script>
 
 
         <hr>

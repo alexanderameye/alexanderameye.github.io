@@ -99,6 +99,24 @@
                     <!-- Content Row -->
                     <div class="row">
 
+
+                        <!-- Earnings (Monthly) Card Example -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-warning shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Users</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="numberOfUsers"></div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-user fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                         <!-- Earnings (Monthly) Card Example -->
                         <div class="col-xl-3 col-md-6 mb-4">
                             <div class="card border-left-primary shadow h-100 py-2">
@@ -106,10 +124,10 @@
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Questions</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">86</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="numberOfQuestions"></div>
                                         </div>
                                         <div class="col-auto">
-                                            <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                                            <i class="fas fa-question-circle fa-2x text-gray-300"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -122,20 +140,28 @@
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Response Rate</div>
-                                            <div class="row no-gutters align-items-center">
-                                                <div class="col-auto">
-                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">82%</div>
-                                                </div>
-                                                <div class="col">
-                                                    <div class="progress progress-sm mr-2">
-                                                        <div class="progress-bar bg-info" role="progressbar" style="width: 82%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Votes</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="numberOfVotes"></div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-comments fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Earnings (Monthly) Card Example -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-success shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Rewards</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="numberOfRewards"></div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-star fa-2x text-gray-300"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -176,6 +202,27 @@
 
                             <script type="text/javascript">
                                 window.onload = function() {
+                                    var url = "https://studev.groept.be/api/a18_sd308/GetNumberOfQuestions";
+                                    $.getJSON(url + "/.php", function(data) {
+                                        document.getElementById("numberOfQuestions").innerHTML = data[0]["COUNT(*)"].toString();
+                                    });
+
+                                    var url = "https://studev.groept.be/api/a18_sd308/GetNumberOfUsers";
+                                    $.getJSON(url + "/.php", function(data) {
+                                        document.getElementById("numberOfUsers").innerHTML = data[0]["COUNT(*)"].toString();
+                                    });
+
+
+                                    var url = "https://studev.groept.be/api/a18_sd308/GetNumberOfRewards";
+                                    $.getJSON(url + "/.php", function(data) {
+                                        document.getElementById("numberOfRewards").innerHTML = data[0]["COUNT(*)"].toString();
+                                    });
+
+                                    var url = "https://studev.groept.be/api/a18_sd308/GetNumberOfVotes";
+                                    $.getJSON(url + "/.php", function(data) {
+                                        document.getElementById("numberOfVotes").innerHTML = data[0]["COUNT(*)"].toString();
+                                    });
+
                                     var a = document.getElementById("addUser");
                                     a.onclick = function() {
                                         var url = "https://studev.groept.be/api/a18_sd308/AddUser/";
@@ -337,6 +384,12 @@
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
                         <span>Copyright &copy; Workmate 2019</span>
+
+                    </div>
+                    <br>
+                    <div class="copyright text-center my-auto">
+                        <span>v1.0.0</span>
+
                     </div>
                 </div>
             </footer>

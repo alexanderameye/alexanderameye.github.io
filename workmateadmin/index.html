@@ -189,6 +189,48 @@
                                         return false;
                                     }
 
+
+
+                                    var d = document.getElementById("addReward");
+                                    d.onclick = function() {
+                                        var url = "https://studev.groept.be/api/a18_sd308/AddReward/";
+                                        var title = document.getElementById("title").value;
+                                        var price = document.getElementById("price").value;
+                                        var description = document.getElementById("description").value;
+                                        var category = document.getElementById("category").value;
+                                        $.get(url + title + "/" + price + "/" + description + "/" + category + "/.php", alert("Reward succesfully added!"));
+                                        document.getElementById("title").value = "";
+                                        document.getElementById("price").value = "";
+                                        document.getElementById("category").value = "";
+                                        document.getElementById("description").value = "";
+                                        return false;
+                                    }
+
+
+
+                                    var b = document.getElementById("addOption");
+                                    b.onclick = function() {
+                                        var ul = document.getElementById("options-list");
+                                        var candidate = document.getElementById("options");
+                                        var li = document.createElement("li");
+
+                                        if (candidate.value != "") {
+                                            li.setAttribute('id', candidate.value);
+                                            li.appendChild(document.createTextNode(candidate.value));
+                                            ul.appendChild(li);
+                                        }
+                                        return false;
+                                    }
+
+                                    var c = document.getElementById("removeOption");
+                                    c.onclick = function() {
+                                        var ul = document.getElementById("options-list");
+                                        var candidate = document.getElementById("options");
+                                        var item = document.getElementById(candidate.value);
+                                        ul.removeChild(item);
+                                        return false;
+                                    }
+
                                 }
                             </script>
 
@@ -242,38 +284,6 @@
                             </div>
                         </div>
 
-
-
-                        <script type="text/javascript">
-                            window.onload = function() {
-
-                                var b = document.getElementById("addOption");
-                                b.onclick = function() {
-                                    var ul = document.getElementById("options-list");
-                                    var candidate = document.getElementById("options");
-                                    var li = document.createElement("li");
-
-                                    if (candidate.value != "") {
-                                        li.setAttribute('id', candidate.value);
-                                        li.appendChild(document.createTextNode(candidate.value));
-                                        ul.appendChild(li);
-                                    }
-                                    return false;
-                                }
-
-                                var c = document.getElementById("removeOption");
-                                c.onclick = function() {
-                                    var ul = document.getElementById("options-list");
-                                    var candidate = document.getElementById("options");
-                                    var item = document.getElementById(candidate.value);
-                                    ul.removeChild(item);
-                                    return false;
-                                }
-
-                            }
-                        </script>
-
-
                         <div class="col-lg-6">
                             <!-- Basic Card Example -->
                             <div class="card shadow mb-4">
@@ -314,28 +324,6 @@
                                 </div>
                             </div>
                         </div>
-
-
-                        <script type="text/javascript">
-                            window.onload = function() {
-                                var d = document.getElementById("addReward");
-                                d.onclick = function() {
-                                    var url = "https://studev.groept.be/api/a18_sd308/AddReward/";
-                                    var title = document.getElementById("title").value;
-                                    var price = document.getElementById("price").value;
-                                    var description = document.getElementById("description").value;
-                                    var category = document.getElementById("category").value;
-                                    $.get(url + title + "/" + price + "/" + description + "/" + category + "/.php", alert("Reward succesfully added!"));
-                                    document.getElementById("title").value = "";
-                                    document.getElementById("price").value = "";
-                                    document.getElementById("category").value = "";
-                                    document.getElementById("description").value = "";
-                                    return false;
-                                }
-
-                            }
-                        </script>
-
                     </div>
 
                 </div>

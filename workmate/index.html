@@ -303,7 +303,7 @@
                                         var username = document.getElementById("username").value;
                                         var email = document.getElementById("email").value;
                                         var password = document.getElementById("password").value;
-                                        $.get(url + username + "/" + email + "/" + password + "/.php", alert("User succesfully added!"));
+                                        $.get(url + username + "/" + email + "/" + password + "/.php", alert("User added"));
                                         document.getElementById("username").value = "";
                                         document.getElementById("email").value = "";
                                         document.getElementById("password").value = "";
@@ -318,7 +318,7 @@
                                         var price = document.getElementById("price").value;
                                         var description = document.getElementById("description").value;
                                         var category = document.getElementById("category").value;
-                                        $.get(url + title + "/" + price + "/" + description + "/" + category + "/.php", alert("Reward succesfully added!"));
+                                        $.get(url + title + "/" + price + "/" + description + "/" + category + "/.php", alert("Reward added"));
                                         document.getElementById("title").value = "";
                                         document.getElementById("price").value = "";
                                         document.getElementById("category").value = "";
@@ -326,7 +326,32 @@
                                         return false;
                                     }
 
+                                    var e = document.getElementById("addQuestion");
+                                    e.onclick = function() {
+                                        var url = "https://studev.groept.be/api/a18_sd308/AddQuestion/";
+                                        var title = document.getElementById("questionTitle").value;
+                                        var type = document.getElementById("questionType").value;
+                                        var reward = document.getElementById("questionReward").value;
+                                        $.get(url + title + "/" + type + "/" + reward + "/.php", function(data) {
+                                            $.getJSON("https://studev.groept.be/api/a18_sd308/GetQuestionId/" + title + "/.php", function(data) {
+                                                var id = data[0]["question_id"];
+                                                var ul = document.getElementById("options-list");
+                                                var items = ul.getElementsByTagName("li");
+                                                for (var i = 0; i < items.length; ++i) {
+                                                    var text = items[i].getAttribute("id");
+                                                    $.get("https://studev.groept.be/api/a18_sd308/AddOption/" + text + "/" + id + "/.php", function(data) {});
+                                                }
 
+                                                alert("Question added");
+                                                document.getElementById("questionTitle").value = "";
+                                                document.getElementById("questionReward").value = "";
+                                                document.getElementById("questionType").value = "";
+                                                document.getElementById("options-list").innerHTML = "";
+                                                document.getElementById("options").value = "";
+                                            });
+                                            return false;
+                                        });
+                                    }
 
                                     var b = document.getElementById("addOption");
                                     b.onclick = function() {
@@ -362,10 +387,10 @@
                                 <div class="card-body">
                                     <div class="form-group">
                                         <label>Title</label>
-                                        <input type="text" class="form-control">
+                                        <input id="questionTitle" type="text" class="form-control">
                                         <br>
                                         <label>Type</label>
-                                        <select class="form-control">
+                                        <select id="questionType" class="form-control">
                                         <option>String</option>
                                         <option>Select</option>
                                         <option>MultiSelect</option>
@@ -373,7 +398,7 @@
                                         <br>
 
                                         <label>Reward</label>
-                                        <input type="number" class="form-control">
+                                        <input id="questionReward" type="number" class="form-control">
                                         <br>
 
                                         <label>Options</label>
@@ -394,7 +419,7 @@
                                     </div>
 
 
-                                    <a href="#" class="btn btn-primary btn-icon-split">
+                                    <a href="#" id="addQuestion" class="btn btn-primary btn-icon-split">
                                         <span class="icon text-white-50">
                                         <i class="fas fa-check"></i>
                                       </span>

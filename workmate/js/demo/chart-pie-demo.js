@@ -28,7 +28,7 @@ var myPieChart = new Chart(ctx, {
         labels: [],
         datasets: [{
             data: [],
-            backgroundColor: ['#3366CC', '#DC3912', '#FF9900', '#109618', '#990099', '#3B3EAC', '##0099C6'],
+            backgroundColor: ['#3366CC', '#DC3912', '#FF9900', '#109618', '#990099', '#3B3EAC', '#0099C6'],
             hoverBorderColor: "rgba(234, 236, 244, 1)",
         }],
     },

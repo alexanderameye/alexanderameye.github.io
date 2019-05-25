@@ -8,7 +8,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-
     <title>Workmate</title>
 
     <!-- Custom fonts for this template-->
@@ -298,6 +297,7 @@
                                         var username = document.getElementById("username").value;
                                         var email = document.getElementById("email").value;
                                         var password = document.getElementById("password").value;
+
                                         $.get(url + username + "/" + email + "/" + password + "/.php", alert("User added"));
                                         document.getElementById("username").value = "";
                                         document.getElementById("email").value = "";

@@ -282,38 +282,30 @@
                                     $.getJSON(url + "/.php ", function(data) {
                                         document.getElementById("numberOfQuestions ").innerHTML = data[0]["COUNT(*) "].toString();
                                     });
-
                                     var url = "https://studev.groept.be/api/a18_sd308/GetNumberOfUsers ";
                                     $.getJSON(url + "/.php ", function(data) {
                                         document.getElementById("numberOfUsers ").innerHTML = data[0]["COUNT(*) "].toString();
                                     });
-
-
                                     var url = "https://studev.groept.be/api/a18_sd308/GetNumberOfRewards ";
                                     $.getJSON(url + "/.php ", function(data) {
                                         document.getElementById("numberOfRewards ").innerHTML = data[0]["COUNT(*) "].toString();
                                     });
-
                                     var url = "https://studev.groept.be/api/a18_sd308/GetNumberOfVotes ";
                                     $.getJSON(url + "/.php ", function(data) {
                                         document.getElementById("numberOfVotes ").innerHTML = data[0]["COUNT(DISTINCT questions_question_id, users_email) "].toString();
                                     });
-
                                     var a = document.getElementById("addUser ");
                                     a.onclick = function() {
                                         var url = "https://studev.groept.be/api/a18_sd308/AddUser/ ";
                                         var username = document.getElementById("username ").value;
                                         var email = document.getElementById("email ").value;
                                         var password = document.getElementById("password ").value;
-
-
                                         $.get(url + username + "/ " + email + "/ " + password + "/.php ", alert("User added "));
                                         document.getElementById("username ").value = " ";
                                         document.getElementById("email ").value = " ";
                                         document.getElementById("password ").value = " ";
                                         return false;
                                     }
-
                                     var d = document.getElementById("addReward ");
                                     d.onclick = function() {
                                         var url = "https://studev.groept.be/api/a18_sd308/AddReward/ ";
@@ -328,7 +320,6 @@
                                         document.getElementById("description ").value = " ";
                                         return false;
                                     }
-
                                     var e = document.getElementById("addQuestion ");
                                     e.onclick = function() {
                                         var url = "https://studev.groept.be/api/a18_sd308/AddQuestion/ ";
@@ -344,7 +335,6 @@
                                                     var text = items[i].getAttribute("id ");
                                                     $.get("https://studev.groept.be/api/a18_sd308/AddOption/ " + text + "/ " + id + "/.php ", function(data) {});
                                                 }
-
                                                 alert("Question added ");
                                                 document.getElementById("questionTitle ").value = " ";
                                                 document.getElementById("questionReward ").value = " ";
@@ -355,13 +345,11 @@
                                             return false;
                                         });
                                     }
-
                                     var b = document.getElementById("addOption ");
                                     b.onclick = function() {
                                         var ul = document.getElementById("options-list ");
                                         var candidate = document.getElementById("options ");
                                         var li = document.createElement("li ");
-
                                         if (candidate.value != " ") {
                                             li.setAttribute('id', candidate.value);
                                             li.appendChild(document.createTextNode(candidate.value));
@@ -369,7 +357,6 @@
                                         }
                                         return false;
                                     }
-
                                     var c = document.getElementById("removeOption ");
                                     c.onclick = function() {
                                         var ul = document.getElementById("options-list ");
@@ -378,7 +365,6 @@
                                         ul.removeChild(item);
                                         return false;
                                     }
-
                                 }
                             </script>
 

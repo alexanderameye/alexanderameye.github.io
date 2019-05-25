@@ -275,13 +275,6 @@
                             </div>
 
 
-                            <script src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/aes.js">
-                                function encrypt(password) {
-                                    var KEY = "1Hbfh667adfDEJ78 ";
-                                    return CryptoJS.AES.encrypt(password);
-                                }
-                            </script>
-
 
                             <script type="text/javascript ">
                                 window.onload = function() {
@@ -313,16 +306,13 @@
                                         var email = document.getElementById("email ").value;
                                         var password = document.getElementById("password ").value;
 
-                                        var encryptedpassword = encrypt(password);
 
-                                        $.get(url + username + "/ " + email + "/ " + encryptedpassword + "/.php ", alert("User added "));
+                                        $.get(url + username + "/ " + email + "/ " + password + "/.php ", alert("User added "));
                                         document.getElementById("username ").value = " ";
                                         document.getElementById("email ").value = " ";
                                         document.getElementById("password ").value = " ";
                                         return false;
                                     }
-
-
 
                                     var d = document.getElementById("addReward ");
                                     d.onclick = function() {

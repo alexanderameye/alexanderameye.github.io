@@ -298,7 +298,7 @@
                                         var email = document.getElementById("email").value;
                                         var password = document.getElementById("password").value;
 
-                                        $.get(url + username + "/" + email + "/" + password + "/.php", alert("User added"));
+                                        $.getJSON(url + username + "/" + email + "/" + password + "/.php", alert("User added"));
                                         document.getElementById("username").value = "";
                                         document.getElementById("email").value = "";
                                         document.getElementById("password").value = "";
@@ -318,16 +318,31 @@
                                         document.getElementById("description").value = "";
                                         return false;
                                     }
+
+                                    function replaceAllSpaces(str) {
+
+                                        // creates an array of the given string seperated by comma
+                                        var arr = str.split(' ');
+
+                                        // creates a string of the given array joined by %20  
+                                        var modifiedStr = arr.join('%20');
+
+                                        return modifiedStr;
+                                    }
+
+
                                     var e = document.getElementById("addQuestion");
                                     e.onclick = function() {
                                         var url = "https://studev.groept.be/api/a18_sd308/AddQuestion/";
                                         var title = document.getElementById("questionTitle").value;
                                         var type = document.getElementById("questionType").value;
                                         var reward = document.getElementById("questionReward").value;
-
                                         console.log(title);
                                         console.log(type);
                                         console.log(reward);
+                                        title = replaceAllSpaces(title);
+                                        console.log(title);
+
                                         $.get(url + title + "/" + type + "/" + reward + "/.php", function(data) {
                                             $.getJSON("https://studev.groept.be/api/a18_sd308/GetQuestionId/" + title + "/.php", function(data) {
                                                 var id = data[0]["question_id"];
@@ -335,7 +350,7 @@
                                                 var items = ul.getElementsByTagName("li");
                                                 for (var i = 0; i < items.length; ++i) {
                                                     var text = items[i].getAttribute("id");
-                                                    $.get("https://studev.groept.be/api/a18_sd308/AddOption/" + text + "/" + id + "/.php", function(data) {});
+                                                    $.getJSON("https://studev.groept.be/api/a18_sd308/AddOption/" + text + "/" + id + "/.php", function(data) {});
                                                 }
                                                 alert("Question added");
                                                 document.getElementById("questionTitle").value = "";

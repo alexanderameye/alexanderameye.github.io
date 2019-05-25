@@ -325,9 +325,9 @@
                                         var type = document.getElementById("questionType").value;
                                         var reward = document.getElementById("questionReward").value;
 
-                                        console.log("Title: " + title);
-                                        console.log("Type: " + type);
-                                        console.log("Reward: " + reward);
+                                        console.log(title);
+                                        console.log(type);
+                                        console.log(reward);
                                         $.get(url + title + "/" + type + "/" + reward + "/.php", function(data) {
                                             $.getJSON("https://studev.groept.be/api/a18_sd308/GetQuestionId/" + title + "/.php", function(data) {
                                                 var id = data[0]["question_id"];

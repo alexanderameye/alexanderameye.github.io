@@ -274,27 +274,25 @@
                                 </div>
                             </div>
 
-
-
                             <script type="text/javascript ">
                                 window.onload = function() {
                                     var url = "https://studev.groept.be/api/a18_sd308/GetNumberOfQuestions ";
                                     $.getJSON(url + "/.php ", function(data) {
-                                        document.getElementById("numberOfQuestions ").innerHTML = data[0]["COUNT(*) "].toString();
+                                        document.getElementById("numberOfQuestions").innerHTML = data[0]["COUNT(*)"].toString();
                                     });
                                     var url = "https://studev.groept.be/api/a18_sd308/GetNumberOfUsers ";
                                     $.getJSON(url + "/.php ", function(data) {
-                                        document.getElementById("numberOfUsers ").innerHTML = data[0]["COUNT(*) "].toString();
+                                        document.getElementById("numberOfUsers").innerHTML = data[0]["COUNT(*)"].toString();
                                     });
                                     var url = "https://studev.groept.be/api/a18_sd308/GetNumberOfRewards ";
                                     $.getJSON(url + "/.php ", function(data) {
-                                        document.getElementById("numberOfRewards ").innerHTML = data[0]["COUNT(*) "].toString();
+                                        document.getElementById("numberOfRewards").innerHTML = data[0]["COUNT(*)"].toString();
                                     });
                                     var url = "https://studev.groept.be/api/a18_sd308/GetNumberOfVotes ";
                                     $.getJSON(url + "/.php ", function(data) {
-                                        document.getElementById("numberOfVotes ").innerHTML = data[0]["COUNT(DISTINCT questions_question_id, users_email) "].toString();
+                                        document.getElementById("numberOfVotes").innerHTML = data[0]["COUNT(DISTINCT questions_question_id, users_email)"].toString();
                                     });
-                                    var a = document.getElementById("addUser ");
+                                    var a = document.getElementById("addUser");
                                     a.onclick = function() {
                                         var url = "https://studev.groept.be/api/a18_sd308/AddUser/ ";
                                         var username = document.getElementById("username ").value;

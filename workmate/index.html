@@ -274,92 +274,105 @@
                                 </div>
                             </div>
 
-                            <script type="text/javascript">
+
+                            <script src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/aes.js">
+                                function encrypt(password) {
+                                    var KEY = "1Hbfh667adfDEJ78 ";
+                                    return CryptoJS.AES.encrypt(password);
+                                }
+                            </script>
+
+
+                            <script type="text/javascript ">
                                 window.onload = function() {
-                                    var url = "https://studev.groept.be/api/a18_sd308/GetNumberOfQuestions";
-                                    $.getJSON(url + "/.php", function(data) {
-                                        document.getElementById("numberOfQuestions").innerHTML = data[0]["COUNT(*)"].toString();
+                                    var url = "https://studev.groept.be/api/a18_sd308/GetNumberOfQuestions ";
+                                    $.getJSON(url + "/.php ", function(data) {
+                                        document.getElementById("numberOfQuestions ").innerHTML = data[0]["COUNT(*) "].toString();
                                     });
 
-                                    var url = "https://studev.groept.be/api/a18_sd308/GetNumberOfUsers";
-                                    $.getJSON(url + "/.php", function(data) {
-                                        document.getElementById("numberOfUsers").innerHTML = data[0]["COUNT(*)"].toString();
+                                    var url = "https://studev.groept.be/api/a18_sd308/GetNumberOfUsers ";
+                                    $.getJSON(url + "/.php ", function(data) {
+                                        document.getElementById("numberOfUsers ").innerHTML = data[0]["COUNT(*) "].toString();
                                     });
 
 
-                                    var url = "https://studev.groept.be/api/a18_sd308/GetNumberOfRewards";
-                                    $.getJSON(url + "/.php", function(data) {
-                                        document.getElementById("numberOfRewards").innerHTML = data[0]["COUNT(*)"].toString();
+                                    var url = "https://studev.groept.be/api/a18_sd308/GetNumberOfRewards ";
+                                    $.getJSON(url + "/.php ", function(data) {
+                                        document.getElementById("numberOfRewards ").innerHTML = data[0]["COUNT(*) "].toString();
                                     });
 
-                                    var url = "https://studev.groept.be/api/a18_sd308/GetNumberOfVotes";
-                                    $.getJSON(url + "/.php", function(data) {
-                                        document.getElementById("numberOfVotes").innerHTML = data[0]["COUNT(DISTINCT questions_question_id, users_email)"].toString();
+                                    var url = "https://studev.groept.be/api/a18_sd308/GetNumberOfVotes ";
+                                    $.getJSON(url + "/.php ", function(data) {
+                                        document.getElementById("numberOfVotes ").innerHTML = data[0]["COUNT(DISTINCT questions_question_id, users_email) "].toString();
                                     });
 
-                                    var a = document.getElementById("addUser");
+                                    var a = document.getElementById("addUser ");
                                     a.onclick = function() {
-                                        var url = "https://studev.groept.be/api/a18_sd308/AddUser/";
-                                        var username = document.getElementById("username").value;
-                                        var email = document.getElementById("email").value;
-                                        var password = document.getElementById("password").value;
-                                        $.get(url + username + "/" + email + "/" + password + "/.php", alert("User added"));
-                                        document.getElementById("username").value = "";
-                                        document.getElementById("email").value = "";
-                                        document.getElementById("password").value = "";
+                                        var url = "https://studev.groept.be/api/a18_sd308/AddUser/ ";
+                                        var username = document.getElementById("username ").value;
+                                        var email = document.getElementById("email ").value;
+                                        var password = document.getElementById("password ").value;
+
+                                        var encryptedpassword = encrypt(password);
+
+                                        $.get(url + username + "/ " + email + "/ " + encryptedpassword + "/.php ", alert("User added "));
+                                        document.getElementById("username ").value = " ";
+                                        document.getElementById("email ").value = " ";
+                                        document.getElementById("password ").value = " ";
                                         return false;
                                     }
 
 
-                                    var d = document.getElementById("addReward");
+
+                                    var d = document.getElementById("addReward ");
                                     d.onclick = function() {
-                                        var url = "https://studev.groept.be/api/a18_sd308/AddReward/";
-                                        var title = document.getElementById("title").value;
-                                        var price = document.getElementById("price").value;
-                                        var description = document.getElementById("description").value;
-                                        var category = document.getElementById("category").value;
-                                        $.get(url + title + "/" + price + "/" + description + "/" + category + "/.php", alert("Reward added"));
-                                        document.getElementById("title").value = "";
-                                        document.getElementById("price").value = "";
-                                        document.getElementById("category").value = "";
-                                        document.getElementById("description").value = "";
+                                        var url = "https://studev.groept.be/api/a18_sd308/AddReward/ ";
+                                        var title = document.getElementById("title ").value;
+                                        var price = document.getElementById("price ").value;
+                                        var description = document.getElementById("description ").value;
+                                        var category = document.getElementById("category ").value;
+                                        $.get(url + title + "/ " + price + "/ " + description + "/ " + category + "/.php ", alert("Reward added "));
+                                        document.getElementById("title ").value = " ";
+                                        document.getElementById("price ").value = " ";
+                                        document.getElementById("category ").value = " ";
+                                        document.getElementById("description ").value = " ";
                                         return false;
                                     }
 
-                                    var e = document.getElementById("addQuestion");
+                                    var e = document.getElementById("addQuestion ");
                                     e.onclick = function() {
-                                        var url = "https://studev.groept.be/api/a18_sd308/AddQuestion/";
-                                        var title = document.getElementById("questionTitle").value;
-                                        var type = document.getElementById("questionType").value;
-                                        var reward = document.getElementById("questionReward").value;
-                                        $.get(url + title + "/" + type + "/" + reward + "/.php", function(data) {
-                                            $.getJSON("https://studev.groept.be/api/a18_sd308/GetQuestionId/" + title + "/.php", function(data) {
-                                                var id = data[0]["question_id"];
-                                                var ul = document.getElementById("options-list");
-                                                var items = ul.getElementsByTagName("li");
+                                        var url = "https://studev.groept.be/api/a18_sd308/AddQuestion/ ";
+                                        var title = document.getElementById("questionTitle ").value;
+                                        var type = document.getElementById("questionType ").value;
+                                        var reward = document.getElementById("questionReward ").value;
+                                        $.get(url + title + "/ " + type + "/ " + reward + "/.php ", function(data) {
+                                            $.getJSON("https://studev.groept.be/api/a18_sd308/GetQuestionId/ " + title + "/.php ", function(data) {
+                                                var id = data[0]["question_id "];
+                                                var ul = document.getElementById("options-list ");
+                                                var items = ul.getElementsByTagName("li ");
                                                 for (var i = 0; i < items.length; ++i) {
-                                                    var text = items[i].getAttribute("id");
-                                                    $.get("https://studev.groept.be/api/a18_sd308/AddOption/" + text + "/" + id + "/.php", function(data) {});
+                                                    var text = items[i].getAttribute("id ");
+                                                    $.get("https://studev.groept.be/api/a18_sd308/AddOption/ " + text + "/ " + id + "/.php ", function(data) {});
                                                 }
 
-                                                alert("Question added");
-                                                document.getElementById("questionTitle").value = "";
-                                                document.getElementById("questionReward").value = "";
-                                                document.getElementById("questionType").value = "";
-                                                document.getElementById("options-list").innerHTML = "";
-                                                document.getElementById("options").value = "";
+                                                alert("Question added ");
+                                                document.getElementById("questionTitle ").value = " ";
+                                                document.getElementById("questionReward ").value = " ";
+                                                document.getElementById("questionType ").value = " ";
+                                                document.getElementById("options-list ").innerHTML = " ";
+                                                document.getElementById("options ").value = " ";
                                             });
                                             return false;
                                         });
                                     }
 
-                                    var b = document.getElementById("addOption");
+                                    var b = document.getElementById("addOption ");
                                     b.onclick = function() {
-                                        var ul = document.getElementById("options-list");
-                                        var candidate = document.getElementById("options");
-                                        var li = document.createElement("li");
+                                        var ul = document.getElementById("options-list ");
+                                        var candidate = document.getElementById("options ");
+                                        var li = document.createElement("li ");
 
-                                        if (candidate.value != "") {
+                                        if (candidate.value != " ") {
                                             li.setAttribute('id', candidate.value);
                                             li.appendChild(document.createTextNode(candidate.value));
                                             ul.appendChild(li);
@@ -367,10 +380,10 @@
                                         return false;
                                     }
 
-                                    var c = document.getElementById("removeOption");
+                                    var c = document.getElementById("removeOption ");
                                     c.onclick = function() {
-                                        var ul = document.getElementById("options-list");
-                                        var candidate = document.getElementById("options");
+                                        var ul = document.getElementById("options-list ");
+                                        var candidate = document.getElementById("options ");
                                         var item = document.getElementById(candidate.value);
                                         ul.removeChild(item);
                                         return false;
@@ -380,17 +393,17 @@
                             </script>
 
                             <!-- Basic Card Example -->
-                            <div class="card shadow mb-4">
-                                <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Add Question</h6>
+                            <div class="card shadow mb-4 ">
+                                <div class="card-header py-3 ">
+                                    <h6 class="m-0 font-weight-bold text-primary ">Add Question</h6>
                                 </div>
-                                <div class="card-body">
-                                    <div class="form-group">
+                                <div class="card-body ">
+                                    <div class="form-group ">
                                         <label>Title</label>
-                                        <input id="questionTitle" type="text" class="form-control">
+                                        <input id="questionTitle " type="text " class="form-control ">
                                         <br>
                                         <label>Type</label>
-                                        <select id="questionType" class="form-control">
+                                        <select id="questionType " class="form-control ">
                                         <option>String</option>
                                         <option>Select</option>
                                         <option>Multiselect</option>
@@ -398,51 +411,51 @@
                                         <br>
 
                                         <label>Reward</label>
-                                        <input id="questionReward" type="number" class="form-control">
+                                        <input id="questionReward " type="number " class="form-control ">
                                         <br>
 
                                         <label>Options</label>
-                                        <input type="text" id="options" class="form-control">
+                                        <input type="text " id="options " class="form-control ">
                                         <br>
-                                        <ul id="options-list"></ul>
+                                        <ul id="options-list "></ul>
                                         <br>
-                                        <a href="#" id="addOption" class="btn btn-success btn-circle">
-                                            <span class="icon text-white-0">
-                                            <i class="fas fa-plus"></i>
+                                        <a href="# " id="addOption " class="btn btn-success btn-circle ">
+                                            <span class="icon text-white-0 ">
+                                            <i class="fas fa-plus "></i>
                                           </span>
                                         </a>
-                                        <a href="#" id="removeOption" class="btn btn-danger btn-circle">
-                                            <span class="icon text-white-0">
-                                            <i class="fas fa-minus"></i>
+                                        <a href="# " id="removeOption " class="btn btn-danger btn-circle ">
+                                            <span class="icon text-white-0 ">
+                                            <i class="fas fa-minus "></i>
                                           </span>
                                         </a>
                                     </div>
 
 
-                                    <a href="#" id="addQuestion" class="btn btn-primary btn-icon-split">
-                                        <span class="icon text-white-50">
-                                        <i class="fas fa-check"></i>
+                                    <a href="# " id="addQuestion " class="btn btn-primary btn-icon-split ">
+                                        <span class="icon text-white-50 ">
+                                        <i class="fas fa-check "></i>
                                       </span>
-                                        <span class="text">Add Question</span>
+                                        <span class="text ">Add Question</span>
                                     </a>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="col-lg-6">
+                        <div class="col-lg-6 ">
                             <!-- Basic Card Example -->
-                            <div class="card shadow mb-4">
-                                <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Add Reward</h6>
+                            <div class="card shadow mb-4 ">
+                                <div class="card-header py-3 ">
+                                    <h6 class="m-0 font-weight-bold text-primary ">Add Reward</h6>
                                 </div>
-                                <div class="card-body">
-                                    <div class="form-group">
+                                <div class="card-body ">
+                                    <div class="form-group ">
                                         <label>Title</label>
-                                        <input id="title" type="text" class="form-control">
+                                        <input id="title " type="text " class="form-control ">
                                         <br>
 
                                         <label>Category</label>
-                                        <select id="category" class="form-control">
+                                        <select id="category " class="form-control ">
                                         <option>Food</option>
                                         <option>Voucher</option>
                                         <option>Promotion</option>
@@ -451,20 +464,20 @@
 
 
                                         <label>Price</label>
-                                        <input id="price" type="number" class="form-control">
+                                        <input id="price " type="number " class="form-control ">
                                         <br>
                                         <label>Description</label>
-                                        <textarea id="description" class="form-control" rows="3"></textarea>
+                                        <textarea id="description " class="form-control " rows="3 "></textarea>
                                         <br>
                                     </div>
 
 
-                                    <div class="my-2"></div>
-                                    <a href="#" id="addReward" class="btn btn-primary btn-icon-split">
-                                        <span class="icon text-white-50">
-                                        <i class="fas fa-check"></i>
+                                    <div class="my-2 "></div>
+                                    <a href="# " id="addReward " class="btn btn-primary btn-icon-split ">
+                                        <span class="icon text-white-50 ">
+                                        <i class="fas fa-check "></i>
                                       </span>
-                                        <span class="text">Add Reward</span>
+                                        <span class="text ">Add Reward</span>
                                     </a>
                                 </div>
                             </div>
@@ -478,9 +491,9 @@
             <!-- End of Main Content -->
 
             <!-- Footer -->
-            <footer class="sticky-footer bg-white">
-                <div class="container my-auto">
-                    <div class="copyright text-center my-auto">
+            <footer class="sticky-footer bg-white ">
+                <div class="container my-auto ">
+                    <div class="copyright text-center my-auto ">
                         <span>Copyright &copy; Workmate 2019</span>
 
                     </div>
@@ -496,45 +509,45 @@
     <!-- End of Page Wrapper -->
 
     <!-- Scroll to Top Button-->
-    <a class="scroll-to-top rounded" href="#page-top">
-        <i class="fas fa-angle-up"></i>
+    <a class="scroll-to-top rounded " href="#page-top ">
+        <i class="fas fa-angle-up "></i>
     </a>
 
     <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">×</span>
+    <div class="modal fade " id="logoutModal " tabindex="-1 " role="dialog " aria-labelledby="exampleModalLabel " aria-hidden="true ">
+        <div class="modal-dialog " role="document ">
+            <div class="modal-content ">
+                <div class="modal-header ">
+                    <h5 class="modal-title " id="exampleModalLabel ">Ready to Leave?</h5>
+                    <button class="close " type="button " data-dismiss="modal " aria-label="Close ">
+            <span aria-hidden="true ">×</span>
           </button>
                 </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
+                <div class="modal-body ">Select "Logout " below if you are ready to end your current session.</div>
+                <div class="modal-footer ">
+                    <button class="btn btn-secondary " type="button " data-dismiss="modal ">Cancel</button>
+                    <a class="btn btn-primary " href="login.html ">Logout</a>
                 </div>
             </div>
         </div>
     </div>
 
     <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="vendor/jquery/jquery.min.js "></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js "></script>
 
     <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="vendor/jquery-easing/jquery.easing.min.js "></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin-2.min.js"></script>
+    <script src="js/sb-admin-2.min.js "></script>
 
     <!-- Page level plugins -->
-    <script src="vendor/chart.js/Chart.min.js"></script>
+    <script src="vendor/chart.js/Chart.min.js "></script>
 
     <!-- Page level custom scripts -->
-    <script src="js/demo/chart-area-demo.js"></script>
-    <script src="js/demo/chart-pie-demo.js"></script>
+    <script src="js/demo/chart-area-demo.js "></script>
+    <script src="js/demo/chart-pie-demo.js "></script>
 
 </body>
 

@@ -274,91 +274,91 @@
                                 </div>
                             </div>
 
-                            <script type="text/javascript ">
+                            <script type="text/javascript">
                                 window.onload = function() {
-                                    var url = "https://studev.groept.be/api/a18_sd308/GetNumberOfQuestions ";
-                                    $.getJSON(url + "/.php ", function(data) {
+                                    var url = "https://studev.groept.be/api/a18_sd308/GetNumberOfQuestions";
+                                    $.getJSON(url + "/.php", function(data) {
                                         document.getElementById("numberOfQuestions").innerHTML = data[0]["COUNT(*)"].toString();
                                     });
-                                    var url = "https://studev.groept.be/api/a18_sd308/GetNumberOfUsers ";
-                                    $.getJSON(url + "/.php ", function(data) {
+                                    var url = "https://studev.groept.be/api/a18_sd308/GetNumberOfUsers";
+                                    $.getJSON(url + "/.php", function(data) {
                                         document.getElementById("numberOfUsers").innerHTML = data[0]["COUNT(*)"].toString();
                                     });
-                                    var url = "https://studev.groept.be/api/a18_sd308/GetNumberOfRewards ";
-                                    $.getJSON(url + "/.php ", function(data) {
+                                    var url = "https://studev.groept.be/api/a18_sd308/GetNumberOfRewards";
+                                    $.getJSON(url + "/.php", function(data) {
                                         document.getElementById("numberOfRewards").innerHTML = data[0]["COUNT(*)"].toString();
                                     });
-                                    var url = "https://studev.groept.be/api/a18_sd308/GetNumberOfVotes ";
-                                    $.getJSON(url + "/.php ", function(data) {
+                                    var url = "https://studev.groept.be/api/a18_sd308/GetNumberOfVotes";
+                                    $.getJSON(url + "/.php", function(data) {
                                         document.getElementById("numberOfVotes").innerHTML = data[0]["COUNT(DISTINCT questions_question_id, users_email)"].toString();
                                     });
                                     var a = document.getElementById("addUser");
                                     a.onclick = function() {
-                                        var url = "https://studev.groept.be/api/a18_sd308/AddUser/ ";
-                                        var username = document.getElementById("username ").value;
-                                        var email = document.getElementById("email ").value;
-                                        var password = document.getElementById("password ").value;
-                                        $.get(url + username + "/ " + email + "/ " + password + "/.php ", alert("User added "));
-                                        document.getElementById("username ").value = " ";
-                                        document.getElementById("email ").value = " ";
-                                        document.getElementById("password ").value = " ";
+                                        var url = "https://studev.groept.be/api/a18_sd308/AddUser/";
+                                        var username = document.getElementById("username").value;
+                                        var email = document.getElementById("email").value;
+                                        var password = document.getElementById("password").value;
+                                        $.get(url + username + "/" + email + "/" + password + "/.php", alert("User added"));
+                                        document.getElementById("username").value = "";
+                                        document.getElementById("email").value = "";
+                                        document.getElementById("password").value = "";
                                         return false;
                                     }
-                                    var d = document.getElementById("addReward ");
+                                    var d = document.getElementById("addReward");
                                     d.onclick = function() {
-                                        var url = "https://studev.groept.be/api/a18_sd308/AddReward/ ";
-                                        var title = document.getElementById("title ").value;
-                                        var price = document.getElementById("price ").value;
-                                        var description = document.getElementById("description ").value;
-                                        var category = document.getElementById("category ").value;
-                                        $.get(url + title + "/ " + price + "/ " + description + "/ " + category + "/.php ", alert("Reward added "));
-                                        document.getElementById("title ").value = " ";
-                                        document.getElementById("price ").value = " ";
-                                        document.getElementById("category ").value = " ";
-                                        document.getElementById("description ").value = " ";
+                                        var url = "https://studev.groept.be/api/a18_sd308/AddReward/";
+                                        var title = document.getElementById("title").value;
+                                        var price = document.getElementById("price").value;
+                                        var description = document.getElementById("description").value;
+                                        var category = document.getElementById("category").value;
+                                        $.get(url + title + "/" + price + "/" + description + "/" + category + "/.php", alert("Reward added"));
+                                        document.getElementById("title").value = "";
+                                        document.getElementById("price").value = "";
+                                        document.getElementById("category").value = "";
+                                        document.getElementById("description").value = "";
                                         return false;
                                     }
-                                    var e = document.getElementById("addQuestion ");
+                                    var e = document.getElementById("addQuestion");
                                     e.onclick = function() {
-                                        var url = "https://studev.groept.be/api/a18_sd308/AddQuestion/ ";
-                                        var title = document.getElementById("questionTitle ").value;
-                                        var type = document.getElementById("questionType ").value;
-                                        var reward = document.getElementById("questionReward ").value;
-                                        $.get(url + title + "/ " + type + "/ " + reward + "/.php ", function(data) {
-                                            $.getJSON("https://studev.groept.be/api/a18_sd308/GetQuestionId/ " + title + "/.php ", function(data) {
+                                        var url = "https://studev.groept.be/api/a18_sd308/AddQuestion/";
+                                        var title = document.getElementById("questionTitle").value;
+                                        var type = document.getElementById("questionType").value;
+                                        var reward = document.getElementById("questionReward").value;
+                                        $.get(url + title + "/" + type + "/" + reward + "/.php", function(data) {
+                                            $.getJSON("https://studev.groept.be/api/a18_sd308/GetQuestionId/" + title + "/.php", function(data) {
                                                 var id = data[0]["question_id "];
-                                                var ul = document.getElementById("options-list ");
-                                                var items = ul.getElementsByTagName("li ");
+                                                var ul = document.getElementById("options-list");
+                                                var items = ul.getElementsByTagName("li");
                                                 for (var i = 0; i < items.length; ++i) {
-                                                    var text = items[i].getAttribute("id ");
-                                                    $.get("https://studev.groept.be/api/a18_sd308/AddOption/ " + text + "/ " + id + "/.php ", function(data) {});
+                                                    var text = items[i].getAttribute("id");
+                                                    $.get("https://studev.groept.be/api/a18_sd308/AddOption/" + text + "/" + id + "/.php", function(data) {});
                                                 }
-                                                alert("Question added ");
-                                                document.getElementById("questionTitle ").value = " ";
-                                                document.getElementById("questionReward ").value = " ";
-                                                document.getElementById("questionType ").value = " ";
-                                                document.getElementById("options-list ").innerHTML = " ";
-                                                document.getElementById("options ").value = " ";
+                                                alert("Question added");
+                                                document.getElementById("questionTitle").value = "";
+                                                document.getElementById("questionReward").value = "";
+                                                document.getElementById("questionType").value = "";
+                                                document.getElementById("options-list").innerHTML = "";
+                                                document.getElementById("options").value = "";
                                             });
                                             return false;
                                         });
                                     }
-                                    var b = document.getElementById("addOption ");
+                                    var b = document.getElementById("addOption");
                                     b.onclick = function() {
-                                        var ul = document.getElementById("options-list ");
-                                        var candidate = document.getElementById("options ");
-                                        var li = document.createElement("li ");
-                                        if (candidate.value != " ") {
+                                        var ul = document.getElementById("options-list");
+                                        var candidate = document.getElementById("options");
+                                        var li = document.createElement("li");
+                                        if (candidate.value != "") {
                                             li.setAttribute('id', candidate.value);
                                             li.appendChild(document.createTextNode(candidate.value));
                                             ul.appendChild(li);
                                         }
                                         return false;
                                     }
-                                    var c = document.getElementById("removeOption ");
+                                    var c = document.getElementById("removeOption");
                                     c.onclick = function() {
-                                        var ul = document.getElementById("options-list ");
-                                        var candidate = document.getElementById("options ");
+                                        var ul = document.getElementById("options-list");
+                                        var candidate = document.getElementById("options");
                                         var item = document.getElementById(candidate.value);
                                         ul.removeChild(item);
                                         return false;

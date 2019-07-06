@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-137365487-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-137365487-1');
+    </script>
+
+
+    <link rel="icon" type="image/png" href="images/icon.jpg" sizes="32x32" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Depth and Normals</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/modern-business.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Alexander Ameye</a>
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://github.com/AlexanderAmeye">
+                            <img src="images/github.png" width="28" title="Github" alt="Github">
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://www.linkedin.com/in/alexander-ameye-067a0b70/">
+                            <img src="images/LinkedIn.png" width="24" title="LinkedIn" alt="LinkedIn">
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://www.twitter.com/alexanderameye">
+                            <img src="images/twitter.png" width="28" title="Twitter" alt="Twitter">
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Content -->
+    <div class="container">
+
+        <!-- Page Heading/Breadcrumbs -->
+        <h1 class="mt-4 mb-3">Depth and Normals
+        </h1>
+
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="index.html">Home</a>
+            </li>
+            <li class="breadcrumb-item active">Depth And Normals</li>
+        </ol>
+        <br>
+        <h2 class="mt-4 mb-3">Depth Texture</h2>
+        <p class="text-justify">A depth texture is a render texture that gets its value from the camera's depth buffer. A render texture is a texture that can be created and updated in realtime so each time the camera moves, the depth texture will update as well. The camera
+            in Unity can generate this depth texture and then in a shader you can request and use that texture. The depth texture displays the depth of the scene by using a color gradient between black and white. Generally closer objects get drawn in
+            black and further away objects in white but of course this is just a convention and it might as well be inverted.
+        </p><br>
+        <div class="text-center">
+            <figure class="figure ">
+                <img src="images/depthtexture.jpeg" width="400" class="figure-img rounded" alt="A generic square placeholder image with rounded corners in a figure.">
+                <figcaption class="figure-caption">A depth-texture view from the commonly used Sponza Palace scene.</figcaption>
+            </figure>
+        </div>
+        <br>
+        <p class="text-justify">The depth texture gradient is non-linear but can of course be linearized. It is also important note that the depth texture is dependent on the far clipping plane of the camera since this determines the 'most far away point that the camera can
+            see'. If this plane is very far away, all the objects will appear black since they are all relatively close when you consider the whole distance that the camera can see. </p>
+        <br>
+        <div class="text-center">
+            <figure class="figure ">
+                <img src="images/nonlineardepth.jpg" width="400" class="figure-img rounded" alt="A generic square placeholder image with rounded corners in a figure.">
+                <figcaption class="figure-caption">Non-linear depth buffer dependent on near and far plane of camera.</figcaption>
+            </figure>
+        </div>
+        <br>
+        <p class="text-justify">When displaying the depth texture in shader graph by using <b>_CameraDepthTexture</b> and sampling it, the displayed texture is tinted red because the first channel (R) is used. This can easily be turned into a black-and-white texture of course.
+            Another thing, is that the depth texture depends on the camera that is being used. The scene camera will generate a different result than the game camera.</p>
+        <br>
+        <div class="text-center">
+            <figure class="figure ">
+                <img src="images/depthtextureshadergraph.png" class="figure-img rounded" alt="A generic square placeholder image with rounded corners in a figure.">
+                <figcaption class="figure-caption">The Depth Texture in Shader Graph.</figcaption>
+            </figure>
+        </div>
+
+        <br> <br>
+        <h2 class="mt-4 mb-3">Depth + Normals Texture</h2>
+        <p class="text-justify">You can also generate a <b>_CameraDepthNormalsTexture</b> which is the depth texture and the normal texture combined into 1 texture. You can then decode this DepthNormals Texture to extract the Depth and Normals texture individually.
+        </p>
+        <br>
+        <div class="text-center">
+            <figure class="figure ">
+                <img src="images/decodedepthnormals.png" class="figure-img rounded" alt="A generic square placeholder image with rounded corners in a figure.">
+                <figcaption class="figure-caption">A DepthNormals Texture decoded into its Depth Texture and Normals Texture</figcaption>
+            </figure>
+        </div>
+
+        <br> <br>
+        <h2 class="mt-4 mb-3">Normals Texture</h2>
+
+        <p class="text-justify">A Normals Texture is just like the depth texture a render texture. This time it does not display the depth of the scene, but the view space normals. The <b>_CameraNormalsTexture</b> isn't usually generated but the <b>_CameraDepthNormalsTexture</b>            is, and as shown above, we can extract the Normals Texture from this DepthNormals Texture.</p>
+        <br>
+        <div class="text-center">
+            <figure class="figure ">
+                <img src="images/depthandnormalscover2.png" width="800" class="figure-img rounded" alt="A generic square placeholder image with rounded corners in a figure.">
+                <figcaption class="figure-caption">A Normals Texture</figcaption>
+            </figure>
+        </div>
+
+        <p class="text-justify">It is important to note that the normal values are from the view space and so the normals are stored relative to the camera. When you rotate the camera, the colors of this texture will change. </p>
+
+        <h2 class="mt-4 mb-3">Sources</h2>
+        <a href="https://developer.nvidia.com/content/depth-precision-visualized" target="_blank">https://developer.nvidia.com/content/depth-precision-visualized</a><br>
+        <a href="https://williamchyr.com" target="_blank">https://williamchyr.com</a><br>
+
+        <br><br>
+
+        <div class="row">
+            <div class="card col-lg-4 mb-4 ml-3">
+                <div class="card-body">
+                    <p class="card-text">Want to support me in creating <b>free</b> Unity tutorials and content?</p>
+                    <script type='text/javascript' src='https://ko-fi.com/widgets/widget_2.js'></script>
+                    <script type='text/javascript'>
+                        kofiwidget2.init('Buy Me A Coffee', '#46b798', 'A16732NE');
+                        kofiwidget2.draw();
+                    </script>
+                    <br><br>
+                    <a href="https://twitter.com/alexanderameye?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-size="large" data-show-count="true">Follow @alexanderameye</a>
+                    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                </div>
+            </div>
+
+            <div class="card col-lg-3 mb-4 ml-2">
+                <div class="card-body">
+                    <p class="card-text">Questions about this article?</p>
+                    <a href="contact.html" class="btn btn-primary">Send me a message</a>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    <br><br><br>
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

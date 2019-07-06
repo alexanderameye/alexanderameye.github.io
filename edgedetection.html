@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-137365487-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-137365487-1');
+    </script>
+
+    <link rel="icon" type="image/png" href="images/icon.jpg" sizes="32x32" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Edge Detection Shader</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/modern-business.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Alexander Ameye</a>
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://github.com/AlexanderAmeye">
+                            <img src="images/github.png" width="28" title="Github" alt="Github">
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://www.linkedin.com/in/alexander-ameye-067a0b70/">
+                            <img src="images/LinkedIn.png" width="24" title="LinkedIn" alt="LinkedIn">
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://www.twitter.com/alexanderameye">
+                            <img src="images/twitter.png" width="28" title="Twitter" alt="Twitter">
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Content -->
+    <div class="container">
+
+        <!-- Page Heading/Breadcrumbs -->
+        <h1 class="mt-4 mb-3">Edge Detection Shader
+        </h1>
+
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="index.html">Home</a>
+            </li>
+            <li class="breadcrumb-item active">Edge Detection Shader</li>
+        </ol>
+        <span class="badge badge-primary">Unity 2019.3</span>
+        <span class="badge badge-dark">Shader Graph 6.7.1</span>
+        <span class="badge badge-warning">Intermediate</span>
+        <br><br><br>
+        <div class="text-center">
+            <figure class="figure ">
+                <img src="images/edgedetectioncover.png" width="800" class="figure-img rounded" alt="A generic square placeholder image with rounded corners in a figure.">
+                <figcaption class="figure-caption">The final result of our edge detection shader.</figcaption>
+            </figure>
+        </div>
+
+        <h2 class="mt-4 mb-3">Edge Detection</h2>
+        <p class="text-justify">Let's say we want to detect the edges in an image. We can do this by looking for discontinuities and tracing a line over those discontinuities. For a human this is relatively easy but for a computer we need to define what actually defines a 'discontinuity'.
+            We can define discontinuties based on a change of color, depth, normal vector, brightness,... In this tutorial we will be defining discontinuities as a significant change in depth and/or normal vector.</p>
+        <br>
+        <div class="text-center">
+            <figure class="figure ">
+                <img src="images/discontinuities.jpg" class="figure-img rounded" alt="A generic square placeholder image with rounded corners in a figure.">
+                <figcaption class="figure-caption">Discontinuities in an image (Raywenderlich, 2018).</figcaption>
+            </figure>
+        </div>
+        <br>
+
+        <p class="text-justify">Now we need an actual way for the computer to detect these changes in depth and/or normal vectors. For depth, this is pretty straightforward since the camera in Unity generates a so-called <b>_CameraDepthTexture</b> that gives us information about
+            the depth in the scene relative to the Camera. For the normals you could generate a similar texture that somehow displays the normal vectors in the scene but the issue is that in LWRP, this texture is not generated. So if we want to determine
+            the discontinuities based on normal vectors, we need this texture. In this tutorial I will show you how to generate a <b>_CameraDepthNormalsTexture</b> in LWRP. Depth and Normal Textures are usually combined into a <b>_CameraDepthNormalsTexture</b>            with 4 channels and you can then extract the Normals Texture from that combined texture. Now let's convince the Lightweight Rendering Pipeline to generate this texture for us! </p>
+        <br> <br>
+        <h2 class="mt-4 mb-3">Scriptable Render Pipeline</h2>
+        <p class="text-justify">This is where the interesting stuff begins! We will customize the render pipeline to generate a DepthNormalsTexture for us so we can access it later in Shader Graph. The nice thing about LWRP is that it is a <b>Scriptable Rendering Pipeline</b>            which means we can customize the rendering pipeline to fit our needs. We start by adding a <b>DepthNormals.cs</b> script to our project. This script implements the <b>ScriptableRendererFeature</b> class which allows us to inject 1 or more
+            <b>ScriptableRenderPasses</b> into our existing renderer in order to customize it. The script also contains the actual <b>ScrtipableRenderPass</b> that we will inject into the renderer. This pass generates a <b>DepthNormals Texture</b> and
+            stores it in a place where we can later access it. You can find the code for the script here. <a href="https://pastebin.com/9n0AwmZJ" target="_blank">https://pastebin.com/9n0AwmZJ</a> You can put this script anywhere in your project files.
+
+            <p class="text-justify"> Next, we will create a custom renderer and we will tell our active <b>Pipeline Asset</b> to use this custom renderer. To create a custom renderer, click <b>Assets>Create>Rendering>Lightweight Render Pipeline>Forward Renderer</b>. When we open
+                the inspector of this new renderer, we are able to add a <b>Renderer Feature</b> by clicking on the little plus icon.</p>
+        </p>
+        <br>
+        <div class="text-center">
+            <figure class="figure ">
+                <img src="images/customrenderer.png" class="figure-img rounded" alt="A generic square placeholder image with rounded corners in a figure.">
+                <figcaption class="figure-caption">Our custom renderer feature added to our custom renderer.</figcaption>
+            </figure>
+        </div>
+        <br>
+
+        <p class="text-justify"></p>Click on this little plus icon and select <b>Depth Normals</b> out of the options. This will add the renderer feature to the list and show us some settings. Be sure to set the <b>Render Texture</b> to something like 1024. This is the resolution
+        of the DepthNormals Texture that our custom renderer will generate. Finally, we select our active pipeline asset and tell it to use the custom renderer we made by changing the <b>Rendering Type</b> to
+        <b>Custom</b> and putting our custom renderer in the data slot.
+        </p>
+        <br> <br>
+        <h2 class="mt-4 mb-3">Custom Node</h2>
+        <p class="text-justify">The next step is to create a custom node for shader graph that will give us access to the DepthNormalsTexture we generated. For this we will not be using the custom function node but we will be actually creating the node from scratch. To do this,
+            we need access to the source of Shader Graph. You can find the shader graph code in your project window under <b>Packages>Shader Graph</b>. The issue with this folder is that it is read-only so inside of Unity, we are not able to add a custom
+            node. However, if you click on the Shader Graph folder and click on <b>Show in Explorer</b> and then go to <b>Editor>Data>Nodes</b>, we can add a folder there and this is exactly what we will do.</p>
+
+        <br>
+        <div class="text-center">
+            <figure class="figure ">
+                <img src="images/customnodelocation.png" class="figure-img rounded" alt="A generic square placeholder image with rounded corners in a figure.">
+                <figcaption class="figure-caption">The location of our custom node script.</figcaption>
+            </figure>
+        </div>
+        <br>
+        <p class="text-justify">Inside of the <b>Nodes</b> folder, we will create a new folder called <b>Custom</b> in which we will put our custom node. A new script called <b>DepthNormalsTextureNode.cs</b> will hold the code for this custom node. You can find the code here.
+            <a href="https://pastebin.com/udxZWhVc" target="_blank">https://pastebin.com/udxZWhVc</a> After this is done, you will be able to find a new node in Shader Graph called <b>Depth + Normals</b> under <b>Custom>Input>Texture>Depth + Normals</b>.
+            When we sample this node, we will be able to see the generated DepthNormals Texture.</p>
+
+        <br>
+        <div class="text-center">
+            <figure class="figure ">
+                <img src="images/depthnormalstexture.png" class="figure-img rounded" alt="A generic square placeholder image with rounded corners in a figure.">
+                <figcaption class="figure-caption">Our DepthNormals Texture shown by our custom node.</figcaption>
+            </figure>
+        </div>
+        <br><br>
+        <h2 class="mt-4 mb-3">Edge Detection Shader</h2>
+        <p class="text-justify">The next step in our quest for the edge detection shader is the actual edge detection shader! We will be using the <b>_CameraDepthTexture</b> for depth and the <b>_CameraDepthNormalsTexture</b> for normals.</p>
+
+        <br>
+        <div class="text-center">
+            <figure class="figure ">
+                <img src="images/depthandnormalstransition.gif" class="figure-img rounded" alt="A generic square placeholder image with rounded corners in a figure.">
+                <figcaption class="figure-caption">We will be reading discontinuities based on depth and normals.</figcaption>
+            </figure>
+        </div>
+
+        <br>
+        <p class="text-justify">To make use of these 2 textures, We will be using a <b>custom function node</b> that refers to an <b>Outline.hlsl</b> file. You can find the code here. <a href="https://pastebin.com/PH0fWbGB" target="_blank">https://pastebin.com/PH0fWbGB</a> I
+            made the code by following
+            <a href="https://roystan.net/articles/outline-shader.html" target="_blank">this tutorial by Roystan</a>. I highly recommend you to check out his website.
+        </p>
+
+        <br>
+        <div class="text-center">
+            <figure class="figure ">
+                <img src="images/edgedetectionnodes.png" class="figure-img rounded" width="1200" alt="A generic square placeholder image with rounded corners in a figure.">
+                <figcaption class="figure-caption">The node setup for our edge detection shader.</figcaption>
+            </figure>
+        </div>
+        <br>
+        <br>
+        <h2 class="mt-4 mb-3">Sources</h2>
+        <a href="https://www.raywenderlich.com/92-unreal-engine-4-toon-outlines-tutorial" target="_blank">https://www.raywenderlich.com/92-unreal-engine-4-toon-outlines-tutorial</a><br>
+        <a href="https://roystan.net/articles/outline-shader.html" target="_blank">https://roystan.net/articles/outline-shader.html</a>
+
+        <br><br><br>
+
+
+        <div class="row">
+            <div class="card col-lg-4 mb-4 ml-3">
+                <div class="card-body">
+                    <p class="card-text">Want to support me in creating <b>free</b> Unity tutorials and content?</p>
+                    <script type='text/javascript' src='https://ko-fi.com/widgets/widget_2.js'></script>
+                    <script type='text/javascript'>
+                        kofiwidget2.init('Buy Me A Coffee', '#46b798', 'A16732NE');
+                        kofiwidget2.draw();
+                    </script>
+                    <br><br>
+                    <a href="https://twitter.com/alexanderameye?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-size="large" data-show-count="true">Follow @alexanderameye</a>
+                    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                </div>
+            </div>
+
+            <div class="card col-lg-3 mb-4 ml-2">
+                <div class="card-body">
+                    <p class="card-text">Questions about this article?</p>
+                    <a href="contact.html" class="btn btn-primary">Send me a message</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <br><br><br>
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

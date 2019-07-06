@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-137365487-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-137365487-1');
+    </script>
+
+    <link rel="icon" type="image/png" href="images/icon.jpg" sizes="32x32" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Toon Shader</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/modern-business.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Alexander Ameye</a>
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://github.com/AlexanderAmeye">
+                            <img src="images/github.png" width="28" title="Github" alt="Github">
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://www.linkedin.com/in/alexander-ameye-067a0b70/">
+                            <img src="images/LinkedIn.png" width="24" title="LinkedIn" alt="LinkedIn">
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://www.twitter.com/alexanderameye">
+                            <img src="images/twitter.png" width="28" title="Twitter" alt="Twitter">
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Content -->
+    <div class="container">
+
+        <!-- Page Heading/Breadcrumbs -->
+        <h1 class="mt-4 mb-3">Toon Shader
+        </h1>
+
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="index.html">Home</a>
+            </li>
+            <li class="breadcrumb-item active">Toon Shader</li>
+        </ol>
+        <span class="badge badge-primary">Unity 2019.1</span>
+        <span class="badge badge-dark">Shader Graph 5.10.0</span>
+        <span class="badge badge-success">Beginner</span>
+        <span class="badge badge-warning">Tutorial Under Construction</span>
+        <br><br><br>
+        <div class="text-center">
+            <figure class="figure ">
+                <img src="images/tintin.jpg" width="1000" class="figure-img rounded" alt="A generic square placeholder image with rounded corners in a figure.">
+                <figcaption class="figure-caption">The final result of our toon shader.</figcaption>
+            </figure>
+        </div>
+
+        <h1 class="mt-4 mb-3">Toon Shading</h1>
+        <p class="text-justify">
+            In a toon shader the model gets divided into 3 regions. You have dark-tone areas (unlit), mid-tone areas (lit) and highlights. The model is shaded with a flat color. Toon shading is gets its look by not using a shading gradient but harder cut-offs. A
+            toon shader is often paired an outline or edge detection shader.
+        </p>
+        <br>
+        <div class="text-center">
+            <figure class="figure ">
+                <img src="images/toonshadingexample.png" width="600" class="figure-img rounded" alt="A generic square placeholder image with rounded corners in a figure.">
+                <figcaption class="figure-caption">Toon shading in Houdini.</figcaption>
+            </figure>
+        </div>
+        <br>
+
+        <p class="text-justify">So for toon shading we want to use our own shading model instead of the default gradient-based one. We will make the edge from lit to unlit harder and for the highlights we will use the popular Blinn-Phong reflection model.</p>
+
+        <h1 class="mt-4 mb-3">Blinn-Phong Shading Model</h1>
+        <p class="text-justify">The Blinn-Phong shading model is a reflection model widely used in 3D graphics. I won't go into extreme detail but basically the model works like this.
+        </p>
+
+        <br>
+        <div class="text-center">
+            <figure class="figure ">
+                <img src="images/blinnphongshading.png" class="figure-img rounded" alt="A generic square placeholder image with rounded corners in a figure.">
+                <figcaption class="figure-caption">Normalized vectors in the Blinn-Phong model.</figcaption>
+            </figure>
+        </div>
+        <br>
+
+        <p class="text-justify">In classic Phong shading, the dot product of R and V is calculated. V is the vector from the surface to the player and R is the vector that represents a reflected light beam. In the Blinn-Phong model, an extra vector H is calculated which is called
+            the 'halfway-vector'. It is called that way because it lies halfway between the vectors L and V where L is the vector that represents a light beam. This halfway vector is calculated as follows.
+        </p>
+
+        <br>
+        <div class="text-center">
+            <figure class="figure ">
+                <img src="images/halfwayvector.png" class="figure-img rounded" alt="A generic square placeholder image with rounded corners in a figure.">
+                <figcaption class="figure-caption">Normalized vectors in the Blinn-Phong model.</figcaption>
+            </figure>
+        </div>
+        <br>
+
+        <p class="text-justify">
+            What we do in this formula is we take the sum of the vectors V and L and we normalize the result to a unit vector by dividing the result by its length.
+        </p>
+
+
+        <p class="text-justify">
+
+            Now that we calculated this extra vector H, we no longer need to calculate the dot product of R and V, but instead, we can calculate the dot product of N and H. N is the surface normal vector. This is good because this method is more performance-efficient
+            when the camera and light are far away from the surface which if often the case. When camera (V) and light (L) are far away from eachother, their halfway vector becomes very stable since the vectors V and L are converging. Because this vector
+            H becomes very stable, we don't have to calculate it often. Now that we have a shading model to work with, let's get started!
+        </p>
+
+
+        <h1 class="mt-4 mb-3">Custom Lighting Node</h1>
+        <p class="text-justify">So, as explained in the sections above we will need several vectors. Specifically, we need the vector L (light direction), the vector N (surface normal) and the vector V (view direction). V and N are easily accessible in shader graph, but the
+            light direction vector L is not. Right now there is no node in shader graph that supplies us with lighting data from the scene. So what do we do?... Custom nodes! Create a new custom function node. We will define 3 outputs. Direction, Color
+            and Attenuation. Direction and Color are pretty self-explanatory. Attenuation is "the gradual loss of flux intensity through a medium". In more human language this is basically how much the intensity of the light weakens when you go further
+            from the source. </p>
+
+        <br>
+        <div class="text-center">
+            <figure class="figure ">
+                <img src="images/mainlightcustomnode.png" class="figure-img rounded" alt="A generic square placeholder image with rounded corners in a figure.">
+                <figcaption class="figure-caption">Our custom node for lighting.</figcaption>
+            </figure>
+        </div>
+        <br>
+        <p class="text-justify">Our custom node refers to a file called MainLight.hlsl with a function named GetLightingInformation. You can create this file and put it wherever you want. You can also name it however you want, choose the extension you want and choose the function
+            name you want. Create the file, put it in your unity project and refer to it in the node. Open the file and put the following code in it. <a href="https://pastebin.com/cP42bskG" target="_blank">https://pastebin.com/cP42bskG</a></p>
+        <p class="text-justify">Now if we convert the custom function node into a subgraph, we get the following node in shader graph</p>
+        <br>
+        <div class="text-center">
+            <figure class="figure ">
+                <img src="images/customlightnode.png" class="figure-img rounded" alt="A generic square placeholder image with rounded corners in a figure.">
+                <figcaption class="figure-caption">Our custom light node.</figcaption>
+            </figure>
+        </div>
+        <br>
+        <b>Note: </b>You will probably be getting an error message in your project about an unknown identifier. This is because shader graph doesn't really know anything about lighting information so it has no clue what to draw in the shader preview window.
+        To fix this we need to do some hacky stuff. Read more <a href="previewlighting.html" target="_blank">here</a>.
+
+        <br>
+        <h1 class="mt-4 mb-3">Directional Lighting And Mid Color</h1>
+        <p class="text-justify">The first step of creating a toon shader is determining what parts of our surface will be lit/unlit. We can figure this out by comparing the direction of the light to the normal vector of the surface of our object. Here, 'comparing' means taking
+            the dot product. When the light direction and the surface's normal vector are aligned, that means that the light is directly shining on the surface and thus that part of the surface is maximally lit. We use the following nodes.
+        </p>
+
+        <br>
+        <div class="text-center">
+            <figure class="figure ">
+                <img src="images/directionalandmid.png" class="figure-img rounded" alt="A generic square placeholder image with rounded corners in a figure.">
+                <figcaption class="figure-caption">Nodes to calculate which parts of ours shader will be lit/unlit.</figcaption>
+            </figure>
+        </div>
+        <br>
+
+        <p class="text-justify">As mentioned, we calculate the dot product of the light direction and the surface normal vector. We then feed it into a smoothstep function to make the edge between lit and unlit harder. We could use a step function for a super hard line but the
+            smoothstep creates a smooth transition zone between lit and unlit. We make the transition zone small enough to still get the desired 'hard' effect. The smoothstep node returns a smoothed value between 0 and 1 when the input value is between
+            Edge1 and Edge2. For Edge1 we take 0 and for Edge2 we take a very small value so that the transition zone remains small. Finally we multiply the output by a color property that will represent our 'mid tone colors' and plug it into the color
+            slot of our master node. These nodes give us the following result.
+
+        </p>
+
+        <div class="text-center">
+            <figure class="figure ">
+                <img src="images/toonresult1.gif" class="figure-img rounded" alt="A generic square placeholder image with rounded corners in a figure.">
+                <figcaption class="figure-caption">Basic shading based on a directional light.</figcaption>
+            </figure>
+        </div>
+        <br>
+
+        <br>
+        <h1 class="mt-4 mb-3">Shaded Color</h1>
+        <p class="text-justify">Right now the unlit parts of our objects are black. Of course if this is what you want, go for it! However I want to be able to color that part separately too. We add these nodes.
+        </p>
+
+
+        <div class="text-center">
+            <figure class="figure ">
+                <img src="images/shadedcolor.png" class="figure-img rounded" alt="A generic square placeholder image with rounded corners in a figure.">
+                <figcaption class="figure-caption">Shaded color.</figcaption>
+            </figure>
+        </div>
+        <p class="text-justify">We add a one minus node to access the unlit part of our object and multiply by a color. Finally we add the 2 generated colors (mid and shaded) together. Now we are able to make some cool two-tone shading effects.
+        </p>
+
+        <div class="text-center">
+            <figure class="figure ">
+                <img src="images/toonresult2.gif" class="figure-img rounded" alt="A generic square placeholder image with rounded corners in a figure.">
+                <figcaption class="figure-caption"></figcaption>
+            </figure>
+        </div>
+
+
+        <br>
+        <h1 class="mt-4 mb-3">Light Color</h1>
+
+        <p class="text-justify">For now, our object's color is not affected by the color or intensity of the directional light. We add a few nodes to add a contribution of the directional light to the color of our object. We also add a 'Light Intensity' slider from 0 to 1 to
+            limit the contribution from the directional light.
+        </p>
+
+
+        <div class="text-center">
+            <figure class="figure ">
+                <img src="images/lightcolor.png" class="figure-img rounded" alt="A generic square placeholder image with rounded corners in a figure.">
+                <figcaption class="figure-caption">Light color.</figcaption>
+            </figure>
+        </div>
+
+        <div class="text-center">
+            <figure class="figure ">
+                <img src="images/toonresult3.gif" class="figure-img rounded" alt="A generic square placeholder image with rounded corners in a figure.">
+                <figcaption class="figure-caption"></figcaption>
+            </figure>
+        </div>
+        <br>
+        <h1 class="mt-4 mb-3">Highlight Color</h1>
+        <p class="text-justify">The last color-tone we want to add is of course highlights. These make the toon shader really look toonish! These highlights are like faked reflections and we can generate them by using our Blinn-Phong shading model. We implement this model as
+            follows.
+        </p>
+
+        <div class="text-center">
+            <figure class="figure ">
+                <img src="images/blinnphongnodes.png" class="figure-img rounded" alt="A generic square placeholder image with rounded corners in a figure.">
+                <figcaption class="figure-caption">Light color.</figcaption>
+            </figure>
+        </div>
+
+        <p class="text-justify">As explained in the theory, we add the view direction and the light direction and normalize the result. Then we take the dot product from this halfway vector and the surface normal vector.</p>
+
+
+        <div class="text-center">
+            <figure class="figure ">
+                <img src="images/blinnphongnodes2.png" class="figure-img rounded" alt="A generic square placeholder image with rounded corners in a figure.">
+                <figcaption class="figure-caption">Light color.</figcaption>
+            </figure>
+        </div>
+        <p class="text-justify">Next, we multiply the output of this dot product by the output of the directional lighting group. This will ensure that we only draw highlights on the lit side of the object. We also add a parameter 'Highlight Amount' to control the size of the
+            highlight sections and we smooth the transition zone just like we did for our other color tones. Finally we multiply by a highlight color parameter and add the result at the very end of our nodes. Note that the highlight color will be added
+            on top of the mid tone color.</p>
+
+        <div class="text-center">
+            <figure class="figure ">
+                <img src="images/toonresult4.gif" class="figure-img rounded" alt="A generic square placeholder image with rounded corners in a figure.">
+                <figcaption class="figure-caption"></figcaption>
+            </figure>
+        </div>
+        <br>
+
+        <h1 class="mt-4 mb-3">Rim Effect</h1>
+        <p class="text-justify">It would be nice to add an outer glow to the object. You could think of this as an extra highlight edge. This is easily done with a fresnel node.</p>
+
+
+        <div class="text-center">
+            <figure class="figure ">
+                <img src="images/rimnodes.png" class="figure-img rounded" alt="A generic square placeholder image with rounded corners in a figure.">
+                <figcaption class="figure-caption"></figcaption>
+            </figure>
+        </div>
+        <p class="text-justify">
+            We make fresnel effect a bit smoother again with a smoothstep node. The 'rim amount' property gets subtracted and added by 0.01 to form the 'edges' for the smoothstep node.
+
+        </p>
+
+        <div class="text-center">
+            <figure class="figure ">
+                <img src="images/rimnodes2.png" class="figure-img rounded" alt="A generic square placeholder image with rounded corners in a figure.">
+                <figcaption class="figure-caption"></figcaption>
+            </figure>
+        </div>
+
+
+        <p class="text-justify">
+            Next, we add some nodes to control the rim effect a bit more so that it's only visible on the lit part of our object.</p>
+
+
+        <div class="text-center">
+            <figure class="figure ">
+                <img src="images/toonresult5.gif" class="figure-img rounded" alt="A generic square placeholder image with rounded corners in a figure.">
+                <figcaption class="figure-caption"></figcaption>
+            </figure>
+        </div>
+        <br>
+
+
+        <h1 class="mt-4 mb-3">Sources</h1>
+        <a href="https://en.wikipedia.org/wiki/Blinn%E2%80%93Phong_shading_model" target="_blank">https://en.wikipedia.org/wiki/Blinn%E2%80%93Phong_shading_model</a><br>
+        <a href="https://en.wikipedia.org/wiki/Attenuation" target="_blank">https://en.wikipedia.org/wiki/Attenuation</a><br>
+        <a href="https://roystan.net/articles/toon-shader.html " target="_blank">https://roystan.net/articles/toon-shader.html </a><br>
+        <a href="http://www.sidefx.com/docs/houdini/nodes/shop/tooncolorshader.html" target="_blank">http://www.sidefx.com/docs/houdini/nodes/shop/tooncolorshader.html</a><br>
+        <a href="https://connect.unity.com/p/zelda-inspired-toon-shading-in-shadergraph" target="_blank">https://connect.unity.com/p/zelda-inspired-toon-shading-in-shadergraph</a>
+
+        <br>
+        <br>
+        <br>
+        <div class="row">
+            <div class="card col-lg-4 mb-4 ml-3">
+                <div class="card-body">
+                    <p class="card-text">Want to support me in creating <b>free</b> Unity tutorials and content?</p>
+                    <script type='text/javascript' src='https://ko-fi.com/widgets/widget_2.js'></script>
+                    <script type='text/javascript'>
+                        kofiwidget2.init('Buy Me A Coffee', '#46b798', 'A16732NE');
+                        kofiwidget2.draw();
+                    </script>
+                    <br><br>
+                    <a href="https://twitter.com/alexanderameye?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-size="large" data-show-count="true">Follow @alexanderameye</a>
+                    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                </div>
+            </div>
+
+            <div class="card col-lg-3 mb-4 ml-2">
+                <div class="card-body">
+                    <p class="card-text">Questions about this article?</p>
+                    <a href="contact.html" class="btn btn-primary">Send me a message</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <br><br><br>
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

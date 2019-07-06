@@ -1,7 +1,0 @@
-skydom:
-
-make skydome so that UV's are correct
-map the clouds on UV correctly
-generate random clouds that change over time, make them look good
-at black outline to clouds
-rotate dome

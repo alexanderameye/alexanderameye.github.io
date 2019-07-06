@@ -1,4 +1,0 @@
-Toon shading with @unity3d shader graph? It's possible! I wrote a tutorial/breakdown of the effect here. 
-https://alexanderameye.github.io/ #madewithunity #unitytips
-
-ice-toon 3.gif

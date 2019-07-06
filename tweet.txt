@@ -1,0 +1,11 @@
+New tutorial on edge detection shaders with shadergraph! 
+We customize the Lightweight Rendering Pipeline to generate a DepthNormals Texture
+that we then use to detect edges.
+
+alexanderameye.github.io/edgedetection
+
+edgedetection.mp4
+
+#madewithunity #unitytips
+
+

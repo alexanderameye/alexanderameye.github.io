@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="icon" type="image/png" href="images/icon.jpg" sizes="32x32" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Collision Effect</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/modern-business.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Alexander Ameye</a>
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://github.com/AlexanderAmeye">
+                            <img src="images/github.png" width="28" title="Github" alt="Github">
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://www.linkedin.com/in/alexander-ameye-067a0b70/">
+                            <img src="images/LinkedIn.png" width="24" title="LinkedIn" alt="LinkedIn">
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://www.twitter.com/alexanderameye">
+                            <img src="images/twitter.png" width="28" title="Twitter" alt="Twitter">
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Content -->
+    <div class="container">
+
+        <!-- Page Heading/Breadcrumbs -->
+        <h1 class="mt-4 mb-3">Collision Effect
+        </h1>
+
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="index.html">Home</a>
+            </li>
+            <li class="breadcrumb-item active">Collision Effect</li>
+        </ol>
+        <span class="badge badge-dark">Particle System</span>
+        <span class="badge badge-success">Beginner</span>
+        <br><br><br>
+        <div class="text-center">
+            <figure class="figure ">
+                <img src="images/collision/finaleffect.gif" class="figure-img rounded" width="800" alt="A generic square placeholder image with rounded corners in a figure.">
+                <figcaption class="figure-caption">Breaking stuff!</figcaption>
+            </figure>
+        </div>
+
+        <h1 class="mt-4 mb-3">Introduction</h1>
+
+
+        <p class="text-justify">In this tutorial we will be creating a cartoon-styled collision effect that is displayed whenever an object falls or gets bumped into something. We will start by creating some sprites for the effect. Next, we will put these sprites in a particle
+            system and customize it to our liking. Finally we will write some scripts that determine when to spawn the effect.</p>
+        <br>
+
+        <h1 class="mt-4 mb-3">Tilesheet</h1>
+
+        <div class="row">
+            <div class="col-lg-7 mb-4">
+                <p class="text-justify">I created 4 colored stars in Adobe Illustrator and aligned them in a grid with a transparent background. It is important that these images are perfectly aligned in the grid because later in Unity, the particle system will try to separate
+                    them.
+                </p>
+                <a href="images/collision/tilesheet1x4.png" target="_blank" class="btn btn-outline-primary" download>Download Tilesheet</a>
+            </div>
+
+            <div class="col-lg-4 mb-5">
+                <br>
+                <div class="text-center">
+                    <figure class="figure ">
+                        <img src="images/collision/tilesheet2x2.png" width="256" class="figure-img" alt="A generic square placeholder image with rounded corners in a figure.">
+                        <figcaption class="figure-caption">The stars aligned in 2x2 grid.</figcaption>
+                    </figure>
+                </div>
+            </div>
+        </div>
+
+
+        <h1 class="mt-4 mb-3">Particle System</h1>
+        <p class="text-justify">Next, in Unity, we will first create a material that uses our tilesheet. I will be using the Mobile/Particles/Alpha Blended shader that's built into Unity.</p>
+        <br>
+        <div class="text-center">
+            <figure class="figure ">
+                <img src="images/collision/collisionmaterial.png" class="figure-img rounded" alt="A generic square placeholder image with rounded corners in a figure.">
+                <figcaption class="figure-caption">Collision material.</figcaption>
+            </figure>
+        </div>
+        <br> When importing the tilesheet as a default texture into Unity, it is also important to check that <b>Alpha Is Transparency</b> is toggled <b>on</b>.
+
+        <p class="text-justify">Next, we will be creating a particle system that can emit these star particles. In this particle system we will customize different sections.</p>
+        <br>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Property</th>
+                    <th scope="col">Settings</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">General</th>
+                    <td><img src="images/collision/emission.png"></td>
+                </tr>
+                <tr>
+                    <th scope="row">Emission</th>
+                    <td><img src="images/collision/emission.png"></td>
+                </tr>
+                <tr>
+                    <th scope="row">Shape</th>
+                    <td> <img src="images/collision/shape.png"></td>
+                </tr>
+                <tr>
+                    <th scope="row">Size over Lifetime</th>
+                    <td><img src="images/collision/sizeoverlifetime.png"></td>
+                </tr>
+                <tr>
+                    <th scope="row">Noise</th>
+                    <td><img src="images/collision/noise.png"></td>
+                </tr>
+                <tr>
+                    <th scope="row">Texture Sheet Animation</th>
+                    <td><img src="images/collision/texturesheetanimation.png"></td>
+                </tr>
+                <tr>
+                    <th scope="row">Renderer</th>
+                    <td><img src="images/collision/renderer.png"></td>
+                </tr>
+            </tbody>
+        </table>
+        <br>
+        <p class="text-justify">Once the particle system is done, we turn it into a prefab called <b>Collision Effect</b>. We will later spawn this prefab when needed.</p>
+        <br>
+        <h1 class="mt-4 mb-3">Collision</h1>
+        <p class="text-justify">In this final section we will be writing an <b>ImpactCollision.cs</b> script that detects collision and spawns the particle system. You can find the script here. <a href="https://pastebin.com/BB55A3ZS" target="_blank">https://pastebin.com/BB55A3ZS</a></p>
+        <br>
+
+        <br>
+        <div class="text-center">
+            <figure class="figure ">
+                <img src="images/collision/impactcollision.png" class="figure-img rounded" alt="A generic square placeholder image with rounded corners in a figure.">
+                <figcaption class="figure-caption">Impact Collision Script.</figcaption>
+            </figure>
+        </div>
+        <br>
+        <p class="text-justify">In the script we assign the particle system prefab. This prefab will spawn whenever the <b>Minimum Effect Force</b> has been reached. When the force is even stronger and the <b>Minimum Break Force</b> is reached, the object will break and a <b>Destroyed Version</b>            prefab will spawn. The script also rotates the particle system around the object. To use the script, just assign it to an object in your scene. The object also needs a collider and a rigidbody.</p>
+        <br>
+        <h1 class="mt-4 mb-3">What's Next?</h1>
+        <p class="text-justify"> This effect was made for a game I'm working on. I have drawn some other cartoon-looking particles and I will be using them more in the context of player/NPC interaction and dialogue.</p>
+        <br>
+        <div class="text-center">
+            <figure class="figure ">
+                <img src="images/collision/tilesheet3x4.png" width="350" class="figure-img rounded" alt="A generic square placeholder image with rounded corners in a figure.">
+                <figcaption class="figure-caption">More effects.</figcaption>
+            </figure>
+        </div>
+        <br><br><br>
+
+
+        <div class="row">
+            <div class="card col-lg-4 mb-4 ml-3">
+                <div class="card-body">
+                    <p class="card-text">Want to support me in creating <b>free</b> Unity tutorials and content?</p>
+                    <script type='text/javascript' src='https://ko-fi.com/widgets/widget_2.js'></script>
+                    <script type='text/javascript'>
+                        kofiwidget2.init('Buy Me A Coffee', '#46b798', 'A16732NE');
+                        kofiwidget2.draw();
+                    </script>
+                    <br><br>
+                    <a href="https://twitter.com/alexanderameye?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-size="large" data-show-count="true">Follow @alexanderameye</a>
+                    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                </div>
+            </div>
+
+            <div class="card col-lg-3 mb-4 ml-2">
+                <div class="card-body">
+                    <p class="card-text">Questions about this article?</p>
+                    <a href="contact.html" class="btn btn-primary">Send me a message</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <br><br><br>
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

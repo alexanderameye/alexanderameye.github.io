@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="icon" type="image/png" href="images/icon.jpg" sizes="32x32" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Unity3D SRP</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/modern-business.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Alexander Ameye</a>
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://github.com/AlexanderAmeye">
+                            <img src="images/github.png" width="28" title="Github" alt="Github">
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://www.linkedin.com/in/alexander-ameye-067a0b70/">
+                            <img src="images/LinkedIn.png" width="24" title="LinkedIn" alt="LinkedIn">
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://www.twitter.com/alexanderameye">
+                            <img src="images/twitter.png" width="28" title="Twitter" alt="Twitter">
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Content -->
+    <div class="container">
+
+        <!-- Page Heading/Breadcrumbs -->
+        <h1 class="mt-4 mb-3">Unity3D Scriptable Render Pipeline
+        </h1>
+
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="index.html">Home</a>
+            </li>
+            <li class="breadcrumb-item active">Unity3D Scriptable Render Pipeline</li>
+        </ol>
+
+
+        <h1 class="mt-4 mb-3">Introduction</h1>
+        <p>This page is all about the Scriptable Rendering Pipeline in Unity3D. The goal of this page is to provide a general insight into the Unity3D rendering pipeline and provide a guide on how to customize it.</p>
+        <br>
+        <h1 class="mt-4 mb-3">Scriptable Render Pipeline</h1>
+        <p> With the scriptable render pipeline you can set up your own rendering pipeline or customize the existing LWRP/HDRP pipelines.</p>
+
+        <p>When we want to create our own pipeline from scratch, we start by creating a <b>PipelineAsset</b>. This class extends the <b>RenderPipelineAsset</b> class which is a ScriptableObject type. We override the CreatePipeline method to initialize a
+            RenderPipeline of our own.</p>
+
+        <pre><code class="cs">[CreateAssetMenu(menuName = "Rendering/My Pipeline")]
+public class MyPipelineAsset : RenderPipelineAsset
+{
+    protected override RenderPipeline CreatePipeline()
+    {
+        return new MyPipeline();
+    }
+} 
+            </code></pre>
+        <p>Our own custom RenderPipeline overrides the Render method. In here we will define how our custom renderer will render the objects in the scene.</p>
+
+        <pre><code>public class MyPipeline : RenderPipeline
+{
+    protected override void Render(ScriptableRenderContext context, Camera[] cameras)
+    {
+        context.SetUpCameraProperties(cameras[0]);
+        context.DrawSkybox(cameras[0]);
+        context.Submit();
+    }
+}</code></pre>
+
+        <p>The Render method is invoked with a context and the active cameras in the scene. Through the render context, we will issue commands to the Unity engine to render things and control render state. We also need to set up the camera properties, this
+            method will combined the view matrix with the projection matrix.</p>
+
+
+        <h1 class="mt-4 mb-3">Command Buffers</h1>
+        <p>A command buffer is a buffer (memory) that can hold commands.</p>
+        <p>The context will delay the actual rendering until we submit it, so before that we are able to configure the context and add commands. For some tasks like rendering the skybox, we can issue this with a dedicated method but for other commands we
+            need to create a separate buffer, a command buffer.</p>
+
+        <pre><code>void Render(ScriptableRenderContext context, Camera camera)
+{
+    context.SetupCameraProperties(camera); //combines view matrix with projection matrix
+                        
+    var buffer = new CommandBuffer();
+    context.ExecuteCommandBuffer(buffer);
+                        
+    context.DrawSkybox(camera);
+    context.Submit();
+}</code></pre>
+
+        <p>Executing this command buffer will copy it to the internal buffer of the context, then when we submit the context, the buffer and the copied commands will be executed. So when we want to do new task, we create a command buffer for them and call
+            ExecuteCommandBuffer on them to copy them to the internal buffer of the context for later use.</p>
+
+        <pre><code>var buffer = new CommandBuffer();
+context.ExecuteCommandBuffer(buffer);
+buffer.Release();</code></pre>
+
+        <p>After we executed the command buffer and it was copied to the internal buffer of the context, we no longer need the data since it is already copied so we can release it to free up resources.</p>
+
+
+        <pre><code>var buffer = new CommandBuffer
+{
+    name = camera.name
+};
+        
+CameraClearFlags clearFlags = camera.clearFlags;
+buffer.ClearRenderTarget((clearFlags & CameraClearFlags.Depth) != 0, (clearFlags & CameraClearFlags.Color) != 0, camera.backgroundColor); 
+context.ExecuteCommandBuffer(buffer);
+buffer.Release();</code></pre>
+
+        <p>Using the clearFlags property of the camera we can clear the render target to make sure that rendering isn't influenced by what was drawn earlier. The first argument of ClearRenderTarget is whether depth is cleared, the second one whether color
+            is cleared and the third one is the clear color.</p>
+        <br>
+
+        <div class="text-center">
+            <figure class="figure ">
+                <img src="images/notes/framedebuggerclearcommand.png" class="figure-img rounded" alt="A generic square placeholder image with rounded corners in a figure.">
+                <figcaption class="figure-caption">Depth cleared = true, color cleared = false and stencil is cleared by default.</figcaption>
+            </figure>
+        </div>
+        <br>
+
+        <p>CameraClearFlags is an enumeration that can be used as a set of bit flags. Each bit of the value is used to indicate whether a certain feature is enabled or not. To extract a bit flag from the entire value, combine the value with the desired flag
+            using the bitwise AND operator &. If the result is not zero, then the flag is set.</p>
+        <br>
+        <h1 class="mt-4 mb-3">Culling</h1>
+        <p>Now we will render all of the objects that the camera can see. We will cull all the renderers that fall outside of the view frustum of the camera.</p>
+
+        <pre><code>ScriptableCullingParameters cullingParameters;
+if (!camera.TryGetCullingParameters(camera, out cullingParameters))
+{
+    return;
+}
+        
+CullingResults cullingResults = context.Cull(ref cullingParameters);</code></pre>
+
+
+        <p>We try to get the culling parameters from the camera. If there are none, we return since there is nothing to render. Once we do have the culling parameters, we can use them in <b>context.Cull()</b></p>
+
+
+
+        <br>
+        <h1 class="mt-4 mb-3">Drawing</h1>
+        <p>Now that we know what is visible by getting the culling parameters, we can actually render things!</p>
+
+        <pre><code>var opaqueDrawingSettings = new DrawingSettings(new ShaderTagId("SRPDefaultUnlit"), new SortingSettings(camera){criteria = SortingCriteria.CommonOpaque});
+var opaqueFilteringSettings = new FilteringSettings(RenderQueueRange.opaque); //[0-2500]
+                
+var transparentDrawingSettings = new DrawingSettings(new ShaderTagId("SRPDefaultUnlit"), new SortingSettings(camera){criteria = SortingCriteria.CommonTransparent});
+var transparentFilteringSettings = new FilteringSettings(RenderQueueRange.transparent); // [2501 - 5000]
+                
+context.DrawRenderers(cullingResults, ref opaqueDrawingSettings, ref opaqueFilteringSettings); 
+context.DrawSkybox(camera); 
+context.DrawRenderers(cullingResults, ref transparentDrawingSettings, ref transparentFilteringSettings); 
+        </code></pre>
+        <br>
+        <p>First we will create new drawing settings for all of our unlit materials. We create these drawing settings separate for opaque and transparent materials. Then we create filtering settings so that we can draw opaque and transparent materials separate.
+            If we render transparent materials before the skybox, the skybox will be drawn over these transparent materials because the transparent shader pass does not write to the depth buffer. We also want to draw the opaque renderers <b>before</b>            the skybox to prevent overdraw. The opaque shapes will always be drawn in front of the skybox and we avoid work by drawing them first because the opaque shader pass writes to the depth buffer which is used to skip anything that's drawn later
+            that ends up further away.</p>
+
+        <p>Opaque objects should be rendererd <b>front to back</b> to reduce overdraw. If you were to draw back to front, you would draw objects that are covered anyways so you don't actually need to draw them. Transparent objects should be rendered <b>back to front</b>            since their appearance depends on the objects behind them. The <b>SortingCriteria</b> will make sure that these rendering orders are correct. It is important to note that this will <b>generally</b> be front to back for opaque objects but this
+            is not always the case.</p>
+
+        <br>
+        <div class="text-center">
+            <figure class="figure ">
+                <img src="images/notes/renderingorder.gif" width="500" class="figure-img rounded" alt="A generic square placeholder image with rounded corners in a figure.">
+                <figcaption class="figure-caption">Opaque materials front to back with skybox last (NOT ALWAYS THE CASE). Transparent materials back to front.</figcaption>
+            </figure>
+        </div>
+        <br>
+        <h1 class="mt-4 mb-3">Memory Allocations</h1>
+
+
+
+    </div>
+
+    <br>
+
+
+    <br><br><br>
+
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

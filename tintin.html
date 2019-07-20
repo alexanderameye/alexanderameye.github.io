@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="icon" type="image/png" href="images/icon.jpg" sizes="32x32" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Tintin Rendering</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/modern-business.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Alexander Ameye</a>
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://github.com/AlexanderAmeye">
+                            <img src="images/github.png" width="28" title="Github" alt="Github">
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://www.linkedin.com/in/alexander-ameye-067a0b70/">
+                            <img src="images/LinkedIn.png" width="24" title="LinkedIn" alt="LinkedIn">
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://www.twitter.com/alexanderameye">
+                            <img src="images/twitter.png" width="28" title="Twitter" alt="Twitter">
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Content -->
+    <div class="container">
+
+        <!-- Page Heading/Breadcrumbs -->
+        <h1 class="mt-4 mb-3">Tintin Render Pipeline
+        </h1>
+
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="index.html">Home</a>
+            </li>
+            <li class="breadcrumb-item active">Tintin Rendering</li>
+        </ol>
+
+
+        <h1 class="mt-4 mb-3">Introduction</h1>
+        <p>This page is all about the Scriptable Rendering Pipeline in Unity3D. The goal of this page is to provide a general insight into the Unity3D rendering pipeline and provide a guide on how to customize it.</p>
+        <br>
+        <h1 class="mt-4 mb-3">Tintin Render Pipeline</h1>
+        <p> We create our own render pipeline for this project. Mainly because this way we will learn a lot of things and secondly because this allows us to only use the parts we actually need.</p>
+        <p>When rendering in a Tintin-style, we generally want the things in the list below. However, for specific cases this might change and we want to be able to override them if needed.</p>
+        <br>
+        <ul class="list-group">
+            <li class="list-group-item">Flat colors, no gradients</li>
+            <li class="list-group-item">A single-width outline around all objects. Also an outline around the details inside of an object.</li>
+            <li class="list-group-item">Only metallic or shiny objects are influenced by light.</li>
+            <li class="list-group-item">Generally no shadows.</li>
+        </ul>
+
+
+        <h1 class="mt-4 mb-3">Shaders</h1>
+        <p>We can create a shader and add it to the rendering pipeline</p>
+    </div>
+    <br><br><br>
+
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

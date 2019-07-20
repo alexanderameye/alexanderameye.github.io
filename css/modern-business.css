@@ -9,6 +9,22 @@ body {
     overflow: hidden
 }
 
+.btn-xs {
+    padding: 1;
+    font-size: 1rem;
+    line-height: .5;
+    border-radius: .2rem;
+    box-sizing: none;
+}
+
+.remove-button-css {
+    outline: none;
+    padding: 5px;
+    border: 0px;
+    box-sizing: none;
+    background-color: transparent;
+}
+
 * {
     box-sizing: border-box;
 }
@@ -46,7 +62,17 @@ body {
     display: block;
 }
 
-.img-comp-slider {
+.images-compare-separator {
+    position: absolute;
+    background: rgba(255, 255, 255, 1);
+    height: 100%;
+    width: 1px;
+    z-index: 1;
+    left: 0;
+    top: 0;
+}
+
+.img-comp-slider2 {
     position: absolute;
     z-index: 9;
     cursor: ew-resize;
@@ -56,6 +82,46 @@ body {
     opacity: 0.8;
     border-radius: 50%;
     border: 3px solid black;
+}
+
+.images-compare-left-arrow {
+    border-right: 6px solid white;
+    left: 5px;
+}
+
+.images-compare-left-arrow,
+.images-compare-right-arrow {
+    border: 6px inset transparent;
+    height: 0;
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    -webkit-transition: left 150ms ease-in-out, right 150ms ease-in-out;
+    -o-transition: left 150ms ease-in-out, right 150ms ease-in-out;
+    transition: left 150ms ease-in-out, right 150ms ease-in-out;
+    width: 0;
+}
+
+.img-comp-slider {
+    border: 2px solid rgba(255, 255, 255, 1);
+    border-radius: 50%;
+    -webkit-box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.2), inset 1px 1px 20px rgba(0, 0, 0, 0.2);
+    box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.2), inset 1px 1px 20px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    width: 35px;
+    height: 35px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    -webkit-transition: border-color 150ms ease-in-out;
+    -o-transition: border-color 150ms ease-in-out;
+    transition: border-color 150ms ease-in-out;
+    z-index: 1;
 }
 
 .inprogress {

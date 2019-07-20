@@ -14,7 +14,11 @@
 
         gtag('config', 'UA-137365487-1');
     </script>
-
+    <script>
+        $(function() {
+            $('[data-toggle="popover"]').popover()
+        })
+    </script>
 
     <link rel="icon" type="image/png" href="images/icon.jpg" sizes="32x32" />
     <meta charset="utf-8">
@@ -85,10 +89,15 @@
             <li class="breadcrumb-item active">Depth And Normals</li>
         </ol>
         <br>
+        <h2 class="mt-4 mb-3">Introduction</h2>
+        <p class="text-justify">This article will provide some insight into what depth/normal textures are and how they are generated in the context of a 3D rendering pipeline.</p>
+        <br>
+
         <h2 class="mt-4 mb-3">Depth Texture</h2>
-        <p class="text-justify">A depth texture is a render texture that gets its value from the camera's depth buffer. A render texture is a texture that can be created and updated in realtime so each time the camera moves, the depth texture will update as well. The camera
-            in Unity can generate this depth texture and then in a shader you can request and use that texture. The depth texture displays the depth of the scene by using a color gradient between black and white. Generally closer objects get drawn in
-            black and further away objects in white but of course this is just a convention and it might as well be inverted.
+        <p class="text-justify">A depth texture is a render texture that gets its value from the camera's <button data-container="body" class=" btn btn-outline-primary btn-xs" data-toggle="popover" data-placement="bottom" data-content="A data buffer is a block of memory where you temporarily store data, in this case the depth information.">depth buffer
+        </button> . A render texture is a texture that can be created and updated in realtime so each time the camera moves, the depth texture will update as well. The camera in Unity can generate this depth texture and then in a shader you can request
+            and use that texture. The depth texture displays the depth of the scene by using a color gradient between black and white. Generally closer objects get drawn in black and further away objects in white but of course this is just a convention
+            and it might as well be inverted.
         </p><br>
         <div class="text-center">
             <figure class="figure ">
@@ -172,11 +181,18 @@
             </div>
         </div>
 
-
     </div>
+
     <br><br><br>
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+
+    <script>
+        $(document).ready(function() {
+            $('[data-toggle="popover"]').popover();
+        });
+    </script>
 </body>
 
 </html>

@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Tintin Rendering</title>
+    <title>Rendering</title>
 
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -61,34 +61,82 @@
     <div class="container">
 
         <!-- Page Heading/Breadcrumbs -->
-        <h1 class="mt-4 mb-3">Tintin Render Pipeline
+        <h1 class="mt-4 mb-3">Custom Render Pipeline
         </h1>
 
         <ol class="breadcrumb">
             <li class="breadcrumb-item">
                 <a href="index.html">Home</a>
             </li>
-            <li class="breadcrumb-item active">Tintin Rendering</li>
+            <li class="breadcrumb-item active">Custom Render Pipeline</li>
         </ol>
 
 
         <h1 class="mt-4 mb-3">Introduction</h1>
         <p>This page is all about the Scriptable Rendering Pipeline in Unity3D. The goal of this page is to provide a general insight into the Unity3D rendering pipeline and provide a guide on how to customize it.</p>
         <br>
-        <h1 class="mt-4 mb-3">Tintin Render Pipeline</h1>
-        <p> We create our own render pipeline for this project. Mainly because this way we will learn a lot of things and secondly because this allows us to only use the parts we actually need.</p>
+        <h1 class="mt-4 mb-3">Rendering Requirements</h1>
+        <p>For this particular rendering style I want the following key features.</p>>
         <p>When rendering in a Tintin-style, we generally want the things in the list below. However, for specific cases this might change and we want to be able to override them if needed.</p>
         <br>
         <ul class="list-group">
             <li class="list-group-item">Flat colors, no gradients</li>
-            <li class="list-group-item">A single-width outline around all objects. Also an outline around the details inside of an object.</li>
+            <li class="list-group-item">A single-width outline around all objects. </li>
             <li class="list-group-item">Only metallic or shiny objects are influenced by light.</li>
             <li class="list-group-item">Generally no shadows.</li>
         </ul>
 
 
-        <h1 class="mt-4 mb-3">Shaders</h1>
-        <p>We can create a shader and add it to the rendering pipeline</p>
+        <h1 class="mt-4 mb-3">Edge Detection</h1>
+        <p>Using an edge detection shader, we render an outline over several objects in the scene. This edge detection is added to the rendering pipeline as a custom pass in the form of a <b>Renderer Feature</b>.</p>
+
+        <br>
+        <div class="text-center">
+            <figure class="figure ">
+                <img src="images/customrenderpipeline/edgedetectionpass.png" class="figure-img rounded" alt="A generic square placeholder image with rounded corners in a figure.">
+                <figcaption class="figure-caption">Edge Detection Pass</figcaption>
+            </figure>
+        </div>
+        <br>
+
+        <p>Edge detection is based on 3 paramaters. Depth, Normals and Color. Depth + Normals are used for geometry and Color for lights and shadows. The edge detection pass occurs after transparent objects have been rendered so that outlines are also renderer
+            around our fake volumetric lights.</p>
+
+
+        <br>
+        <h1 class="mt-4 mb-3">Spotlights</h1>
+        <p>For this particular rendering style, we want spotlights to have a hard outline. In some cases we also want the spotlight to have a volumetric effect. To get a hard outline, we need to customize the AngleAttenuation function in the Lighting.hlsl
+            file that comes with the rendering pipeline.</p>
+        <br>
+        <div class="text-center">
+            <figure class="figure ">
+                <img src="images/customrenderpipeline/angleattenuation.png" class="figure-img rounded" alt="A generic square placeholder image with rounded corners in a figure.">
+                <figcaption class="figure-caption">Custom Attenuation</figcaption>
+            </figure>
+        </div>
+        <br>
+        <p>This results in the following effect.</p>
+        <br>
+        <div class="text-center">
+            <figure class="figure ">
+                <img src="images/customrenderpipeline/spotlight.png" class="figure-img rounded" alt="A generic square placeholder image with rounded corners in a figure.">
+                <figcaption class="figure-caption"></figcaption>
+            </figure>
+        </div>
+        <br>
+        <p>When we want a volumetric spotlight, we use an actual cone mesh and apply a transparent material to it.</p>
+        <br>
+        <div class="text-center">
+            <figure class="figure ">
+                <img src="images/customrenderpipeline/volumetricspotlight.png" class="figure-img rounded" alt="A generic square placeholder image with rounded corners in a figure.">
+                <figcaption class="figure-caption"></figcaption>
+            </figure>
+        </div>
+        <br>
+
+
+
+
     </div>
     <br><br><br>
 

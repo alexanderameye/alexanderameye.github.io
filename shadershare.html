@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="col-md-6 offset-md-3 mt-2">
+        <div class="jumbotron">
+            <h1 class="display-4">What is ShaderShare?</h1>
+            <p class="lead">Submit your Unity .shadergraph file and share it with the community!</p>
+            <hr class="my-4">
+            <p>I will put each shader file I receive on my website under a 'shaders by the community' section. People will be able to download your .shadergraph file.</p>
+
+        </div>
+
+        <br>
+        <h1>Share Your Graph</h1>
+        <form accept-charset="UTF-8" action="https://getform.io/f/70a48247-c4c9-474c-8c43-fb99847c23c6" method="POST" enctype="multipart/form-data" target="_blank">
+            <div class="form-group">
+                <label for="exampleInputName">Username</label>
+                <input type="text" name="username" class="form-control" id="username" placeholder="Enter your username" required="required">
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlTextarea1">Description</label>
+                <textarea class="form-control" id="description" placeholder="Enter a desription" name="description" rows="3" required="required"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlTextarea1">Extra Information</label>
+                <textarea class="form-control" name="extrainfo" id="extrainfo" placeholder="Link to your social media, image showing off your shader etc." rows="3"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlSelect1">Made with</label>
+                <select class="form-control" id="exampleFormControlSelect1" name="version" required="required">
+                 <option>Unity 2020.1</option>
+                 <option>Unity 2019.3</option>
+                 <option>Unity 2019.2</option>
+                 <option>Unity 2019.1</option>
+                <option>Unity 2018.4</option>
+                <option>Unity 2018.3</option>
+                <option>Unity 2018.2</option>
+                <option>Unity 2018.1</option>
+ 
+            </select>
+            </div>
+            <hr>
+            <div class="form-group mt-3">
+                <label class="mr-2">Upload your .shadergraph file</label>
+                <input type="file" accept=".shadergraph" name="shadergraphfile" required="required">
+
+            </div>
+            <hr>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</body>
+
+</html>

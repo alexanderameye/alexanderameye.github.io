@@ -72,6 +72,29 @@ body {
     top: 0;
 }
 
+.outer {
+    border:solid 1px #000;
+}
+
+.leftcol {
+  /* position: fixed;
+   top: 0%;
+   left: 0%; */
+   border:solid 1px green;
+   overflow:hidden;
+}
+
+.rightcol {
+   /* border:solid 1px red;
+   position: relative;
+   top: 0%;
+   left: 50%;  */
+   border:solid 1px red; 
+   overflow-y: scroll;
+   height: 200px;
+}
+
+
 .img-comp-slider2 {
     position: absolute;
     z-index: 9;

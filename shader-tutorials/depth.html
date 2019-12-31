@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- SITE INFO -->
+    <title>water shaders</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="img/site/icon.png">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+        integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+    <!-- JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+    <!-- Page Content -->
+    <div class="container">
+
+        <!-- Page Heading/Breadcrumbs -->
+        <h1 class="mt-4 mb-3">Developer Notes
+        </h1>
+
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="index.html">Home</a>
+            </li>
+            <li class="breadcrumb-item active">Developer Notes</li>
+        </ol>
+        <br>
+
+        <!-- Introduction -->
+        <h2 class="mt-4 mb-3">Introduction</h2>
+
+
+        <!-- Introduction -->
+        <h2 class="mt-4 mb-3">Clip Space</h2>
+
+        <p>The clip space is the volume between the camera's near and far plane. The near clipping plane is the image
+            plane on which the objects in the scene are projected onto.</p>
+
+
+        <div class="text-center">
+            <figure class="figure ">
+                <img src="img/watershader/developernotes/clipspace.png" class="figure-img rounded" alt="Final result.">
+                <figcaption class="figure-caption">Clip Space</figcaption>
+            </figure>
+        </div>
+
+
+        <p>There are some platform differences listed below.</p>
+
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">Platform</th>
+                    <th scope="col">Depth (Z) direction</th>
+                    <th scope="col">Clip space range</th>
+                    <th scope="col">Clip space depth</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">DirectX 11, DirectX 12, PS4, Xbox One, Metal</th>
+                    <td>[1.0, 0.0] (reversed, better results)</td>
+                    <td>[near, 0.0]</td>
+                    <td>[1.0, 0.0]</td>
+                </tr>
+                <tr>
+                    <th scope="row">Direct3D-like</th>
+                    <td>[0.0, 1.0]</td>
+                    <td>[0.0, far]</td>
+                    <td>[1.0, 0.0]</td>
+                </tr>
+                <tr>
+                    <th scope="row">OpenGL-like</th>
+                    <td>[0.0, 1.0]</td>
+                    <td>[-near, far]</td>
+                    <td>[-1.0, 1.0]</td>
+                </tr>
+            </tbody>
+        </table>
+
+
+        <div class="text-center">
+            <figure class="figure ">
+                <img src="img/watershader/developernotes/clipspaceview.png" class="figure-img rounded"
+                    alt="Final result.">
+                <figcaption class="figure-caption">Clip Space</figcaption>
+            </figure>
+        </div>
+
+        <p>More sources here.</p>
+        <a
+            href="https://docs.unity3d.com/Manual/SL-CameraDepthTexture.html">https://docs.unity3d.com/Manual/SL-CameraDepthTexture.html</a>
+        <a
+            href="https://docs.unity3d.com/Manual/SL-PlatformDifferences.html">https://docs.unity3d.com/Manual/SL-PlatformDifferences.html</a>
+
+
+        <br><br>
+        <h2 class="mt-4 mb-3">Projection Parameters</h2>
+        This vector4 is used to linearize z buffer values.
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">Parameter</th>
+                    <th scope="col">Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">x</th>
+                    <td>1.0 or -1.0</td>
+                </tr>
+                <tr>
+                    <th scope="row">y</th>
+                    <td>near plane</td>
+                </tr>
+                <tr>
+                    <th scope="row">z</th>
+                    <td>far plane</td>
+                </tr>
+                <tr>
+                    <th scope="row">w</th>
+                    <td>1/far</td>
+                </tr>
+            </tbody>
+        </table>
+
+
+        <br><br>
+        <!-- Introduction -->
+        <h2 class="mt-4 mb-3">Z Buffer Parameters</h2>
+        This vector4 is used to linearize z buffer values.
+
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">Parameter</th>
+                    <th scope="col">Value</th>
+                    <th scope="col">Value if reversed z direction</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">x</th>
+                    <td>(1-far/near)</td>
+                    <td>(far/near-1)</td>
+                </tr>
+                <tr>
+                    <th scope="row">y</th>
+                    <td>(far/near)</td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <th scope="row">z</th>
+                    <td>(x/far)</td>
+                    <td>(x/far)</td>
+                </tr>
+                <tr>
+                    <th scope="row">w</th>
+                    <td>y/far</td>
+                    <td>(1/far)</td>
+                </tr>
+            </tbody>
+        </table>
+
+
+
+        <br><br>
+
+        <!-- Introduction -->
+        <h2 class="mt-4 mb-3">Ortho Parameters</h2>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">Parameter</th>
+                    <th scope="col">Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">x</th>
+                    <td>Orthographic camera's width</td>
+                </tr>
+                <tr>
+                    <th scope="row">y</th>
+                    <td>Orthographic camera's height</td>
+                </tr>
+                <tr>
+                    <th scope="row">z</th>
+                    <td>Unused</td>
+                </tr>
+                <tr>
+                    <th scope="row">w</th>
+                    <td>1.0 when camera is orthographic, 0.0 when camera is perspective</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <br><br>
+        <!-- Introduction -->
+        <h2 class="mt-4 mb-3">Object Depth/Pixel Depth</h2>
+        <p>To get the object depth of our water which for us is the surface depth we use the screen position node. In raw mode, the screen position is not divided
+            by the clip space w component. This is useful for projection. The output is a vector4 that gives us
+            the following values.
+        </p>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Parameter</th>
+                    <th scope="col">Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">x</th>
+                    <td>Clip space x coordinate (width)</td>
+                </tr>
+                <tr>
+                    <th scope="row">y</th>
+                    <td>Clip space y coordinate (height)</td>
+                </tr>
+                <tr>
+                    <th scope="row">z</th>
+                    <td>Clip space z coordinate (depth)</td>
+                </tr>
+                <tr>
+                    <th scope="row">w</th>
+                    <td>World scaled view depth. Relative to camera.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p>So if we take the a/w component of the screen position, we get the surface depth of our water plane in
+            eye/view space (relative to camera position). So we get the distance between the camera and the pixel
+            that
+            belongs to our water object.</p>
+        <div class="text-center">
+            <figure class="figure ">
+                <img src="img/watershader/developernotes/surfacedepthnode.png" class="figure-img rounded"
+                    alt="Final result.">
+                <figcaption class="figure-caption">Surface Depth Nodes</figcaption>
+            </figure>
+        </div>
+
+        <div class="text-center">
+            <figure class="figure ">
+                <img src="img/watershader/developernotes/surfacedepthdiagram.png" class="figure-img rounded"
+                    alt="Final result.">
+                <figcaption class="figure-caption">Surface Depth Diagram</figcaption>
+            </figure>
+        </div>
+
+
+        <br><br>
+
+        <h2 class="mt-4 mb-3">Scene Depth</h2>
+        <p>The scene depth node gives us the depth of the geometry below our water surface. So we get
+            the distance between the camera and the
+            pixel that belongs to the object right below our water surface.
+        </p>
+
+        <p>The scene depth node has 3 sampling modes. They each give us this distance in a slightly different way.</p>
+
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">Mode</th>
+                    <th scope="col">Gradient</th>
+                    <th scope="col">Distance Value</th>
+                    <th scope="col">Extra Information</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">Raw</th>
+                    <td>Non-linear</td>
+                    <td>Between 0 and 1</td>
+                    <td>Read directly from _CameraDepthTexture.</td>
+
+                </tr>
+                <tr>
+                    <th scope="row">Linear01</th>
+                    <td>Linear</td>
+                    <td>Between 0 and 1</td>
+                    <td>Converted from raw using the <i>Linear01Depth</i> function. Will give use 0 at near plane, 1 at
+                        far plane. Does not work in orthographic mode.
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">Eye</th>
+                    <td>Linear</td>
+                    <td>In world units, metres, measured relative to camera</td>
+                    <td>Converted from raw using the <i>LinearEyeDepth</i> function. Does not work in orthographic mode.
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="text-center">
+            <figure class="figure ">
+                <img src="img/watershader/developernotes/scenedepthnode.png" class="figure-img rounded"
+                    alt="Final result.">
+                <figcaption class="figure-caption">Scene Depth Nodes</figcaption>
+            </figure>
+        </div>
+
+        <div class="text-center">
+            <figure class="figure ">
+                <img src="img/watershader/developernotes/scenedepthdiagram.png" class="figure-img rounded"
+                    alt="Final result.">
+                <figcaption class="figure-caption">Scene Depth Diagram</figcaption>
+            </figure>
+        </div>
+
+        <br>
+        <h2 class="mt-4 mb-3">Depth Fade</h2>
+        <p>The depth fade node gives us a 0-1 gradient representing the distance between the surface of the water
+            object
+            and the geometry behind it.</p>
+
+        <div class="text-center">
+            <figure class="figure ">
+                <img src="img/watershader/developernotes/depthfade.png" class="figure-img rounded" alt="Final result.">
+                <figcaption class="figure-caption">Depth Fade</figcaption>
+            </figure>
+        </div>
+
+        <p>1 way to calculate this would be by simple subtracting the surface depth from the scene depth. This will
+            cancel out the relativeness to the camera because both values are in view/eye space and we will get the
+            depth difference between the water surface and the geometry behind it.</p>
+
+        <div class="text-center">
+            <figure class="figure ">
+                <img src="img/watershader/developernotes/depthdifferencesimple.png" class="figure-img rounded"
+                    alt="Final result.">
+                <figcaption class="figure-caption">Depth Difference</figcaption>
+            </figure>
+        </div>
+
+        <p>However this produces ring artifacts.</p>
+
+        <div class="text-center">
+            <figure class="figure ">
+                <img src="img/watershader/developernotes/artifacts.png" class="figure-img rounded" alt="Final result.">
+                <figcaption class="figure-caption">Depth Difference</figcaption>
+            </figure>
+        </div>
+
+        <p>Another way would be to convert our scene depth to absolute world position and then comparing it with the
+            absolute world position of our water surface. So we convert the scene depth to a world position and
+            compare
+            the Y value of that with the global ocean height.</p>
+
+
+        <div class="text-center">
+            <figure class="figure ">
+                <img src="img/watershader/developernotes/viewdepthtoworlddepth.png" class="figure-img rounded"
+                    alt="Final result.">
+                <figcaption class="figure-caption">Converting depth from view/eye space to world space</figcaption>
+            </figure>
+        </div>
+
+        <p>To convert scene depth from eye/view space to world space we do the following. We take the view direction
+            node which is the vector from the vertex/fragment of our water surface towards the camera. We negate it to
+            get
+            the direction from the camera towards our water surface. We also apply a perspective divide. The output is a
+            vector3 and while this is just a point, if we were to draw a vector from the camera's position towards this
+            point, we'd get a vector in the direction of the water surface starting from the camera. This vector is a
+            unit vector and signifies direction.</p>
+
+        <div class="text-center">
+            <figure class="figure ">
+                <img src="img/watershader/developernotes/viewdirection.png" class="figure-img rounded"
+                    alt="Final result.">
+                <figcaption class="figure-caption">View direction</figcaption>
+            </figure>
+        </div>
+
+        <p>Then we multiply that direction vector by the scene depth in eye/view space. Remember that the scene depth in
+            eye/view
+            space
+            gave us the distance between the geometry below our water and the camera. So we multiply this distance
+            with our unit vector from camera to water surface.
+            This gives us as a result a vector from the camera towards the geometry below our water surface.
+
+        </p>
+
+        <div class="text-center">
+            <figure class="figure ">
+                <img src="img/watershader/developernotes/viewdirectionmultiplieddepth.png" class="figure-img rounded"
+                    alt="Final result.">
+                <figcaption class="figure-caption">View direction multiplied with scene depth</figcaption>
+            </figure>
+        </div>
+
+
+        <p>Remember that until now, this is all still in eye/view space, so relative to the camera, everything is
+            measured as an offset compared to camera position (0,0,0)! To fix This
+            we simply add our camera's position. Now we have a nice vector3 point that signifies the point on the
+            geometry below our water surface..
+
+        </p>
+
+
+
+        <p>All we have to do now is take the position of our object (water surface) in world space units and
+            subtract this from the
+            surface depth in world space. This will give us a vector3 result and if we take the Y component, we
+            get
+            the depth of our water in world space! exactly what we need.</p>
+
+
+
+    <br><br>
+
+    <h2 class="mt-4 mb-3">Orhographic Depth</h2>
+    <p>In orthographic, the depth buffer is linear so the raw output of the scene depth node already gives us a linear
+        result. Using this linear value between 0 and 1, we can lerp between near (0) and far (1) planes of the camera. However on DirectX, PS4, Xbox One and Metal platforms, this is reversed so we lerp between far (0) and near (1.0).</p>
+
+    </div>
+    <br><br><br>
+
+    <!--[https://github.com/keijiro/DepthInverseProjection/blob/master/Assets/InverseProjection/Resources/InverseProjection.shader](https://github.com/keijiro/DepthInverseProjection/blob/master/Assets/InverseProjection/Resources/InverseProjection.shader)-->
+<!--https://twitter.com/Cyanilux/status/1169932961443123201-->
+<!--https://forum.unity.com/threads/depth-buffer-with-orthographic-camera.355878/-->
+   <!--https://www.youtube.com/watch?v=C6lGEgcHbWc-->
+
+
+<script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

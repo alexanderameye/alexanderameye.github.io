@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<htmllang="en" style="overflow: hidden;">
+
+  <head>
+    <!-- SITE INFO -->
+    <title>ameye</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="img/site/icon.png">
+
+    <!-- FONTS -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Inconsolata&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link href="css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/bootstrap.css">
+
+    <!-- JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+  </head>
+
+  <body class="hide-scrollbar">
+    <div class="container-fluid">
+      <div class="row">
+
+        <!--SIDEBAR-->
+        <div class="col-auto  hide-scrollbar" id="left">
+          <br>
+          <h1 align="left"><strong>AMEYE</strong></h1>
+          <br>
+          <div class="row">
+
+            <!--PROFILE PICTURE-->
+            <div class="col col-md-auto pl-3 pr-0">
+              <img src="img/site/me1.jpg" id="profilepic" width="200" class="img-fluid" alt="Responsive image">
+            </div>
+          </div>
+
+          <!--ABOUT ME-->
+          <br><br>
+          <p><strong>** about me **</strong></p>
+          <p>\ software engineering student</p>
+          <p>\ unity3d enthusiast</p>
+          <p>\ <a href="docs/resume.pdf" id="link">resume</a></p>
+
+          <script>
+            function changepic() {
+              if (document.getElementById("profilepic").getAttribute("src") == "img/site/me1.jpg") document
+                .getElementById("profilepic").src = "img/site/me2.jpg";
+              else if (document.getElementById("profilepic").getAttribute("src") == "img/site/me2.jpg") document
+                .getElementById("profilepic").src = "img/site/notme1.jpg";
+              else document.getElementById("profilepic").src = "img/site/me1.jpg";
+            }
+          </script>
+
+          <!--CONTACT ME-->
+          <br><br>
+          <p><strong>** contact me **</strong></p>
+          <p>alexander ameye</p>
+          <p>message me at <a href="mailto:alexanderameye@gmail.com" id="link">alexanderameye@gmail.com</a></p>
+          <p>follow me on <a href="https://twitter.com/alexanderameye" id="link">twitter</a> ♥</p>
+
+          <!--SKILLS-->
+          <br><br>
+          <p><strong>** skills **</strong></p>
+          <p>\ dutch, english, french</p>
+          <p>\ c, c#, java, python</p>
+          <p>\ ms office</p>
+
+          <!--TOOLS-->
+          <br><br>
+          <p><strong>** tools **</strong></p>
+          <p>\ <a href="https://unity3d.com/unity" id="link">unity3d</a> game engine</p>
+          <p>\ <a href="https://www.blender.org/" id="link">blender</a> 3d suite</p>
+          <p>\ <a href="https://developer.android.com/studio" id="link">android studio</a> IDE</p>
+          <br>
+          <br>
+        </div>
+
+        <!--MAIN SECTION-->
+        <div class="col ">
+          <div class="row" id="top">
+            <div class="col">
+              <br>
+              <ul class="nav nav-tabs">
+                <li class="active"><a data-toggle="tab" href="#graphics" id="section">GRAPHICS</a>
+                </li>
+               <!-- <li><a data-toggle="tab" href="#software" id="section">SOFTWARE</a></li>-->
+                <li><a data-toggle="tab" href="#tutorials" id="section">SHADERS</a></li>
+                <li><a data-toggle="tab" href="#contact" id="section">CONTACT</a></li>
+              </ul>
+            </div>
+          </div>
+
+
+          <!--CONTENT-->
+          <div class="row ">
+            <div class="col tab-content  hide-scrollbar" id="right">
+              <!--GRAPHICS-->
+              <div id="graphics" class="tab-pane active">
+                <br><br>
+                <!--STYLIZED WATER-->
+                <h3>Stylized Water Shader</h3>
+                <div class="row">
+                  <div class="col-4" id="image">
+                    <img src="img/watershader/visuals/pond.png" class="img-fluid" title="Le Vent Se Lève">
+                  </div>
+                  <div class="col-4" id="image">
+                    <img src="img/watershader/visuals/pool.png" class="img-fluid" title="Le Vent Se Lève">
+                  </div>
+
+                  <div class="col-2" id="text">
+                    <p align="justify">A stylized water shader created in the Unity3d game engine designed to work with
+                      the new scriptable rendering pipelines. The shader has depth-based colors, horizon colors, color
+                      grain, transparency, surface
+                      foam, intersection foam, foam distortion, refraction, caustics, reflections and waves. It uses a
+                      custom inspector to
+                      edit the parameters in an organized way. The shader works in perspective mode as well as
+                      orthographic mode and supports all the major platforms (Windows, Mac, Linux, Android, iOS, PS4,
+                      Xbox, Nintendo Switch, VR).</p>
+                    <p><i>January 2020</i></p>
+                  </div>
+                  <div class="col-2" id="text">
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-4" id="image">
+                    <img src="img/watershader/visuals/pond2.png" class="img-fluid" title="Le Vent Se Lève">
+                  </div>
+                  <div class="col-4" id="image">
+                    <img src="img/watershader/visuals/pond3.png" class="img-fluid" title="Le Vent Se Lève">
+                  </div>
+                </div>
+                <br><br><br>
+
+
+                <!--LIGNE CLAIRE-->
+                <h3>Ligne Claire</h3>
+                <div class="row">
+                  <div class="col-3" id="image">
+                    <img src="img/art/morningtraintolondon.gif" class="img-fluid"
+                      title="Morning Train To London (September 2019)">
+                  </div>
+                  <div class="col-3" id="text">
+                    <p align="justify">A series of creations based on the work of Hergé in <i>'The Adventures Of
+                        Tintin'</i>. The goal is
+                      to achieve a similar visual style within the Unity3d game engine.</p>
+                    <p><i>September 2019</i></p>
+                  </div>
+                  <div class="col-6" id="text">
+                  </div>
+                </div>
+                <br><br><br>
+
+
+                <!--OTHER-->
+                <h3>Other</h3>
+                <div class="row">
+                  <div class="col-6" id="image">
+                    <img src="img/art/leventseleve.gif" width="1000" class="img-fluid"
+                      title="Le Vent Se Lève (November 2019)">
+                  </div>
+                  <div class="col-3" id="text">
+                    <p align="justify">Scene inspired by Japanese animation styles.</p>
+                    <p><i>November 2019</i></p>
+                  </div>
+                  <div class="col-3" id="text">
+                  </div>
+                </div>
+                <br><br><br><br>
+              </div>
+
+              <!--SOFTWARE-->
+              <div id="software" class="tab-pane fade">
+                <br><br>
+                <!--WORKMATE-->
+                <h3>Workmate</h3>
+                <div class="row">
+                  <div class="col-3" id="image">
+                    <img src="img/software/workmate/" width="400" class="img-fluid" alt="Responsive image">
+                  </div>
+
+                  <div class="col-3" id="image">
+                    <img src="img/software/workmate/" width="400" class="img-fluid" alt="Responsive image">
+                  </div>
+
+                  <div class="col-3" id="image">
+                    <img src="img/software/workmate/" width="400" class="img-fluid" alt="Responsive image">
+                  </div>
+
+                  <div class="col-3" id="text">
+                    <p align="justify">For my OOP course I designed and created an employee polling system. Employees
+                      answer questions related to their work-life
+                      asked by their employers. By doing this they receive company currency which they can use for
+                      various
+                      company related beneftis. Employers have an easy way of gaining insight into how content their
+                      workers are and where they can improve. Company administrators have access to a dashboard website
+                      where they can analyze answered questions and various statistics about the results.</p>
+
+
+                    <p align="justify">For this project an android application was created within android studio as well
+                      as a dashboard website. The application and the website communicate together through an SQL
+                      server.
+                    </p>
+
+                    <p><strong>Spring 2019</strong></p>
+
+                    <p><i>#android #java #web #php #mysql #design #universityproject</i></p>
+                    <br>
+                  </div>
+                </div>
+
+                <br><br><br>
+                <!--ROCKSTUDIO-->
+                <h3>Rockstudio</h3>
+                <div class="row">
+                  <div class="col-3" id="image">
+                    <img src="img/rockstudio/ui.jpg" class="img-fluid" alt="Responsive image">
+                  </div>
+
+                  <div class="col-3" id="image">
+                    <img src="img/rockstudio/temple.jpg" class="img-fluid" alt="Responsive image">
+                  </div>
+
+                  <div class="col-3" id="text">
+                    <p align="justify">A tool I developed for the Unity3D engine. It allows for rapid creation of rock,
+                      stone,
+                      boulder or crystal geometry. Mesh generation uses a 3D convex hull algorithm.</p>
+                    <p><i>Spring 2017</i></p>
+                  </div>
+
+                  <div class="col-3" id="text">
+                  </div>
+                </div>
+                <br><br><br>
+                <!--INTERACTION-->
+                <h3>Interaction</h3>
+                <div class="row">
+                  <div class="col-3" id="image">
+                    <img src="img/software/rockstudio/" width="400" class="img-fluid" alt="Responsive image">
+                  </div>
+
+                  <div class="col-3" id="image">
+                    <img src="img/software/rockstudio/" width="400" class="img-fluid" alt="Responsive image">
+                  </div>
+
+                  <div class="col-3" id="image">
+                    <img src="img/software/rockstudio/" width="400" class="img-fluid" alt="Responsive image">
+                  </div>
+
+
+                  <div class="col-3" id="text">
+                    <p align="justify">A tool developed for the Unity3D engine for the rapid creation of rock, stone,
+                      boulder or crystal geometry. Mesh generation uses a 3D convex hull algorithm.</p>
+
+                    <p><strong>2017</strong></p>
+
+                    <p><i>#unity3d</i></p>
+                    <br>
+                  </div>
+                </div>
+                <br><br><br>
+
+                <!--TIMEOFDAY-->
+                <h3>Umbra</h3>
+                <div class="row">
+                  <div class="col-3" id="image">
+                    <img src="img/software/rockstudio/" width="400" class="img-fluid" alt="Responsive image">
+                  </div>
+
+                  <div class="col-3" id="image">
+                    <img src="img/software/rockstudio/" width="400" class="img-fluid" alt="Responsive image">
+                  </div>
+
+                  <div class="col-3" id="image">
+                    <img src="img/software/rockstudio/" width="400" class="img-fluid" alt="Responsive image">
+                  </div>
+
+
+                  <div class="col-3" id="text">
+                    <p align="justify">A tool developed for the Unity3D engine for the rapid creation of rock, stone,
+                      boulder or crystal geometry. Mesh generation uses a 3D convex hull algorithm.</p>
+
+                    <p><strong>2017</strong></p>
+
+                    <p><i>#unity3d</i></p>
+                    <br>
+                  </div>
+                </div>
+                <br><br><br><br>
+              </div>
+
+
+              <!--SHADER TUTORIALS-->
+              <div id="tutorials" class="tab-pane fade">
+                <br><br>
+
+                <!--ROW 1-->
+                <div class="row">
+                  <div class="col-xs-6 col-sm-2 hover-blur">
+                    <a href="outlineshader.html" title="">
+                      <img src="img/shaders/outline/outline.png" />
+                      <h2><span class="text-white">Outline Shader</span></h2>
+                    </a>
+                  </div>
+
+                  <div class="col-xs-6 col-sm-2 hover-blur">
+                    <a href="parallax-card.html" title="">
+                      <img src="img/shaders/parallax-card/parallax-card.gif" />
+                      <h2><span class="text-white">Parallax Card</span></h2>
+                    </a>
+                  </div>
+
+                  <div class="col-xs-6 col-sm-2 hover-blur">
+                    <a href="handdrawn.html" title="">
+                      <img src="img/shaders/hand-drawn/side.gif" />
+                      <h2><span class="text-white">Hand Drawn</span></h2>
+                    </a>
+                  </div>
+
+
+
+
+
+                </div>
+                <br><br>
+
+              </div>
+
+
+              <!--CONTACT-->
+              <div id="contact" class="tab-pane fade">
+                <br><br>
+
+                <div class="col-lg-8 mb-4 pr-5">
+                  <h4>Send me a message</h4><br>
+                  <form class="needs-validation" name="sentMessage" id="contactForm" method="POST"
+                    action="https://formspree.io/alexanderameye@gmail.com" novalidate>
+                    <div class="form-group">
+                      <div class="controls">
+                        <label for="name">Full Name</label>
+                        <input type="text" class="form-control" id="name" placeholder="Full Name" value="" required>
+                        <div class="invalid-feedback">
+                          Please provide a full name.
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <div class="controls">
+                        <label for="email">Email address</label>
+                        <input type="email" name="email" class="form-control" id="email" placeholder="Email address"
+                          required>
+                        <div class="invalid-feedback">
+                          Please provide a valid email.
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <div class="controls">
+                        <label for="message">Message</label>
+                        <textarea name="message" rows="10" cols="100" class="form-control" id="message"
+                          placeholder="Message" maxlength="999" style="resize:none" required></textarea>
+                        <div class="invalid-feedback">
+                          Please provide a message.
+                        </div>
+                      </div>
+                    </div>
+                    <div id="success"></div>
+                    <button type="submit" class="btn btn-primary" id="sendMessageButton">Send Message</button>
+                  </form>
+                </div>
+
+
+              </div>
+              <br><br>
+            </div>
+
+
+
+          </div>
+          <br><br><br>
+        </div>
+        <br>
+
+
+
+      </div>
+    </div>
+    </div>
+    </div>
+    </div>
+
+    <script>
+      $(document).ready(function () {
+        $(".nav-tabs a").click(function () {
+          $(this).tab('show');
+        });
+      });
+    </script>
+
+
+  </body>
+
+  </html>

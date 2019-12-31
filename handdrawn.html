@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- SITE INFO -->
+  <title>Hand Drawn</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="img/site/icon.png">
+
+  <!-- FONTS -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Inconsolata&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link href="css/style.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/bootstrap.css">
+
+  <!-- JS -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+</head>
+
+<body>
+
+
+  <div class="container">
+    <br><br>
+
+
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a href="index.html" id="link">Home</a>
+      </li>
+      <li class="breadcrumb-item active">Hand Drawn</li>
+    </ol>
+
+    <span class="badge badge-dark">Unity 2019.3.0f1</span>
+    <span class="badge badge-dark">URP 7.1.6</span>
+    <span class="badge badge-primary">December 24th 2019</span>
+    <br><br><br>
+
+    <!--INTRODUCTION-->
+    <h2 class="mt-4 mb-3">Introduction</h2>
+    <p>Back in the late summer of 2019, I started looking into replicating a hand-drawn style within Unity. Specifically
+      I wanted to successfully recreate the <i>Ligne Claire</i> style. The scene below was the first result in that
+      attempt. It is a recreation of the panel from the right. This panel comes out <i>The Black Island</i> from <i>The
+        Adventures of Tintin</i> created by <i>Hergé</i>.
+    </p>
+
+
+    <br>
+    <div class="text-center">
+      <figure class="figure ">
+        <img src="img/shaders/hand-drawn/side.gif" width="300" class="figure-img" alt="">
+        <figcaption class="figure-caption"></figcaption>
+      </figure>
+      <figure class="figure ">
+        <img src="img/shaders/hand-drawn/side.png" width="300" class="figure-img" alt="">
+        <figcaption class="figure-caption"></figcaption>
+      </figure>
+    </div>
+    <br>
+
+    <p>While I am fairly happy with how this scene turned out, the workflow of creating it was slow and convoluted while
+      having several artistical restrictions. Specifically the method of drawing outlines provided me with little to no
+      artistic control over where outlines were specifically drawn. The outline shader is good for drawing outlines on
+      bigger geometry like the tunnel on the right, but when it comes to little details like the brick wall or the
+      train, the shader was really hard to fine-tune. That's why I opted to create at least some of the linework in a
+      texture. These lines could be directly painted onto the albedo texture, or a secondary texture could be made that
+      contained <i>information</i> on where the outlines should be drawn. This information for example could be stored
+      in the form of colored sections within the texture. Wherever there is a hard discontinuity, we can draw an
+      outline.</p>
+
+
+    <br>
+    <h2 class="mt-4 mb-3">Linework</h2>
+
+
+    <br>
+    <h2 class="mt-4 mb-3">Vegetation</h2>
+
+
+    <br>
+    <h2 class="mt-4 mb-3">Extra Resources</h2>
+    <p>Here are some extra resources that helped me write this shader.</p>
+
+    <a href="https://roystan.net/articles/outline-shader.html">https://roystan.net/articles/outline-shader.html</a><br>
+    <a
+      href="https://docs.unity3d.com/Packages/com.unity.render-pipelines.universal@7.1/manual/universalrp-builtin-feature-comparison.html">https://docs.unity3d.com/Packages/com.unity.render-pipelines.universal@7.1/manual/universalrp-builtin-feature-comparison.html</a>
+
+
+    <br><br><br>
+
+    <div class="row">
+      <div class="col-7 tutorial-footer">
+        <div class="col">
+          <div class="row">
+            <p>Have questions or feedback? Contact me! </p>
+          </div>
+          <div class="row">
+            <div class="col-0">
+              <a href="https://twitter.com/alexanderameye" id="link">twitter</a>
+            </div>
+            <div class="col-1">
+              <a href="mailto:alexanderameye@gmail.com" id="link">alexanderameye@gmail.com</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-4 download-package">
+        <div class="col">
+          <div class="row">
+            <p>Download the source files</p>
+          </div>
+          <div class="row">
+            <div class="col-0">
+
+              <a href="packages/outlineshader.unitypackage" download rel="nofollow"
+                class="button">outlineshader.unitypackage</a>
+
+            </div>
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <br><br><br>
+
+  </div>
+</body>
+
+</html>
+
+<!--https://programming.vip/docs/5d0a938facf66.html-->

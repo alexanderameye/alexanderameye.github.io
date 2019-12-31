@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- SITE INFO -->
+  <title>ameye</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="img/site/icon.png">
+
+  <!-- FONTS -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Inconsolata&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link href="css/style.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+    integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+  <!-- JS -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+  <div class="container-fluid">
+    <div class="row">
+
+      <!--SIDEBAR-->
+      <div class="col-auto" id="left">
+        <br>
+        <h1 align="left"><strong>AMEYE</strong></h1>
+        <br>
+        <div class="row">
+
+          <!--PROFILE PICTURE-->
+          <div class="col col-md-auto pl-3 pr-0">
+            <img src="img/site/me1.jpg" id="profilepic" width="200" class="img-fluid" alt="Responsive image">
+          </div>
+
+          <!--OVERLAY-->
+          <div class="col pl-0" id="overlay">
+            <div class="item">
+              <button onclick="changepic()">
+                <strong>ME</strong><i class="fas fa-arrow-left arrow1" aria-hidden="true"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="col pl-0" id="overlaydog">
+            <div class="item">
+              <button onclick="changepic()">
+                <strong>NOT ME</strong><i class="fas fa-paw paw" aria-hidden="true"></i>
+              </button>
+            </div>
+          </div>
+
+
+        </div>
+
+        <!--ABOUT ME-->
+        <br><br>
+        <p><strong>** about <a onclick="on()" href="#" id="link">me</a> **</strong></p>
+        <p>\ software engineering student</p>
+        <p>\ unity3d enthusiast</p>
+        <p>\ <a href="docs/resume.pdf" id="link">resume</a></p>
+
+        <script>
+          function on() {
+            if (document.getElementById("overlaydog").style.display != "block") {
+              document.getElementById("overlay").style.display = "block";
+            }
+
+          }
+
+          function off() {
+            document.getElementById("overlay").style.display = "none";
+          }
+
+
+
+          function changepic() {
+            if (document.getElementById("profilepic").getAttribute("src") == "img/site/me1.jpg") {
+              document.getElementById("profilepic").src = "img/site/me2.jpg";
+
+            } else if (document.getElementById("profilepic").getAttribute("src") == "img/site/me2.jpg") {
+              document.getElementById("overlay").style.display = "none";
+              document.getElementById("overlaydog").style.display = "block";
+              document.getElementById("profilepic").src = "img/site/notme1.jpg";
+
+            } else {
+              document.getElementById("overlay").style.display = "block";
+              document.getElementById("overlaydog").style.display = "none";
+              document.getElementById("profilepic").src = "img/site/me1.jpg";
+            }
+
+
+
+          }
+        </script>
+
+        <!--CONTACT ME-->
+        <br><br>
+        <p><strong>** contact me **</strong></p>
+        <p>alexander ameye</p>
+        <p>message me at <a href="mailto:alexanderameye@gmail.com" id="link">alexanderameye@gmail.com</a></p>
+        <p>follow me on <a href="https://twitter.com/alexanderameye" id="link">twitter</a> ♥</p>
+
+        <!--SKILLS-->
+        <br><br>
+        <p><strong>** skills **</strong></p>
+        <p>\ dutch, english, french</p>
+        <p>\ c, c#, java, python</p>
+        <p>\ ms office</p>
+
+        <!--TOOLS-->
+        <br><br>
+        <p><strong>** tools **</strong></p>
+        <p>\ <a href="https://unity3d.com/unity" id="link">unity3d</a> game engine</p>
+        <p>\ <a href="https://www.blender.org/" id="link">blender</a> 3d suite</p>
+        <p>\ <a href="https://developer.android.com/studio" id="link">android studio</a> IDE</p>
+        <br>
+        <br>
+      </div>
+
+      <!--MAIN SECTION-->
+      <div class="col" style="padding-left: 40px;">
+        <ul class="nav nav-tabs">
+          <li class="active"><a data-toggle="tab" href="#art" id="section">ART</a></li>
+          <li><a data-toggle="tab" href="#software" id="section">SOFTWARE</a></li>
+          <li><a data-toggle="tab" href="#hardware" id="section">HARDWARE</a></li>
+          <li><a data-toggle="tab" href="#contact" id="section">CONTACT</a></li>
+        </ul>
+        <hr>
+
+        <!--CONTENT-->
+        <div class="row">
+          <div class="col tab-content" id="right">
+
+            <div id="art" class="tab-pane active">
+              <!--SHORTCUTS-->
+              <p>↳ <a href="#">grid view</a></p>
+
+              <!--LIGNE CLAIRE-->
+              <h3>Ligne claire</h3>
+              <hr>
+              <br>
+              <div class="row">
+                <div class="col-3" id="image">
+                  <img src="img/art/morningtraintolondon.gif" width="400" class="img-fluid" alt="Responsive image">
+                </div>
+
+                <div class="col-3" id="image">
+                  <img src="img/art/CN3411goingdown.gif" width="400" class="img-fluid" alt="Responsive image">
+                </div>
+
+                <div class="col-3" id="image">
+                  <img src="img/art/desertmirages.gif" width="400" class="img-fluid" alt="Responsive image">
+                </div>
+
+                <div class="col-3" id="text">
+                  <p align="justify">A series of creations based on the work of Hergé in <i>'The Adventures Of
+                      Tintin'</i>. The goal was
+                    to achieve an accurate representation of the hand-drawn style within the Unity3d engine.</p>
+                  <p><i>#unity3d</i></p>
+                  <br>
+                  <p><strong>\</strong> Morning Train To London</p>
+                  <p><strong>\</strong> CN-3411 Going Down</p>
+                  <p><strong>\</strong> Desert Mirages</p>
+
+
+                </div>
+              </div>
+              <br><br><br>
+
+              <!--EDGE DETECTION SHADER-->
+              <h3>Edge detection shader</h3>
+              <hr>
+              <br>
+              <div class="row">
+                <div class="col-lg-auto" id="image">
+                  <img src="img/art/edgedetection.png" width="800" class="img-fluid" alt="Responsive image">
+                </div>
+                <div class="col-3" id="text">
+                  <p align="justify">Shader that detects edges based on pixel differences in <i>depth</i>,
+                    <i>normals</i>
+                    and
+                    <i>color</i>. Shader can be applied as image-effect for a stylized look.</p>
+                  <p><i>#unity3d #shader</i></p>
+                </div>
+              </div>
+              <br><br><br>
+
+              <!--TOON SHADER-->
+              <h3>Toon Shader</h3>
+              <hr>
+              <br>
+              <div class="row">
+                <div class="col-lg-auto" id="image">
+                  <img src="img/art/toonshader.jpg" width="800" class="img-fluid" alt="Responsive image">
+                </div>
+                <div class="col-4" id="text">
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur rhoncus fringilla ex, quis
+                    mollis
+                    ex laoreet id. Donec hendrerit bibendum pharetra. Suspendisse gravida mauris eget est ullamcorper,
+                    sit
+                    amet ornare ante tristique. Aenean bibendum varius diam in dictum. Phasellus ut aliquet neque.
+                    Suspendisse porta nunc diam, ac lacinia metus consectetur sit amet. Nunc mollis iaculis libero eget
+                    ullamcorper. Aenean vestibulum metus quis congue pellentesque. Morbi volutpat, ante lobortis
+                    tincidunt
+                    ultrices, felis neque mattis odio, non volutpat ipsum velit sed odio.</p>
+                </div>
+              </div>
+              <br><br><br>
+            </div>
+
+            <div id="software" class="tab-pane fade">
+
+              <!--WORKMATE-->
+              <h3>Workmate</h3>
+              <hr>
+              <br>
+              <div class="row">
+                <div class="col-3" id="image">
+                  <img src="img/software/workmate/" width="400" class="img-fluid" alt="Responsive image">
+                </div>
+
+                <div class="col-3" id="image">
+                  <img src="img/software/workmate/" width="400" class="img-fluid" alt="Responsive image">
+                </div>
+
+                <div class="col-3" id="image">
+                  <img src="img/software/workmate/" width="400" class="img-fluid" alt="Responsive image">
+                </div>
+
+                <div class="col-3" id="text">
+                  <p align="justify">For my OOP course I designed and created an employee polling system. Employees
+                    answer questions related to their work-life
+                    asked by their employers. By doing this they receive company currency which they can use for various
+                    company related beneftis. Employers have an easy way of gaining insight into how content their
+                    workers are and where they can improve. Company administrators have access to a dashboard website
+                    where they can analyze answered questions and various statistics about the results.</p>
+
+
+                  <p align="justify">For this project an android application was created within android studio as well
+                    as a dashboard website. The application and the website communicate together through an SQL server.
+                  </p>
+
+                  <p><strong>Spring 2019</strong></p>
+
+                  <p><i>#android #java #web #php #mysql #design #universityproject</i></p>
+                  <br>
+                </div>
+              </div>
+
+
+              <!--ROCKSTUDIO-->
+              <h3>RockStudio</h3>
+              <hr>
+              <br>
+              <div class="row">
+                <div class="col-3" id="image">
+                  <img src="img/software/rockstudio/" width="400" class="img-fluid" alt="Responsive image">
+                </div>
+
+                <div class="col-3" id="image">
+                  <img src="img/software/rockstudio/" width="400" class="img-fluid" alt="Responsive image">
+                </div>
+
+                <div class="col-3" id="image">
+                  <img src="img/software/rockstudio/" width="400" class="img-fluid" alt="Responsive image">
+                </div>
+
+
+                <div class="col-3" id="text">
+                  <p align="justify">A tool developed for the Unity3D engine for the rapid creation of rock, stone,
+                    boulder or crystal geometry. Mesh generation uses a 3D convex hull algorithm.</p>
+
+                  <p><strong>2017</strong></p>
+
+                  <p><i>#unity3d</i></p>
+                  <br>
+                </div>
+              </div>
+            </div>
+
+            <div id="hardware" class="tab-pane fade">
+              <!--POLARIS-->
+              <h3>Project Polaris</h3>
+              <hr>
+              <br>
+              <div class="row">
+                <div class="col-3" id="image">
+                  <img src="img/art/morningtraintolondon.gif" width="400" class="img-fluid" alt="Responsive image">
+                </div>
+
+                <div class="col-3" id="image">
+                  <img src="img/art/CN3411goingdown.gif" width="400" class="img-fluid" alt="Responsive image">
+                </div>
+
+                <div class="col-3" id="image">
+                  <img src="img/art/desertmirages.gif" width="400" class="img-fluid" alt="Responsive image">
+                </div>
+
+                <div class="col-3" id="text">
+                  <p align="justify">In a team of 7, we designed and created an autonomous vessel that uses spatial
+                    awareness to move itself
+                    on a waterway. This autonomous vehicle uses sonar sensors to move itself along a canal or river. The
+                    vessel was designed for the transport sector and has a flat deck on where packages can be stored.
+                  </p>
+
+                  <p><strong>Fall 2018 - Spring 2019</strong></p>
+
+                  <p><i>#arduino #automation #universityproject</i></p>
+                  <br>
+                </div>
+              </div>
+            </div>
+
+
+            <div id="contact" class="tab-pane fade">
+
+              <!--SHORTCUTS-->
+              <p>↳ <a href="#">grid view</a></p>
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      $(document).ready(function () {
+        $(".nav-tabs a").click(function () {
+          $(this).tab('show');
+        });
+      });
+    </script>
+
+
+</body>
+
+</html>

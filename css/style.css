@@ -239,14 +239,15 @@ p {
 
 #left {
   background-color: #ffffff;
-  height: 100;
+  height: auto;
   padding-right: 30px;
   border-right: 1px dashed #333;
 }
 
 #right {
   background-color: #ffffff;
-  height: 100;
+
+  height: auto;
 }
 
 #top {

@@ -10,7 +10,7 @@
 }
 
 .hover-blur video{
-  width: 100%;
+  width: 230px;
   height: auto;
   -webkit-transition: all 0.5s ease-in-out;
   -moz-transition: all 0.5s ease-in-out;
@@ -20,7 +20,7 @@
 }
 
 .hover-blur:hover video{
-   width: 100%;
+   width: 230px;
   height: auto;
   -webkit-transform: scale(1.2);
   -moz-transform: scale(1.2);

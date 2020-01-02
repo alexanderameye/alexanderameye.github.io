@@ -40,12 +40,9 @@
       </li>
       <li class="breadcrumb-item active">Hand Drawn</li>
     </ol>
-    <span class="badge badge-dark">Unity 2019.3.0f1</span>
-    <span class="badge badge-dark">URP 7.1.6</span>
-    <span class="badge badge-primary">December 24th 2019</span>
-    <br><br><br>
+    <br>
 
-    <!--INTRODUCTION-->
+    <!-- INTRODUCTION -->
     <h2 class="mt-4 mb-3">Introduction</h2>
     <p>Back in the late summer of 2019, I started looking into replicating a hand-drawn style within Unity. Specifically
       I wanted to successfully recreate the <i>Ligne Claire</i> style. The scene below was the first result in that
@@ -71,28 +68,17 @@
       having several artistical restrictions. Specifically the method of drawing outlines provided me with little to no
       artistic control over where outlines were specifically drawn. The outline shader is good for drawing outlines on
       bigger geometry like the tunnel on the right, but when it comes to little details like the brick wall or the
-      train, the shader was really hard to fine-tune. That's why I opted to create at least some of the linework in a
+      train, the shader was really hard to fine-tune. I will be revisiting this style in the future and optimizing the
+      worklow to enable faster content creation.
+
+
+      <!--That's why I opted to create at least some of the linework in a
       texture. These lines could be directly painted onto the albedo texture, or a secondary texture could be made that
       contained <i>information</i> on where the outlines should be drawn. This information for example could be stored
       in the form of colored sections within the texture. Wherever there is a hard discontinuity, we can draw an
-      outline.</p>
+      outline.-->
+    </p>
 
-
-    <br>
-    <h2 class="mt-4 mb-3">Linework</h2>
-
-
-    <br>
-    <h2 class="mt-4 mb-3">Vegetation</h2>
-
-
-    <br>
-    <h2 class="mt-4 mb-3">Extra Resources</h2>
-    <p>Here are some extra resources that helped me write this shader.</p>
-
-    <a href="https://roystan.net/articles/outline-shader.html">https://roystan.net/articles/outline-shader.html</a><br>
-    <a
-      href="https://docs.unity3d.com/Packages/com.unity.render-pipelines.universal@7.1/manual/universalrp-builtin-feature-comparison.html">https://docs.unity3d.com/Packages/com.unity.render-pipelines.universal@7.1/manual/universalrp-builtin-feature-comparison.html</a>
 
 
     <br><br><br>
@@ -113,32 +99,9 @@
           </div>
         </div>
       </div>
-
-      <div class="col-4 download-package">
-        <div class="col">
-          <div class="row">
-            <p>Download the source files</p>
-          </div>
-          <div class="row">
-            <div class="col-0">
-
-              <a href="packages/outlineshader.unitypackage" download rel="nofollow"
-                class="button">outlineshader.unitypackage</a>
-
-            </div>
-
-
-
-          </div>
-        </div>
-      </div>
     </div>
-
-
-
     <br><br><br>
-
-  </div>
+</div>
   <script src="js/jquery/jquery.min.js"></script>
   <script src="js/popper/popper.min.js"></script>
   <script src="js/bootstrap/bootstrap.min.js"></script>

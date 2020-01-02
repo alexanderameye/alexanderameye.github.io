@@ -239,16 +239,14 @@ p {
 
 #left {
   background-color: #ffffff;
-  height: 100vh;
-  overflow-y: scroll;
+  height: 100;
   padding-right: 30px;
   border-right: 1px dashed #333;
 }
 
 #right {
   background-color: #ffffff;
-  height: 100vh;
-  overflow-y: scroll;
+  height: 100;
 }
 
 #top {
@@ -262,31 +260,10 @@ p {
   background-color: #ffffff;
 }
 
-
-
-
-.text {
-  background-color: #4CAF50;
-  color: white;
-  font-size: 16px;
-  padding: 16px 32px;
-}
-
-
-
 #text {
   background-color: #ffffff;
 }
 
-#overlay,
-#overlaydog {
-  display: none;
-  /* Hidden by default */
-  z-index: 2;
-  /* Specify a stack order in case you're using a different order for other elements */
-  cursor: pointer;
-  /* Add a pointer on hover */
-}
 
 .item {
   width: 100px;

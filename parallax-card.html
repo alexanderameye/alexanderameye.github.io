@@ -2,11 +2,23 @@
 <html lang="en">
 
 <head>
+  <!-- ANALYTICS -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-137365487-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+    gtag('config', 'UA-137365487-1');
+  </script>
+
   <!-- SITE INFO -->
   <title>Parallax Card</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" href="img/site/icon.png">
+  <link rel="icon" type="image/png" href="img/site/icon.png" sizes="32x32" />
 
   <!-- FONTS -->
   <link href="https://fonts.googleapis.com/css?family=Roboto:900&display=swap" rel="stylesheet">
@@ -24,8 +36,6 @@
 </head>
 
 <body>
-
-
   <div class="container">
     <br><br>
     <ol class="breadcrumb">
@@ -165,7 +175,7 @@
     <div class="text-center">
       <figure class="figure ">
         <img src="img/shaders/parallax-card/voronoi1.png" class="figure-img" alt="">
-        <img src="img/shaders/parallax-card/voronoi2.png"  class="figure-img" alt="">
+        <img src="img/shaders/parallax-card/voronoi2.png" class="figure-img" alt="">
         <img src="img/shaders/parallax-card/voronoi3.png" class="figure-img" alt="">
       </figure>
     </div>

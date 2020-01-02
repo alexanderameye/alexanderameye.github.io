@@ -38,10 +38,9 @@
   margin-bottom: 0px;
   height: 100%;
   width: 100%;
-  padding: 45% 20px;
+  padding: 40% 0px;
   text-align: center;
   background-color: rgba(0, 0, 0, 0.4);
-  /*background dotted*/
   background-image: -webkit-repeating-radial-gradient(center center, rgba(0, 0, 0, .4), rgba(0, 0, 0, .1) 2px, transparent 4px, transparent 100%);
   background-image: -moz-repeating-radial-gradient(center center, rgba(0, 0, 0, .4), rgba(0, 0, 0, .1) 2px, transparent 4px, transparent 100%);
   background-image: -ms-repeating-radial-gradient(center center, rgba(0, 0, 0, .4), rgba(0, 0, 0, .1) 2px, transparent 4px, transparent 100%);

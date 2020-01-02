@@ -3,34 +3,41 @@
 
 <head>
     <!-- SITE INFO -->
-    <title>water shaders</title>
+    <title>Developer Notes</title>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" href="img/site/icon.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="favicon.ico?">
+
+    <!-- ANALYTICS -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-137365487-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+        gtag('config', 'UA-137365487-1');
+    </script>
+
+    <!-- FONTS -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Inconsolata&display=swap" rel="stylesheet">
 
     <!-- CSS -->
-    <link rel="stylesheet" href="css/bootstrap.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
-        integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-
-    <!-- JS -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link href="css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/bootstrap/bootstrap.css">
 </head>
 
+
 <body>
-
-    <!-- Page Content -->
     <div class="container">
-
-        <!-- Page Heading/Breadcrumbs -->
-        <h1 class="mt-4 mb-3">Developer Notes
-        </h1>
-
+        <br><br>
         <ol class="breadcrumb">
             <li class="breadcrumb-item">
-                <a href="index.html">Home</a>
+                <a href="index.html" id="link">Home</a>
             </li>
             <li class="breadcrumb-item active">Developer Notes</li>
         </ol>
@@ -106,7 +113,7 @@
 
         <br><br>
         <h2 class="mt-4 mb-3">Projection Parameters</h2>
-        This vector4 is used to linearize z buffer values.
+        <p>This vector4 is used to linearize z buffer values.</p>
         <table class="table table-bordered">
             <thead>
                 <tr>
@@ -138,7 +145,7 @@
         <br><br>
         <!-- Introduction -->
         <h2 class="mt-4 mb-3">Z Buffer Parameters</h2>
-        This vector4 is used to linearize z buffer values.
+        <p>This vector4 is used to linearize z buffer values.</p>
 
         <table class="table table-bordered">
             <thead>
@@ -208,7 +215,8 @@
         <br><br>
         <!-- Introduction -->
         <h2 class="mt-4 mb-3">Object Depth/Pixel Depth</h2>
-        <p>To get the object depth of our water which for us is the surface depth we use the screen position node. In raw mode, the screen position is not divided
+        <p>To get the object depth of our water which for us is the surface depth we use the screen position node. In
+            raw mode, the screen position is not divided
             by the clip space w component. This is useful for projection. The output is a vector4 that gives us
             the following values.
         </p>
@@ -422,23 +430,27 @@
 
 
 
-    <br><br>
+        <br><br>
 
-    <h2 class="mt-4 mb-3">Orhographic Depth</h2>
-    <p>In orthographic, the depth buffer is linear so the raw output of the scene depth node already gives us a linear
-        result. Using this linear value between 0 and 1, we can lerp between near (0) and far (1) planes of the camera. However on DirectX, PS4, Xbox One and Metal platforms, this is reversed so we lerp between far (0) and near (1.0).</p>
+        <h2 class="mt-4 mb-3">Orhographic Depth</h2>
+        <p>In orthographic, the depth buffer is linear so the raw output of the scene depth node already gives us a
+            linear
+            result. Using this linear value between 0 and 1, we can lerp between near (0) and far (1) planes of the
+            camera. However on DirectX, PS4, Xbox One and Metal platforms, this is reversed so we lerp between far (0)
+            and near (1.0).</p>
 
     </div>
     <br><br><br>
 
     <!--[https://github.com/keijiro/DepthInverseProjection/blob/master/Assets/InverseProjection/Resources/InverseProjection.shader](https://github.com/keijiro/DepthInverseProjection/blob/master/Assets/InverseProjection/Resources/InverseProjection.shader)-->
-<!--https://twitter.com/Cyanilux/status/1169932961443123201-->
-<!--https://forum.unity.com/threads/depth-buffer-with-orthographic-camera.355878/-->
-   <!--https://www.youtube.com/watch?v=C6lGEgcHbWc-->
+    <!--https://twitter.com/Cyanilux/status/1169932961443123201-->
+    <!--https://forum.unity.com/threads/depth-buffer-with-orthographic-camera.355878/-->
+    <!--https://www.youtube.com/watch?v=C6lGEgcHbWc-->
 
 
-<script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="js/jquery/jquery.min.js"></script>
+  <script src="js/popper/popper.min.js"></script>
+  <script src="js/bootstrap/bootstrap.min.js"></script>
 </body>
 
 </html>

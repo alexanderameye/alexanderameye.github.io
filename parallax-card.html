@@ -43,7 +43,7 @@
     <br>
     <div class="text-center">
       <figure class="figure ">
-        <img src="img/shaders/parallax-card/pokemon.gif" class="figure-img" alt="">
+        <img src="img/shaders/parallax-card/pokemon.gif" width="400" class="figure-img" alt="">
         <figcaption class="figure-caption">The final result</figcaption>
       </figure>
     </div>
@@ -53,10 +53,11 @@
     <h2 class="mt-4 mb-3">Introduction</h2>
     <p>I will give a breakdown of how I made a parallax card shader using shader graph. For this shader, my personal
       challenge was to do as much as possible in the shader itself without relying on any textures. In the end, the only
-      things I used 3D models for or textures are the little pokemon scene in the center of the card, and the text. The
+      things I used 3D models for or textures are the little pokemon scene in the center of the card, and the text on
+      the card. The
       design of
       the card was largely inspired by <a target="_blank" href="https://twitter.com/bobacupcake">Rob Fichman</a>'s
-      work. The 3D model of the pokemon can be found <a targe="_blank"
+      work. The 3D model of the pokemon can be found <a target="_blank"
         href="https://sketchfab.com/3d-models/cosmog-d928b7339a9b4ecb841162c53b4c4f4a">here</a> on sketchfab.
     </p>
 
@@ -78,8 +79,9 @@
     </div>
     <br>
 
-    <p>In total, the shader has around 70 to 80 properties. This is a lot, but I like that I can tweak variables as much
-      as I want until I'm happy.</p>
+    <p>In total, the shader has 65 exposed properties. This is quite a lot, but I like that I can tweak variables as
+      much
+      as I want until I'm happy with the result.</p>
 
 
     <br>
@@ -87,7 +89,8 @@
     <p>The card features several drawings like the pokemon-type icons and the celestial bodies on the right bottom
       corner
       of the card. All of these are a combination of ellipse nodes and custom SDF nodes. Signed
-      distance functions are extremely powerful to create arbitrary shapes. For the corner pattern, the stars are made
+      distance functions are extremely powerful for creating arbitrary shapes. For the corner pattern, the stars are
+      made
       out of 2 <i>Vesica</i> SDFs blended together. The moon
       is made out of 2 spheres and the planet is made out of spheres and ellipses. I added a parallax effect to fake
       depth.</p>
@@ -125,13 +128,14 @@
     <br><br>
     <h2 class="mt-4 mb-3">Raymarched Spheres</h2>
     <p>The little spheres in the card that I use for the pokemon types and the attacks, are raymarched spheres. Together
-      with some Blinn-Phong lighting they look 3D and I can fake having 3D objects in the shader.</p>
+      with some Blinn-Phong lighting they look 3D and I can fake having 3D objects in the shader without having any real
+      3D geometry.</p>
 
     <br>
     <div class="text-center">
       <figure class="figure ">
-        <img src="img/shaders/parallax-card/raymarched-sphere.png" class="figure-img" alt="">
-        <figcaption class="figure-caption">Raymarched sphere + Blinn-Phong</figcaption>
+        <img src="img/shaders/parallax-card/impostor.gif" class="figure-img" alt="">
+
       </figure>
     </div>
     <br>
@@ -141,12 +145,32 @@
     <h2 class="mt-4 mb-3">Text</h2>
     <p>At first, I attempted to do the text in-shader as well. This is possible for sure, using bezier curves and SDFs
       and
-      I actually got quite close to rendering letters, but in the end I decided it was too much work for too little
-      result. In the end, I used a texture to render the text.</p>
+      I actually got quite close to rendering letters how I wanted to. In the end though, it was quite a lot of work to
+      render text with the exact font that I wanted, so I decided to use a texture like a sane person.</p>
+
+    <br>
+    <div class="text-center">
+      <figure class="figure ">
+        <img src="img/shaders/parallax-card/text.png_small" height="300" class="figure-img" alt="">
+        <img src="img/shaders/parallax-card/text2.png_small" height="300" class="figure-img" alt="">
+      </figure>
+    </div>
+    <br>
 
     <br>
     <h2 class="mt-4 mb-3">Holographic Sparkles</h2>
     <p>All of the sparkles effect are crated by</p>
+
+    <br>
+    <div class="text-center">
+      <figure class="figure ">
+        <img src="img/shaders/parallax-card/voronoi1.png" class="figure-img" alt="">
+        <img src="img/shaders/parallax-card/voronoi2.png"  class="figure-img" alt="">
+        <img src="img/shaders/parallax-card/voronoi3.png" class="figure-img" alt="">
+      </figure>
+    </div>
+    <br>
+
 
     <br>
     <h2 class="mt-4 mb-3">Parallax Effect</h2>
@@ -168,13 +192,15 @@
     <br>
     <h2 class="mt-4 mb-3">Stencil Shader</h2>
     <p>A stencil shader was used to make it so that the 3D pokemon scene is only visible through the window of the card
-      itself. To do this in URP I'd like to point to <a target="_blank" href="">this post</a> that explains it.</p>
+      itself. To do this in URP I'd like to point to <a target="_blank"
+        href="https://twitter.com/Cyanilux/status/1193513267534151680?s=20">this post</a> that explains it very well.
+    </p>
 
     <br>
     <div class="text-center">
       <figure class="figure ">
-        <img src="img/shaders/parallax-card/stencil.png" class="figure-img" alt="">
-        <figcaption class="figure-caption">Stencil Effect</figcaption>
+        <img src="img/shaders/parallax-card/stencil.gif" class="figure-img" alt="">
+
       </figure>
     </div>
     <br>
@@ -186,8 +212,8 @@
     <p>Some things are worth it, some things are not. If this were an actual project and not just me fooling around, I
       should for sure have used real spheres instead of raymarched ones in order to save time. The little icons however,
       were quick and fun to create so in the future I will do those kind of things in-shader. Another thing is that
-      because I tried to do everything in 1 shader, my graph was very very large. With over 80 properties and over 10
-      subgraphs, shadergraph slowed down quite a lot. Here are some images to illustrate the graph size.</p>
+      because I tried to do everything in 1 shader, my graph was very very large. With 65 properties and over 10
+      subgraphs, shadergraph slowed down quite a lot. </p>
 
 
     <br>

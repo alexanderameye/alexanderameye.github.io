@@ -5,8 +5,22 @@
   <!-- SITE INFO -->
   <title>Hand Drawn</title>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" href="img/site/icon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="icon" href="favicon.ico">
+
+  <!-- ANALYTICS -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-137365487-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+    gtag('config', 'UA-137365487-1');
+  </script>
 
   <!-- FONTS -->
   <link href="https://fonts.googleapis.com/css?family=Roboto:900&display=swap" rel="stylesheet">
@@ -15,28 +29,17 @@
   <!-- CSS -->
   <link href="css/style.css" rel="stylesheet">
   <link rel="stylesheet" href="css/bootstrap/bootstrap.css">
-
-  <!-- JS -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-  <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
 </head>
 
 <body>
-
-
   <div class="container">
     <br><br>
-
-
     <ol class="breadcrumb">
       <li class="breadcrumb-item">
         <a href="index.html" id="link">Home</a>
       </li>
       <li class="breadcrumb-item active">Hand Drawn</li>
     </ol>
-
     <span class="badge badge-dark">Unity 2019.3.0f1</span>
     <span class="badge badge-dark">URP 7.1.6</span>
     <span class="badge badge-primary">December 24th 2019</span>
@@ -136,8 +139,9 @@
     <br><br><br>
 
   </div>
+  <script src="js/jquery/jquery.min.js"></script>
+  <script src="js/popper/popper.min.js"></script>
+  <script src="js/bootstrap/bootstrap.min.js"></script>
 </body>
 
 </html>
-
-<!--https://programming.vip/docs/5d0a938facf66.html-->

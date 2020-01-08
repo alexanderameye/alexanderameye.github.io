@@ -88,7 +88,7 @@
           <div class="col">
             <br>
             <ul class="nav nav-tabs">
-              <li class="active"><a data-toggle="tab" href="#graphics" id="section">GRAPHICS</a></li>
+              <li class="active"><a data-toggle="tab" href="#graphics" id="section">HOME</a></li>
               <li><a data-toggle="tab" href="#shaders" id="section">SHADERS</a></li>
               <li><a data-toggle="tab" href="#contact" id="section">CONTACT</a></li>
             </ul>
@@ -106,7 +106,7 @@
 
 
               <!-- STYLIZED WATER -->
-             <!-- <h3>Stylized Water</h3>
+              <!-- <h3>Stylized Water</h3>
               <div class="row">
                 <div class="col-3" id="image">
                   <img width="300" src="img/shaders/stylized-water/water.png" />
@@ -126,9 +126,8 @@
               <br><br><br>-->
 
 
-
               <!-- PARALLAX CARDS -->
-             <h3>Parallax Card</h3>
+              <h3>Parallax Pokémon Card</h3>
               <div class="row">
                 <div class="col-3" id="image">
                   <video width="800" class="img-fluid" title="Parallax Pokémon Card (December 2019)" autoplay loop muted
@@ -138,12 +137,48 @@
 
                 </div>
                 <div class="col-3" id="text">
-                  <p>Parallax card shader created with shader graph in Unity. Except for the pokemon 3D model everything
-                    is done in 1 shader with only 1 texture for the text. More <a href="parallax-card.html"
-                      target="_blank">here</a>.</p>
+                  <p>Parallax card shader created with shader graph in Unity. Except for the Pokémon 3D model everything
+                    is rendered onto 1 quad, with 1 shader and sampling only a single texture (for the text). More <a
+                      href="parallax-card.html" target="_blank">here</a>.</p>
                   <p><i>December 2019</i></p>
                 </div>
                 <div class="col-6" id="text">
+                </div>
+              </div>
+              <br><br><br>
+
+
+              <!-- SDF Icons -->
+              <h3>SDF Icons</h3>
+              <div class="row">
+                <div class="col-9">
+
+                  <div>
+                    <img src="img/shaders/parallax-card/types/dark.png" class="figure-img" alt="">
+                    <img src="img/shaders/parallax-card/types/poison.png" class="figure-img" alt="">
+                    <img src="img/shaders/parallax-card/types/psychic.png" class="figure-img" alt="">
+                    <img src="img/shaders/parallax-card/types/electric.png" class="figure-img" alt="">
+                    <img src="img/shaders/parallax-card/types/bug.png" class="figure-img" alt="">
+                    <img src="img/shaders/parallax-card/types/fairy.png" class="figure-img" alt="">
+                  </div>
+
+                  <div>
+                    <img src="img/shaders/parallax-card/types/pokeball.png" class="figure-img" alt="">
+                    <img src="img/shaders/parallax-card/types/steel1.png" class="figure-img" alt="">
+                    <img src="img/shaders/parallax-card/types/steel2.png" class="figure-img" alt="">
+                    <img src="img/shaders/parallax-card/types/rock.png" class="figure-img" alt="">
+                    <img src="img/shaders/parallax-card/types/normal1.png" class="figure-img" alt="">
+                    <img src="img/shaders/parallax-card/types/normal2.png" class="figure-img" alt="">
+                  </div>
+
+                </div>
+                <div class="col-2" id="text">
+                  <p>SDF Pokémon icons created in shadergraph using <a
+                      href="https://en.wikipedia.org/wiki/Signed_distance_function" target="_blank">signed distance
+                      functions</a>. I created these to practice
+                    using SDFs in my shaders comfortably.
+                  </p>
+                  <p><i>December 2019</i></p>
                 </div>
               </div>
               <br><br><br>
@@ -192,13 +227,6 @@
                 </div>
               </div>
               <br><br><br>
-
-
-
-
-
-
-
               <br>
             </div>
 
@@ -209,21 +237,29 @@
               <!-- ROW 1 -->
               <div class="row">
                 <div class="col-xs-6 col-sm-2 hover-blur">
-                  <a href="outlineshader.html" title="">
+                  <a target="_blank" href="outlineshader.html" title="">
                     <img src="img/shaders/outline/outline.png" />
                     <h2><span class="text-white">Outline Shader</span></h2>
                   </a>
                 </div>
 
-                   <div class="col-xs-6 col-sm-2 hover-blur">
-                  <a href="parallax-card.html" title="">
-                    <video autoplay loop muted playsinline src="img/videos/parallaxcard.mp4" type="video/mp4"></video>  
+                <div class="col-xs-6 col-sm-2 hover-blur">
+                  <a target="_blank" href="parallax-card.html" title="">
+                    <video autoplay loop muted playsinline src="img/videos/parallaxcard.mp4" type="video/mp4"></video>
                     <h2><span class="text-white">Parallax Card</span></h2>
                   </a>
                 </div>
 
+                <!--<div class="col-xs-6 col-sm-2 hover-blur">
+                  <a target="_blank" href="sdf-icons.html" title="">
+                    <img src="img/gifs/sdf-icons.gif" />
+                    <h2><span class="text-white">SDF Icons</span></h2>
+                  </a>
+                </div>-->
+
+
                 <div class="col-xs-6 col-sm-2 hover-blur">
-                  <a href="handdrawn.html" title="">
+                  <a target="_blank" href="handdrawn.html" title="">
                     <img src="img/gifs/morningtraintolondon.gif" />
                     <h2><span class="text-white">Hand Drawn</span></h2>
                   </a>

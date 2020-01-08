@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- SITE INFO -->
+  <title>SDF Icons</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="icon" href="favicon.ico?">
+
+  <!-- ANALYTICS -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-137365487-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+    gtag('config', 'UA-137365487-1');
+  </script>
+
+  <!-- FONTS -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Inconsolata&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link href="css/style.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/bootstrap/bootstrap.css">
+</head>
+
+<body>
+  <div class="container">
+    <br><br>
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a href="index.html" id="link">Home</a>
+      </li>
+      <li class="breadcrumb-item active">SDF Icons</li>
+    </ol>
+    <br>
+
+    <!-- INTRODUCTION -->
+    <h2 class="mt-4 mb-3">Introduction</h2>
+    <p>After learning about signed distance functions, I wanted a fun way to practice using them in a shader. I decided
+      to create some icons using SDFs. The nice thing about these is that you
+      don't need to sample any textures and the icons stay perfectly crisp even when zooming in.
+    </p>
+
+    <br>
+    <h2 class="mt-4 mb-3">Signed Distance Functions</h2>
+    <p>I created custom function nodes to generate different SDF types like circles, stars, vesicas, polygons etc. I then
+      also made custom functions that can sample an SDF and blend two SDFs together.</p>
+
+
+    <br>
+    <h2 class="mt-4 mb-3">Pokémon Type Icons</h2>
+    <p>Using these SDF nodes I started recreating the Pokémon type icons.</p>
+
+    <br>
+    <div class="text-center">
+      <figure class="figure ">
+        <video width="800" class="img-fluid" autoplay loop muted playsinline>
+          <source src="img/videos/pokemon-icons.mp4" type="video/mp4">
+        </video>
+      </figure>
+    </div>
+    <br>
+
+
+
+
+
+    <br>
+    <h2 class="mt-4 mb-3">Celestial Bodies</h2>
+    <p>Other than the Pokémon icons, I also created some icons of celestial bodies. These were simple enough shapes but
+      fun to create.</p>
+
+    <br>
+    <div class="text-center">
+      <figure class="figure ">
+        <img src="img/shaders/parallax-card/corner-pattern.gif" width="300" class="figure-img" alt="">
+        <figcaption class="figure-caption"></figcaption>
+      </figure>
+    </div>
+    <br>
+
+
+    <br><br><br>
+    <div class="row">
+      <div class="col-7 tutorial-footer">
+        <div class="col">
+          <div class="row">
+            <p>Have questions or feedback? Contact me! </p>
+          </div>
+          <div class="row">
+            <div class="col-0">
+              <a href="https://twitter.com/alexanderameye" id="link">twitter</a>
+            </div>
+            <div class="col-1">
+              <a href="mailto:alexanderameye@gmail.com" id="link">alexanderameye@gmail.com</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br><br><br>
+  </div>
+  <script src="js/jquery/jquery.min.js"></script>
+  <script src="js/popper/popper.min.js"></script>
+  <script src="js/bootstrap/bootstrap.min.js"></script>
+</body>
+
+</html>

@@ -1,12 +1,20 @@
-.text-white {
+.text-white-large {
   color: #fff;
   font-size: xx-large;
+}
+
+.text-white-medium {
+  color: #fff;
+  font-size: x-large;
 }
 
 .hover-blur a {
   display: block;
   position: relative;
   overflow: hidden;
+  height:230px;
+  width: 230px;
+  text-align: center;
 }
 
 .hover-blur video{
@@ -32,9 +40,6 @@
 }
 
 
-
-
-
 .hover-blur img{
   width: 100%;
   height: auto;
@@ -55,6 +60,7 @@
   filter: grayscale(0.6) blur(1px);
 }
 
+/*blur*/
 .hover-blur a h2 {
   display: block;
   position: absolute;
@@ -84,12 +90,14 @@
   opacity: 0;
 }
 
+/*blur*/
 .hover-blur:hover a h2 {
   -ms-filter: "progid: DXImageTransform.Microsoft.Alpha(Opacity=100)";
   filter: alpha(opacity=100);
   opacity: 1;
 }
 
+/*scale + opacity text*/
 .hover-blur .text-white {
   -webkit-transform: scale(0);
   -moz-transform: scale(0);
@@ -106,6 +114,7 @@
   opacity: 0;
 }
 
+/*scale + opacity text*/
 .hover-blur:hover .text-white {
   -webkit-transform: scale(1);
   -moz-transform: scale(1);

@@ -229,14 +229,25 @@ h6 {
   color: white;
   transition: color 0.2s ease;
   font-weight: bold;
-  padding: initial;
+  text-decoration: none;
+  opacity: 1;
+
+}
+
+#link::after {
+  display: block;
+  content: "Home";
+  font-weight: bold;
+  height: 0;
+  overflow: hidden;
+  visibility: hidden;
+  margin-top: -1px;
 }
 
 #link {
-
-  padding: 2px;
   text-decoration: none;
   border-bottom: 2px solid rgba(0, 0, 0, 1);
+  opacity: 1;
   color: #000;
   opacity: 1;
 }

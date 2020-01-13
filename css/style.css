@@ -224,7 +224,8 @@ h6 {
 }
 
 #link:hover,
-#link-no-line:hover {
+#link-no-line:hover,
+#link-no-space:hover {
   background-color: var(--accent-color);
   color: white;
   transition: color 0.2s ease;
@@ -244,7 +245,7 @@ h6 {
   margin-top: -1px;
 }
 
-#link {
+#link, #link-no-space {
   text-decoration: none;
   border-bottom: 2px solid rgba(0, 0, 0, 1);
   opacity: 1;

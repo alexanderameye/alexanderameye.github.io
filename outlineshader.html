@@ -236,13 +236,20 @@
     <br>
 
 
-   <!-- <h2 class="mt-4 mb-3">Per-object Outline</h2>
-    <p>In the case that you only want an outline applied to specific objects in the scene, simply remove the 2nd image
-      effect pass and change the outline shader to output the float <i>edge</i> instead of overlaying it with the
-      <i>_CameraColorTexture</i>. Then, use the following nodes.</p>
-
+    <h2 class="mt-4 mb-3">Per-object Outline</h2>
+    <p>In the case that we only want an outline applied to a specific object instead of all the objects in the scene as
+      an image effect, we need to do the following. First, we remove the 2nd renderer feature so we now only have the
+      <i>DepthNormalsFeature</i> as our renderer feature. Next, we modify the Outline.hlsl file slightly.</p>
 
     <br>
+    <script src="https://gist.github.com/AlexanderAmeye/d956574a67adf885f4e008d68b1c3238.js"></script>
+
+    <br>
+    <p>Instead of blending with the scene color and returning a float4, we will simply return the <i>edge</i> variable
+      which is a float1. Please note that I removed outlines based on color in this example, this is because I was
+      having strange issues with it. I will try to resolve these at a later time.</p>
+
+    <p>We can use the following node setup.</p>
     <div class="text-center">
       <figure class="figure ">
         <img src="img/shaders/outline/perobjectoutline.png" width="800" class="figure-img" alt="">
@@ -251,10 +258,9 @@
     </div>
     <br>
 
-    <p>This will lerp between an outline color and the main texture based on where the outline is. Please note that the
-      output of the custom function node was changed to a vector1 since we now output 1 or 0 whether there is an outline
-      or not instead of a color.</p>
-    <br>-->
+    <p>This node setup will lerp between an outline color and the main texture based on where the outline is. And that
+      should do it! You can now apply the material to an object and only that object will have an outline.</p>
+    <br>
     <h2 class="mt-4 mb-3">Useful Resources</h2>
     <p>Here are some extra resources that helped me write this tutorial.</p>
 

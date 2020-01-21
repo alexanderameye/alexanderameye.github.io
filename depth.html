@@ -51,16 +51,19 @@
         <h2 class="mt-4 mb-3">Clip Space</h2>
 
         <p>The clip space is the volume between the camera's near and far plane. The near clipping plane is the image
-            plane on which the objects in the scene are projected onto.</p>
+            plane on which the objects in the scene are projected onto. The clips space is the space that determines
+            what the camera sees. In clip space, the pyramid is converted to a regular cube. The model-view projection
+            matrix is used to convert mesh vertices to the clip space. Everything outside of the space is 'clipped'.</p>
 
-
+        <br>
         <div class="text-center">
-            <figure class="figure ">
-                <img src="img/watershader/developernotes/clipspace.png" class="figure-img rounded" alt="Final result.">
-                <figcaption class="figure-caption">Clip Space</figcaption>
-            </figure>
-        </div>
 
+            <img src="img/watershader/developernotes/clipspace.png" class="figure-img rounded" alt="Final result.">
+            <img src="img/developernotes/clip-space-unity.png" width="300" class="figure-img rounded"
+                alt="Final result.">
+
+        </div>
+        <br>
 
         <p>There are some platform differences listed below.</p>
 
@@ -379,11 +382,11 @@
             depth to a world position and
             compare the Y value of that with the global ocean height. </p>
 
-            <div class="text-center">
-                <figure class="figure ">
-                    <img src="img/developernotes/depth-fade.png" class="figure-img rounded" alt="Final result.">
-                </figure>
-            </div>
+        <div class="text-center">
+            <figure class="figure ">
+                <img src="img/developernotes/depth-fade.png" class="figure-img rounded" alt="Final result.">
+            </figure>
+        </div>
 
         <br>
 
@@ -397,10 +400,10 @@
             <figure class="figure ">
                 <img src="img/watershader/developernotes/viewdepthtoworlddepth.png" class="figure-img rounded"
                     alt="Final result.">
-        
+
             </figure>
         </div>
-<br>
+        <br>
         <p>We take the view direction
             node which is the vector from the vertex/fragment of our water surface towards the camera. We negate it to
             get

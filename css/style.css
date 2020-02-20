@@ -256,14 +256,23 @@ h1 {
 h2,
 h3,
 h4,
-h5,
-h6 {
+h5
+ {
   font-family: 'Roboto', sans-serif;
   font-style: normal;
   font-weight: 900;
   padding: 0;
   margin: 0;
   font-size: 2.2rem;
+  line-height: 1.4;
+  color: rgb(0, 0, 0);
+  text-rendering: optimizeLegibility;
+}
+
+h6
+{
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
   line-height: 1.4;
   color: rgb(0, 0, 0);
   text-rendering: optimizeLegibility;
@@ -340,6 +349,14 @@ p {
   height: auto;
   padding-right: 30px;
   border-right: 1px dashed #333;
+}
+
+#bottom {
+  background-color: #ffffff;
+  padding-left: 0px;
+  padding-right: 0px;
+  padding-top: 20px;
+  border-top: 1px dashed #333;
 }
 
 #right {

@@ -22,6 +22,8 @@
     gtag('config', 'UA-137365487-1');
   </script>
 
+
+
   <!-- FONTS -->
   <link href="https://fonts.googleapis.com/css?family=Roboto:900&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Inconsolata&display=swap" rel="stylesheet">
@@ -36,7 +38,6 @@
     <div class="row">
 
       <!-- SIDEBAR -->
-
       <div class="col-auto hide-scrollbar" id="left">
         <br>
         <h1><strong>AMEYE</strong></h1>
@@ -83,17 +84,16 @@
         <br>
       </div>
 
-
       <!-- MAIN SECTION -->
-      <div class="col ">
+      <div class="col">
         <div class="row" id="top">
           <div class="col">
             <br>
             <ul class="nav nav-tabs">
-              <li class="active"><a data-toggle="tab" href="#graphics" id="section">HOME</a></li>
-              <li><a data-toggle="tab" href="#projects" id="section">PROJECTS</a></li>
-              <li><a data-toggle="tab" href="#shaders" id="section">SHADERS</a></li>
-              <li><a data-toggle="tab" href="#contact" id="section">CONTACT</a></li>
+              <li class="active"><a data-toggle="tab" href="#graphics" id="section">Home</a></li>
+              <li><a data-toggle="tab" href="#projects" id="section">Projects</a></li>
+              <li><a data-toggle="tab" href="#shaders" id="section">Shaders</a></li>
+              <li><a data-toggle="tab" href="#contact" id="section">About</a></li>
             </ul>
           </div>
         </div>
@@ -108,8 +108,8 @@
 
 
 
-              <!-- STYLIZED WATER -->
-              <!--<h3>Stylized Water For URP</h3>
+              <!-- STYLIZED WATER 
+              <h3>Stylized Water For URP</h3>
               <div class="row">
                 <div class="col-3" id="image">
                   <img width="300" src="img/shaders/stylized-water/water.png" />
@@ -120,10 +120,10 @@
 
                 </div>
                 <div class="col-3" id="text">
-                  <p>During several months I worked on a stylized water shader for the Universal Render Pipeline. The
-                    shader has features like depth-based colors, surface foam, intersection foam, caustics, waves,
-                    refraction,... More <a href="water.html" target="_blank">here</a>.</p>
-                  <p><i>February 2019</i></p>
+                  <p>Over the period of several months I worked on designing and creating a stylized water shader for the Universal Render Pipeline. The result is a
+                    shader with features like depth-based colors, surface foam, intersection foam, caustics, waves,
+                    refraction, reflections and much more. You can get the shader <a href="water.html" target="_blank">here</a>.</p>
+                  <p><i>March 2020</i></p>
                 </div>
                 <div class="col-3" id="text">
                 </div>
@@ -134,22 +134,29 @@
               <h3>Shaders Done Quick</h3>
               <div class="row">
                 <div class="col-3" id="image">
-                  <video width="800" class="img-fluid" title="Simple Water Shader (January 2020)" controls muted>
-                    <source src="img/videos/simple-water-tutorial.mp4" type="video/mp4">
-                  </video>
+                  <div class="hovervideo">
+                    <video width="800" class="img-fluid" title="Simple Water Shader (January 2020)" loop muted>
+                      <source src="img/videos/simple-water-tutorial.mp4" type="video/mp4">
+                    </video>
+                  </div>
                 </div>
 
                 <div class="col-3" id="image">
-                  <video width="800" class="img-fluid" title="Simple Toon Shader (February 2020)" controls muted>
-                    <source src="img/videos/simple-toon-tutorial.mp4" type="video/mp4">
-                  </video>
+                  <div class="hovervideo">
+                    <video width="800" class="img-fluid" title="Simple Toon Shader (February 2020)" loop muted>
+                      <source src="img/videos/simple-toon-tutorial.mp4" type="video/mp4">
+                    </video>
+                  </div>
+
                 </div>
+
+
 
                 <div class="col-3" id="text">
                   <p>I created some tutorials on the topic of shaders. The goal was to explain a certain shader in a
-                    short video of under 60 seconds. So far I have created a tutorial for a <a
-                    href="simple-water.html" target="_blank">stylized water shader</a> and a <a
-                    href="simple-toon.html" target="_blank">toon shader</a>. The shaders themselves can be downloaded for free.</p>
+                    short video of under 60 seconds. So far I have created a tutorial for a <a href="simple-water.html"
+                      target="_blank">stylized water shader</a> and a <a href="simple-toon.html" target="_blank">toon
+                      shader</a>. The shaders themselves can be downloaded for free.</p>
                   <p><i>January 2020</i></p>
                 </div>
 
@@ -165,15 +172,20 @@
               <h3>Parallax Pokémon Cards</h3>
               <div class="row">
                 <div class="col-3" id="image">
-                  <video width="800" class="img-fluid" title="Cosmog (December 2019)" autoplay loop muted playsinline>
-                    <source src="img/videos/cosmog.mp4" type="video/mp4">
-                  </video>
+                  <div class="hovervideo">
+                    <video width="800" class="img-fluid" title="Cosmog (December 2019)" loop muted>
+                      <source src="img/videos/cosmog.mp4" type="video/mp4">
+                    </video>
+                  </div>
                 </div>
 
+
                 <div class="col-3" id="image">
-                  <video width="800" class="img-fluid" title="Umbreon (February 2020)" autoplay loop muted playsinline>
-                    <source src="img/videos/umbreon.mp4" type="video/mp4">
-                  </video>
+                  <div class="hovervideo">
+                    <video width="800" class="img-fluid" title="Umbreon (February 2020)" loop muted>
+                      <source src="img/videos/umbreon.mp4" type="video/mp4">
+                    </video>
+                  </div>
                 </div>
 
                 <div class="col-3" id="text">
@@ -233,10 +245,12 @@
               <h3>The Wind Rises</h3>
               <div class="row">
                 <div class="col-6" id="image">
-                  <video width="800" class="img-fluid" title="Le Vent Se Lève (November 2019)" autoplay loop muted
-                    playsinline>
-                    <source src="img/videos/leventseleve.mp4" type="video/mp4">
-                  </video>
+                  <div class="hovervideo">
+                    <video width="800" class="img-fluid" title="Le Vent Se Lève (November 2019)" loop muted
+                      >
+                      <source src="img/videos/leventseleve.mp4" type="video/mp4">
+                    </video>
+                  </div>
                 </div>
                 <div class="col-3" id="text">
                   <p>Quick scene I created after watching 'The Wind Rises' by
@@ -255,11 +269,12 @@
               <h3>Ligne Claire</h3>
               <div class="row">
                 <div class="col-3" id="image">
-                  <video width="800" class="img-fluid" title="Morning Train To London (September 2019)" autoplay loop
-                    muted playsinline>
-                    <source src="img/videos/morningtraintolondon.mp4" type="video/mp4">
-                  </video>
-
+                  <div class="hovervideo">
+                    <video width="800" class="img-fluid" title="Morning Train To London (September 2019)" loop
+                      muted>
+                      <source src="img/videos/morningtraintolondon.mp4" type="video/mp4">
+                    </video>
+                  </div>
                 </div>
                 <div class="col-3" id="text">
                   <p>A series of creations based on the work of Hergé in <i>'The Adventures Of
@@ -347,35 +362,52 @@
             <!-- CONTACT -->
             <div id="contact" class="tab-pane fade">
               <br><br>
-              <div class="col-lg-8 mb-4 pr-5">
-                <h4>Send me a message</h4><br>
-                <form class="needs-validation" name="sentMessage" id="contactForm" target="_blank" method="POST"
-                  action="https://getform.io/f/ee3198ef-2eb8-430e-ab7e-22c7b93bebed" novalidate>
 
-                  <div class="form-group">
-                    <div class="controls">
-                      <label for="email">Email address</label>
-                      <input type="email" name="email" class="form-control" id="email" placeholder="Email address"
-                        required>
-                      <div class="invalid-feedback">
-                        Please provide a valid email.
+              <div class="row">
+
+
+                <div class="col-lg-4 mb-4 pr-5">
+                  <h4>Send me a message</h4><br>
+                  <form class="needs-validation" name="sentMessage" id="contactForm" target="_blank" method="POST"
+                    action="https://getform.io/f/ee3198ef-2eb8-430e-ab7e-22c7b93bebed" novalidate>
+
+                    <div class="form-group">
+                      <div class="controls">
+                        <b> <label for="email">Email</label></b><b style="color:red"> *</b>
+                        <input type="email" name="email" class="form-control" id="email" placeholder="Email" required>
+                        <div class="invalid-feedback">
+                          Please provide a valid email.
+                        </div>
                       </div>
                     </div>
-                  </div>
-                  <div class="form-group">
-                    <div class="controls">
-                      <label for="message">Message</label>
-                      <textarea name="message" rows="10" cols="100" class="form-control" id="message"
-                        placeholder="Message" maxlength="999" style="resize:none" required></textarea>
-                      <div class="invalid-feedback">
-                        Please provide a message.
+                    <div class="form-group">
+                      <div class="controls">
+                        <b> <label for="message">Message </label></b> <b style="color:red">*</b>
+                        <textarea name="message" rows="6" cols="50" class="form-control" id="message"
+                          placeholder="Message" maxlength="999" style="resize:none" required></textarea>
+                        <div class="invalid-feedback">
+                          Please provide a message.
+                        </div>
                       </div>
                     </div>
-                  </div>
-                  <div id="success"></div>
-                  <button type="submit" class="button" id="sendMessageButton">Send Message</button>
-                </form>
+                    <div id="success"></div>
+                    <button type="submit" class="button" id="sendMessageButton">Submit</button>
+                  </form>
+                </div>
+
+                <div class="col-lg-8 mb-4 pr-5">
+                  <h4>My Twitter</h4><br>
+
+                  <a class="twitter-timeline" data-width="400" data-height="1000" data-theme="light"
+                    href="https://twitter.com/alexanderameye?ref_src=twsrc%5Etfw">Tweets by alexanderameye</a>
+                  <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+                </div>
+
+
               </div>
+
+
             </div>
             <br><br>
           </div>
@@ -384,6 +416,15 @@
       </div>
       <br>
     </div>
+
+    <!-- FOOTER -->
+    <div class="col">
+      <div class="row" id="bottom">
+        <h6>© 2020 Alexander Ameye</h6>
+      </div>
+    </div>
+
+
   </div>
   </div>
   </div>
@@ -393,6 +434,20 @@
   <script src="js/jquery/jquery.min.js"></script>
   <script src="js/popper/popper.min.js"></script>
   <script src="js/bootstrap/bootstrap.min.js"></script>
+
+  <script>
+    var figure = $(".hovervideo").hover(hoverVideo, hideVideo);
+
+    function hoverVideo(e) {
+      $('video', this).get(0).play();
+    }
+
+    function hideVideo(e) {
+      $('video', this).get(0).pause();
+    }
+  </script>
+
+
 </body>
 
 </html>

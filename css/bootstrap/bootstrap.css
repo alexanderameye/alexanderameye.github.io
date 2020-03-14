@@ -354,8 +354,8 @@ template {
   display: none !important;
 }
 
-h1, h2, h3, h4, h5, h6,
-.h1, .h2, .h3, .h4, .h5, .h6 {
+h1, h2, h3, h4, h5,
+.h1, .h2, .h3, .h4, .h5 {
   margin-bottom: 0.5rem;
   font-weight: 500;
   line-height: 1.2;
@@ -382,7 +382,8 @@ h5, .h5 {
 }
 
 h6, .h6 {
-  font-size: 1rem;
+  font-size: 1.0rem;
+  
 }
 
 .lead {

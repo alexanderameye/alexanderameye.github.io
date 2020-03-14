@@ -1,0 +1,14 @@
+.jumbotron2 {
+    padding: 2rem 1rem;
+    margin-bottom: 2rem;
+    border-radius: .3rem;
+    background-image: url("../img/stylizedwater/mobile-demo.png");
+    background-size: cover;
+}
+
+@media (min-width:576px) {
+    .jumbotron2 {
+        padding: 4rem 2rem
+    }
+}
+

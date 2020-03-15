@@ -24,17 +24,24 @@
             <ul class="navbar-nav">
               <li class="nav-item"><a class="nav-link active" href="#">Features<span
                     class="sr-only">(current)</span></a></li>
-              <li class="nav-item"><a class="nav-link" href="#">Manual</a></li>
-              <li class="nav-item"><a class="nav-link" href="#">Support</a></li>
+              <li class="nav-item"><a class="nav-link"
+                  href="https://alexanderameye.gitbook.io/stylized-water-for-urp/">Manual</a></li>
+              <li class="nav-item"><a class="nav-link"
+                  href="https://alexanderameye.gitbook.io/stylized-water-for-urp/support/troubleshooting">Support</a>
+              </li>
             </ul>
           </div>
           <div class="col-4 navbar-nav text-center pr-0 d-none d-lg-block"><a class="navbar-brand mr-0"
               href="#">Stylized Water For URP</a></div>
           <div class="col-4 pr-lg-0">
             <ul class="navbar-nav justify-content-end">
+              <li class="nav-item"><a class="nav-link" target="_blank"
+                  href="https://forum.unity.com/threads/stylized-water-for-urp-desktop-mobile-unreleased.846313/">Forum</a>
+              </li>
               <li class="nav-item"><a class="nav-link" target="_blank" href="https://assetstore.unity.com/">Asset
                   Store</a></li>
-              <li class="nav-item"><a class="nav-link" target="_blank" href="https://assetstore.unity.com/">Contact</a>
+              <li class="nav-item"><a class="nav-link" target="_blank"
+                  href="https://alexanderameye.gitbook.io/stylized-water-for-urp/">Contact</a>
               </li>
             </ul>
           </div>
@@ -46,7 +53,7 @@
     <section class="py-5">
       <div class="container-fluid text-center">
         <!--https://bootstrapshuffle.com/placeholder/pictures/bg_16-9.svg?primary=007bff-->
-        <div class="card"><img class="card-img" src="img/stylizedwater/cover-image.png" alt="">
+        <div class="card"><img class="card-img" src="img/shaders/stylized-water/cover-image.png" alt="">
           <div class="card-img-overlay d-flex justify-content-center align-items-center flex-column">
             <h3 class="card-title">Stylized Water</h3>
             <p class="card-text">Built for the Universal Render Pipeline</p><a class="btn btn-primary" href="#">Download
@@ -64,7 +71,7 @@
         <div>
           <!-- RICH COLORS -->
           <div class="row align-items-center text-md-left mb-5">
-            <div class="col-md-6 order-1 order-md-0"><img class="img-fluid" src="img/stylizedwater/rich_colors.png"
+            <div class="col-md-6 order-1 order-md-0"><img class="img-fluid" src="img/shaders/styl/rich_colors.png"
                 alt=""></div>
             <div class="col-md-6 mb-4 mb-md-0"><span class="display-3 mb-2"></span>
               <h3 class="mb-4">Rich Colors</h3>
@@ -75,7 +82,7 @@
 
           <!-- FOAM -->
           <div class="row align-items-center text-md-right mb-5">
-            <div class="col-md-6 order-1"><img class="img-fluid" src="img/stylizedwater/foam.png" alt=""></div>
+            <div class="col-md-6 order-1"><img class="img-fluid" src="img/shaders/stylized-water/features/foam.png" alt=""></div>
             <div class="col-md-6 mb-4 mb-md-0 order-0"><span class="display-3 mb-2"></span>
               <h3 class="mb-4">Foam</h3>
               <p>Surface and intersection foam, generated through noise or with a texture. Overlay multiple textures.
@@ -145,7 +152,7 @@
               alt="">
             <div>
               <h3 class="mb-3">Highly Compatible</h3>
-              <p>Works with Vulkan, Metal, Direct3D, OpenGL and WebGL on all platforms</p>
+              <p>Works with Vulkan, Metal, Direct3D and OpenGL on all platforms</p>
             </div>
           </div>
           <div class="col-md-4 d-flex align-items-start"><img class="mr-2 mt-2" src="placeholder/icons/check.svg"
@@ -160,17 +167,16 @@
     </section>
 
 
-
-    <!-- MOBILE PERFORMANCE -->
+    <!-- MOBILE FRIENDLY -->
     <section class="jumbotron2">
       <div class="container text-center">
-        <h1 class="display-4">Mobile</h1>
-        <p class="lead text-muted">Stunning and performant water on mobile platforms.</p><a class="btn btn-primary my-2"
-          href="#">Download Demo</a><a class="btn btn-link my-2" target="_blank"
+        <h1 class="display-4">Mobile Friendly</h1>
+        <p class="lead card-text">Stunning and performant water on mobile platforms.</p><a class="btn btn-primary my-2"
+          href="packages/stylized-water-for-urp.apk" download rel="nofollow">Download Demo</a><a
+          class="btn btn-link my-2" target="_blank"
           href="https://alexanderameye.gitbook.io/stylized-water-for-urp/support/performance">Read more</a>
       </div>
     </section>
-
 
     <section class="py-5">
       <div class="container text-center">
@@ -179,11 +185,11 @@
           <div class="row text-center">
             <div class="col-md-6 col-lg-4 p-3">
               <h5>Orthographic Mode</h5>
-              <p>Fully supports both perspective and orthographic cameras.</p>
+              <p>Supports both perspective and orthographic cameras.</p>
             </div>
             <div class="col-md-6 col-lg-4 p-3">
               <h5>Reflections</h5>
-              <p>Planar reflections bringing your scene to life.</p>
+              <p>Planar reflections bring your scene to life.</p>
             </div>
             <div class="col-md-6 col-lg-4 p-3">
               <h5>Foam</h5>
@@ -214,26 +220,23 @@
               <p>Custom interface to control your water.</p>
             </div>
             <div class="col-md-6 col-lg-4 p-3">
-              <h5>Special Effects</h5>
-              <p>Waterfalls, rivers, whirlpools and splashes.</p>
+              <h5>Vertex Colors</h5>
+              <p>Paint foam with vertex colors.</p>
+            </div>
+            <div class="col-md-6 col-lg-4 p-3">
+              <h5>World Space</h5>
+              <p>Use world space UVs for seamlessly tiled water.</p>
+            </div>
+            <div class="col-md-6 col-lg-4 p-3">
+              <h5>Source Code</h5>
+              <p>Includes source code and Shader Graph nodes.</p>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-
-    <section class="jumbotron" id="mobile-demo">
-      <div class="container text-center">
-        <h1 class="display-4">Performance for mobile</h1>
-        <p class="lead text-muted">Decentralized, secure, private. The PiperNet is on it's way to revolutionize every
-          smartphone, PC, and smart-fridge near you.</p><a class="btn btn-primary my-2" href="#">Download Demo</a><a
-          class="btn btn-link my-2" href="#">Read more</a>
-      </div>
-    </section>
-
-    <!-- REVIEWS 
-    <section class="py-5">
+    <section class="jumbotron">
       <div class="container text-center">
         <div class="row">
           <div class="col-md-4 mt-5"><img class="rounded-circle mb-4" src="placeholder/icons/star.svg?primary=007bff"
@@ -246,8 +249,7 @@
               width="20">
             <img class="rounded-circle mb-4" src="placeholder/icons/star.svg?primary=007bff" alt="" height="20"
               width="20">
-            <p class="mb-4">It's a really cool network. Like, we had a fight with Richard at one point, and I think they
-              deleted some of my data, but then they brought it back. Just bro's being bro's. Respected!</p>
+            <p class="mb-4">Text</p>
             <p class="text-muted">Alexander Ameye</p>
           </div>
           <div class="col-md-4 mt-5"><img class="rounded-circle mb-4" src="placeholder/icons/star.svg?primary=007bff"
@@ -260,8 +262,7 @@
               width="20">
             <img class="rounded-circle mb-4" src="placeholder/icons/star.svg?primary=007bff" alt="" height="20"
               width="20">
-            <p class="mb-4">This is such a great product that I feel aroused every time I use it. I didn't know the boys
-              would be able to build, but god damn it, they did it. Kickass!</p>
+            <p class="mb-4">Text</p>
             <p class="text-muted">Alexander Ameye</p>
           </div>
           <div class="col-md-4 mt-5"><img class="rounded-circle mb-4" src="placeholder/icons/star.svg?primary=007bff"
@@ -274,14 +275,13 @@
               width="20">
             <img class="rounded-circle mb-4" src="placeholder/icons/star.svg?primary=007bff" alt="" height="20"
               width="20">
-            <p class="mb-4">Even though I have been dismantled, I live on as an artificial intelligence on the PiperNet.
-              I really like it here. Still waiting for Jared to Piper-chat with me sometime.</p>
+            <p class="mb-4">Text</p>
             <p class="text-muted">Alexander Ameye</p>
           </div>
         </div>
       </div>
     </section>
--->
+
 
 
 
@@ -290,10 +290,10 @@
         <h2 class="mb-2">Find your style</h2>
         <p class="lead mb-5">Achieve a wide variety of styles with a single shader</p>
         <div class="row">
-          <div class="col-md-4 mb-4"><img class="img-fluid" src="img/stylizedwater/reef.png" alt=""></div>
-          <div class="col-md-4 mb-4"><img class="img-fluid" src="img/stylizedwater/windwaker.png" alt=""></div>
-          <div class="col-md-4 mb-4"><img class="img-fluid" src="img/stylizedwater/windwaker.png" alt=""></div>
-          <div class="col-md-4 mb-4"><img class="img-fluid" src="img/stylizedwater/windwaker.png" alt=""></div>
+          <div class="col-md-4 mb-4"><img class="img-fluid" src="img/shaders/stylized-water/styles/1.png" alt=""></div>
+          <div class="col-md-4 mb-4"><img class="img-fluid" src="img/shaders/stylized-water/styles/2.png" alt=""></div>
+          <div class="col-md-4 mb-4"><img class="img-fluid" src="img/shaders/stylized-water/styles/3.png" alt=""></div>
+          <div class="col-md-4 mb-4"><img class="img-fluid" src="img/shaders/stylized-water/styles/4.png" alt=""></div>
           <div class="col-md-4 mb-4"><img class="img-fluid" src="img/stylizedwater/windwaker.png" alt=""></div>
           <div class="col-md-4 mb-4"><img class="img-fluid" src="img/stylizedwater/windwaker.png" alt=""></div>
         </div>
@@ -306,10 +306,16 @@
         <div class="d-flex justify-content-between align-items-center flex-column flex-md-row border-bottom pb-2">
           <h5 class="ml-0 ml-md-3 mb-0"><a href="#">Stylized Water For URP</a></h5>
           <ul class="nav justify-content-center">
-            <li class="nav-item"><a class="nav-link" href="#">Manual</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">Support</a></li>
+            <li class="nav-item"><a class="nav-link"
+                href="https://alexanderameye.gitbook.io/stylized-water-for-urp/">Manual</a></li>
+            <li class="nav-item"><a class="nav-link"
+                href="https://alexanderameye.gitbook.io/stylized-water-for-urp/support/troubleshooting">Support</a></li>
+            <li class="nav-item"><a class="nav-link"
+                href="https://forum.unity.com/threads/stylized-water-for-urp-desktop-mobile-unreleased.846313/">Forum</a>
+            </li>
             <li class="nav-item"><a class="nav-link" href="#">Asset Store</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+            <li class="nav-item"><a class="nav-link"
+                href="https://alexanderameye.gitbook.io/stylized-water-for-urp/">Contact</a></li>
           </ul>
         </div>
         <div

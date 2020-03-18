@@ -275,6 +275,7 @@ h6
   font-style: normal;
   color: rgb(0, 0, 0);
   text-rendering: optimizeLegibility;
+  line-height: 1.4;
 }
 
 #link:hover,

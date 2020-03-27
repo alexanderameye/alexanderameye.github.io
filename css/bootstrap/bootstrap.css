@@ -173,7 +173,6 @@ a:not([href]):not([tabindex]):focus {
 }
 
 pre,
-code,
 kbd,
 samp {
   font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
@@ -498,15 +497,6 @@ mark,
   font-style: italic;
 }
 
-code {
-  font-size: 87.5%;
-  color: #e83e8c;
-  word-break: break-word;
-}
-
-a > code {
-  color: inherit;
-}
 
 kbd {
   padding: 0.2rem 0.4rem;
@@ -528,11 +518,7 @@ pre {
   color: #212529;
 }
 
-pre code {
-  font-size: inherit;
-  color: inherit;
-  word-break: normal;
-}
+
 
 .pre-scrollable {
   max-height: 340px;
@@ -4929,7 +4915,7 @@ input[type="button"].btn-block {
   text-align: center;
   white-space: nowrap;
   vertical-align: baseline;
-  border-radius: 0.25rem;
+  border-radius: 0.15rem;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 

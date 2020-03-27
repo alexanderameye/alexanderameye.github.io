@@ -1,3 +1,8 @@
+:root{
+  --accent-color: #00c076;
+  --link-hover-color: rgb(0,0,0);
+}
+
 .bmc-button img {
   width: 35px !important;
   margin-bottom: 1px !important;
@@ -180,9 +185,6 @@
 
 
 
-:root {
-  --accent-color: rgb(0, 0, 0);
-}
 
 li {
   margin-left: 10px;
@@ -252,6 +254,27 @@ h1 {
   padding-left: 40px;
 }
 
+/* CODE */
+code, date{
+  font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 87.5%;
+  word-break: break-word;
+  padding: 0.4rem 0.6rem;
+  margin-right: 0.5rem;
+  background: rgba(0, 0, 0, 0.075);
+	border-radius: 0.15rem;
+}
+
+code 
+{
+  color: #5e5e5e;
+}
+
+date {
+  color: var(--accent-color);
+}
+
+
 
 h2,
 h3,
@@ -269,6 +292,7 @@ h5
   text-rendering: optimizeLegibility;
 }
 
+
 h6
 {
   font-family: 'Roboto', sans-serif;
@@ -281,7 +305,7 @@ h6
 #link:hover,
 #link-no-line:hover,
 #link-no-space:hover {
-  background-color: var(--accent-color);
+  background-color: var(--link-hover-color);
   color: white;
   transition: color 0.2s ease;
   font-weight: bold;
@@ -329,7 +353,7 @@ h6
 }
 
 #section:hover {
-  background-color: var(--accent-color);
+  background-color: var(--link-hover-color);
   color: white;
   transition: color 0.2s ease;
   font-weight: bold;

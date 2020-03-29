@@ -186,9 +186,10 @@
 
 
 
-li {
+ul, ol, li {
   margin-left: 10px;
   margin-right: 10px;
+  font-family: 'Inconsolata', monospace;
 }
 
 body,

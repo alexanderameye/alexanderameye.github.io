@@ -45,7 +45,7 @@
     <br><br>
 
 
-  
+
     <!-- INTRODUCTION -->
     <h2 class="mt-4 mb-3">Introduction</h2>
     <p>Back in the late summer of 2019, I started looking into replicating a hand-drawn style within Unity. Specifically
@@ -67,14 +67,36 @@
     </div>
     <br>
 
-    <p>While I am fairly happy with how this scene turned out, the workflow of creating it was slow and convoluted while
-      having several artistical restrictions. Specifically the method of drawing outlines provided me with little to no
-      artistic control over where outlines were specifically drawn. The outline shader is good for drawing outlines on
+    <p>While I am happy with how this scene turned out in the end, the workflow of creating it was slow and convoluted
+      while
+      having several artistical restrictions that required workarounds. Specifically the method of drawing outlines
+      provided me with little to no
+      artistic control over where outlines were drawn. The outline shader is good for drawing outlines on
       bigger geometry like the tunnel on the right, but when it comes to little details like the brick wall or the
-      train, the shader was really hard to fine-tune. I will be revisiting this style in the future and optimizing the
-      worklow to enable faster content creation.
+      train, the shader was really hard to fine-tune.
 
+      <br><br>
+      <!-- INTRODUCTION -->
+      <h2 class="mt-4 mb-3">Improved Rendering</h2>
+      <p>At the end of March 2020, I revisited my rendering system and tried new approaches that would allow me to
+        implement an improved workflow for creating scenes in a hand-drawn style. My new system had to provide me
+        control over the following 2 important aspects of the linework.</p>
 
+      <ol>
+        <li>Visuals (adjustable in-engine)</li>
+        <li>Location (independent of how the object looks)</li>
+      </ol>
+
+      <p>My previous outline shader looked at discontinuities in color, depth or normals. This is easy to use, but
+        provides me with little to none artistic control over the position of the outlines. I had to find another
+        solution.</p>
+
+      <p>My next idea was to draw the outlines on the texture of the object itself. While this method provides me
+        control over the location of the outlines, it gives me no control over the visuals of the outlines inside of
+        Unity. Once I painted the texture, the lines are there and if I want them to look different, I need to repaint
+        them.</p>
+
+        <p>My current approach is a hybrid of the 2 methods. Instead of creating a texture </p>
       <!--That's why I opted to create at least some of the linework in a
       texture. These lines could be directly painted onto the albedo texture, or a secondary texture could be made that
       contained <i>information</i> on where the outlines should be drawn. This information for example could be stored

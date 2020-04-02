@@ -3,6 +3,20 @@
   --link-hover-color: rgb(0,0,0);
 }
 
+.gallery {
+  -webkit-column-count: 4;
+  -moz-column-count: 4;
+  column-count: 4;
+
+  -webkit-column-width: 33%;
+  -moz-column-width: 33%;
+  column-width: 33%; }
+
+  .gallery-image
+  {
+ 
+  }
+
 .bmc-button img {
   width: 35px !important;
   margin-bottom: 1px !important;

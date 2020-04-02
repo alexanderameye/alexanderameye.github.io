@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- SITE INFO -->
+  <title>Hand Drawn</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="icon" href="favicon.ico?">
+
+  <!-- ANALYTICS -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-137365487-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+    gtag('config', 'UA-137365487-1');
+  </script>
+
+  <!-- FONTS -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Inconsolata&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link href="css/style.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/bootstrap/bootstrap.css">
+</head>
+
+<body>
+  
+  <div class="container">
+    <br><br>
+    <h4>Ready for departure</h4>
+    <br>
+
+    <div class="row">
+      <div class="hovervideo col-4" id="image">
+        <video class="img-fluid" loop muted>
+          <source src="img/progress/ready-for-departure/1.mp4" type="video/mp4">
+        </video>
+      </div>
+
+      <div class="hovervideo col-4" id="image">
+        <video class="img-fluid" loop muted>
+          <source src="img/progress/ready-for-departure/2.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+
+    <br><br><br>
+  </div>
+  
+  <script src="js/jquery/jquery.min.js"></script>
+  <script src="js/popper/popper.min.js"></script>
+  <script src="js/bootstrap/bootstrap.min.js"></script>
+
+  <script>
+    var figure = $(".hovervideo").hover(hoverVideo, hideVideo);
+
+    function hoverVideo(e) {
+      $('video', this).get(0).play();
+    }
+
+    function hideVideo(e) {
+      $('video', this).get(0).pause();
+    }
+  </script>
+</body>
+
+</html>

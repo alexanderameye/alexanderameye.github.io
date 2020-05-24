@@ -12,10 +12,7 @@
   -moz-column-width: 33%;
   column-width: 33%; }
 
-  .gallery-image
-  {
- 
-  }
+
 
 .bmc-button img {
   width: 35px !important;
@@ -201,8 +198,8 @@
 
 
 ul, ol, li {
-  margin-left: 0px;
-  margin-right: 0px;
+  margin-left: 5px;
+  margin-right: 5px;
   font-family: 'Inconsolata', monospace;
 }
 
@@ -387,7 +384,7 @@ p {
   background-color: #ffffff;
   height: auto;
   padding-right: 30px;
-  border-right: 1px dashed #333;
+  border-right: 3px dashed #333;
 }
 
 #bottom {
@@ -395,7 +392,14 @@ p {
   padding-left: 0px;
   padding-right: 0px;
   padding-top: 20px;
-  border-top: 1px dashed #333;
+  border-top: 3px dashed #333;
+}
+
+#top {
+  background-color: #ffffff;
+  padding-left: 0px;
+  padding-bottom: 20px;
+  border-bottom: 3px dashed #333;
 }
 
 #right {
@@ -404,12 +408,7 @@ p {
   height: auto;
 }
 
-#top {
-  background-color: #ffffff;
-  padding-left: 0px;
-  padding-bottom: 20px;
-  border-bottom: 1px dashed #333;
-}
+
 
 #image {
   background-color: #ffffff;

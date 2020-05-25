@@ -194,12 +194,16 @@
 }
 
 
-
+.header-title {
+  margin-left: 10px;
+  margin-right: 10px;
+  font-family: 'Inconsolata', monospace;
+}
 
 
 ul, ol, li {
-  margin-left: 5px;
-  margin-right: 5px;
+  margin-left: 0px;
+  margin-right: 0px;
   font-family: 'Inconsolata', monospace;
 }
 

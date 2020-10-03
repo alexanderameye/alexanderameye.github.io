@@ -368,10 +368,6 @@ h2, .h2 {
   font-size: 2rem;
 }
 
-h3, .h3 {
-  font-size: 1.75rem;
-}
-
 h4, .h4 {
   font-size: 1.5rem;
 }
@@ -4054,19 +4050,20 @@ input[type="button"].btn-block {
 }
 
 .nav-tabs {
- 
+
   padding-left: 30px;
 }
 
 .nav-tabs .nav-item {
   margin-bottom: -1px;
- 
 }
 
-.nav-tabs .nav-link {
-  border: 1px solid transparent;
-  border-top-left-radius: 0.25rem;
-  border-top-right-radius: 0.25rem;
+.nav-tabs .nav-link 
+{
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
 }
 
 .nav-tabs .nav-link:hover, .nav-tabs .nav-link:focus {

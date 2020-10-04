@@ -355,6 +355,12 @@ h6
   opacity: 1;
 }
 
+#profile-picture
+{
+  max-width: 100%;
+  height: auto; 
+}
+
 
 
 #section {

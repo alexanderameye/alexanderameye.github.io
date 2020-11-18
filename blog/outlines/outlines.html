@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- SITE INFO -->
+  <title>Hand Drawn Lines</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="icon" href="favicon.ico?">
+
+  <!-- ANALYTICS -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-137365487-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+    gtag('config', 'UA-137365487-1');
+  </script>
+
+  <!-- FONTS -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Inconsolata&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link href="../../css/style.css" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/bootstrap/bootstrap.css">
+</head>
+
+<body>
+  <div class="container">
+    <br><br>
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item active">Teach me how to make a hand drawn line effect</li>
+    </ol>
+    <span class="badge badge-dark">november 2020</span>
+    <span class="badge badge-primary">outline shader</span>
+    <br><br>
+
+
+    <br>
+    <div class="text-center">
+      <figure class="figure ">
+        <img src="img/anime.jpg" class="figure-img" alt="" width="600">
+      </figure>
+    </div>
+    <br>
+
+    <h3 class="mt-4 mb-3">Deciding where to draw lines</h3>
+    <h3 class="mt-4 mb-3"></h3>
+    <p>We could draw lines based on discontinuities between pixels in [depth buffer value, normal vector orientation,
+      color] but that will result in lines that are not very consistent and view dependent. It can still give nice
+      results for sure, but lacks artistic control. Next please!</p>
+    <br>
+    <p>We could just make the outlines a part of the texture. This will give you accurate results and will look nice but
+      this requires [manual labour, talent] and the lines are fixed once they are drawn. This means that you can't
+      easily adjust the [color, thickness, position] afterwards. I want to be able to dynamically change the visuals of
+      the linework inside of the engine. Next please!</p>
+    <br>
+    <p>Let's look at what I call 'sectioning'. We look at the entirety of the scene, divide it up in sections, give
+      those sections to the outline shader which will draw lines between the sections. But based on what do we create
+      these sections? To figure that out, we should see what kind of lines we want in our scene.</p>
+
+    <br><br>
+    <p>If you look at a scene like this.</p>
+    <script src="https://gist.github.com/alexanderameye/27635d58be5d62779b794b27cfc9a52f.js"></script>
+
+
+    <br>
+    <div class="text-center">
+      <figure class="figure ">
+        <img src="../img/line art/part 1/sectioning.png" class="figure-img" alt="" width="300">
+        <figcaption class="figure-caption">sectioning texture</figcaption>
+      </figure>
+      <figure class="figure ">
+        <img src="../img/line art/part 1/outline.png" class="figure-img" alt="" width="300">
+        <figcaption class="figure-caption">outline texture</figcaption>
+      </figure>
+    </div>
+    <br>
+
+    <h3 class="mt-4 mb-3">Actually drawing the lines</h3>
+    <p>The outline receives the sectioning texture and now needs to find discontinuities.</p>
+    <br>
+    <p>Store as much data as possible in the texture. find discontinuities simple based on color? or also depth?</p>
+
+    <script src="https://gist.github.com/alexanderameye/9d2211d29b580c6eac15999732a3c2e7.js"></script>
+
+
+    <h3 class="mt-4 mb-3">Adding visual enhancements</h3>
+    <p>My current approach is to have 2 separate passes in the rendering process. First, I use a sectioning pass to
+      generate a 'sectioning texture', then I do an outline pass that takes the sectioning texture as input, generates
+      the outlines, and combines them with the camera color texture.</p>
+    <br>
+
+
+
+    <br><br><br>
+
+    <ol class="breadcrumb">
+      <a class="breadcrumb-item" target="_blank" href="https://twitter.com/alexanderameye" id="link">twitter</a>
+
+      <a class="breadcrumb-item" target="_blank" href="mailto:alexanderameye@gmail.com"
+        id="link">alexanderameye@gmail.com</a></li>
+    </ol>
+
+
+  </div>
+
+
+  <script src="js/jquery/jquery.min.js"></script>
+  <script src="js/popper/popper.min.js"></script>
+  <script src="js/bootstrap/bootstrap.min.js"></script>
+</body>
+
+</html>

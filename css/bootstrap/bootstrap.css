@@ -4791,15 +4791,19 @@ input[type="button"].btn-block {
   border-width: medium;
 }
 
-.breadcrumb-item + .breadcrumb-item {
-  padding-left: 0rem;
-}
 
 .breadcrumb-item + .breadcrumb-item::before {
   display: inline-block;
+  padding-left: 0.5rem;
+  color: #000000;
+  content: "";
+}
+
+.breadcrumb-item + .breadcrumb-item::after {
+  display: inline-block;
   padding-right: 0.5rem;
   color: #000000;
-  content: "/";
+  content: "";
 }
 
 .breadcrumb-item + .breadcrumb-item:hover::before {

@@ -62,13 +62,47 @@
       the linework inside of the engine. Next please!</p>
     <br>
     <p>Let's look at what I call 'sectioning'. We look at the entirety of the scene, divide it up in sections, give
-      those sections to the outline shader which will draw lines between the sections. But based on what do we create
-      these sections? To figure that out, we should see what kind of lines we want in our scene.</p>
+      those sections to the outline shader which will draw lines between the sections. To decide where to draw lines, we
+      will only use the red channel of the sectioning texture.</p>
 
     <br><br>
     <p>If you look at a scene like this.</p>
-    <script src="https://gist.github.com/alexanderameye/27635d58be5d62779b794b27cfc9a52f.js"></script>
 
+    <p>This red tint that a pixel should get can be modulated by a whole range of things [object position, normal
+      vector, vertex color, shadow map, camera orientation]. One thing to consider is that when modulating with the
+      shadow map, possible artifacts or a low resolution will be translated in the outlines following those artifacts.
+    </p>
+
+    <p>We should also have a 'blanco' control so that when the outline shader samples the scene and encounters this
+      'blanco pixel', it thinks 'no disconinuity here'. This is useful if we want to add zones in the scene that have no
+      outlines. This is different from adding a zone somewhere that just has the same red tint for all the pixels in
+      that zone, because then still there will be an outline drawn around that zone. </p>
+
+    <div class="text-center">
+      <figure class="figure ">
+        <img src="img/same-tint-zone.png" class="figure-img" alt="">
+        <figcaption class="figure-caption">Same Tint Zone</figcaption>
+      </figure>
+      <figure class="figure ">
+        <img src="img/blanco-zone.png" class="figure-img" alt="">
+        <figcaption class="figure-caption">Blanco Zone</figcaption>
+      </figure>
+    </div>
+
+    <p>For this blanco pixel we could use a red value of 0. However, then since the clearing color of our sectioning
+      texture is also 0, objects touching the 'sky' will not have an outer line. We could fix this by using a different
+      clearing color. Another option is to use a red value of 255 for blanco. However, then we need to remember to never
+      set the red tint to 255 unless we really want it. For now I'm going to try using a different clearing color with a
+      red value of 1 so that objects still get an outline when next to the 'sky'.</p>
+
+
+
+    <h3 class="mt-4 mb-3">Controlling the visuals of the outline</h3>
+    <h3 class="mt-4 mb-3"></h3>
+    <p>So far we only used the red channel of our sectioning texture, we still have the green and blue channel. So, what
+      are some other properties of our outline that we want to control? [color, thickness, opacity, wobbliness,
+      movement]
+    </p>
 
     <br>
     <div class="text-center">
@@ -88,17 +122,34 @@
     <br>
     <p>Store as much data as possible in the texture. find discontinuities simple based on color? or also depth?</p>
 
-    <script src="https://gist.github.com/alexanderameye/9d2211d29b580c6eac15999732a3c2e7.js"></script>
 
 
-    <h3 class="mt-4 mb-3">Adding visual enhancements</h3>
-    <p>My current approach is to have 2 separate passes in the rendering process. First, I use a sectioning pass to
-      generate a 'sectioning texture', then I do an outline pass that takes the sectioning texture as input, generates
-      the outlines, and combines them with the camera color texture.</p>
+
+    <h3 class="mt-4 mb-3">Make the lines hand drawn</h3>
+    <p>The lines are cool, but maybe a bit too straight. Let's try offsetting them a little. For this we will use some
+      noise. It's important that this happens in worldspace so that the lines don't change their offset when looking
+      around. We can reconstruct world position from depth, and we have access to the depth buffer so that's what we'll
+      do.</p>
     <br>
 
+    <p>Next, let's generate some noise (perlin maybe) and add a scale/strength slider and show it on top of the world!
+      Sicne world position stays the same in the scene independent of viewing angle, the noise should look like it has a
+      real position in the world. We use the noise to offset the sampling position of the lines and so the lines will
+      become a bit less straight. We need to make sure that the skybox is ignored because if you don't, you'll get very
+      noisy patterns at the edges of your object where it 'touches the sky'.</p>
 
 
+    <script src="https://gist.github.com/alexanderameye/27635d58be5d62779b794b27cfc9a52f.js"></script>
+    <script src="https://gist.github.com/alexanderameye/9d2211d29b580c6eac15999732a3c2e7.js"></script>
+
+    <h3 class="mt-4 mb-3">Shoulders of giants</h3>
+    <p>Some extra reading for you.</p>
+    <a
+      href="https://forums.tigsource.com/index.php?topic=40832.msg1027183#msg1027183">https://forums.tigsource.com/index.php?topic=40832.msg1027183#msg1027183</a>
+    <a
+      href="https://forums.tigsource.com/index.php?topic=40832.msg1025558#msg1025558">https://forums.tigsource.com/index.php?topic=40832.msg1025558#msg1025558</a>
+    <a href="https://twitter.com/harryh___h">https://twitter.com/harryh___h</a>
+    <a href="https://twitter.com/csims314">https://twitter.com/csims314</a>
     <br><br><br>
 
     <ol class="breadcrumb">

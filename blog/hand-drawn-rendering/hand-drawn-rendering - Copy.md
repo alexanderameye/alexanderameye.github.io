@@ -52,13 +52,13 @@
 
     <h3 class="mt-4 mb-3">Deciding where to draw lines</h3>
     <h3 class="mt-4 mb-3"></h3>
-    <p>We could draw lines based on discontinuities between pixels in [depth buffer value, normal vector orientation,
-      color] but that will result in lines that are not very consistent and view dependent. It can still give nice
+    <p>We could draw lines based on discontinuities between pixels in <b>[depth buffer value, normal vector orientation,
+      color]</b> but that will result in lines that are not very consistent and view dependent. It can still give nice
       results for sure, but lacks artistic control. Next please!</p>
     <br>
     <p>We could just make the outlines a part of the texture. This will give you accurate results and will look nice but
-      this requires [manual labour, talent] and the lines are fixed once they are drawn. This means that you can't
-      easily adjust the [color, thickness, position] afterwards. I want to be able to dynamically change the visuals of
+      this requires <b>[manual labour, talent]</b> and the lines are fixed once they are drawn. This means that you can't
+      easily adjust the <b>[color, thickness, position]</b> afterwards. I want to be able to dynamically change the visuals of
       the linework inside of the engine. Next please!</p>
     <br>
     <p>Let's look at what I call 'sectioning'. We look at the entirety of the scene, divide it up in sections, give
@@ -92,16 +92,19 @@
     <p>For this blanco pixel we could use a red value of 0. However, then since the clearing color of our sectioning
       texture is also 0, objects touching the 'sky' will not have an outer line. We could fix this by using a different
       clearing color. Another option is to use a red value of 255 for blanco. However, then we need to remember to never
-      set the red tint to 255 unless we really want it. For now I'm going to try using a different clearing color with a
-      red value of 1 so that objects still get an outline when next to the 'sky'.</p>
+      set the red tint to 255 unless we really want it, which is annoying. For now I'm going to try using a different
+      clearing color with a
+      red value of 1 so that objects still get an outline when next to the 'sky'. In the end in a full game, the
+      clearing color should practically never (?) be visible, and I'll always be showing an object with a custom shader
+      so then this will not be so bad anymore.</p>
 
 
 
     <h3 class="mt-4 mb-3">Controlling the visuals of the outline</h3>
     <h3 class="mt-4 mb-3"></h3>
     <p>So far we only used the red channel of our sectioning texture, we still have the green and blue channel. So, what
-      are some other properties of our outline that we want to control? [color, thickness, opacity, wobbliness,
-      movement]
+      are some other properties of our outline that we want to control? <b>[color, thickness, opacity, wobbliness,
+      movement]</b>
     </p>
 
     <br>
@@ -116,6 +119,10 @@
       </figure>
     </div>
     <br>
+
+    <h3 class="mt-4 mb-3">Line Color</h3>
+    <h3 class="mt-4 mb-3"></h3>
+    <p>For the line color, the B channel of the sectioning texture is used. This gets mapped to a LUT texture, where I store the colors.</p>
 
     <h3 class="mt-4 mb-3">Actually drawing the lines</h3>
     <p>The outline receives the sectioning texture and now needs to find discontinuities.</p>

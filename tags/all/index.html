@@ -80,9 +80,16 @@
 
 <!-- GOOGLE ANALYTICS -->
 
-  
-  <script defer="defer" src="https://www.googletagmanager.com/gtag/js?id=UA-137365487-1"></script>
-  <script defer="defer" src="/assets/js/analytics.js"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-137365487-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+    gtag('config', 'UA-137365487-1');
+  </script>
 
     </head>
 
@@ -191,7 +198,7 @@
         <p></p>
       </section>
       <footer class="note-entry-footer">
-        <time>13 hours ago</time>
+        <time>18 hours ago</time>
       </footer>
       <a class="note-entry-link" aria-label="" href="/sitemap.txt"></a>
     </div>
@@ -207,7 +214,7 @@
         <p></p>
       </section>
       <footer class="note-entry-footer">
-        <time>13 hours ago</time>
+        <time>18 hours ago</time>
       </footer>
       <a class="note-entry-link" aria-label="" href="/robots.txt"></a>
     </div>

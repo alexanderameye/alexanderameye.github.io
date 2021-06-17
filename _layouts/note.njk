@@ -1,0 +1,60 @@
+--- 
+layout: base.njk 
+---
+
+<style>
+    :root {
+        --marker-color: var(--{{marker}});
+    }
+</style>
+
+{% include "header.njk" %}
+
+<div class="note column-page">
+    <div class="note-content column-page-content">
+        <h1 class="note-title">{{ icon }}
+            {{ title }}</h1>
+
+        
+          <div class="reading-time">{% readingTime content | safe %}</div>
+
+           {%- if underconstruction  -%}
+         <p style="--status-bg: #fff6be; --status-text: #af802e; color: #000000; padding: 5px 10px 5px 10px; text-align: left;" class="status">🚧 This page is under construction.</p>
+         
+
+        {%- endif -%}
+
+          
+        {{ content | safe }}
+
+        <div id="back-to-top-desktop" class="back-to-top-desktop">
+            <a href="#" aria-label="Back to top of page.">
+                <span class="icon-arrow-up"></span></a>
+            <!-- this could link to #top and then you have <a name="top"></a> somewhere so you can link to specific spots -->
+        </div>
+
+            <div id="back-to-top-mobile" class="back-to-top-mobile">
+            <a href="#" aria-label="Back to top of page.">
+                <span class="icon-arrow-up"></span></a>
+            <!-- this could link to #top and then you have <a name="top"></a> somewhere so you can link to specific spots -->
+        </div>
+
+
+
+         <div class="note-date"><time>{{ date | formatteddate }}</time></div>
+    </div>
+
+    {% include "footer.njk" %}
+
+ 
+</div>
+
+<script src="https://storage.ko-fi.com/cdn/scripts/overlay-widget.js"></script>
+<script>
+  kofiWidgetOverlay.draw('alexanderameye', {
+    'type': 'floating-chat',
+    'floating-chat.donateButton.text': 'Support me',
+    'floating-chat.donateButton.background-color': '#323842',
+    'floating-chat.donateButton.text-color': '#fff'
+  });
+</script>

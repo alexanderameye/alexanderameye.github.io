@@ -1,0 +1,20 @@
+<footer class="note-footer">
+    <ul class="note-tags">
+        {%- for tag in tags | filterTagList -%}
+            {%- set bg = colors[tag][0] -%}
+            {%- set text = colors[tag][1] -%}
+            <li>
+                <a style="--tag-bg: {{bg}}; --tag-text: {{text}};" href="/tags/{{tag}}">{{tag}}</a>
+            </li>
+        {%- endfor -%}
+    </ul>
+
+    <div>
+        <a href="https://twitter.com/alexanderameye" rel="noopener" target="_blank" aria-label="Alexander Ameye Twitter.">
+            <span class="icon-twitter footer-icon"></span></a>
+        <a href="https://www.linkedin.com/in/alexander-ameye-067a0b70/" rel="noopener" target="_blank" aria-label="Alexander Ameye LinkedIn.">
+            <span class="icon-linkedin footer-icon"></span></a>
+        <a href="https://github.com/alexanderameye" rel="noopener" target="_blank" aria-label="Alexander Ameye GitHub.">
+            <span class="icon-github footer-icon"></span></a>
+    </div>
+</footer>

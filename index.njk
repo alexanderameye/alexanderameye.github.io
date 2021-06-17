@@ -1,0 +1,52 @@
+--- 
+layout: base.njk 
+title: Hello 
+welcome: Nice to meet you!
+status: Available for work
+status_color: green 
+icon: 👋 
+notes_count: 5 
+---
+
+{% include "header.njk" %}
+
+<div class="column-page">
+  <div class="column-page-content">
+
+    <h2>{{ welcome }}</h2>
+
+    <p>I am Alexander Ameye, a software engineering student and graphics programming enthusiast.</p>
+
+    <!-- {%- set bg = colors[status_color][0] -%} {%- set text = colors[status_color][1] -%} <p style="--status-bg: {{bg}}; --status-text: {{text}};" class="status">{{ status }}</p>-->
+
+    <p>Check out my
+      <a class="resume-button" href="/downloads/documents/resume_alexander_ameye.pdf" download rel="nofollow">Resume<span class="icon-eye portfolio-icon"></span></a>
+    </p>
+
+    <p>Find me on
+      <a class="resume-button" href="https://twitter.com/alexanderameye" target="_blank">Twitter</a>
+    </p>
+
+    <h2>Latest Notes</h2>
+
+    {% set notes_length = collections.notes.length %}
+    {% set notes = collections.notes.slice(notes_length-notes_count,notes_length) %}
+    {% include "noteslist.njk" %}
+
+    <article class="note-entry">
+      <div class="note-entry-content">
+        <header class="note-entry-header">
+          <h4>All notes</h4>
+        </header>
+        <section class="note-entry-description">
+          <p>See all notes ...</p>
+        </section>
+        <a class="note-entry-link" aria-label="All notes" href="/notes"></a>
+      </div>
+    </article>
+
+  </div>
+
+  {% include "footer.njk" %}
+
+</div>

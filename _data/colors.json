@@ -1,0 +1,50 @@
+{
+    "green": [
+        "#a1f8cf",
+        "#1e7a65"
+    ],
+    "blue": [
+        "#d4f0ff",
+        "#04509c"
+    ],
+    "red": [
+        "#ffa7a7",
+        "#b7092a"
+    ],
+    "yellow": [
+        "#ffee7c",
+        "#b97a2d"
+    ],
+    "math": [
+        "#ffee7c",
+        "#965b14"
+    ],
+    "graphics": [
+        "#d4f0ff",
+        "#04509c"
+    ],
+    "unity": [
+        "#ccffe0",
+        "#1b715c"
+    ],
+    "programming": [
+        "#ffa7a7",
+        "#9a0f29"
+    ],
+    "gamedev": [
+        "#ffd7af",
+        "#9c4901"
+    ],
+    "augmentedreality": [
+        "#e6c0ff",
+        "#6e1cac"
+    ],
+    "project": [
+        "#c8fff7",
+        "#3a6b6b"
+    ],
+    "other": [
+        "#ffc830",
+        "#ffc830"
+    ]
+}

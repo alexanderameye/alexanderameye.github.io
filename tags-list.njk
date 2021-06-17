@@ -1,0 +1,32 @@
+--- 
+layout: base.njk 
+title: Tags 
+icon: 🚩
+permalink: /tags/ 
+---
+
+{% include "header.njk" %}
+
+<div class="column-page">
+  <div class="column-page-content">
+    <h2>{{ title }}</h2>
+    {%- set tags = collections.tagList | filterTagList -%}
+    <p>This website has
+      {{collections.notes.length}}
+      notes organised with these
+      {{ tags.length }}
+      tags.</p>
+    <ul class="note-tags">
+      {%- for tag in tags -%}
+        {%- set bg = colors[tag][0] -%}
+        {%- set text = colors[tag][1] -%}
+        <li>
+          <a style="--tag-bg: {{bg}}; --tag-text: {{text}};" href="/tags/{{tag}}">{{tag}}
+
+            <sup>{{ collections[tag].length }}</sup>
+          </a>
+        </li>
+      {%- endfor -%}
+    </ul>
+  </div>
+</div>

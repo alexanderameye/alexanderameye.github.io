@@ -1,0 +1,18 @@
+{
+    "title": "My Blog Title",
+    "url": "alexanderameye.github.io",
+    "language": "en",
+    "description": "A Blog Post",
+    "year": "2020",
+    "author": {
+        "name": "Alexander Ameye",
+        "email": "alexanderameye@gmail.com",
+        "url": "alexanderameye.github.io/about"
+    },
+    "env": "prod",
+    "trackingid": "UA-137365487-1",
+    "site": "https://alexanderameye.github.io",
+    "img": "https://alexanderameye.github.io/assets/img/",
+    "cover": "cover.webp"
+
+}

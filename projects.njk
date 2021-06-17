@@ -1,0 +1,20 @@
+--- 
+layout: base.njk 
+title: My Work
+icon: 📝 
+---
+
+{% include "header.njk" %}
+
+<div class="projects-page">
+    <div class="projects-page-content">
+        <h2>{{ title }}</h2>
+
+        <div class="projects">
+
+         {% set projects = collections.projects %}
+         {% include "projectslist.njk" %}
+
+         </div>
+    </div>
+</div>

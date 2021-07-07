@@ -38,3 +38,6 @@
   
     https://alexanderameye.github.io/notes/stylized-water/
   
+  
+    https://alexanderameye.github.io/notes/scriptable-render-passes/
+  

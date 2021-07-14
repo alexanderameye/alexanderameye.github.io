@@ -6,7 +6,7 @@
         <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-<meta name="description" content="An editor tool for creating rich augmented reality experiences.">
+<meta name="description" content="Coordinate spaces and how positions and vectors get transformed between them.">
 <meta name="author" content="Alexander Ameye">
 
 <!-- Tells Google not to provide a translation for this document -->
@@ -16,22 +16,22 @@
 <meta name="generator" content="eleventy">
 
 <!-- Open graph -->
-<meta property="og:title" content="AR Tour Editor">
-<meta property="og:description" content="An editor tool for creating rich augmented reality experiences.">
+<meta property="og:title" content="Spaces and transformations">
+<meta property="og:description" content="Coordinate spaces and how positions and vectors get transformed between them.">
 <meta property="og:type" content="article">
 <meta property="og:image" content="https://alexanderameye.github.io/notes/undefined"/>
 <meta property="og:image:width" content="1200"/>
 <meta property="og:image:height" content="675"/>
 
 <!-- Twitter -->
-<meta name="twitter:title" content="AR Tour Editor">
+<meta name="twitter:title" content="Spaces and transformations">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:site" content="@alexanderameye">
-<meta name="twitter:description" content="An editor tool for creating rich augmented reality experiences.">
+<meta name="twitter:description" content="Coordinate spaces and how positions and vectors get transformed between them.">
 <meta name="twitter:image" content="https://alexanderameye.github.io/notes/undefined">
 <meta name="twitter:creator" content="@alexanderameye">
 
-<title>AR Tour Editor</title>
+<title>Spaces and transformations</title>
 
 <!-- CSS -->
 <link rel="preload" href="/assets/css/reset.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -46,7 +46,7 @@
 <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css"></noscript>
 
 <!-- ICONS -->
-<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22><text y=%2224%22 font-size=%2224%22>🗺️</text></svg>">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22><text y=%2224%22 font-size=%2224%22>♻️</text></svg>">
 <link rel="preload" as="font" href="/assets/fonts/icons.woff2?7673508" type="font/woff2" crossorigin="crossorigin"/>
 
 <!-- INLINED GOOGLE FONTS -->
@@ -165,11 +165,28 @@
 
 <div class="note column-page">
     <div class="note-content column-page-content">
-        <h1 class="note-title">🗺️
-            AR Tour Editor</h1>
+        <h1 class="note-title">♻️
+            Spaces and transformations</h1>
 
         
-          <div class="reading-time">1-minute read</div><h2>Introduction</h2>
+          <div class="reading-time">1-minute read</div><blockquote>
+<p><strong>1.</strong> 📦 object/model/local space</p>
+</blockquote>
+<blockquote>
+<p><strong>2.</strong> 🌍 world space</p>
+</blockquote>
+<blockquote>
+<p><strong>3.</strong> 📷 camera/eye/view space</p>
+</blockquote>
+<blockquote>
+<p><strong>4.</strong> ✂️ (homogeneous) clip space</p>
+</blockquote>
+<blockquote>
+<p><strong>5.</strong> 🖥️ screen space</p>
+</blockquote>
+<blockquote>
+<p><strong>6.</strong> 🖼️ viewport/window space</p>
+</blockquote>
 
 
         <div id="back-to-top-desktop" class="back-to-top-desktop">
@@ -186,16 +203,14 @@
 
 
 
-         <div class="note-date"><time>May 30, 2021</time></div>
+         <div class="note-date"><time>August 31, 2021</time></div>
     </div>
 
     <footer class="note-footer">
     <ul class="note-tags"><li>
-                <a style="--tag-bg: #ccffe0; --tag-text: #1b715c;" href="/tags/unity">unity</a>
-            </li><li>
                 <a style="--tag-bg: #d4f0ff; --tag-text: #04509c;" href="/tags/graphics">graphics</a>
             </li><li>
-                <a style="--tag-bg: #ffd7af; --tag-text: #9c4901;" href="/tags/gamedev">gamedev</a>
+                <a style="--tag-bg: #ffee7c; --tag-text: #965b14;" href="/tags/math">math</a>
             </li></ul>
 
     <div>

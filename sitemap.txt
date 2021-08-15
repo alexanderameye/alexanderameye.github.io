@@ -41,3 +41,6 @@
   
     https://alexanderameye.github.io/notes/scriptable-render-passes/
   
+  
+    https://alexanderameye.github.io/notes/rendering-outlines/
+  

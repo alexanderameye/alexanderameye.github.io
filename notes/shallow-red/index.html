@@ -6,7 +6,7 @@
         <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-<meta name="description" content="Short and sweet shader tutorials.">
+<meta name="description" content="Creating a chess engine from scratch">
 <meta name="author" content="Alexander Ameye">
 
 <!-- Tells Google not to provide a translation for this document -->
@@ -16,22 +16,22 @@
 <meta name="generator" content="eleventy">
 
 <!-- Open graph -->
-<meta property="og:title" content="Shader tutorials in 60 seconds">
-<meta property="og:description" content="Short and sweet shader tutorials.">
+<meta property="og:title" content="Writing a 2600+ ELO chess engine in C++">
+<meta property="og:description" content="Creating a chess engine from scratch">
 <meta property="og:type" content="article">
-<meta property="og:image" content="undefined/notes/shaders-done-quick/cover.png"/>
+<meta property="og:image" content="undefined/notes/shallow-red/cover.png"/>
 <meta property="og:image:width" content="1200"/>
 <meta property="og:image:height" content="675"/>
 
 <!-- Twitter -->
-<meta name="twitter:title" content="Shader tutorials in 60 seconds">
+<meta name="twitter:title" content="Writing a 2600+ ELO chess engine in C++">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:site" content="@alexanderameye">
-<meta name="twitter:description" content="Short and sweet shader tutorials.">
-<meta name="twitter:image" content="https://alexanderameye.github.io/notes/shaders-done-quick/cover.png">
+<meta name="twitter:description" content="Creating a chess engine from scratch">
+<meta name="twitter:image" content="https://alexanderameye.github.io/notes/shallow-red/cover.png">
 <meta name="twitter:creator" content="@alexanderameye">
 
-<title>Shader tutorials in 60 seconds</title>
+<title>Writing a 2600+ ELO chess engine in C++</title>
 
 <!-- CSS -->
 <link rel="preload" href="/assets/css/reset.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -46,7 +46,7 @@
 <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css"></noscript>
 
 <!-- ICONS -->
-<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22><text y=%2224%22 font-size=%2224%22>⏳</text></svg>">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22><text y=%2224%22 font-size=%2224%22>♟️</text></svg>">
 <link rel="preload" as="font" href="/assets/fonts/icons.woff2?7673508" type="font/woff2" crossorigin="crossorigin"/>
 
 <!-- INLINED GOOGLE FONTS -->
@@ -163,38 +163,88 @@
 
 <div class="note column-page">
     <div class="note-content column-page-content">
-        <h1 class="note-title">⏳
-            Shader tutorials in 60 seconds</h1>
+        <h1 class="note-title">♟️
+            Writing a 2600+ ELO chess engine in C++</h1>
 
         
-          <div class="reading-time">1-minute read</div><h2>Introduction</h2>
-<p>In the first few months of 2020 I created three <mark>60-second shader tutorials</mark>. These tutorials were meant to be quick, to-the-point and dense in information.</p>
-<h2>Stylized Water Shader</h2>
-<p>A simple but effective water shader that creates an interesting stylized look. The shader uses the <mark>depth buffer</mark> for coloring and generating foam. Refraction is added by distorting the used UVs.</p>
-<video width="70%" title="Stylized water shader." loop="" autoplay="" playsinline="" muted="true" class="note-video">
-<source src="stylized-water-shader-tutorial.mp4" type="video/mp4">
-<source src="stylized-water-shader-tutorial.webm" type="video/webm">
-</video>
-<p>The model of the castle was created by <a href="https://sketchfab.com/3d-models/peach-castle-a21cffbe8b8c4ae9b1614f26f2da8fed" target="_blank" rel="noopener noreferrer">mStuff</a> on Sketchfab.</p>
-<h2>Toon Shading</h2>
-<p>A basic toon shader with a color gradient and hard specular lighting. A <mark>Blinn-Phong</mark> lighting model is used for the specular shading.</p>
-<video width="70%" title="Toon shading." loop="" autoplay="" playsinline="" muted="true" class="note-video">
-<source src="toon-shading-tutorial.mp4" type="video/mp4">
-<source src="toon-shading-tutorial.webm" type="video/webm">
-</video>
-<p>The model of the Shiba Inu was created by <a href="https://sketchfab.com/Ida..Faber" target="_blank" rel="noopener noreferrer">Ida Fabere</a> on Sketchfab.</p>
-<h2>Retro Effect</h2>
-<p>A retro pixelation effect that also includes some scanlines. A low resolution render texture is used for the pixelation and a <mark>full-screen shader</mark> is used for the post-processing effects.</p>
-<video width="70%" title="Retro effect." loop="" autoplay="" playsinline="" muted="true" class="note-video">
-<source src="retro-effect-tutorial.mp4" type="video/mp4">
-<source src="retro-effect-tutorial.webm" type="video/webm">
-</video>
-<p>The model of the subway was created by <a href="https://sketchfab.com/3d-models/metro-b93d2dac53e24d8fb4fad4b3c577c54d" target="_blank" rel="noopener noreferrer">Luc Miramont</a> on Sketchfab.</p>
-<h2>Sources</h2>
-<p>All 3 shaders can be downloaded below as Unity packages.</p>
-<p><a href="/downloads/packages/shaders-done-quick/stylized-water.unitypackage" download rel="nofollow" class="download-button">stylized-water</a></p>
-<p><a href="/downloads/packages/shaders-done-quick/toon-shading.unitypackage" download rel="nofollow" class="download-button">toon-shading</a></p>
-<p><a href="/downloads/packages/shaders-done-quick/retro-effect.unitypackage" download rel="nofollow" class="download-button">retro-effect</a></p>
+          <div class="reading-time">4-minute read</div><h2>Introduction</h2>
+<p>For a university course this semester we had to write a chess engine in C++. I'm not a chess player and was only familiar
+with the most basic chess rules so this was quite a challenge.</p>
+<h2>Board representation</h2>
+<p>In my chess engine, a board gets represented using bitboards. A bitboard is just 64 bits. Computers are very fast when it comes
+to working with 64 bits, allowing us to rapidly perform operations on it so we are quite lucky that chess boards have 64 positions, perfect!</p>
+<p>In total, 12 bitboards are defined, 1 for each piece of each color.</p>
+<p>Apart from using the uint64_t type for representing bitboards, I also define several operations in order to work with them.
+It's also possible to pre-define board elements such as the 'A file' or the '5th rank'.</p>
+<pre><code>typedef uint64_t U64;
+
+const U64 FILE_A = 0x8080808080808080ULL;
+const U64 RANK_5 = 0xff00000000ULL;
+
+#define set_bit(b, i) ((b) |= (1ULL &lt;&lt; i))
+#define get_bit(b, i) ((b) &amp; (1ULL &lt;&lt; i))  
+#define clear_bit(b, i) ((b) &amp;= ~(1ULL &lt;&lt; i)) 
+#define get_LSB(b) (__builtin_ctzll(b))
+
+inline int pop_LSB(U64 &amp;b) {
+    int i = get_LSB(b);
+    b &amp;= b - 1;
+    return i;
+}
+</code></pre>
+<p>Once you have set up your bitboards, you work with them by using bitwise operations. For example if we
+want all white pawns that can be promoted, we take all white pawns that are located on the 7th rank,
+we shift them up to the 8th rank and figure out if that position is already occupied. If it's not occupied,
+the pawn can be moved up and trigger a promotion. By using bitwise operations this looks like this.</p>
+<pre><code>U64 promotions = (bitboards[P] &amp; RANK_7) &lt;&lt; 8 &amp; ~all;
+</code></pre>
+<h2>Attack tables</h2>
+<p>In a chess board there are 2 kind of pieces: so-called 'leaper pieces' and 'slider pieces'. The leaper pieces are the
+pawns, knights and kings which can just immediately 'jump' to their target square. Slider pieces are pieces
+that can not jump over other pieces, but slide towards their target and may be blocked during the process.</p>
+<p>For all these pieces, attack tables are pre-calculated so that they can be easily queried during move generation.
+For leaper pieces, this is very straightforward, you just go through the attack pattern of the piece and add those positions.
+For example for the knights this looks like this.</p>
+<pre class="language-hlsl"><code class="language-hlsl">U64 attacks<span class="token punctuation">,</span> knights <span class="token operator">=</span> 0ULL<span class="token punctuation">;</span><br><br><span class="token comment">// place knight on board</span><br><span class="token function">set_bit</span><span class="token punctuation">(</span>knights<span class="token punctuation">,</span> square<span class="token punctuation">)</span><span class="token punctuation">;</span><br><br><span class="token comment">// add attacks</span><br>attacks <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">(</span>knights <span class="token operator">>></span> <span class="token number">6</span><span class="token punctuation">)</span>  <span class="token operator">|</span> <span class="token punctuation">(</span>knights <span class="token operator">&lt;&lt;</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span> <span class="token operator">~</span>FILE_GH<span class="token punctuation">)</span> <span class="token operator">|</span><br>          <span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">(</span>knights <span class="token operator">>></span> <span class="token number">10</span><span class="token punctuation">)</span> <span class="token operator">|</span> <span class="token punctuation">(</span>knights <span class="token operator">&lt;&lt;</span> <span class="token number">6</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token operator">&amp;</span> <span class="token operator">~</span>FILE_AB<span class="token punctuation">)</span> <span class="token operator">|</span><br>          <span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">(</span>knights <span class="token operator">>></span> <span class="token number">15</span><span class="token punctuation">)</span> <span class="token operator">|</span> <span class="token punctuation">(</span>knights <span class="token operator">&lt;&lt;</span> <span class="token number">17</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span> <span class="token operator">~</span>FILE_H<span class="token punctuation">)</span>  <span class="token operator">|</span><br>          <span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">(</span>knights <span class="token operator">>></span> <span class="token number">17</span><span class="token punctuation">)</span> <span class="token operator">|</span> <span class="token punctuation">(</span>knights <span class="token operator">&lt;&lt;</span> <span class="token number">15</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span> <span class="token operator">~</span>FILE_A<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>Since we're using bitboard representations, we can use bitshift operations to easily add all of the possible attacks for a given piece.
+It doesn't really matter whether this attack generation is fast or not since it's precalculated anyway. All of the precalculated attack tables
+for leaper pieces are generated like this.</p>
+<pre><code>U64 PAWN_ATTACKS[2][64];
+U64 KNIGHT_ATTACKS[64];
+U64 KING_ATTACKS[64];
+    
+getLeaperAttacks() {
+    for (int i = 0; i &lt; 64; i++) {
+        PAWN_ATTACKS[BLACK][i] = getPawnAttacks(BLACK, i);
+        PAWN_ATTACKS[WHITE][i] = getPawnAttacks(WHITE, i);
+        KNIGHT_ATTACKS[i] = getKnightAttacks(i);
+        KING_ATTACKS[i] = getKingAttacks(i);
+    }
+}
+</code></pre>
+<p>For the sliding pieces, generating the attacks is a bit more involved.</p>
+<pre><code>U64 BISHOP_ATTACKS[64][512];
+U64 ROOK_ATTACKS[64][4096];
+</code></pre>
+<blockquote>
+<p><strong>💬 Magic bitboards</strong> are not actually magic.</p>
+</blockquote>
+<p>Once all of these</p>
+<h2>Move generation</h2>
+<p>Once all the pieces are represented through bitboards and the necessary attack tables are generated, we can get to generating moves.
+The way I do this is by generating pseudo-legal moves (moves that may leave the king in check) and then before performing that move, I
+check whether or not the move is legal. If the move is legal, I perform it.</p>
+<h2>Testing for correctness</h2>
+<p>The easiest way to test if your move generation code is correct is by using perft tests. Basically, given a initial board position
+you generate all possible moves. For each generated move, you can perform that move and then again generate all possible moves
+using the updated board position. You can keep doing this up to a certain depth.</p>
+<p>For several initial board positions you can count the total amount of generated moves up to a depth or 5 or 6 and if this matches
+up with the same amount that established chess engines generate, you can be pretty sure that your move generator is correct.</p>
+<h2>Performance</h2>
+<h2>Move selection and search</h2>
+<h2>Additional Resources</h2>
+<h3>Magic Bitboards</h3>
+<p>[<a href="https://www.videopoetics.com/tutorials/pixel-perfect-outline-shaders-unity" target="_blank" rel="noopener noreferrer">https://www.videopoetics.com/tutorials/pixel-perfect-outline-shaders-unity</a>][video-poetics-outline]</p>
 
 
         <div id="back-to-top-desktop" class="back-to-top-desktop">
@@ -211,16 +261,12 @@
 
 
 
-         <div class="note-date"><time>April 6, 2020</time></div>
+         <div class="note-date"><time>May 5, 2022</time></div>
     </div>
 
     <footer class="note-footer">
     <ul class="note-tags"><li>
-                <a style="--tag-bg: #d4f0ff; --tag-text: #04509c;" href="/tags/graphics">graphics</a>
-            </li><li>
-                <a style="--tag-bg: #ccffe0; --tag-text: #1b715c;" href="/tags/unity">unity</a>
-            </li><li>
-                <a style="--tag-bg: #ffd7af; --tag-text: #9c4901;" href="/tags/gamedev">gamedev</a>
+                <a style="--tag-bg: #ffa7a7; --tag-text: #9a0f29;" href="/tags/programming">programming</a>
             </li></ul>
 
     <div>

@@ -6,7 +6,7 @@
         <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-<meta name="description" content="A machine learning model to predict the success of a Kickstarter project.">
+<meta name="description" content="All notes with a certain tag.">
 <meta name="author" content="Alexander Ameye">
 
 <!-- Tells Google not to provide a translation for this document -->
@@ -16,22 +16,22 @@
 <meta name="generator" content="eleventy">
 
 <!-- Open graph -->
-<meta property="og:title" content="Predicting Kickstarters">
-<meta property="og:description" content="A machine learning model to predict the success of a Kickstarter project.">
+<meta property="og:title" content="Tag">
+<meta property="og:description" content="All notes with a certain tag.">
 <meta property="og:type" content="article">
-<meta property="og:image" content="undefined/projects/kickstarter-prediction/cover.png"/>
+<meta property="og:image" content="undefined/tags/project/cover.png"/>
 <meta property="og:image:width" content="1200"/>
 <meta property="og:image:height" content="675"/>
 
 <!-- Twitter -->
-<meta name="twitter:title" content="Predicting Kickstarters">
+<meta name="twitter:title" content="Tag">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:site" content="@alexanderameye">
-<meta name="twitter:description" content="A machine learning model to predict the success of a Kickstarter project.">
-<meta name="twitter:image" content="https://alexanderameye.github.io/projects/kickstarter-prediction/cover.png">
+<meta name="twitter:description" content="All notes with a certain tag.">
+<meta name="twitter:image" content="https://alexanderameye.github.io/tags/project/cover.png">
 <meta name="twitter:creator" content="@alexanderameye">
 
-<title>Predicting Kickstarters</title>
+<title>Tag</title>
 
 <!-- CSS -->
 <link rel="preload" href="/assets/css/reset.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -46,7 +46,7 @@
 <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css"></noscript>
 
 <!-- ICONS -->
-<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22><text y=%2224%22 font-size=%2224%22>📊</text></svg>">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22><text y=%2224%22 font-size=%2224%22>📝</text></svg>">
 <link rel="preload" as="font" href="/assets/fonts/icons.woff2?7673508" type="font/woff2" crossorigin="crossorigin"/>
 
 <!-- INLINED GOOGLE FONTS -->
@@ -91,12 +91,6 @@
     <!-- BODY -->
     <body class="fade-in">
             
-<style>
-    :root {
-        --marker-color: var(--yellow);
-    }
-</style>
-
 <!-- NAV BAR -->
 <header id="navbar-desktop" class="py-75 px-150">
   <!-- <a href="/" aria-label="Back to home page."> <span class="icon-menu px-75 py-75 rounded-25 c-gray bg-gray-hover"></span></a> -->
@@ -163,64 +157,78 @@
       </ul>
     </div>
 
-<div class="note column-page">
-    <div class="note-content column-page-content">
-        <h1 class="note-title">📊
-            Predicting Kickstarters</h1>
-
-        
-          <div class="reading-time">1-minute read</div><h2>Introduction</h2>
-
-
-        <div id="back-to-top-desktop" class="back-to-top-desktop">
-            <a href="#" aria-label="Back to top of page.">
-                <span class="icon-arrow-up"></span></a>
-            <!-- this could link to #top and then you have <a name="top"></a> somewhere so you can link to specific spots -->
-        </div>
-
-            <div id="back-to-top-mobile" class="back-to-top-mobile">
-            <a href="#" aria-label="Back to top of page.">
-                <span class="icon-arrow-up"></span></a>
-            <!-- this could link to #top and then you have <a name="top"></a> somewhere so you can link to specific spots -->
-        </div>
-
-
-
-         <div class="note-date"><time>May 30, 2021</time></div>
-    </div>
-
-    <footer class="note-footer">
+<div class="column-page">
+  <div class="column-page-content">
+  <div class="home-header">
+    <h2 style="padding-right: 10px">All notes tagged with
+    </h2>
     <ul class="note-tags"><li>
-                <a style="--tag-bg: #c8fff7; --tag-text: #3a6b6b;" href="/tags/project">project</a>
-            </li><li>
-                <a style="--tag-bg: #ccffe0; --tag-text: #1b715c;" href="/tags/unity">unity</a>
-            </li><li>
-                <a style="--tag-bg: #d4f0ff; --tag-text: #04509c;" href="/tags/graphics">graphics</a>
-            </li><li>
-                <a style="--tag-bg: #ffd7af; --tag-text: #9c4901;" href="/tags/gamedev">gamedev</a>
-            </li></ul>
-
-    <div>
-        <a href="https://twitter.com/alexanderameye" rel="noopener" target="_blank" aria-label="Alexander Ameye Twitter.">
-            <span class="icon-twitter footer-icon"></span></a>
-        <a href="https://www.linkedin.com/in/alexander-ameye-067a0b70/" rel="noopener" target="_blank" aria-label="Alexander Ameye LinkedIn.">
-            <span class="icon-linkedin footer-icon"></span></a>
-        <a href="https://github.com/alexanderameye" rel="noopener" target="_blank" aria-label="Alexander Ameye GitHub.">
-            <span class="icon-github footer-icon"></span></a>
+        <a style="--tag-bg: #c8fff7; --tag-text: #3a6b6b;" href="/tags/project">project</a>
+      </li>
+    </ul></div>
+    
+    
+  <article class="note-entry">
+    <div class="note-entry-content">
+      <header class="note-entry-header">
+        <h3><span>📊</span>
+          Predicting Kickstarters</h3>
+      </header>
+      <section class="note-entry-description">
+        <p>A machine learning model to predict the success of a Kickstarter project.</p>
+      </section>
+      <footer class="note-entry-footer">
+        <time>6 months ago</time>
+      </footer>
+      <a class="note-entry-link" aria-label="Predicting Kickstarters" href="/projects/kickstarter-prediction/"></a>
     </div>
-</footer>
+  </article>
 
- 
+  <article class="note-entry">
+    <div class="note-entry-content">
+      <header class="note-entry-header">
+        <h3><span>🗺️</span>
+          AR Tour Editor</h3>
+      </header>
+      <section class="note-entry-description">
+        <p>An editor tool for creating rich augmented reality experiences.</p>
+      </section>
+      <footer class="note-entry-footer">
+        <time>6 months ago</time>
+      </footer>
+      <a class="note-entry-link" aria-label="AR Tour Editor" href="/projects/augmented-reality-tour-editor/"></a>
+    </div>
+  </article>
+
+  <article class="note-entry">
+    <div class="note-entry-content">
+      <header class="note-entry-header">
+        <h3><span>🌊</span>
+          Stylized Water Shader</h3>
+      </header>
+      <section class="note-entry-description">
+        <p>A stylized water shader for the Unity Asset Store.</p>
+      </section>
+      <footer class="note-entry-footer">
+        <time>1 year ago</time>
+      </footer>
+      <a class="note-entry-link" aria-label="Stylized Water Shader" href="/projects/stylized-water/"></a>
+    </div>
+  </article>
+
+    <article class="note-entry">
+      <div class="note-entry-content">
+        <header class="note-entry-header">
+          <h4>All notes</h4>
+        </header>
+        <section class="note-entry-description">
+          <p>See all notes ...</p>
+        </section>
+        <a class="note-entry-link" aria-label="All notes" href="/notes"></a>
+      </div>
+    </article>
+
+  </div>
 </div>
-
-<script src="https://storage.ko-fi.com/cdn/scripts/overlay-widget.js"></script>
-<script>
-  kofiWidgetOverlay.draw('alexanderameye', {
-    'type': 'floating-chat',
-    'floating-chat.donateButton.text': 'Support me',
-    'floating-chat.donateButton.background-color': '#323842',
-    'floating-chat.donateButton.text-color': '#fff'
-  });
-</script>
     </body>
 </html>

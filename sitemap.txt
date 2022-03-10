@@ -44,6 +44,3 @@
   
     https://alexanderameye.github.io/notes/chess-engine/
   
-  
-    https://alexanderameye.github.io/notes/realtime-caustics/
-  

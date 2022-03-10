@@ -41,3 +41,6 @@
   
     https://alexanderameye.github.io/tags/all/
   
+  
+    https://alexanderameye.github.io/notes/chess-engine/
+  

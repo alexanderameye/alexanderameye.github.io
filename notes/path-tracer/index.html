@@ -6,7 +6,7 @@
         <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-<meta name="description" content="Coordinate spaces and how positions and vectors get transformed between them.">
+<meta name="description" content="My first steps writing a CPU path tracer in Rust.">
 <meta name="author" content="Alexander Ameye">
 
 <!-- Tells Google not to provide a translation for this document -->
@@ -16,22 +16,22 @@
 <meta name="generator" content="eleventy">
 
 <!-- Open graph -->
-<meta property="og:title" content="Spaces and transformations">
-<meta property="og:description" content="Coordinate spaces and how positions and vectors get transformed between them.">
+<meta property="og:title" content="Writing a path tracer in Rust">
+<meta property="og:description" content="My first steps writing a CPU path tracer in Rust.">
 <meta property="og:type" content="article">
-<meta property="og:image" content="undefined/notes/spaces-and-transformations/cover.png"/>
+<meta property="og:image" content="undefined/notes/path-tracer/cover.png"/>
 <meta property="og:image:width" content="1200"/>
 <meta property="og:image:height" content="675"/>
 
 <!-- Twitter -->
-<meta name="twitter:title" content="Spaces and transformations">
+<meta name="twitter:title" content="Writing a path tracer in Rust">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:site" content="@alexanderameye">
-<meta name="twitter:description" content="Coordinate spaces and how positions and vectors get transformed between them.">
-<meta name="twitter:image" content="https://alexanderameye.github.io/notes/spaces-and-transformations/cover.png">
+<meta name="twitter:description" content="My first steps writing a CPU path tracer in Rust.">
+<meta name="twitter:image" content="https://alexanderameye.github.io/notes/path-tracer/cover.png">
 <meta name="twitter:creator" content="@alexanderameye">
 
-<title>Spaces and transformations</title>
+<title>Writing a path tracer in Rust</title>
 
 <!-- CSS -->
 <link rel="preload" href="/assets/css/reset.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -46,7 +46,7 @@
 <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css"></noscript>
 
 <!-- ICONS -->
-<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22><text y=%2224%22 font-size=%2224%22>♻️</text></svg>">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22><text y=%2224%22 font-size=%2224%22>🦀</text></svg>">
 <link rel="preload" as="font" href="/assets/fonts/icons.woff2?7673508" type="font/woff2" crossorigin="crossorigin"/>
 
 <!-- INLINED GOOGLE FONTS -->
@@ -163,28 +163,36 @@
 
 <div class="note column-page">
     <div class="note-content column-page-content">
-        <h1 class="note-title">♻️
-            Spaces and transformations</h1>
+        <h1 class="note-title">🦀
+            Writing a path tracer in Rust</h1>
 
         
-          <div class="reading-time">1-minute read</div><blockquote>
-<p><strong>1.</strong> 📦 object/model/local space</p>
-</blockquote>
-<blockquote>
-<p><strong>2.</strong> 🌍 world space</p>
-</blockquote>
-<blockquote>
-<p><strong>3.</strong> 📷 camera/eye/view space</p>
-</blockquote>
-<blockquote>
-<p><strong>4.</strong> ✂️ (homogeneous) clip space</p>
-</blockquote>
-<blockquote>
-<p><strong>5.</strong> 🖥️ screen space</p>
-</blockquote>
-<blockquote>
-<p><strong>6.</strong> 🖼️ viewport/window space</p>
-</blockquote>
+          <div class="reading-time">1-minute read</div><h2>Introduction</h2>
+<p>There are two things I've wanted to do for a while:</p>
+<ol>
+<li>Learn rust</li>
+<li>Write a path tracer</li>
+</ol>
+<p>Combining these 2 into a single project seemed like a good idea and so I decided to start working on a path tracer in
+order to better understand some aspects of graphics/rendering engineering.</p>
+<p>The path tracer I have created is</p>
+<ul>
+<li>CPU based</li>
+<li>Multithreaded</li>
+<li>Basic</li>
+</ul>
+<h2>First steps</h2>
+<h2>Naive path tracing</h2>
+<h2>Explicit light sampling</h2>
+<h2>Materials</h2>
+<h2>Anti-aliasing</h2>
+<h2>LDraw support</h2>
+<h2>Additional Resources</h2>
+<h2>future posts?</h2>
+<ul>
+<li>rendering lego models</li>
+<li>realtime viewport with wgpu?</li>
+</ul>
 
 
         <div id="back-to-top-desktop" class="back-to-top-desktop">
@@ -201,7 +209,7 @@
 
 
 
-         <div class="note-date"><time>August 31, 2021</time></div>
+         <div class="note-date"><time>July 30, 2022</time></div>
     </div>
 
     <footer class="note-footer">
@@ -209,6 +217,8 @@
                 <a style="--tag-bg: #d4f0ff; --tag-text: #04509c;" href="/tags/graphics">graphics</a>
             </li><li>
                 <a style="--tag-bg: #ffee7c; --tag-text: #965b14;" href="/tags/math">math</a>
+            </li><li>
+                <a style="--tag-bg: #ffa7a7; --tag-text: #9a0f29;" href="/tags/programming">programming</a>
             </li></ul>
 
     <div>

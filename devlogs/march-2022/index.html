@@ -6,7 +6,7 @@
         <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-<meta name="description" content="All notes with a certain tag.">
+<meta name="description" content="March 2022 - A new start">
 <meta name="author" content="Alexander Ameye">
 
 <!-- Tells Google not to provide a translation for this document -->
@@ -16,22 +16,22 @@
 <meta name="generator" content="eleventy">
 
 <!-- Open graph -->
-<meta property="og:title" content="Tag">
-<meta property="og:description" content="All notes with a certain tag.">
+<meta property="og:title" content="March 2022 - A new start">
+<meta property="og:description" content="March 2022 - A new start">
 <meta property="og:type" content="article">
-<meta property="og:image" content="undefined/tags/graphics/cover.png"/>
+<meta property="og:image" content="undefined/devlogs/march-2022/cover.png"/>
 <meta property="og:image:width" content="1200"/>
 <meta property="og:image:height" content="675"/>
 
 <!-- Twitter -->
-<meta name="twitter:title" content="Tag">
+<meta name="twitter:title" content="March 2022 - A new start">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:site" content="@alexanderameye">
-<meta name="twitter:description" content="All notes with a certain tag.">
-<meta name="twitter:image" content="https://alexanderameye.github.io/tags/graphics/cover.png">
+<meta name="twitter:description" content="March 2022 - A new start">
+<meta name="twitter:image" content="https://alexanderameye.github.io/devlogs/march-2022/cover.png">
 <meta name="twitter:creator" content="@alexanderameye">
 
-<title>Tag</title>
+<title>March 2022 - A new start</title>
 
 <!-- CSS -->
 <link rel="preload" href="/assets/css/reset.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -46,7 +46,7 @@
 <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css"></noscript>
 
 <!-- ICONS -->
-<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22><text y=%2224%22 font-size=%2224%22>📝</text></svg>">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22><text y=%2224%22 font-size=%2224%22>🌻</text></svg>">
 <link rel="preload" as="font" href="/assets/fonts/icons.woff2?7673508" type="font/woff2" crossorigin="crossorigin"/>
 
 <!-- INLINED GOOGLE FONTS -->
@@ -91,6 +91,12 @@
     <!-- BODY -->
     <body class="fade-in">
             
+<style>
+    :root {
+        --marker-color: var(--yellow);
+    }
+</style>
+
 <!-- NAV BAR -->
 <header id="navbar-desktop" class="py-75 px-150">
   <!-- <a href="/" aria-label="Back to home page."> <span class="icon-menu px-75 py-75 rounded-25 c-gray bg-gray-hover"></span></a> -->
@@ -155,142 +161,56 @@
       </ul>
     </div>
 
-<div class="column-page">
-  <div class="column-page-content">
-  <div class="home-header">
-    <h2 style="padding-right: 10px">All notes tagged with
-    </h2>
-    <ul class="note-tags"><li>
-        <a style="--tag-bg: #d4f0ff; --tag-text: #04509c;" href="/tags/graphics">graphics</a>
-      </li>
-    </ul></div>
-    
-    
-  <article class="note-entry">
-    <div class="note-entry-content">
-      <header class="note-entry-header">
-        <h3><span>🌈</span>
-          Rendering realtime caustics</h3>
-      </header>
-      <section class="note-entry-description">
-        <p>How to render realtime caustics in Unity</p>
-      </section>
-      <footer class="note-entry-footer">
-        <time>1 day ago</time>
-      </footer>
-      <a class="note-entry-link" aria-label="Rendering realtime caustics" href="/notes/realtime-caustics/"></a>
+<div class="note column-page">
+    <div class="note-content column-page-content">
+        <h1 class="note-title">🌻
+            March 2022 - A new start</h1>
+
+        
+          <div class="reading-time">1-minute read</div><h2>General</h2>
+<p>Since I got a new laptop, I found the motivation to start working on my game project again. I have rough ideas for what the project should be but most important of all: I just want to get started with something. The first goal is to figure out a good rendering workflow for my outlined, hand-drawn rendering.</p>
+<h2>Stylized shader</h2>
+<p>This month I worked on an initial version of my <mark>base stylized shader</mark>. I will probably use it for most objects in the scene that do not require any special rendering or effects.</p>
+<video poster="reflections.png" preload="auto" width="50%" title="Base stylized shader." loop="" autoplay="" playsinline="" muted="true" class="note-video">
+<source src="stylized-shader.webm" type="video/webm">
+</video>
+<p>The shader is a fairly advanced toon shader, and it checks all the boxes. It supports multiple lights and has intuitive controls through a custom UI. It is created in shadergraph because I think a node-based tool lends it very well for creating stylized toon shaders.</p>
+<h2>Outline system</h2>
+<p>I ported over my existing outline system to my new project. It is in a working state but it still needs a lot of work before I can efficiently used it in a content-creation pipeline.</p>
+
+
+        <div id="back-to-top-desktop" class="back-to-top-desktop">
+            <a href="#" aria-label="Back to top of page.">
+                <span class="icon-arrow-up"></span></a>
+            <!-- this could link to #top and then you have <a name="top"></a> somewhere so you can link to specific spots -->
+        </div>
+
+            <div id="back-to-top-mobile" class="back-to-top-mobile">
+            <a href="#" aria-label="Back to top of page.">
+                <span class="icon-arrow-up"></span></a>
+            <!-- this could link to #top and then you have <a name="top"></a> somewhere so you can link to specific spots -->
+        </div>
+
+
+
+         <div class="note-date"><time>March 31, 2022</time></div>
     </div>
-  </article>
 
-  <article class="note-entry">
-    <div class="note-entry-content">
-      <header class="note-entry-header">
-        <h3><span>🖍️</span>
-          5 ways to draw an outline</h3>
-      </header>
-      <section class="note-entry-description">
-        <p>Different techniques for rendering outline effects.</p>
-      </section>
-      <footer class="note-entry-footer">
-        <time>7 months ago</time>
-      </footer>
-      <a class="note-entry-link" aria-label="5 ways to draw an outline" href="/notes/rendering-outlines/"></a>
+    <footer class="note-footer">
+    <ul class="note-tags"></ul>
+
+    <div>
+        <a href="https://twitter.com/alexanderameye" rel="noopener" target="_blank" aria-label="Alexander Ameye Twitter.">
+            <span class="icon-twitter footer-icon"></span></a>
+        <a href="https://www.linkedin.com/in/alexander-ameye-067a0b70/" rel="noopener" target="_blank" aria-label="Alexander Ameye LinkedIn.">
+            <span class="icon-linkedin footer-icon"></span></a>
+        <a href="https://github.com/alexanderameye" rel="noopener" target="_blank" aria-label="Alexander Ameye GitHub.">
+            <span class="icon-github footer-icon"></span></a>
     </div>
-  </article>
+</footer>
 
-  <article class="note-entry">
-    <div class="note-entry-content">
-      <header class="note-entry-header">
-        <h3><span>📝</span>
-          Custom render passes in Unity</h3>
-      </header>
-      <section class="note-entry-description">
-        <p>How to write custom render passes in Unity&#39;s Universal Render Pipeline.</p>
-      </section>
-      <footer class="note-entry-footer">
-        <time>8 months ago</time>
-      </footer>
-      <a class="note-entry-link" aria-label="Custom render passes in Unity" href="/notes/scriptable-render-passes/"></a>
-    </div>
-  </article>
-
-  <article class="note-entry">
-    <div class="note-entry-content">
-      <header class="note-entry-header">
-        <h3><span>💦</span>
-          Stylized Water Shader</h3>
-      </header>
-      <section class="note-entry-description">
-        <p>About my stylized water shader for Unity.</p>
-      </section>
-      <footer class="note-entry-footer">
-        <time>9 months ago</time>
-      </footer>
-      <a class="note-entry-link" aria-label="Stylized Water Shader" href="/notes/stylized-water/"></a>
-    </div>
-  </article>
-
-  <article class="note-entry">
-    <div class="note-entry-content">
-      <header class="note-entry-header">
-        <h3><span>⏳</span>
-          Shader tutorials in 60 seconds</h3>
-      </header>
-      <section class="note-entry-description">
-        <p>Short and sweet shader tutorials.</p>
-      </section>
-      <footer class="note-entry-footer">
-        <time>1 year ago</time>
-      </footer>
-      <a class="note-entry-link" aria-label="Shader tutorials in 60 seconds" href="/notes/shaders-done-quick/"></a>
-    </div>
-  </article>
-
-  <article class="note-entry">
-    <div class="note-entry-content">
-      <header class="note-entry-header">
-        <h3><span>🃏</span>
-          Holographic Card Shader</h3>
-      </header>
-      <section class="note-entry-description">
-        <p>How I created a holographic Pokémon card shader.</p>
-      </section>
-      <footer class="note-entry-footer">
-        <time>2 years ago</time>
-      </footer>
-      <a class="note-entry-link" aria-label="Holographic Card Shader" href="/notes/holographic-card-shader/"></a>
-    </div>
-  </article>
-
-  <article class="note-entry">
-    <div class="note-entry-content">
-      <header class="note-entry-header">
-        <h3><span>🖍️</span>
-          Edge Detection Outlines</h3>
-      </header>
-      <section class="note-entry-description">
-        <p>Drawing outlines as a post-processing effect in Unity.</p>
-      </section>
-      <footer class="note-entry-footer">
-        <time>2 years ago</time>
-      </footer>
-      <a class="note-entry-link" aria-label="Edge Detection Outlines" href="/notes/edge-detection-outlines/"></a>
-    </div>
-  </article>
-
-    <article class="note-entry">
-      <div class="note-entry-content">
-        <header class="note-entry-header">
-          <h4>All notes</h4>
-        </header>
-        <section class="note-entry-description">
-          <p>See all notes ...</p>
-        </section>
-        <a class="note-entry-link" aria-label="All notes" href="/notes"></a>
-      </div>
-    </article>
-
-  </div>
+ 
 </div>
+
     </body>
 </html>

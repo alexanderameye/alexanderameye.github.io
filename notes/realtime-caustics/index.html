@@ -167,7 +167,7 @@
             Rendering realtime caustics</h1>
 
         
-          <div class="reading-time">7-minute read</div><h2>Introduction</h2>
+          <div class="reading-time">8-minute read</div><h2>Introduction</h2>
 <p>I will go over my method of rendering real-time <a href="https://en.wikipedia.org/wiki/Caustic_(optics)" target="_blank" rel="noopener noreferrer">caustics</a>. The goal is not to generate physically accurate result, but rather to achieve <mark>real-time, controllable, good-looking</mark> water caustics effects.</p>
 <video poster="reflections.png" preload="auto" width="75%" title="Rendering realtime caustics." loop="" autoplay="" playsinline="" muted="true" class="note-video">
 <source src="realtime-caustics.webm" type="video/webm">
@@ -261,6 +261,11 @@
 </video>
 <p>You can get the shader code for free from the following gist.</p>
 <p><a href="https://gist.github.com/alexanderameye/16fd84165f79959ec983de0abb1cb47e" target="_blank" rel="noopener noreferrer">https://gist.github.com/alexanderameye/16fd84165f79959ec983de0abb1cb47e</a></p>
+<p>To get the light direction working, you can use the following caustics pass/feature scripts and add it as a renderer feature to your render pipeline in URP.</p>
+<p><a href="https://gist.github.com/alexanderameye/b3c415b09364385897f56d70ff559041" target="_blank" rel="noopener noreferrer">https://gist.github.com/alexanderameye/b3c415b09364385897f56d70ff559041</a></p>
+<p><a href="https://gist.github.com/alexanderameye/c8b7a3b7f4aab6cc7759f851322de6b6" target="_blank" rel="noopener noreferrer">https://gist.github.com/alexanderameye/c8b7a3b7f4aab6cc7759f851322de6b6</a></p>
+<p>Then, simply drag in the caustics material and the light direction should be set.</p>
+<figure><picture><source type="image/webp" srcset="caustics-pass.png-300w.webp 300w, caustics-pass.png-400w.webp 400w, caustics-pass.png-600w.webp 600w" sizes="(min-width: 30em) 50vw, 100vw"><source type="image/jpeg" srcset="caustics-pass.png-300w.jpeg 300w, caustics-pass.png-400w.jpeg 400w, caustics-pass.png-600w.jpeg 600w" sizes="(min-width: 30em) 50vw, 100vw"><img class="note-image" alt="Caustics pass." style="width:;" loading="lazy" decoding="async" src="caustics-pass.png-300w.jpeg" width="600" height="306"></picture><figcaption>Caustics pass.</figcaption></figure>
 <h2>Additional resources</h2>
 <p><a href="https://www.alanzucconi.com/2019/09/13/believable-caustics-reflections/" target="_blank" rel="noopener noreferrer">https://www.alanzucconi.com/2019/09/13/believable-caustics-reflections/</a></p>
 <p><a href="https://twitter.com/flogelz/status/1165251296720576512?ref_src=twsrc%5Etfw" target="_blank" rel="noopener noreferrer">https://twitter.com/flogelz/status/1165251296720576512?ref_src=twsrc%5Etfw</a></p>

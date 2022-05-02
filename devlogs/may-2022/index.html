@@ -6,7 +6,7 @@
         <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-<meta name="description" content="Real-time hand-drawn rendering in Unity.">
+<meta name="description" content="May 2022 - A new start">
 <meta name="author" content="Alexander Ameye">
 
 <!-- Tells Google not to provide a translation for this document -->
@@ -16,22 +16,22 @@
 <meta name="generator" content="eleventy">
 
 <!-- Open graph -->
-<meta property="og:title" content="Hand drawn rendering in Unity">
-<meta property="og:description" content="Real-time hand-drawn rendering in Unity.">
+<meta property="og:title" content="May 2022 - A new start">
+<meta property="og:description" content="May 2022 - A new start">
 <meta property="og:type" content="article">
-<meta property="og:image" content="undefined/notes/hand-drawn-rendering/cover.png"/>
+<meta property="og:image" content="undefined/devlogs/may-2022/cover.png"/>
 <meta property="og:image:width" content="1200"/>
 <meta property="og:image:height" content="675"/>
 
 <!-- Twitter -->
-<meta name="twitter:title" content="Hand drawn rendering in Unity">
+<meta name="twitter:title" content="May 2022 - A new start">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:site" content="@alexanderameye">
-<meta name="twitter:description" content="Real-time hand-drawn rendering in Unity.">
-<meta name="twitter:image" content="https://alexanderameye.github.io/notes/hand-drawn-rendering/cover.png">
+<meta name="twitter:description" content="May 2022 - A new start">
+<meta name="twitter:image" content="https://alexanderameye.github.io/devlogs/may-2022/cover.png">
 <meta name="twitter:creator" content="@alexanderameye">
 
-<title>Hand drawn rendering in Unity</title>
+<title>May 2022 - A new start</title>
 
 <!-- CSS -->
 <link rel="preload" href="/assets/css/reset.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -55,7 +55,7 @@
 
 
 <!-- ICONS -->
-<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22><text y=%2224%22 font-size=%2224%22>✏️</text></svg>">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22><text y=%2224%22 font-size=%2224%22>🌻</text></svg>">
 <link rel="preload" as="font" href="/assets/fonts/icons.woff2?7673508" type="font/woff2" crossorigin="crossorigin"/>
 
 <!-- INLINED GOOGLE FONTS -->
@@ -102,7 +102,7 @@
             
 <style>
     :root {
-        --marker-color: var(--blue);
+        --marker-color: var(--yellow);
     }
 </style>
 
@@ -175,19 +175,28 @@
 
 <div class="note column-page">
     <div class="note-content column-page-content">
-        <h1 class="note-title">✏️
-            Hand drawn rendering in Unity</h1>
+        <h1 class="note-title">🌻
+            May 2022 - A new start</h1>
 
         
-          <div class="reading-time">1-minute read</div><h2>Introduction</h2>
-<p>In the late summer of 2019, I started looking into replicating a hand-drawn style within Unity. Specifically I wanted to successfully recreate the Ligne Claire style. The scene below was the first result in that attempt. It is a recreation of the panel from the right. This panel comes out The Black Island from The Adventures of Tintin created by Hergé.</p>
-<p>/notes/hand-drawn-rendering/</p>
-<p><picture><source type="image/webp" srcset="side.png-300w.webp 300w" sizes="(min-width: 30em) 50vw, 100vw"><img class="note-image" alt="Stylized water reflections." style="width:;" loading="lazy" decoding="async" src="side.png-300w.jpeg" width="300" height="300"></picture>
-<picture><source type="image/webp" srcset="side.png-300w.webp 300w" sizes="(min-width: 30em) 50vw, 100vw"><img class="note-image" alt="Stylized water reflections." style="width:;" loading="lazy" decoding="async" src="side.png-300w.jpeg" width="300" height="300"></picture></p>
-<p>A series of creations based on the work of Hergé in 'The Adventures Of Tintin'. The goal is to achieve a similar visual style within unity.</p>
-<h2>Outlines</h2>
-<h2>Colors</h2>
-<h2>Grain</h2>
+          <div class="reading-time">1-minute read</div><h2>General</h2>
+<p>Since I got a new laptop, I found the motivation to start working on my game project again. I have rough ideas for what the project should be but most important of all, I just want to get started with something. The first goal is to figure out a good rendering workflow for my outlined, hand-drawn rendering.</p>
+<h2>Stylized shader</h2>
+<p>This month I worked on an initial version of my <mark>base stylized shader</mark>. I will probably use it for most objects in the scene that do not require any special rendering or effects.</p>
+<video poster="reflections.png" preload="auto" width="75%" title="Base stylized shader." loop="" autoplay="" playsinline="" muted="true" class="note-video">
+<source src="stylized-shader.webm" type="video/webm">
+</video>
+<p>The shader is a fairly advanced toon shader, and it checks all the boxes. It supports multiple lights and has intuitive controls through a custom UI. It is created in shadergraph because I think a node-based tool lends it very well for creating stylized toon shaders.</p>
+<h2>Outline system</h2>
+<p>I ported over my existing outline system to my new project. It is in a working state but it still needs a lot of work and new features before I can efficiently use it in a content-creation pipeline.</p>
+<h3>Debug views</h3>
+<p>One new thing I added was a better debug view for the outline system. Since the outline system consists of several 'steps' within the pipeline, it makes sense to be able to debug these.</p>
+<video poster="reflections.png" preload="auto" width="75%" title="Base stylized shader." loop="" autoplay="" playsinline="" muted="true" class="note-video">
+<source src="debug-views.webm" type="video/webm">
+</video>
+<p>The new debug viewer use the editor overlay system in Unity.</p>
+<h3>Sectioning</h3>
+<p>To render outlines, I make use of a sectioning texture to decide where lines should show up. To be able to easily author this sectioning texture, I started making some tools.</p>
 
 
         <div id="back-to-top-desktop" class="back-to-top-desktop">
@@ -204,15 +213,11 @@
 
 
 
-         <div class="note-date"><time>August 31, 2021</time></div>
+         <div class="note-date"><time>March 31, 2022</time></div>
     </div>
 
     <footer class="note-footer">
-    <ul class="note-tags"><li>
-                <a style="--tag-bg: #d4f0ff; --tag-text: #04509c;" href="/tags/graphics">graphics</a>
-            </li><li>
-                <a style="--tag-bg: #ccffe0; --tag-text: #1b715c;" href="/tags/unity">unity</a>
-            </li></ul>
+    <ul class="note-tags"></ul>
 
     <div>
         <a href="https://twitter.com/alexanderameye" rel="noopener" target="_blank" aria-label="Alexander Ameye Twitter.">
@@ -227,14 +232,5 @@
  
 </div>
 
-<script src="https://storage.ko-fi.com/cdn/scripts/overlay-widget.js"></script>
-<script>
-  kofiWidgetOverlay.draw('alexanderameye', {
-    'type': 'floating-chat',
-    'floating-chat.donateButton.text': 'Support me',
-    'floating-chat.donateButton.background-color': '#323842',
-    'floating-chat.donateButton.text-color': '#fff'
-  });
-</script>
     </body>
 </html>

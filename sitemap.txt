@@ -1,32 +1,5 @@
 
   
-    https://alexanderameye.github.io/404/
-  
-  
-    https://alexanderameye.github.io/contact/
-  
-  
-    https://alexanderameye.github.io/devlogs/
-  
-  
-    https://alexanderameye.github.io/
-  
-  
-    https://alexanderameye.github.io/notes/
-  
-  
-    https://alexanderameye.github.io/projects/
-  
-  
-    https://alexanderameye.github.io/robots.txt
-  
-  
-    https://alexanderameye.github.io/sitemap.txt
-  
-  
-    https://alexanderameye.github.io/tags/all/
-  
-  
     https://alexanderameye.github.io/notes/edge-detection-outlines/
   
   
@@ -61,4 +34,31 @@
   
   
     https://alexanderameye.github.io/notes/path-tracer/
+  
+  
+    https://alexanderameye.github.io/404/
+  
+  
+    https://alexanderameye.github.io/contact/
+  
+  
+    https://alexanderameye.github.io/devlogs/
+  
+  
+    https://alexanderameye.github.io/
+  
+  
+    https://alexanderameye.github.io/notes/
+  
+  
+    https://alexanderameye.github.io/projects/
+  
+  
+    https://alexanderameye.github.io/robots.txt
+  
+  
+    https://alexanderameye.github.io/sitemap.txt
+  
+  
+    https://alexanderameye.github.io/tags/all/
   

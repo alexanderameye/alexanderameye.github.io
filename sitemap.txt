@@ -36,7 +36,7 @@
     https://alexanderameye.github.io/notes/path-tracer/
   
   
-    https://alexanderameye.github.io/404/
+    https://alexanderameye.github.io/404
   
   
     https://alexanderameye.github.io/contact/

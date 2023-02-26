@@ -1,0 +1,88 @@
+.note-entry {
+  position: relative;
+  margin-bottom: 20px;
+  padding: 15px;
+  background: #FFFF;
+  border-radius: 8px;
+  transition: transform .2s;
+  border: 2px solid #000;
+  box-shadow: 2px 2px;
+  overflow: hidden;
+  /* add this rule */
+}
+
+.note-entry:active {
+  transform: scale(.95);
+}
+
+.note-entry-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.note-entry-header h3 {
+  margin: 0;
+  font-size: 20px;
+}
+
+.note-entry-header span {
+  margin-right: 8px;
+}
+
+.note-entry-description {
+  margin: 12px 0;
+  color: black;
+  font-size: 14px;
+  line-height: 1.6;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  margin-right: 40%;
+}
+
+.note-entry-description p {
+  margin: 0;
+  font-family: 'Inconsolata', monospace;
+  text-align: justify;
+  font-style: normal;
+  font-size: 16px;
+  letter-spacing: .02em;
+  line-height: 1.6em;
+}
+
+.note-entry-footer {
+  color: black;
+  font-size: smaller;
+  font-family: 'arial-rounded-bold';
+}
+
+.note-entry-link {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+.note-entry-main {
+  margin-right: 50px;
+}
+
+.note-entry-image {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin-top: -15px;
+  margin-right: -15px;
+  width: 30%;
+  max-width: 40%;
+  box-sizing: border-box;
+}
+
+.note-entry-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+}

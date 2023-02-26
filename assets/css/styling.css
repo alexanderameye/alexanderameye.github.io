@@ -1,4 +1,3 @@
-
 * {
     /* border: 2px dotted rgb(0, 0, 0);*/
 }
@@ -94,7 +93,7 @@ body {
 @font-face {
     font-family: 'arial-rounded-regular';
     src: url('/assets/fonts/arial-rounded.woff2') format('woff2'),
-         url('/assets/fonts/arial-rounded.woff') format('woff');
+        url('/assets/fonts/arial-rounded.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }
@@ -103,7 +102,7 @@ body {
 @font-face {
     font-family: 'arial-rounded-bold';
     src: url('/assets/fonts/arial-rounded-bold.woff2') format('woff2'),
-         url('/assets/fonts/arial-rounded-bold.woff') format('woff');
+        url('/assets/fonts/arial-rounded-bold.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }
@@ -191,7 +190,10 @@ body {
 /* ACTION BUTTONS */
 
 
-.action-buttons{display:flex;justify-content:space-evenly}
+.action-buttons {
+    display: flex;
+    justify-content: space-evenly
+}
 
 .action-button-link {
     position: absolute;
@@ -204,7 +206,9 @@ body {
 
 
 
-.action-button:hover{transform:scale(1.02)}
+.action-button:hover {
+    transform: scale(1.02)
+}
 
 .column-page-content .action-button p {
     text-align: center;
@@ -232,40 +236,6 @@ body {
 
 
 /* ENTRIES */
-
-.note-entry-content {
-    position: relative;
-    margin-bottom: 20px;
-    padding: 15px;
-    background: #FFFF;
-    border-radius: 8px;
-    transition: transform .2s;
-    border: 2px solid #000;
-    box-shadow: 2px 2px;
-}
-
-.note-entry:active {
-    transform: scale(.95);
-}
-
-.note-entry-description {
-    margin: 8px 0;
-    color: var(--gray);
-    font-size: 14px;
-    line-height: 1.6;
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
-}
-
-.column-page-content .note-entry-description p {
-    text-align: left;
-}
-
-.column-page-content .note-entry-header h3 {
-    line-height: 1.3em;
-}
 
 
 /* DEVLOGS */
@@ -339,13 +309,69 @@ body {
 
 /* NOTES */
 
+.note-entry {
+    border-radius: 8px;
+    border: 2px solid #000;
+    box-shadow: 2px 2px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.note-entry-grid {
+    display: grid;
+    grid-template-columns: 70% 30%;
+    grid-gap: 0px;
+    background: #FFFF;
+}
+
+.note-entry-header h3 {
+    margin: 0;
+    font-size: 16px;
+}
+
+.note-entry-description {
+    margin: 12px 0;
+    color: black;
+    line-height: 1.6;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
+
 .note-entry-description p {
-    font-family: 'Inter', serif;
+    margin: 0;
+    font-family: 'Inconsolata', monospace;
+    text-align: left;
+    font-style: normal;
+    font-size: 16px;
+    line-height: 1.4em;
 }
 
 .note-entry-footer {
-    color: var(--gray);
-    font-size: 12px;
+    color: black;
+    font-size: smaller;
+    font-family: 'arial-rounded-bold';
+}
+
+.note-entry-main {
+    padding: 14px;
+}
+
+.note-entry-image {
+    padding: 0px;
+    position: relative;
+    grid-column: 2;
+    max-height: 100%;
+    max-width: 100%;
+}
+
+.note-entry-image img {
+    width: 100%;
+    height: 140px;
+    display: block;
+    object-fit: cover;
 }
 
 .note-entry-link {
@@ -357,21 +383,16 @@ body {
 }
 
 
+
+
+
+
 /* TIMELINE */
 
 .bold {
     font-weight: bold;
 }
 
-
-
-
-
-
-
-a:hover .ae-logo {
-    filter: brightness(0) invert(1);
-}
 
 
 /* HOME IMAGE */
@@ -395,7 +416,7 @@ a:hover .ae-logo {
 .home-header {
     /*display: flex;*/
     align-items: center;
-justify-content: space-between;
+    justify-content: space-between;
     padding-top: 0px;
     padding-bottom: 0px;
 }

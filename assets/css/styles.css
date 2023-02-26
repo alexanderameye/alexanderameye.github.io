@@ -86,6 +86,7 @@ p {
     font-size: 16px;
     letter-spacing: .02em;
     line-height: 1.6em;
+    overflow-wrap: break-word;
 }
 
 /* LINKS */

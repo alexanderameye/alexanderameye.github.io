@@ -34,6 +34,11 @@ body {
     padding-bottom: .75rem;
 }
 
+.py-100{
+    padding-top: 1.0rem;
+    padding-bottom: 1.0rem;
+}
+
 .rounded-25 {
     border-radius: .25rem;
 }

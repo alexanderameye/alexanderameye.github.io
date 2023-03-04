@@ -125,11 +125,20 @@ p {
     line-height: 1.3em;
 }
 
+.note-subtitle {
+    text-align: center;
+    font-size: medium;
+}
+
+.note-subtitle p {
+    text-align: center;
+}
+
 /* SUBTITLE */
 
 .reading-time {
-    text-align: center;
-    font-size: medium;
+    font-family: 'Inconsolata', monospace;
+    font-weight: normal;
 }
 
 /* FORMULAS */

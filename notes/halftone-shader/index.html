@@ -149,7 +149,6 @@
                   <span aria-hidden="true" class="anchor-symbol">#</span>
                 </a> Creating a dots pattern</h2>
 <p>To start, I created a <mark>Dots Pattern</mark> subgraph to create the actual grid of dots. This subgraph contains the following nodes.</p>
-<p><img src="dots-pattern.png" alt="Dots pattern subgraph."></p>
 <figure><picture><source type="image/webp" srcset="dots-pattern.png-400w.webp 400w, dots-pattern.png-800w.webp 800w, dots-pattern.png-1200w.webp 1200w, dots-pattern.png-2724w.webp 2724w" sizes="(min-width: 30em) 50vw, 100vw"><source type="image/jpeg" srcset="dots-pattern.png-400w.jpeg 400w, dots-pattern.png-800w.jpeg 800w, dots-pattern.png-1200w.jpeg 1200w, dots-pattern.png-2724w.jpeg 2724w" sizes="(min-width: 30em) 50vw, 100vw"><img class="note-image" alt="Dots Pattern subgraph." style="width:100%;" loading="lazy" decoding="async" src="dots-pattern.png-400w.jpeg" width="2724" height="664"></picture><figcaption>Dots pattern subgraph.</figcaption></figure>
 <p>The dots pattern is created using a <mark>Voronoi</mark> node. The UVs are rotated using the <mark>Rotate</mark> node. I then influence the cell density using some <mark>Gradient Noise</mark> together with a <mark>Scale</mark> property. Then finally I use the <mark>Dot Size</mark> property to decided how large the dots are by using the <mark>Step</mark> node.</p>
 <p>The subgraph takes takes in the following parameters.</p>

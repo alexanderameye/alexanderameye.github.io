@@ -523,3 +523,9 @@ body {
 ::-webkit-scrollbar-thumb:hover {
     background: rgba(0, 0, 0, 0.25);
 }
+
+.right-section .column-page-content {
+    padding-left: 0%; 
+    padding-right: 30%;
+    
+}

@@ -384,6 +384,12 @@
 <video poster="reflections.png" preload="auto" width="100%" title="Rendering realtime caustics." loop="" autoplay="" playsinline="" muted="true" class="note-video">
 <source src="5/intersection-foam.mp4" type="video/mp4">
 </video>
+<details>
+<summary>Going the extra mile: Use signed distance fields for intersection foam</summary>
+<div>
+<p>One issue with the current implementation of the intersection foam is that it requires geometry underneath the water to be present before the intersection foam will show up. One more advanced technique to solve this is to have a top down orthographic camera that renders geometry to a mask and then generate an SDF texture from that mask. This is shown in <a href="https://twitter.com/HarryAlisavakis/status/1481644176349401089?s=20" target="_blank" rel="noopener noreferrer">this tweet by Harry Alisavakis</a>. The SDF texture could then be sampled to generate a more uniform intersection foam mask.</p>
+</div>
+</details>
 <h2 id="6.-lighting" tabindex="-1"><a class="anchor-link" href="#6.-lighting" target="_blank" rel="noopener noreferrer">
                   <span class="screen-reader-only">Jump to heading</span>
                   <span aria-hidden="true" class="anchor-symbol">#</span>

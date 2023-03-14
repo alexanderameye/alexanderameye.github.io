@@ -213,15 +213,21 @@ blockquote {
     font-family: 'arial-rounded-bold';
 }
 
+.note-comments {
+    grid-area: comments;
+    background-color: var(--base-color);
+    margin-top: 20px;
+}
+
 .note-footer {
     grid-area: footer;
     background-color: var(--base-color);
     /* border */
-    border-top: 2px dashed var(--gray);
+    border-top: 2px dashed black;
     margin-top: 20px;
     padding-top: 0.8rem;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-between;
 }
 
@@ -441,7 +447,7 @@ width:50%;*/
     padding-bottom: 50px;
     display: grid;
     /*grid-gap: 10px 30px;*/
-    grid-template-areas: "left content right""left footer right";
+    grid-template-areas: "left content right""left footer right""left comments right";
     /* background */
     background: linear-gradient(to left, var(--base-color), var(--base-color));
 
@@ -455,7 +461,7 @@ width:50%;*/
     padding-bottom: 50px;
     display: grid;
     /*grid-gap: 10px 30px;*/
-    grid-template-areas: "left content right""left footer right";
+    grid-template-areas: "left content right""left footer right""left comments right";
 }
 
 .wide-column-page-content {

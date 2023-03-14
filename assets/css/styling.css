@@ -64,13 +64,7 @@ body {
 
 
 
-.note-entry-header h3 {
-    padding-top: 0px;
-}
 
-.note-entry-header span {
-    padding-right: 5px;
-}
 
 .note-entry-content h3 {
     padding-bottom: 0px;
@@ -330,13 +324,24 @@ body {
     background: #FFFF;
 }
 
+.note-entry-header {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+}
+
 .note-entry-header h3 {
     margin: 0;
     font-size: 16px;
+    padding-top: 0px;
+}
+
+.note-entry-header span {
+    padding-right: 5px;
 }
 
 .note-entry-description {
-    margin: 12px 0;
+    /*margin: 12px 0;*/
     color: black;
     line-height: 1.6;
     overflow: hidden;
@@ -362,6 +367,10 @@ body {
 
 .note-entry-main {
     padding: 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
 }
 
 .note-entry-image {

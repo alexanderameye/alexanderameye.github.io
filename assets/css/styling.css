@@ -95,6 +95,7 @@ body {
         url('/assets/fonts/arial-rounded.woff') format('woff');
     font-weight: normal;
     font-style: normal;
+    font-display: swap;
 }
 
 
@@ -104,6 +105,7 @@ body {
         url('/assets/fonts/arial-rounded-bold.woff') format('woff');
     font-weight: normal;
     font-style: normal;
+    font-display: swap;
 }
 
 

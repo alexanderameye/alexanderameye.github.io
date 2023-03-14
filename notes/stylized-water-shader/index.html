@@ -144,7 +144,7 @@
                   <span aria-hidden="true" class="anchor-symbol">#</span>
                 </a> Introduction</h2>
 <p>In this tutorial I will explain step-by-step how to create a beautiful stylized water shader in Unity using Shader Graph. The goal is not to create a physically accurate result, but rather to achieve a <mark>real-time, controllable and good-looking</mark> stylized water shader.</p>
-<video poster="reflections.png" preload="auto" width="100%" title="Stylized water shader." loop="" autoplay="" playsinline="" muted="true" class="note-video">
+<video poster="reflections.webp" preload="auto" width="100%" title="Stylized water shader." loop="" autoplay="" playsinline="" muted="true" class="note-video">
 <source src="stylized-water-for-urp.webm" type="video/webm">
 </video>
 <h2 id="1.-initial-set-up" tabindex="-1"><a class="anchor-link" href="#1.-initial-set-up" target="_blank" rel="noopener noreferrer">
@@ -176,7 +176,7 @@
                   <span aria-hidden="true" class="anchor-symbol">#</span>
                 </a> Scene</h3>
 <p>For the scene, I am using <strong>The Illustrated Nature</strong> by <strong>Artkovski</strong> but you can use any scene you want.</p>
-<iframe src="https://assetstore.unity.com/linkmaker/embed/package/153939/widget-wide?aid=1101l20969" style="border:0px;"></iframe>
+<iframe src="https://assetstore.unity.com/linkmaker/embed/package/153939/widget?aid=1101l20969" style="width:202px; height:260px; border:0px; margin-bottom: 20px;" title="The Illustrated Nature asset"></iframe>
 <p>In the scene, I created a plane and assigned it the material that we created before.</p>
 <figure><picture><source type="image/webp" srcset="1/start.png-400w.webp 400w, 1/start.png-800w.webp 800w, 1/start.png-1200w.webp 1200w, 1/start.png-1266w.webp 1266w" sizes="(min-width: 30em) 50vw, 100vw"><source type="image/jpeg" srcset="1/start.png-400w.jpeg 400w, 1/start.png-800w.jpeg 800w, 1/start.png-1200w.jpeg 1200w, 1/start.png-1266w.jpeg 1266w" sizes="(min-width: 30em) 50vw, 100vw"><img class="note-image" alt="Start scene." style="width:100%;" loading="lazy" decoding="async" src="1/start.png-400w.jpeg" width="1266" height="734"></picture><figcaption>Start scene.</figcaption></figure>
 <p>Now let's get started!</p>
@@ -202,7 +202,7 @@
 <figure><picture><source type="image/webp" srcset="2/process-depths.png-400w.webp 400w, 2/process-depths.png-800w.webp 800w, 2/process-depths.png-1200w.webp 1200w, 2/process-depths.png-1552w.webp 1552w" sizes="(min-width: 30em) 50vw, 100vw"><source type="image/jpeg" srcset="2/process-depths.png-400w.jpeg 400w, 2/process-depths.png-800w.jpeg 800w, 2/process-depths.png-1200w.jpeg 1200w, 2/process-depths.png-1552w.jpeg 1552w" sizes="(min-width: 30em) 50vw, 100vw"><img class="note-image" alt="Depth division." style="width:100%;" loading="lazy" decoding="async" src="2/process-depths.png-400w.jpeg" width="1552" height="388"></picture><figcaption>Depth division.</figcaption></figure>
 <p>It is very important to note that this calculated depth value is <mark>not the vertical depth of the water</mark>. If you were looking at the water and shooting an invisible ray from your eye towards a point of the water, the distance that the ray would travel between hitting the surface of the water and hitting the ground below the water surface is the distance that you get here from these nodes. This means that when looking at the same point on the water surface, <mark>the returned depth value depends on how shallow the angle is under which you are looking at the water surface</mark>.</p>
 <p>This effect/artifact can be seen in the video below when moving around the camera. You can especially see it on the rocks where the same spots on the water get either a black or a white color based on on shallow the viewing angle is.</p>
-<video poster="reflections.png" preload="auto" width="100%" title="Rendering realtime caustics." loop="" autoplay="" playsinline="" muted="true" class="note-video">
+<video poster="reflections.webp" preload="auto" width="100%" title="Rendering realtime caustics." loop="" autoplay="" playsinline="" muted="true" class="note-video">
 <source src="2/camera-relative-depth.mp4" type="video/mp4">
 </video>
 <h3 id="world-space-depth" tabindex="-1"><a class="anchor-link" href="#world-space-depth" target="_blank" rel="noopener noreferrer">
@@ -216,7 +216,7 @@
 <p>To 'fix' this camera-relative depth, I have figured out an alternative way to calculate the depth which happens in world space.</p>
 <figure><picture><source type="image/webp" srcset="2/world-space-depth-fade.png-400w.webp 400w, 2/world-space-depth-fade.png-800w.webp 800w, 2/world-space-depth-fade.png-1200w.webp 1200w, 2/world-space-depth-fade.png-1998w.webp 1998w" sizes="(min-width: 30em) 50vw, 100vw"><source type="image/jpeg" srcset="2/world-space-depth-fade.png-400w.jpeg 400w, 2/world-space-depth-fade.png-800w.jpeg 800w, 2/world-space-depth-fade.png-1200w.jpeg 1200w, 2/world-space-depth-fade.png-1998w.jpeg 1998w" sizes="(min-width: 30em) 50vw, 100vw"><img class="note-image" alt="World-space depth fade." style="width:100%;" loading="lazy" decoding="async" src="2/world-space-depth-fade.png-400w.jpeg" width="1998" height="618"></picture><figcaption>World-space depth fade.</figcaption></figure>
 <p>This node setup gives you the depth of the water as if you would put a measuring tape vertically into the water and measure the distance from the surface of the water to the seabed. When moving the camera around, the calculated depth values do not change in appearance.</p>
-<video poster="reflections.png" preload="auto" width="100%" title="Rendering realtime caustics." loop="" autoplay="" playsinline="" muted="true" class="note-video">
+<video poster="reflections.webp" preload="auto" width="100%" title="Rendering realtime caustics." loop="" autoplay="" playsinline="" muted="true" class="note-video">
 <source src="2/world-space-depth.mp4" type="video/mp4">
 </video>
 <h3 id="depth-fade-subgraph" tabindex="-1"><a class="anchor-link" href="#depth-fade-subgraph" target="_blank" rel="noopener noreferrer">
@@ -237,7 +237,7 @@
 <p>Now that we know the depth of our water, we can use it to drive the colors and transparency of our water. We can simply use the output of our <strong>Depth Fade</strong> subgraph (which is a value between 0 and 1) to <strong>Lerp</strong> between a shallow water color and a deep water color.</p>
 <figure><picture><source type="image/webp" srcset="3/shallow-deep-lerp.png-400w.webp 400w, 3/shallow-deep-lerp.png-800w.webp 800w, 3/shallow-deep-lerp.png-1200w.webp 1200w, 3/shallow-deep-lerp.png-1306w.webp 1306w" sizes="(min-width: 30em) 50vw, 100vw"><source type="image/jpeg" srcset="3/shallow-deep-lerp.png-400w.jpeg 400w, 3/shallow-deep-lerp.png-800w.jpeg 800w, 3/shallow-deep-lerp.png-1200w.jpeg 1200w, 3/shallow-deep-lerp.png-1306w.jpeg 1306w" sizes="(min-width: 30em) 50vw, 100vw"><img class="note-image" alt="Shallow and deep water colors." style="width:100%;" loading="lazy" decoding="async" src="3/shallow-deep-lerp.png-400w.jpeg" width="1306" height="398"></picture><figcaption>Shallow and deep water colors.</figcaption></figure>
 <p>Lerping between a shallow and a deep water color already gives us a nice effect for our water.</p>
-<video poster="reflections.png" preload="auto" width="100%" title="Rendering realtime caustics." loop="" autoplay="" playsinline="" muted="true" class="note-video">
+<video poster="reflections.webp" preload="auto" width="100%" title="Rendering realtime caustics." loop="" autoplay="" playsinline="" muted="true" class="note-video">
 <source src="3/shallow-deep-color.mp4" type="video/mp4">
 </video>
 <details>
@@ -276,7 +276,7 @@
 <p>Next, we will add a color to the parts of the water at the horizon. For this, we will use a <strong>Fresnel Effect</strong> node with a horizon color and horizon distance parameter. We will use the the output of the <strong>Depth Color</strong> from the previous section and lerp between that and the <strong>Horizon Color</strong>.</p>
 <figure><picture><source type="image/webp" srcset="3/horizon-color-lerp.png-400w.webp 400w, 3/horizon-color-lerp.png-800w.webp 800w, 3/horizon-color-lerp.png-1200w.webp 1200w, 3/horizon-color-lerp.png-1234w.webp 1234w" sizes="(min-width: 30em) 50vw, 100vw"><source type="image/jpeg" srcset="3/horizon-color-lerp.png-400w.jpeg 400w, 3/horizon-color-lerp.png-800w.jpeg 800w, 3/horizon-color-lerp.png-1200w.jpeg 1200w, 3/horizon-color-lerp.png-1234w.jpeg 1234w" sizes="(min-width: 30em) 50vw, 100vw"><img class="note-image" alt="Horizon color." style="width:100%;" loading="lazy" decoding="async" src="3/horizon-color-lerp.png-400w.jpeg" width="1234" height="996"></picture><figcaption>Horizon color.</figcaption></figure>
 <p>When you look at the water at a very sharp angle, the horizon color will show up in the distance.</p>
-<video poster="reflections.png" preload="auto" width="100%" title="Rendering realtime caustics." loop="" autoplay="" playsinline="" muted="true" class="note-video">
+<video poster="reflections.webp" preload="auto" width="100%" title="Rendering realtime caustics." loop="" autoplay="" playsinline="" muted="true" class="note-video">
 <source src="3/horizon-color.mp4" type="video/mp4">
 </video>
 <h3 id="underwater-color" tabindex="-1"><a class="anchor-link" href="#underwater-color" target="_blank" rel="noopener noreferrer">
@@ -287,7 +287,7 @@
 <figure><picture><source type="image/webp" srcset="3/underwater-color.png-400w.webp 400w, 3/underwater-color.png-800w.webp 800w, 3/underwater-color.png-1200w.webp 1200w, 3/underwater-color.png-1604w.webp 1604w" sizes="(min-width: 30em) 50vw, 100vw"><source type="image/jpeg" srcset="3/underwater-color.png-400w.jpeg 400w, 3/underwater-color.png-800w.jpeg 800w, 3/underwater-color.png-1200w.jpeg 1200w, 3/underwater-color.png-1604w.jpeg 1604w" sizes="(min-width: 30em) 50vw, 100vw"><img class="note-image" alt="Underwater color." style="width:100%;" loading="lazy" decoding="async" src="3/underwater-color.png-400w.jpeg" width="1604" height="680"></picture><figcaption>Underwater color.</figcaption></figure>
 <p>We sample the <strong>Scene Color</strong> node which returns the color of the geometry below the water surface. Then where we set the other colors to be transparent, we will use the underwater color instead. This is done using the <strong>One Minus</strong> node. Finally we add the colors we already had to the underwater color to get the final color.</p>
 <p>By changing the alpha components of the shallow and deep water colors, we can control how much the underwater color is added.</p>
-<video poster="reflections.png" preload="auto" width="100%" title="Rendering realtime caustics." loop="" autoplay="" playsinline="" muted="true" class="note-video">
+<video poster="reflections.webp" preload="auto" width="100%" title="Rendering realtime caustics." loop="" autoplay="" playsinline="" muted="true" class="note-video">
 <source src="3/underwater-color.mp4" type="video/mp4">
 </video>
 <h2 id="4.-refraction" tabindex="-1"><a class="anchor-link" href="#4.-refraction" target="_blank" rel="noopener noreferrer">
@@ -306,7 +306,7 @@
 <p>In the node setup above, we tile and move some <strong>Gradient Noise</strong> that we then <strong>Remap</strong> to a [-1,1] range, <strong>Multiply</strong> with a refraction strength parameter and then add to the <strong>Screen Position (default)</strong> (which are the regular, undistorted UVs).</p>
 <p>It is a good idea to put these nodes in their own <strong>Refracted UV</strong> subgraph to make the graph clean and organized. We can then use this refracted UVs and connect them to the UV input of the <strong>Depth Fade</strong> subgraph as well as the UV input of the <strong>Scene Color</strong> node that we used for the underwater color.</p>
 <p>Now we get a nice refraction effect!</p>
-<video poster="reflections.png" preload="auto" width="100%" title="Rendering realtime caustics." loop="" autoplay="" playsinline="" muted="true" class="note-video">
+<video poster="reflections.webp" preload="auto" width="100%" title="Rendering realtime caustics." loop="" autoplay="" playsinline="" muted="true" class="note-video">
 <source src="4/basic-refraction.mp4" type="video/mp4">
 </video>
 <details>
@@ -334,7 +334,7 @@
 <p>We will add surface foam to the shader step by step. We will start by setting up the UVs that we will use to sample a surface foam texture. Let's create a subgraph called <strong>Panning UVs</strong> and add the following nodes.</p>
 <figure><picture><source type="image/webp" srcset="5/panning-uv.png-400w.webp 400w, 5/panning-uv.png-800w.webp 800w, 5/panning-uv.png-1200w.webp 1200w, 5/panning-uv.png-1960w.webp 1960w" sizes="(min-width: 30em) 50vw, 100vw"><source type="image/jpeg" srcset="5/panning-uv.png-400w.jpeg 400w, 5/panning-uv.png-800w.jpeg 800w, 5/panning-uv.png-1200w.jpeg 1200w, 5/panning-uv.png-1960w.jpeg 1960w" sizes="(min-width: 30em) 50vw, 100vw"><img class="note-image" alt="Panning UVs." style="width:100%;" loading="lazy" decoding="async" src="5/panning-uv.png-400w.jpeg" width="1960" height="452"></picture><figcaption>Panning UVs.</figcaption></figure>
 <p>This subgraph takes in UVs and then adds movement to them as well as some <strong>Tiling</strong> and an <strong>Offset</strong>.</p>
-<video poster="reflections.png" preload="auto" width="100%" title="Rendering realtime caustics." loop="" autoplay="" playsinline="" muted="true" class="note-video">
+<video poster="reflections.webp" preload="auto" width="100%" title="Rendering realtime caustics." loop="" autoplay="" playsinline="" muted="true" class="note-video">
 <source src="5/panning-uvs.mp4" type="video/mp4">
 </video>
 <p>The nodes on the left are used to convert the direction parameter which is a value between 0 and 1 into a direction vector for the UV movement. You could as well have just a vector input parameter and set the direction yourself, but this approach allows you to work with a <mark>single direction slider between 0 and 1 and control the full 360° range of movement</mark>. For performance reasons, you could leave this out and just directly set the direction.</p>
@@ -344,7 +344,7 @@
 <p>We take the output of the <strong>Panning UV</strong> subgraph and plug it into a <strong>Custom Function</strong> node. For the custom function, we use the following code.</p>
 <pre class="language-hlsl"><code class="language-hlsl"><span class="token keyword">void</span> <span class="token function">DistortUV_float</span><span class="token punctuation">(</span><span class="token keyword">float2</span> UV<span class="token punctuation">,</span> <span class="token keyword">float</span> Amount<span class="token punctuation">,</span> <span class="token keyword">out</span> <span class="token keyword">float2</span> Out<span class="token punctuation">)</span><br><span class="token punctuation">{</span><br>    <span class="token keyword">float</span> time <span class="token operator">=</span> _Time<span class="token punctuation">.</span>y<span class="token punctuation">;</span><br>    <br>    UV<span class="token punctuation">.</span>y <span class="token operator">+=</span> Amount <span class="token operator">*</span> <span class="token number">0.01</span> <span class="token operator">*</span> <span class="token punctuation">(</span><span class="token function">sin</span><span class="token punctuation">(</span>UV<span class="token punctuation">.</span>x <span class="token operator">*</span> <span class="token number">3.5</span> <span class="token operator">+</span> time <span class="token operator">*</span> <span class="token number">0.35</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token function">sin</span><span class="token punctuation">(</span>UV<span class="token punctuation">.</span>x <span class="token operator">*</span> <span class="token number">4.8</span> <span class="token operator">+</span> time <span class="token operator">*</span> <span class="token number">1.05</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token function">sin</span><span class="token punctuation">(</span>UV<span class="token punctuation">.</span>x <span class="token operator">*</span> <span class="token number">7.3</span> <span class="token operator">+</span> time <span class="token operator">*</span> <span class="token number">0.45</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">3.0</span><span class="token punctuation">;</span><br>    UV<span class="token punctuation">.</span>x <span class="token operator">+=</span> Amount <span class="token operator">*</span> <span class="token number">0.12</span> <span class="token operator">*</span> <span class="token punctuation">(</span><span class="token function">sin</span><span class="token punctuation">(</span>UV<span class="token punctuation">.</span>y <span class="token operator">*</span> <span class="token number">4.0</span> <span class="token operator">+</span> time <span class="token operator">*</span> <span class="token number">0.50</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token function">sin</span><span class="token punctuation">(</span>UV<span class="token punctuation">.</span>y <span class="token operator">*</span> <span class="token number">6.8</span> <span class="token operator">+</span> time <span class="token operator">*</span> <span class="token number">0.75</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token function">sin</span><span class="token punctuation">(</span>UV<span class="token punctuation">.</span>y <span class="token operator">*</span> <span class="token number">11.3</span> <span class="token operator">+</span> time <span class="token operator">*</span> <span class="token number">0.2</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">3.0</span><span class="token punctuation">;</span><br>    UV<span class="token punctuation">.</span>y <span class="token operator">+=</span> Amount <span class="token operator">*</span> <span class="token number">0.12</span> <span class="token operator">*</span> <span class="token punctuation">(</span><span class="token function">sin</span><span class="token punctuation">(</span>UV<span class="token punctuation">.</span>x <span class="token operator">*</span> <span class="token number">4.2</span> <span class="token operator">+</span> time <span class="token operator">*</span> <span class="token number">0.64</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token function">sin</span><span class="token punctuation">(</span>UV<span class="token punctuation">.</span>x <span class="token operator">*</span> <span class="token number">6.3</span> <span class="token operator">+</span> time <span class="token operator">*</span> <span class="token number">1.65</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token function">sin</span><span class="token punctuation">(</span>UV<span class="token punctuation">.</span>x <span class="token operator">*</span> <span class="token number">8.2</span> <span class="token operator">+</span> time <span class="token operator">*</span> <span class="token number">0.45</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">3.0</span><span class="token punctuation">;</span><br><br>    Out <span class="token operator">=</span> UV<span class="token punctuation">;</span><br><span class="token punctuation">}</span></code></pre>
 <p>This code adds a distortion to the UVs using sine functions to make the foam a bit more interesting when moving around. It looks like this.</p>
-<video poster="reflections.png" preload="auto" width="100%" title="Rendering realtime caustics." loop="" autoplay="" playsinline="" muted="true" class="note-video">
+<video poster="reflections.webp" preload="auto" width="100%" title="Rendering realtime caustics." loop="" autoplay="" playsinline="" muted="true" class="note-video">
 <source src="5/distorted-uvs.mp4" type="video/mp4">
 </video>
 <h4>Sampling the foam texture</h4>
@@ -359,7 +359,7 @@
 <p>We can then use this <strong>Overlay</strong> subgraph to blend between the water color we already had (Base) and the output of the surface foam nodes (Overlay).</p>
 <figure><picture><source type="image/webp" srcset="5/blend.png-400w.webp 400w, 5/blend.png-800w.webp 800w, 5/blend.png-1200w.webp 1200w, 5/blend.png-1346w.webp 1346w" sizes="(min-width: 30em) 50vw, 100vw"><source type="image/jpeg" srcset="5/blend.png-400w.jpeg 400w, 5/blend.png-800w.jpeg 800w, 5/blend.png-1200w.jpeg 1200w, 5/blend.png-1346w.jpeg 1346w" sizes="(min-width: 30em) 50vw, 100vw"><img class="note-image" alt="Blending the foam." style="width:100%;" loading="lazy" decoding="async" src="5/blend.png-400w.jpeg" width="1346" height="788"></picture><figcaption>Blending the foam.</figcaption></figure>
 <p>Using this, the surface foam can get blended more nicely with the water by taking into account the base color of the water underneath the foam. It is subtle, but quite nice.</p>
-<video poster="reflections.png" preload="auto" width="100%" title="Rendering realtime caustics." loop="" autoplay="" playsinline="" muted="true" class="note-video">
+<video poster="reflections.webp" preload="auto" width="100%" title="Rendering realtime caustics." loop="" autoplay="" playsinline="" muted="true" class="note-video">
 <source src="5/blend-foam.mp4" type="video/mp4">
 </video>
 <h3 id="intersection-foam" tabindex="-1"><a class="anchor-link" href="#intersection-foam" target="_blank" rel="noopener noreferrer">
@@ -371,7 +371,7 @@
 <p>We will start by creating a mask that will define where the intersection foam should show up. For this, we will be using the <strong>Depth Fade</strong> subgraph we created before.</p>
 <figure><picture><source type="image/webp" srcset="5/intersection-mask.png-400w.webp 400w, 5/intersection-mask.png-800w.webp 800w, 5/intersection-mask.png-1200w.webp 1200w, 5/intersection-mask.png-1600w.webp 1600w" sizes="(min-width: 30em) 50vw, 100vw"><source type="image/jpeg" srcset="5/intersection-mask.png-400w.jpeg 400w, 5/intersection-mask.png-800w.jpeg 800w, 5/intersection-mask.png-1200w.jpeg 1200w, 5/intersection-mask.png-1600w.jpeg 1600w" sizes="(min-width: 30em) 50vw, 100vw"><img class="note-image" alt="Intersection foam mask." style="width:100%;" loading="lazy" decoding="async" src="5/intersection-mask.png-400w.jpeg" width="1600" height="384"></picture><figcaption>Intersection foam mask.</figcaption></figure>
 <p>We use the <strong>Depth Fade</strong> subgraph to create a depth-based mask and use the <strong>Intersection Foam Fade</strong> parameter to control the hardness of the mask. When just showing this intersection mask, it looks like this.</p>
-<video poster="reflections.png" preload="auto" width="100%" title="Rendering realtime caustics." loop="" autoplay="" playsinline="" muted="true" class="note-video">
+<video poster="reflections.webp" preload="auto" width="100%" title="Rendering realtime caustics." loop="" autoplay="" playsinline="" muted="true" class="note-video">
 <source src="5/intersection-mask.mp4" type="video/mp4">
 </video>
 <h4>Sampling the intersection foam</h4>
@@ -384,7 +384,7 @@
 <p>Just like for the surface foam, we use the <em><strong>Overlay</strong></em> subgraph we created to nicely blend the intersection foam with the rest of the colors.</p>
 <figure><picture><source type="image/webp" srcset="5/intersection-foam-blend.png-400w.webp 400w, 5/intersection-foam-blend.png-800w.webp 800w, 5/intersection-foam-blend.png-1200w.webp 1200w, 5/intersection-foam-blend.png-1416w.webp 1416w" sizes="(min-width: 30em) 50vw, 100vw"><source type="image/jpeg" srcset="5/intersection-foam-blend.png-400w.jpeg 400w, 5/intersection-foam-blend.png-800w.jpeg 800w, 5/intersection-foam-blend.png-1200w.jpeg 1200w, 5/intersection-foam-blend.png-1416w.jpeg 1416w" sizes="(min-width: 30em) 50vw, 100vw"><img class="note-image" alt="Intersection foam blending." style="width:100%;" loading="lazy" decoding="async" src="5/intersection-foam-blend.png-400w.jpeg" width="1416" height="326"></picture><figcaption>Intersection foam blending.</figcaption></figure>
 <p>Now we have added a nice intersection foam effect to the water!</p>
-<video poster="reflections.png" preload="auto" width="100%" title="Rendering realtime caustics." loop="" autoplay="" playsinline="" muted="true" class="note-video">
+<video poster="reflections.webp" preload="auto" width="100%" title="Rendering realtime caustics." loop="" autoplay="" playsinline="" muted="true" class="note-video">
 <source src="5/intersection-foam.mp4" type="video/mp4">
 </video>
 <details>
@@ -408,7 +408,7 @@
 <p>I have put the nodes from the screenshot above in a subgraph called <strong>Blended Normals</strong>. We can then use the output of these normals and apply a strength to them using the <strong>Normal Strength</strong> node. Finally we transform them to world space using the <strong>Transform</strong> node.</p>
 <figure><picture><source type="image/webp" srcset="6/blended-normals.png-400w.webp 400w, 6/blended-normals.png-800w.webp 800w, 6/blended-normals.png-1200w.webp 1200w, 6/blended-normals.png-1876w.webp 1876w" sizes="(min-width: 30em) 50vw, 100vw"><source type="image/jpeg" srcset="6/blended-normals.png-400w.jpeg 400w, 6/blended-normals.png-800w.jpeg 800w, 6/blended-normals.png-1200w.jpeg 1200w, 6/blended-normals.png-1876w.jpeg 1876w" sizes="(min-width: 30em) 50vw, 100vw"><img class="note-image" alt="Blended normals." style="width:100%;" loading="lazy" decoding="async" src="6/blended-normals.png-400w.jpeg" width="1876" height="380"></picture><figcaption>Blended normals</figcaption></figure>
 <p>We now have moving normals for our water that we can use where we can adjust the speed, scale and strength.</p>
-<video poster="reflections.png" preload="auto" width="100%" title="Rendering realtime caustics." loop="" autoplay="" playsinline="" muted="true" class="note-video">
+<video poster="reflections.webp" preload="auto" width="100%" title="Rendering realtime caustics." loop="" autoplay="" playsinline="" muted="true" class="note-video">
 <source src="6/moving-normals.mp4" type="video/mp4">
 </video>
 <h3 id="lighting-calculations" tabindex="-1"><a class="anchor-link" href="#lighting-calculations" target="_blank" rel="noopener noreferrer">
@@ -424,7 +424,7 @@
 <p>Finally we can quite literally <strong>Add</strong> the lighting to the current output of the graph.</p>
 <figure><picture><source type="image/webp" srcset="6/add-lighting.png-400w.webp 400w, 6/add-lighting.png-644w.webp 644w" sizes="(min-width: 30em) 50vw, 100vw"><source type="image/jpeg" srcset="6/add-lighting.png-400w.jpeg 400w, 6/add-lighting.png-644w.jpeg 644w" sizes="(min-width: 30em) 50vw, 100vw"><img class="note-image" alt="Adding lighting." style="width:100%;" loading="lazy" decoding="async" src="6/add-lighting.png-400w.jpeg" width="644" height="312"></picture><figcaption>Adding lighting.</figcaption></figure>
 <p>We now have pretty complex lighting effects for our water, allowing us to switch between smooth/rough water surfaces, hard/soft lighting, support for the main light and support for additional point lights.</p>
-<video poster="reflections.png" preload="auto" width="100%" title="Rendering realtime caustics." loop="" autoplay="" playsinline="" muted="true" class="note-video">
+<video poster="reflections.webp" preload="auto" width="100%" title="Rendering realtime caustics." loop="" autoplay="" playsinline="" muted="true" class="note-video">
 <source src="6/lighting.mp4" type="video/mp4">
 </video>
 <details>
@@ -460,7 +460,7 @@
 <p>💡 Feel free to add even more waves, but I think 4 waves is already a nice starting point.</p>
 </blockquote>
 <p>Our waves look simple, but it is already quite nice.</p>
-<video poster="reflections.png" preload="auto" width="100%" title="Rendering realtime caustics." loop="" autoplay="" playsinline="" muted="true" class="note-video">
+<video poster="reflections.webp" preload="auto" width="100%" title="Rendering realtime caustics." loop="" autoplay="" playsinline="" muted="true" class="note-video">
 <source src="7/waves.mp4" type="video/mp4">
 </video>
 <details>
@@ -503,7 +503,7 @@
 <p>What's important for the <strong>BuoyantObject</strong> script is that the wave parameters should match the ones that you use in your water shader. In my own projects I usually make it so the <strong>BuoyantObject</strong> script holds a reference to the water and then just reads out those properties instead having to set them manually.</p>
 <figure><picture><source type="image/webp" srcset="8/wave-properties.png-400w.webp 400w, 8/wave-properties.png-688w.webp 688w" sizes="(min-width: 30em) 50vw, 100vw"><source type="image/jpeg" srcset="8/wave-properties.png-400w.jpeg 400w, 8/wave-properties.png-688w.jpeg 688w" sizes="(min-width: 30em) 50vw, 100vw"><img class="note-image" alt="Wave properties." style="width:80%;" loading="lazy" decoding="async" src="8/wave-properties.png-400w.jpeg" width="688" height="440"></picture><figcaption>Wave properties.</figcaption></figure>
 <p>This gives us some simple but nice buoyancy!</p>
-<video poster="reflections.png" preload="auto" width="100%" title="Rendering realtime caustics." loop="" autoplay="" playsinline="" muted="true" class="note-video">
+<video poster="reflections.webp" preload="auto" width="100%" title="Rendering realtime caustics." loop="" autoplay="" playsinline="" muted="true" class="note-video">
 <source src="8/buoyancy.mp4" type="video/mp4">
 </video>
 <h3 id="caustics" tabindex="-1"><a class="anchor-link" href="#caustics" target="_blank" rel="noopener noreferrer">
@@ -511,11 +511,11 @@
                   <span aria-hidden="true" class="anchor-symbol">#</span>
                 </a> Caustics</h3>
 <p>Caustics are a really nice effect that you can add to your water. If you have enjoyed this tutorial so far, you can check out my caustics asset which can be added to any water shader and has several nice features. Here is a video showing the effect.</p>
-<video poster="reflections.png" preload="auto" width="100%" title="Rendering realtime caustics." loop="" autoplay="" playsinline="" muted="true" class="note-video">
+<video poster="reflections.webp" preload="auto" width="100%" title="Rendering realtime caustics." loop="" autoplay="" playsinline="" muted="true" class="note-video">
 <source src="9/caustics.webm" type="video/webm">
 </video>
 <p>Support would be greatly appreciated! ❤️</p>
-<iframe src="https://assetstore.unity.com/linkmaker/embed/package/221106/widget-wide?aid=1101l20969" style="border:0px;"></iframe>
+<iframe src="https://assetstore.unity.com/linkmaker/embed/package/221106/widget?aid=1101l20969" style="width:202px; height:260px; border:0px; margin-bottom: 20px;" title="Water Caustics for URP asset."></iframe>
 <details>
 <summary>Bonus tip: Reflections</summary>
 <div>

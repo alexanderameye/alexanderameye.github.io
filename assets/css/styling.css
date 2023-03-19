@@ -463,18 +463,21 @@ body {
 }
 
 .back-to-top-mobile a {
-    padding: 0.5rem;
+    padding: 0.3rem;
     position: -webkit-sticky;
     position: sticky;
-    top: 91vh;
-    text-decoration: none;
-    display: inline-block;
-    text-align: center;
-    transition: top 0.4s ease 0s;
-    color: #000000;
+    top: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #000;
     background-color: white;
-    border-radius: 0.25rem;
-    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    border: 2px solid #000;
+    box-shadow: 2px 2px;
+    width: 2rem;
+    height: 2rem;
+    line-height: 2rem;
     /* 'relative' until element reaches... */
     /* 90% viewport height from the top, when it becomes 'fixed' - until its container toggles it back to 'relative' */
 }
@@ -487,32 +490,35 @@ body {
 }
 
 .back-to-top-desktop a {
-    padding: 0.5rem;
+    padding: 0.3rem;
     position: -webkit-sticky;
     position: sticky;
     top: 90vh;
-    text-decoration: none;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: top 0.4s ease 0s;
-    color: rgba(60, 60, 60, 255);
+    color: #000;
     background-color: white;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    border-radius: 50%;
+    border-radius: 8px;
+    border: 2px solid #000;
+    box-shadow: 2px 2px;
     width: 2rem;
     height: 2rem;
     line-height: 2rem;
  }
 
+ .back-to-top-desktop a:hover {
+    transform: scale(1.05);
+}
+
  .icon-arrow-up:before {
     margin-top: 8px;
 }
 
-.back-to-top-desktop a:hover {
+/*.back-to-top-desktop a:hover {
     top: 85vh;
     color: #aaaaaa;
-}
+}*/
 
 
 /* SCROLLBAR */

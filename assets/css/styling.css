@@ -511,9 +511,8 @@ body {
     transform: scale(1.05);
 }
 
- .icon-arrow-up:before {
-    margin-top: 8px;
-}
+
+
 
 /*.back-to-top-desktop a:hover {
     top: 85vh;

@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>Alexander Ameye</title>
   <subtitle>Personal internet space of Alexander Ameye. Writing notes about Unity, gamedev, graphics programming and occasionally other things.</subtitle>
-  <link href="https://alexanderameye.github.io/feed/feed.xml" rel="self"/>
-  <link href="https://alexanderameye.github.io/"/>
+  <link href="https://alexanderameye.github.io/notes/feed.xml" rel="self"/>
+  <link href="https://alexanderameye.github.io"/>
   <updated>2023-04-28T00:00:00Z</updated>
-  <id>https://alexanderameye.github.io/</id>
+  <id>https://alexanderameye.github.io</id>
   <author>
     <name>Alexander Ameye</name>
     <email>alexanderameye@gmail.com</email>

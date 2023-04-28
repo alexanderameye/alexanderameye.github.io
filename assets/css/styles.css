@@ -946,7 +946,7 @@ summary:hover {
 
 
 /* desktop view */
-@media only screen and (max-device-width: 1920px) {
+@media only screen and (max-device-width: 3840px) {
     #navbar-mobile {
         display: none;
     }

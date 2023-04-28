@@ -27,7 +27,7 @@
                   &lt;span aria-hidden=&quot;true&quot; class=&quot;anchor-symbol&quot;&gt;#&lt;/span&gt;
                 &lt;/a&gt; Circular menu + Unity Editor = ⚡&lt;/h2&gt;
 &lt;p&gt;Using UI Toolkit and the new &lt;a href=&quot;https://forum.unity.com/threads/introducing-the-vector-api-in-unity-2022-1.1210311/&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;Vector API&lt;/a&gt; I added a circular menu to the Unity Editor. I hooked it up to my scene view debug views which allows me to quickly switch between views.&lt;/p&gt;
-&lt;video controls=&quot;&quot; poster=&quot;https://alexanderameye.github.io/notes/unity-circular-menu/reflections.png&quot; preload=&quot;auto&quot; width=&quot;100%&quot; title=&quot;Circular menu in the Unity Editor.&quot; loop=&quot;&quot; autoplay=&quot;&quot; playsinline=&quot;&quot; muted=&quot;true&quot; class=&quot;note-video&quot;&gt;
+&lt;video controls=&quot;&quot; poster=&quot;https://alexanderameye.github.io/notes/unity-circular-menu/cover.png&quot; preload=&quot;auto&quot; width=&quot;100%&quot; title=&quot;Circular menu in the Unity Editor.&quot; loop=&quot;&quot; autoplay=&quot;&quot; playsinline=&quot;&quot; muted=&quot;true&quot; class=&quot;note-video&quot;&gt;
 &lt;source src=&quot;https://alexanderameye.github.io/notes/unity-circular-menu/circular-menu.mp4&quot; type=&quot;video/webm&quot; /&gt;
 &lt;/video&gt;
 &lt;p&gt;The circular menu has the following features&lt;/p&gt;

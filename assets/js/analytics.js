@@ -1,7 +1,7 @@
 window.dataLayer = window.dataLayer || [];
 
 function gtag() {
-    dataLayer.push(arguments);
+  dataLayer.push(arguments);
 }
 gtag('js', new Date());
-gtag('config', '{{metadata.trackingid}}');
+gtag('config', 'UA-137365487-1');

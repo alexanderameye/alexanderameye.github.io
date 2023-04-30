@@ -63,6 +63,15 @@ body {
     font-weight: bold;
 }
 
+.note-entry .note-entry-header h2 {
+    margin: 0;
+    font-size: 16px;
+    padding-top: 0;
+    display: block;
+    font-weight: bold;
+
+}
+
 .column-page-content h2 {
     
         display: block;

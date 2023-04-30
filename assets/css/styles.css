@@ -46,15 +46,33 @@ body {
 
 /* HEADINGS */
 
-.note-content h1 {
+.note .note-content h1 {
     text-align: center;
     margin-top: 20px;
     margin-bottom: 15px;
+    font-size: 2em;
+}
+
+.column-page-content h1 {
+    display: block;
+    font-size: 1.5em;
+    margin-top: 40px;
+    margin-bottom: 15px;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
 }
 
 .column-page-content h2 {
-    margin-top: 40px;
-    margin-bottom: 15px;
+    
+        display: block;
+        font-size: 1.5em;
+        margin-top: 40px;
+        margin-bottom: 15px;
+        margin-inline-start: 0px;
+        margin-inline-end: 0px;
+        font-weight: bold;
+    
 }
 
 .note-content h3 {

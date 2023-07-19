@@ -4,12 +4,35 @@
   <subtitle>Personal internet space of Alexander Ameye. Writing notes about Unity, gamedev, graphics programming and occasionally other things.</subtitle>
   <link href="https://alexanderameye.github.io/notes/feed.xml" rel="self"/>
   <link href="https://alexanderameye.github.io"/>
-  <updated>2023-04-28T00:00:00Z</updated>
+  <updated>2023-07-19T00:00:00Z</updated>
   <id>https://alexanderameye.github.io</id>
   <author>
     <name>Alexander Ameye</name>
     <email>alexanderameye@gmail.com</email>
   </author>
+  
+  <entry>
+    <title>How this blog is made</title>
+    <link href="https://alexanderameye.github.io/notes/meta/"/>
+    <updated>2023-07-19T00:00:00Z</updated>
+    <id>https://alexanderameye.github.io/notes/meta/</id>
+    <content type="html">&lt;h2 id=&quot;how-this-blog-is-made&quot; tabindex=&quot;-1&quot;&gt;&lt;a class=&quot;anchor-link&quot; href=&quot;https://alexanderameye.github.io/notes/meta/#how-this-blog-is-made&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;
+                  &lt;span class=&quot;screen-reader-only&quot;&gt;Jump to heading&lt;/span&gt;
+                  &lt;span aria-hidden=&quot;true&quot; class=&quot;anchor-symbol&quot;&gt;#&lt;/span&gt;
+                &lt;/a&gt; How this blog is made&lt;/h2&gt;
+&lt;p&gt;Over the years, I&#39;ve been asked multiple times how I made this blog website. Some of the technologies I&#39;ve used have changed over the years, but this is the current stack.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;⚙️ &lt;a href=&quot;https://www.11ty.dev/&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;11ty&lt;/a&gt; as the static site generator&lt;/li&gt;
+&lt;li&gt;🐐 &lt;a href=&quot;https://www.goatcounter.com/&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;goatcounter&lt;/a&gt; for analytics&lt;/li&gt;
+&lt;li&gt;💎 &lt;a href=&quot;https://giscus.app/&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;giscus&lt;/a&gt; for comments&lt;/li&gt;
+&lt;li&gt;📐 &lt;a href=&quot;https://katex.org/&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;katex&lt;/a&gt; for math rendering&lt;/li&gt;
+&lt;li&gt;🫶 pure html and css for all the rest&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;(last updated July 2023)&lt;/p&gt;
+</content>
+  </entry>
   
   <entry>
     <title>Circular menus in the Unity Editor</title>
@@ -568,7 +591,7 @@ have created 4 rotation properties in total, one for each print color (CMYK) so 
   </entry>
   
   <entry>
-    <title>My first path tracer</title>
+    <title>Rendering adventures 1</title>
     <link href="https://alexanderameye.github.io/notes/path-tracer/"/>
     <updated>2022-07-11T00:00:00Z</updated>
     <id>https://alexanderameye.github.io/notes/path-tracer/</id>

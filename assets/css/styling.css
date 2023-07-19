@@ -312,11 +312,13 @@ body {
 
 .note-entry {
     border-radius: 8px;
-    border: 2px solid #000;
+    border: 2px solid var(--palette-offgray-600);
     box-shadow: 2px 2px;
     overflow: hidden;
     margin-bottom: 20px;
     position: relative;
+    color: var(--palette-offgray-600);
+
 }
 
 .note-entry-grid {
@@ -324,6 +326,7 @@ body {
     grid-template-columns: 70% 30%;
     grid-gap: 0px;
     background: #FFFF;
+     background-color: #fffefc80;
 }
 
 .note-entry-header {
@@ -524,6 +527,7 @@ body {
 
 ::-webkit-scrollbar {
     width: 22px;
+     background-color: var(--base-color);
 }
 
 ::-webkit-scrollbar-track {
@@ -531,6 +535,7 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
+
     background: var(--scrollbar-color);
     border: 5px solid var(--base-color);
     border-radius: 8px;
@@ -541,7 +546,7 @@ body {
 }
 
 .right-section .column-page-content {
-    padding-left: 0%; 
+    padding-left: 0%;
     padding-right: 30%;
-    
+
 }

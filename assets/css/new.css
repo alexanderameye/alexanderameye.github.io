@@ -1,3 +1,73 @@
+:root {
+    --palette-offgray-100: #e2e5e9;
+    --palette-offgray-200: #c0c5ce;
+    --palette-offgray-300: #9da5b3;
+    --palette-offgray-400: #7b8699;
+    --palette-offgray-500: #4b5361;
+    --palette-offgray-600: #1f293c;
+    --palette-offwhite-100: #fcfcfa;
+    --palette-offwhite-200: #dbd8d3;
+    --palette-offwhite-300: #d0cabc;
+    --palette-offwhite-400: #b6b39f;
+    --palette-offwhite-500: #9c9686;
+    --palette-offwhite-600: #5a574e;
+    --palette-blue-100: #cdf;
+    --palette-blue-200: #8fb5ff;
+    --palette-blue-300: #6295f9;
+    --palette-blue-400: #1d67f6;
+    --palette-blue-500: #084ccf;
+    --palette-blue-600: #053289;
+    --palette-blue-700: #132b63;
+    --palette-blue-800: #1a2742;
+    --palette-purple-100: #f0e5ff;
+    --palette-purple-200: #e2cbff;
+    --palette-purple-300: #bb8dff;
+    --palette-purple-400: #9d5fff;
+    --palette-purple-500: #7013ff;
+    --palette-purple-600: #4f00d8;
+    --palette-purple-700: #360090;
+    --palette-green-100: #d0f6e7;
+    --palette-green-200: #8bdab9;
+    --palette-green-300: #46be8c;
+    --palette-green-400: #00a873;
+    --palette-green-500: #007a50;
+    --palette-green-600: #003d1f;
+    --palette-teal-100: #dffffe;
+    --palette-teal-200: #70f2f3;
+    --palette-teal-300: #00e7e8;
+    --palette-teal-400: #00cbc9;
+    --palette-teal-500: #00999b;
+    --palette-teal-600: #006567;
+    --palette-yellow-100: #fff7d2;
+    --palette-yellow-200: #fff1b6;
+    --palette-yellow-300: #ffe674;
+    --palette-yellow-400: #ffd912;
+    --palette-yellow-500: #ffd000;
+    --palette-yellow-600: #f29500;
+    --palette-yellow-700: #b45800;
+    --palette-yellow-800: #522d0d;
+    --palette-red-100: #fed1ce;
+    --palette-red-200: #fd978b;
+    --palette-red-300: #fa6257;
+
+
+    --image-border-radius: 2px;
+    --base-color: #fdfdfd;
+    --accent-color: #ffd8b5;
+    --scrollbar-color: rgba(0, 0, 0, 0.15);
+    --content-size: 800px;
+    --link-hover-color: rgb(0, 0, 0);
+    --highlighter-roundness: 10px;
+    --marker-roundness: 10px;
+    --green: 130, 255, 173;
+    --orange: 255, 218, 98;
+    --blue: 79, 155, 255;
+    --red: 255, 98, 124;
+    --yellow: 255, 234, 71;
+    --gray: rgba(60, 60, 60, 0.7);
+}
+
+/*
 .note-entry {
   position: relative;
   margin-bottom: 20px;
@@ -5,10 +75,10 @@
   background: #FFFF;
   border-radius: 8px;
   transition: transform .2s;
-  border: 2px solid #000;
+  border: 2px solid #272727;
   box-shadow: 2px 2px;
+  color: #272727;
   overflow: hidden;
-  /* add this rule */
 }
 
 .note-entry:active {
@@ -86,3 +156,4 @@
   height: auto;
   display: block;
 }
+*/

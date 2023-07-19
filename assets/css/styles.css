@@ -1,29 +1,14 @@
-:root {
-    --image-border-radius: 2px;
-    --base-color: #fdfdfd;
-    --accent-color: #ffd8b5;
-    --scrollbar-color: rgba(0, 0, 0, 0.15);
-    --content-size: 800px;
-    --link-hover-color: rgb(0, 0, 0);
-    --highlighter-roundness: 10px;
-    --marker-roundness: 10px;
-    --green: 130, 255, 173;
-    --orange: 255, 218, 98;
-    --blue: 79, 155, 255;
-    --red: 255, 98, 124;
-    --yellow: 255, 234, 71;
-    --gray: rgba(60, 60, 60, 0.7);
-}
 
 /* GENERAL */
 
 html,
 body {
-    background-color: var(--base-color);
+    background-color: var(--palette-offwhite-100);
     margin: 0;
     padding: 0;
     scroll-behavior: smooth;
     border: none;
+    color: var(--palette-offgray-600);
 }
 
 ::selection {
@@ -31,7 +16,7 @@ body {
 }
 
 .fade-in {
-    animation: fade-in 1.0s cubic-bezier(0.165, 0.840, 0.440, 1.000) both;
+    animation: fade-in 0.2s cubic-bezier(0.165, 0.840, 0.440, 1.000) both;
 }
 
 @keyframes fade-in {
@@ -73,7 +58,7 @@ body {
 }
 
 .column-page-content h2 {
-    
+
         display: block;
         font-size: 1.5em;
         margin-top: 40px;
@@ -81,7 +66,7 @@ body {
         margin-inline-start: 0px;
         margin-inline-end: 0px;
         font-weight: bold;
-    
+
 }
 
 .note-content h3 {
@@ -136,7 +121,7 @@ p {
 /* NOTE CONTENT */
 
 .note-content {
-    background-color: var(--base-color);
+    /*background-color: var(--base-color);*/
 }
 
 /* COLUMN PAGE CONTENT */
@@ -197,7 +182,7 @@ blockquote {
     box-sizing: border-box;
     font-style: italic;
     color: #494949;
-    background-color: rgba(230, 230, 230, 0.5);
+    background-color: #fff8eb80;
     border-color: black;
     border-radius: 4px;
     border-width: 2px;
@@ -210,6 +195,21 @@ blockquote {
 .column-page-content blockquote p {
     margin: 0px;
     text-align: left;
+}
+
+blockquote a {
+    text-decoration: none;
+    border-bottom: 2px dotted #000;
+    opacity: 1;
+    color: #000;
+}
+
+blockquote a:hover {
+    background-color: var(--link-hover-color);
+    color: white;
+    transition: color 0.2s ease;
+    font-weight: bold;
+    opacity: 1;
 }
 
 .column-page-content blockquote:hover {
@@ -270,9 +270,9 @@ blockquote {
     font-size: 14px;
     line-height: 30px;
     text-decoration: none;
-    background-color: var(--tag-bg);
-    border: 2px solid var(--tag-text);
-    color: var(--tag-text);
+    background-color: #fffefc80;
+    border: 2px solid var(--palette-offgray-600);
+    color: var(--palette-offgray-600);
     border-radius: 10px;
     transition: transform .1s;
     font-family: 'arial-rounded-bold';
@@ -378,7 +378,7 @@ ul {
 }
 
 #navbar-desktop {
-    background-color: var(--base-color);
+    background-color: var(--palette-offwhite-100);
     /* flex */
     display: flex;
     flex-wrap: wrap;
@@ -476,10 +476,8 @@ width:50%;*/
     /*grid-gap: 10px 30px;*/
     grid-template-areas: "left content right""left footer right""left comments right";
     /* background */
-    background: linear-gradient(to left, var(--base-color), var(--base-color));
-
-
-    background-blend-mode: multiply, normal, normal, normal;
+    /*background: linear-gradient(to left, var(--base-color), var(--base-color));
+    background-blend-mode: multiply, normal, normal, normal;*/
 
 }
 
@@ -903,7 +901,7 @@ summary:hover {
     align-items: center;
     justify-content: center;
     color: #000;
-    background-color: white;
+    background-color: #fcfcfa;
     border-radius: 8px;
     border: 2px solid #000;
     box-shadow: 2px 2px;
@@ -964,7 +962,7 @@ summary:hover {
         content: "\ea9b";
         margin-top: 8px;
     }
-    
+
 
 
     /* MOBILE UI */

@@ -527,7 +527,7 @@ body {
 
 ::-webkit-scrollbar {
     width: 22px;
-     background-color: var(--base-color);
+     /*background-color: var(--base-color);*/
 }
 
 ::-webkit-scrollbar-track {

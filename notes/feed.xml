@@ -12,7 +12,7 @@
   </author>
   
   <entry>
-    <title>Rendering adventures 2</title>
+    <title>Render adventures 2</title>
     <link href="https://alexanderameye.github.io/notes/progressive-rendering/"/>
     <updated>2023-07-20T00:00:00Z</updated>
     <id>https://alexanderameye.github.io/notes/progressive-rendering/</id>
@@ -668,7 +668,7 @@ have created 4 rotation properties in total, one for each print color (CMYK) so 
   </entry>
   
   <entry>
-    <title>Rendering adventures 1</title>
+    <title>Render adventures 1</title>
     <link href="https://alexanderameye.github.io/notes/path-tracer/"/>
     <updated>2022-07-11T00:00:00Z</updated>
     <id>https://alexanderameye.github.io/notes/path-tracer/</id>

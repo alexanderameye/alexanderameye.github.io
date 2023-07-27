@@ -270,6 +270,10 @@ blockquote a:hover {
 
 .note-tags {
     padding: 0px 0px 0px 0px;
+    display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        flex-wrap: wrap;
 }
 
 .note-tags a {
@@ -303,6 +307,9 @@ blockquote a:hover {
     vertical-align: super;
 }
 
+.tags-header .note-tags li {
+    padding-right: 0px;
+}
 .note-tags li {
     display: inline-block;
     padding-right: 10px;

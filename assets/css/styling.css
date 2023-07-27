@@ -323,7 +323,7 @@ body {
 
 .note-entry-grid {
     display: grid;
-    grid-template-columns: 70% 30%;
+    grid-template-columns: 60% 40%;
     grid-gap: 0px;
     background: #FFFF;
      background-color: #fffefc80;
@@ -385,7 +385,7 @@ body {
     max-height: 100%;
     max-width: 100%;
 
-     clip-path: polygon(20% 0%, 100% 0%, 100% 100%, 0% 100%);
+     clip-path: polygon(10% 0%, 100% 0%, 100% 100%, 0% 100%);
 }
 
 .note-entry-image img {
@@ -425,6 +425,7 @@ body {
     padding-bottom: 0px;
     margin-bottom: 20px;
     margin-top: 40px;
+    justify-content: space-between;
 }
 
 .tags-header h2 {

@@ -454,15 +454,18 @@ body {
     border-radius: 4px;
     display: flex;
     object-fit: cover;
-    min-height: 100%;
+    max-height: 100%;
     width: 100%;
 
 }
 
 .home-header blockquote {
     margin-left: 10px;
-    min-height: 100%;
+    max-height: 100%;
     width: 100%;
+    margin-right: 0px;
+    margin-top: 0px;
+    margin-bottom: 0px;
 }
 
 

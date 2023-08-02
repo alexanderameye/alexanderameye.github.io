@@ -436,11 +436,12 @@ body {
 
 
 .home-header {
-    /*display: flex;*/
+    display: grid;
     align-items: center;
-    justify-content: space-between;
-    padding-top: 0px;
+    padding-top: 40px;
     padding-bottom: 0px;
+    grid-template-columns: 1fr 2fr;
+    grid-column-gap: 15px;
 }
 
 .home-header h2 {
@@ -450,12 +451,18 @@ body {
 }
 
 .home-header img {
-    width: 6rem;
-    height: 6rem;
-    border-radius: 100%;
-    flex-grow: 0;
-    flex-shrink: 0;
-    margin-right: 0px;
+    border-radius: 4px;
+    display: flex;
+    object-fit: cover;
+    min-height: 100%;
+    width: 100%;
+
+}
+
+.home-header blockquote {
+    margin-left: 10px;
+    min-height: 100%;
+    width: 100%;
 }
 
 

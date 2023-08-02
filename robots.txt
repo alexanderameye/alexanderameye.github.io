@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+
+Host: https://ameye.dev/
+
+Sitemap: https://ameye.dev/sitemap.xml

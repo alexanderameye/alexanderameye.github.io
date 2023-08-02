@@ -6,6 +6,48 @@ body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
 
+/* LIVE INDICATOR */
+.status-container {
+    display: flex;
+    margin: 0px;
+    padding: 0px;
+    flex-direction: row;
+    align-items: flex-start;
+    grid-column-gap: 10px;
+}
+
+.status-ring {
+    border: 3px solid #2dc504;
+    -webkit-border-radius: 30px;
+    height: 10px;
+    width: 10px;
+
+    padding: 0px;
+    margin-left: -5px;
+    margin-top: -5px;
+ -webkit-animation: pulsate 1s ease-out;
+    -webkit-animation-iteration-count: infinite;
+    opacity: 0.0;
+
+}
+
+/*  -webkit-animation: pulsate 1s ease-out;*/
+
+.status-dot {
+    width: 6px;
+    height: 6px;
+    background-color: #2dc504;
+    border-radius: 50%;
+    opacity: 1.0;
+    margin-top: 10px;
+}
+
+@-webkit-keyframes pulsate {
+    0% {-webkit-transform: scale(0.1, 0.1); opacity: 0.0;}
+    50% {opacity: 1.0;}
+    100% {-webkit-transform: scale(1.2, 1.2); opacity: 0.0;}
+}
+
 
 /* TEXT COLOR */
 
@@ -436,12 +478,21 @@ body {
 
 
 .home-header {
-    display: grid;
-    align-items: center;
+    display: flex;
+    align-items: start;
     padding-top: 40px;
-    padding-bottom: 0px;
-    grid-template-columns: 1fr 2fr;
+    padding-bottom: 0;
+    grid-row-gap: 15px;
+    flex-direction: column;
+}
+
+.home-header-me {
+    display: flex;
+    align-items: start;
+    padding-top: 40px;
+    padding-bottom: 0;
     grid-column-gap: 15px;
+    flex-direction: row;
 }
 
 .home-header h2 {
@@ -453,18 +504,23 @@ body {
 .home-header img {
     border-radius: 4px;
     object-fit: cover;
-    min-height: 100%;
-    width: 100%;
+    max-width: 120px;
+
+    /*border-color: black;
+
+    border-width: 2px;
+    border-style: solid;*/
 
 }
 
 .home-header blockquote {
-    margin-left: 10px;
-    min-height: 100%;
-    width: 100%;
-    margin-right: 0px;
-    margin-top: 0px;
-    margin-bottom: 0px;
+    margin: 0px;
+}
+
+
+.home-header blockquote ul {
+    list-style-type: none;
+    padding: 0;
 }
 
 

@@ -452,16 +452,15 @@ body {
 
 .home-header img {
     border-radius: 4px;
-    display: flex;
     object-fit: cover;
-    max-height: 100%;
+    min-height: 100%;
     width: 100%;
 
 }
 
 .home-header blockquote {
     margin-left: 10px;
-    max-height: 100%;
+    min-height: 100%;
     width: 100%;
     margin-right: 0px;
     margin-top: 0px;

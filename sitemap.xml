@@ -111,23 +111,23 @@
       <changefreq>monthly</changefreq>
     </url>
     <url>
+      <loc>https://ameye.dev/apple-touch-icon/</loc>
+      <lastmod>2023-08-03</lastmod>
+      <changefreq>monthly</changefreq>
+    </url>
+    <url>
       <loc>https://ameye.dev/about/</loc>
-      <lastmod>2023-08-02</lastmod>
+      <lastmod>2023-08-03</lastmod>
       <changefreq>monthly</changefreq>
     </url>
     <url>
       <loc>https://ameye.dev/</loc>
-      <lastmod>2023-08-02</lastmod>
-      <changefreq>monthly</changefreq>
-    </url>
-    <url>
-      <loc>https://ameye.dev/notes/</loc>
-      <lastmod>2023-08-02</lastmod>
+      <lastmod>2023-08-03</lastmod>
       <changefreq>monthly</changefreq>
     </url>
     <url>
       <loc>https://ameye.dev/tags/all/</loc>
-      <lastmod>2023-08-02</lastmod>
+      <lastmod>2023-08-03</lastmod>
       <changefreq>monthly</changefreq>
     </url>
 </urlset>

@@ -354,8 +354,8 @@ body {
 
 .note-entry {
     border-radius: 8px;
-    border: 2px solid var(--palette-offgray-600);
-    box-shadow: 2px 2px;
+    border: 3px solid var(--palette-offgray-600);
+    /*box-shadow: 1px 1px 0px 3px;*/
     overflow: hidden;
     margin-bottom: 20px;
     position: relative;
@@ -493,6 +493,7 @@ body {
     padding-bottom: 0;
     grid-column-gap: 15px;
     flex-direction: row;
+    padding: 0px;
 }
 
 .home-header h2 {

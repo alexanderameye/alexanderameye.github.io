@@ -268,6 +268,37 @@ blockquote a:hover {
     justify-content: space-between;
 }
 
+.footer {
+    grid-area: footer;
+    background-color: var(--base-color);
+    /* border */
+    border-top: 2px dashed black;
+    margin-top: 20px;
+    padding-top: 0.8rem;
+}
+
+.footer p {
+    font-family: 'Inconsolata', monospace;
+    line-height: 1.6em;
+}
+
+.footer p a {
+    text-decoration: none;
+    border-bottom: 2px dotted rgba(0, 0, 0, 1);
+    opacity: 1;
+    color: #000;
+}
+
+.footer p a:hover {
+    background-color: var(--link-hover-color);
+    color: white;
+    transition: color 0.2s ease;
+    font-weight: bold;
+    opacity: 1;
+}
+
+
+
 .note-tags {
     padding: 0px 0px 0px 0px;
     display: flex;

@@ -476,6 +476,12 @@ body {
     text-align: left;
 }
 
+.tags-header h1 {
+    padding: 0px;
+    margin: 0px 0px 0px 0px;
+    text-align: left;
+}
+
 
 .home-header {
     display: flex;

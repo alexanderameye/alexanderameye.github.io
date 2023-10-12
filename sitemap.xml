@@ -111,28 +111,28 @@
       <changefreq>monthly</changefreq>
     </url>
     <url>
+      <loc>https://ameye.dev/notes/ar-cursor/</loc>
+      <lastmod>2023-09-05</lastmod>
+      <changefreq>monthly</changefreq>
+    </url>
+    <url>
       <loc>https://ameye.dev/apple-touch-icon/</loc>
-      <lastmod>2023-09-04</lastmod>
+      <lastmod>2023-10-12</lastmod>
       <changefreq>monthly</changefreq>
     </url>
     <url>
       <loc>https://ameye.dev/about/</loc>
-      <lastmod>2023-09-04</lastmod>
+      <lastmod>2023-10-12</lastmod>
       <changefreq>monthly</changefreq>
     </url>
     <url>
       <loc>https://ameye.dev/</loc>
-      <lastmod>2023-09-04</lastmod>
+      <lastmod>2023-10-12</lastmod>
       <changefreq>monthly</changefreq>
     </url>
     <url>
       <loc>https://ameye.dev/tags/all/</loc>
-      <lastmod>2023-09-04</lastmod>
-      <changefreq>monthly</changefreq>
-    </url>
-    <url>
-      <loc>https://ameye.dev/notes/ar-cursor/</loc>
-      <lastmod>2023-09-05</lastmod>
+      <lastmod>2023-10-12</lastmod>
       <changefreq>monthly</changefreq>
     </url>
 </urlset>

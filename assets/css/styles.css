@@ -297,6 +297,14 @@ blockquote a:hover {
     opacity: 1;
 }
 
+.project-tags {
+    padding: 0px 0px 0px 0px;
+    margin-bottom: 10px;
+    display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        flex-wrap: wrap;
+}
 
 
 .note-tags {
@@ -1254,6 +1262,13 @@ summary:hover {
         justify-content: center;
     }
 
+
+    .left-section-content img {
+        padding-top: 15px;
+        padding-bottom: 15px;
+    }
+
+
     body, html {
         height: 100%;
         margin: 0;
@@ -1271,4 +1286,77 @@ summary:hover {
     .right-section .column-page-content {
         padding-left: 15%;
         padding-right: 15%;
+    }
+
+
+
+
+    .projects-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 1em;
+    }
+    
+    .projects-column {
+        flex: 1 1 30%;
+        max-width: 30%;
+        box-sizing: border-box;
+        padding: 10px 0;
+    }
+    
+    .projects-media-wrapper {
+        position: relative;
+        overflow: hidden;
+        margin-bottom: 1em;
+        margin-top: 2em;
+        border-radius: 4px;
+    }
+    
+    .projects-media-wrapper a {
+        display: block;
+    }
+    
+    .projects-media-wrapper img {
+        width: 100%;
+        height: auto;
+        transition: transform 0.5s ease;
+        border-radius: 4px;
+    }
+
+    .projects-media-wrapper video {
+        width: 100%;
+        height: auto;
+        transition: transform 0.5s ease;
+        border-radius: 4px;
+    }
+    
+
+    .projects-media-wrapper:hover {
+        outline-offset: 0;
+        animation: pulse 1s ease-out infinite forwards;
+        z-index: 1000;
+    }
+
+
+    .projects-label {
+        color: black;
+        font-family: monospace;
+        font-size: 0.8rem;
+        padding: 0.4em 0em 0em 0em;
+        text-align: left;
+    }
+    
+    @media (max-width: 900px) {
+        .projects-column {
+            flex: 1 1 45%;
+            max-width: 45%;
+        }
+    }
+    
+    @media (max-width: 600px) {
+        .projects-column {
+            flex: 1 1 100%;
+            max-width: 100%;
+        }
     }

@@ -872,6 +872,11 @@ figcaption {
     padding: 5px;
 }
 
+#navbar-mobile .navbar-nav a {
+    margin-left: 0rem;
+    margin-right: 0rem;
+}
+
 .navbar-nav>.active {
     color: rgb(40, 40, 40);
     font-weight: bold;

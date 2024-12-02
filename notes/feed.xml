@@ -2197,7 +2197,7 @@ positionOS &lt;span class=&quot;token operator&quot;&gt;+=&lt;/span&gt; vertexCo
 &lt;blockquote&gt;
 &lt;p&gt;&lt;strong&gt;6.&lt;/strong&gt; 🖼️ viewport/window space&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;The significance of these coordinate spaces for our outlines will be explained below. For more info, you can read my note on &lt;a href=&quot;https://ameye.dev/notes/spaces-and-transformations&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;spaces and transformations&lt;/a&gt;[coming soon].&lt;/p&gt;
+&lt;p&gt;The significance of these coordinate spaces for our outlines will be explained below.&lt;/p&gt;
 &lt;h4&gt;Object space&lt;/h4&gt;
 &lt;p&gt;The &lt;mark&gt;first method&lt;/mark&gt; is to translate the vertices in object space.&lt;/p&gt;
 &lt;pre class=&quot;language-hlsl&quot;&gt;&lt;code class=&quot;language-hlsl&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;// Move vertex along vertex position in object space.&lt;/span&gt;

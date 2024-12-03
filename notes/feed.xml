@@ -28,12 +28,12 @@
 &lt;figure&gt;&lt;picture&gt;&lt;source type=&quot;image/webp&quot; srcset=&quot;https://ameye.dev/notes/edge-detection-outlines/mars.jpg-400w.webp 400w, https://ameye.dev/notes/edge-detection-outlines/mars.jpg-800w.webp 800w, https://ameye.dev/notes/edge-detection-outlines/mars.jpg-1024w.webp 1024w&quot; sizes=&quot;(min-width: 30em) 50vw, 100vw&quot; /&gt;&lt;img class=&quot;note-image&quot; alt=&quot;Mars First Logistics.&quot; style=&quot;width:100%;&quot; loading=&quot;lazy&quot; decoding=&quot;async&quot; src=&quot;https://ameye.dev/notes/edge-detection-outlines/mars.jpg-400w.jpeg&quot; width=&quot;1024&quot; height=&quot;576&quot; srcset=&quot;https://ameye.dev/notes/edge-detection-outlines/mars.jpg-400w.jpeg 400w, https://ameye.dev/notes/edge-detection-outlines/mars.jpg-800w.jpeg 800w, https://ameye.dev/notes/edge-detection-outlines/mars.jpg-1024w.jpeg 1024w&quot; sizes=&quot;(min-width: 30em) 50vw, 100vw&quot; /&gt;&lt;/picture&gt;&lt;figcaption&gt;Mars First Logistics.&lt;/figcaption&gt;&lt;/figure&gt;
 &lt;figure&gt;&lt;picture&gt;&lt;source type=&quot;image/webp&quot; srcset=&quot;https://ameye.dev/notes/edge-detection-outlines/rollerdrome.jpg-400w.webp 400w, https://ameye.dev/notes/edge-detection-outlines/rollerdrome.jpg-800w.webp 800w, https://ameye.dev/notes/edge-detection-outlines/rollerdrome.jpg-1200w.webp 1200w, https://ameye.dev/notes/edge-detection-outlines/rollerdrome.jpg-1400w.webp 1400w&quot; sizes=&quot;(min-width: 640px) 50vw, 100vw&quot; /&gt;&lt;img class=&quot;note-image&quot; alt=&quot;Rolledrome.&quot; style=&quot;width:100%;&quot; loading=&quot;lazy&quot; decoding=&quot;async&quot; src=&quot;https://ameye.dev/notes/edge-detection-outlines/rollerdrome.jpg-400w.jpeg&quot; width=&quot;1400&quot; height=&quot;787&quot; srcset=&quot;https://ameye.dev/notes/edge-detection-outlines/rollerdrome.jpg-400w.jpeg 400w, https://ameye.dev/notes/edge-detection-outlines/rollerdrome.jpg-800w.jpeg 800w, https://ameye.dev/notes/edge-detection-outlines/rollerdrome.jpg-1200w.jpeg 1200w, https://ameye.dev/notes/edge-detection-outlines/rollerdrome.jpg-1400w.jpeg 1400w&quot; sizes=&quot;(min-width: 640px) 50vw, 100vw&quot; /&gt;&lt;/picture&gt;&lt;figcaption&gt;Rollerdrome.&lt;/figcaption&gt;&lt;/figure&gt;
 &lt;/div&gt;
-&lt;p&gt;In this tutorial, I will show you how to set up an edge detection shader in Unity 6.&lt;/p&gt;
+&lt;p&gt;In this tutorial, I will show you how to set up an edge detection shader in Unity 6 and Unity 2022.&lt;/p&gt;
 &lt;h2 id=&quot;full-screen-render-pass&quot; tabindex=&quot;-1&quot;&gt;&lt;a class=&quot;anchor-link&quot; href=&quot;https://ameye.dev/notes/edge-detection-outlines/#full-screen-render-pass&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;
                   &lt;span class=&quot;screen-reader-only&quot;&gt;Jump to heading&lt;/span&gt;
                   &lt;span aria-hidden=&quot;true&quot; class=&quot;anchor-symbol&quot;&gt;#&lt;/span&gt;
                 &lt;/a&gt; Full-Screen Render Pass&lt;/h2&gt;
-&lt;p&gt;Our edge detection shader will need to affect the whole screen. For this, we will first make a full-screen render pass. Because we use Unity 6, we can make use of the new &lt;a href=&quot;https://docs.unity3d.com/Packages/com.unity.render-pipelines.core@17.0/manual/render-graph-system.html&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;render graph API&lt;/a&gt;. Make a new C# script called &lt;mark&gt;EdgeDetection.cs&lt;/mark&gt;&lt;/p&gt;
+&lt;p&gt;Our edge detection shader will need to affect the whole screen. For this, we will first make a full-screen render pass. In Unity 6, we can make use of the new &lt;a href=&quot;https://docs.unity3d.com/Packages/com.unity.render-pipelines.core@17.0/manual/render-graph-system.html&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;render graph API&lt;/a&gt;. Make a new C# script called &lt;mark&gt;EdgeDetection.cs&lt;/mark&gt;&lt;/p&gt;
 &lt;p&gt;I won&#39;t go over every line of code, but the full-screen render pass performs these steps:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;ol&gt;
@@ -42,9 +42,9 @@
 &lt;li&gt;The &lt;mark&gt;RecordRenderGraph&lt;/mark&gt; method contains the actual render pass. We do a blit using the edge detection material.&lt;/li&gt;
 &lt;/ol&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;You can find the complete code below for either 2022.3+ or Unity 6.&lt;/p&gt;
+&lt;p&gt;You can find the complete code below for either Unity 2022 or Unity 6.&lt;/p&gt;
 &lt;details&gt;
-&lt;summary&gt;Unity 2022.3&lt;/summary&gt;
+&lt;summary&gt;Unity 2022&lt;/summary&gt;
 &lt;div&gt;
 &lt;pre class=&quot;language-csharp&quot;&gt;&lt;code class=&quot;language-csharp&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;using&lt;/span&gt; &lt;span class=&quot;token namespace&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
 &lt;span class=&quot;token keyword&quot;&gt;using&lt;/span&gt; &lt;span class=&quot;token namespace&quot;&gt;UnityEngine&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
@@ -434,7 +434,7 @@
                   &lt;span class=&quot;screen-reader-only&quot;&gt;Jump to heading&lt;/span&gt;
                   &lt;span aria-hidden=&quot;true&quot; class=&quot;anchor-symbol&quot;&gt;#&lt;/span&gt;
                 &lt;/a&gt; Next Steps&lt;/h2&gt;
-&lt;p&gt;There you go! A very basic edge detection shader in Unity 6 but a great starting point to build upon. You can go ahead and add many features to this shader. Some ideas:&lt;/p&gt;
+&lt;p&gt;There you go! A very basic edge detection shader in Unity but a great starting point to build upon. You can go ahead and add many features to this shader. Some ideas:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Instead of hardcoding the depth/normals/color sensitivities in the shader, pass them as settings just like the color and thickness. This will allow you to better configure the edge detection shader.&lt;/li&gt;
 &lt;li&gt;Implement some of the techniques in the Roystan outline tutorial linked below to get rid of some artifacts for sharp surface angles.&lt;/li&gt;

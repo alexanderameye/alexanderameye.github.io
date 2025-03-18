@@ -354,7 +354,7 @@ body {
 
 .note-entry {
     border-radius: 8px;
-    border: 3px solid var(--palette-offgray-600);
+    border: 2px solid var(--palette-offgray-600);
     /*box-shadow: 1px 1px 0px 3px;*/
     overflow: hidden;
     margin-bottom: 20px;
@@ -434,7 +434,6 @@ body {
     position: relative;
     grid-column: 2;
     max-height: 100%;
-    max-width: 100%;
 
      clip-path: polygon(10% 0%, 100% 0%, 100% 100%, 0% 100%);
 }
@@ -520,7 +519,7 @@ body {
 .home-header img {
     border-radius: 4px;
     object-fit: cover;
-    max-width: 120px;
+    max-width: 147px;
 
     /*border-color: black;
 
@@ -634,3 +633,48 @@ body {
     padding-right: 30%;
 
 }
+
+
+/* Filter Toggle (3-state switch) */
+.note-filter {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    border: 2px solid #000;
+    padding: 5px;
+    border-radius: 4px;
+    width: auto;
+    background-color: #fff8eb80;
+  }
+  
+  .filter-toggle {
+    flex: 1;
+    text-align: center;
+    cursor: pointer;
+    font-family: 'Inconsolata', monospace;
+    color: var(--palette-offgray-600);
+  }
+  
+  .filter-toggle input {
+    display: none;
+  }
+  
+  .filter-toggle span {
+    width: 100%;
+    display: inline-block;
+    border-radius: 4px;
+    padding-top: 0.2em;
+    padding-bottom: 0.3em;
+  }
+  
+  /* Active state */
+  .filter-toggle input:checked + span {
+    background: #e8e8e8;
+    color: black;
+    background-color: var(--link-hover-color);
+    color: white;
+    transition: color 0.2s ease;
+    font-weight: bold;
+    opacity: 1;
+  }
+

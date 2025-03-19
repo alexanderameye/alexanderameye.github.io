@@ -1055,6 +1055,11 @@ summary:hover {
 
     /* mobile view */
     @media only screen and (max-device-width: 576px) {
+        .home-header-me {
+            flex-direction: column !important;
+            gap: 1rem;
+        }
+
         #navbar-mobile {
             display: flex;
         }

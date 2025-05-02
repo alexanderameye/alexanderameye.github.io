@@ -1167,7 +1167,7 @@ summary:hover {
 
         .note,
         .column-page {
-            grid-template-columns: auto 700px auto;
+            grid-template-columns: auto 900px auto;
         }
 
         .wide-column-page {

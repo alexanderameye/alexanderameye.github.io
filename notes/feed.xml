@@ -4,12 +4,191 @@
   <subtitle>Personal internet space of Alexander Ameye. Writing notes about Unity, gamedev, graphics programming and occasionally other things.</subtitle>
   <link href="https://alexanderameye.github.io/notes/feed.xml" rel="self"/>
   <link href="https://ameye.dev/"/>
-  <updated>2024-12-01T00:00:00Z</updated>
+  <updated>2025-06-17T00:00:00Z</updated>
   <id>https://ameye.dev/</id>
   <author>
     <name>Alexander Ameye</name>
     <email>alexanderameye@gmail.com</email>
   </author>
+  
+  <entry>
+    <title>The easiest way to render an outline in Unity</title>
+    <link href="https://ameye.dev/notes/easiest-outline-in-unity/"/>
+    <updated>2025-06-17T00:00:00Z</updated>
+    <id>https://ameye.dev/notes/easiest-outline-in-unity/</id>
+    <content type="html">&lt;h2 id=&quot;introduction&quot; tabindex=&quot;-1&quot;&gt;&lt;a class=&quot;anchor-link&quot; href=&quot;https://ameye.dev/notes/easiest-outline-in-unity/#introduction&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;
+                  &lt;span class=&quot;screen-reader-only&quot;&gt;Jump to heading&lt;/span&gt;
+                  &lt;span aria-hidden=&quot;true&quot; class=&quot;anchor-symbol&quot;&gt;#&lt;/span&gt;
+                &lt;/a&gt; Introduction&lt;/h2&gt;
+&lt;p&gt;When using the Unity game engine, most developers will at some point want to render an outline. I wanted to share the easiest way to render an outline (that I know of) that produces decent results.&lt;/p&gt;
+&lt;video controls=&quot;&quot; poster=&quot;https://ameye.dev/notes/easiest-outline-in-unity/outline.png&quot; preload=&quot;auto&quot; width=&quot;50%&quot; title=&quot;Outline.&quot; loop=&quot;&quot; autoplay=&quot;&quot; playsinline=&quot;&quot; muted=&quot;true&quot; class=&quot;note-video&quot;&gt;
+&lt;source src=&quot;https://ameye.dev/notes/easiest-outline-in-unity/vid.mp4&quot; type=&quot;video/mp4&quot; /&gt;
+&lt;/video&gt;
+&lt;p&gt;This method I will share requires no knowledge about custom render passes. There is no custom C# code, just existing Unity features and a single outline shader.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;🖍️ Looking for an advanced outline rendering toolkit for your game? Check out &lt;a href=&quot;https://assetstore.unity.com/packages/slug/294140?aid=1011l3n8v&amp;amp;pubref=site&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;Linework&lt;/a&gt; which I have lovingly developed!&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;how-does-it-work%3F&quot; tabindex=&quot;-1&quot;&gt;&lt;a class=&quot;anchor-link&quot; href=&quot;https://ameye.dev/notes/easiest-outline-in-unity/#how-does-it-work%3F&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;
+                  &lt;span class=&quot;screen-reader-only&quot;&gt;Jump to heading&lt;/span&gt;
+                  &lt;span aria-hidden=&quot;true&quot; class=&quot;anchor-symbol&quot;&gt;#&lt;/span&gt;
+                &lt;/a&gt; How does it work?&lt;/h2&gt;
+&lt;p&gt;The outline will work like this:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Render the object (that we want to outline) using a stencil mask&lt;/li&gt;
+&lt;li&gt;Render the object again but extruded (made bigger), and draw it only where the stencil mask is not present&lt;/li&gt;
+&lt;li&gt;No step 3, you are done!&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;You can do this in Unity right now, without writing any code other than the simple outline shader.&lt;/p&gt;
+&lt;h2 id=&quot;step-by-step&quot; tabindex=&quot;-1&quot;&gt;&lt;a class=&quot;anchor-link&quot; href=&quot;https://ameye.dev/notes/easiest-outline-in-unity/#step-by-step&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;
+                  &lt;span class=&quot;screen-reader-only&quot;&gt;Jump to heading&lt;/span&gt;
+                  &lt;span aria-hidden=&quot;true&quot; class=&quot;anchor-symbol&quot;&gt;#&lt;/span&gt;
+                &lt;/a&gt; Step by step&lt;/h2&gt;
+&lt;p&gt;To render our outline we will use 2 &lt;mark&gt;Render Objects&lt;/mark&gt; passes which are pre-made render passes made by Unity which you can simply add to your &lt;mark&gt;Renderer Features&lt;/mark&gt; list on your &lt;mark&gt;Render Pipeline Asset&lt;/mark&gt;.&lt;/p&gt;
+&lt;h3 id=&quot;1.-outline-shader-%2B-material&quot; tabindex=&quot;-1&quot;&gt;&lt;a class=&quot;anchor-link&quot; href=&quot;https://ameye.dev/notes/easiest-outline-in-unity/#1.-outline-shader-%2B-material&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;
+                  &lt;span class=&quot;screen-reader-only&quot;&gt;Jump to heading&lt;/span&gt;
+                  &lt;span aria-hidden=&quot;true&quot; class=&quot;anchor-symbol&quot;&gt;##&lt;/span&gt;
+                &lt;/a&gt; 1. Outline Shader + Material&lt;/h3&gt;
+&lt;p&gt;First, we will create an outline shader + material. Use the following shader and make an outline material from it.&lt;/p&gt;
+&lt;p&gt;This shader simply extrudes the vertices of a mesh in the vertex stage of the shader. How far the vertices are extruded controls the width of the outline.&lt;/p&gt;
+&lt;p&gt;The fragment stage returns a single flat color (the outline color).&lt;/p&gt;
+&lt;pre class=&quot;language-hlsl&quot;&gt;&lt;code class=&quot;language-hlsl&quot;&gt;Shader &lt;span class=&quot;token string&quot;&gt;&quot;Unlit/Fast Outline&quot;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    Properties
+    &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;token function&quot;&gt;_OutlineColor&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;Outline Color&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; Color&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;token function&quot;&gt;_OutlineWidth&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;Outline Width&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;Range&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0.5&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+    SubShader
+    &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+        Tags
+        &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;token string&quot;&gt;&quot;RenderType&quot;&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;Opaque&quot;&lt;/span&gt;
+            &lt;span class=&quot;token string&quot;&gt;&quot;RenderPipeline&quot;&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;UniversalPipeline&quot;&lt;/span&gt;
+        &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+        ZWrite Off
+        Cull Off
+        ZTest LEqual
+        Blend SrcAlpha OneMinusSrcAlpha
+
+        HLSLINCLUDE
+        &lt;span class=&quot;token macro property&quot;&gt;&lt;span class=&quot;token directive-hash&quot;&gt;#&lt;/span&gt;&lt;span class=&quot;token directive keyword&quot;&gt;pragma&lt;/span&gt; &lt;span class=&quot;token expression&quot;&gt;fragment frag&lt;/span&gt;&lt;/span&gt;
+
+        &lt;span class=&quot;token macro property&quot;&gt;&lt;span class=&quot;token directive-hash&quot;&gt;#&lt;/span&gt;&lt;span class=&quot;token directive keyword&quot;&gt;include&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl&quot;&lt;/span&gt;&lt;/span&gt;
+
+        &lt;span class=&quot;token function&quot;&gt;CBUFFER_START&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;UnityPerMaterial&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+            &lt;span class=&quot;token keyword&quot;&gt;half4&lt;/span&gt; _OutlineColor&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+            &lt;span class=&quot;token keyword&quot;&gt;half&lt;/span&gt; _OutlineWidth&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+        CBUFFER_END
+
+        &lt;span class=&quot;token keyword&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;Attributes&lt;/span&gt;
+        &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;token keyword&quot;&gt;float4&lt;/span&gt; positionOS &lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; POSITION&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+            &lt;span class=&quot;token keyword&quot;&gt;half3&lt;/span&gt; normalOS &lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; NORMAL&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+            UNITY_VERTEX_INPUT_INSTANCE_ID
+        &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+        &lt;span class=&quot;token keyword&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;Varyings&lt;/span&gt;
+        &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;token keyword&quot;&gt;float4&lt;/span&gt; positionHCS &lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; SV_POSITION&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+            UNITY_VERTEX_OUTPUT_STEREO
+        &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+        &lt;span class=&quot;token keyword&quot;&gt;half4&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;frag&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;Varyings IN&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; SV_Target
+        &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; _OutlineColor&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+        ENDHLSL
+
+        Pass
+        &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+            Name &lt;span class=&quot;token string&quot;&gt;&quot;NORMAL VECTOR (CLIP SPACE)&quot;&lt;/span&gt;
+
+            HLSLPROGRAM
+            &lt;span class=&quot;token macro property&quot;&gt;&lt;span class=&quot;token directive-hash&quot;&gt;#&lt;/span&gt;&lt;span class=&quot;token directive keyword&quot;&gt;pragma&lt;/span&gt; &lt;span class=&quot;token expression&quot;&gt;vertex vert&lt;/span&gt;&lt;/span&gt;
+
+            Varyings &lt;span class=&quot;token function&quot;&gt;vert&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;Attributes IN&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+            &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+                Varyings OUT&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+                &lt;span class=&quot;token function&quot;&gt;UNITY_SETUP_INSTANCE_ID&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;IN&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+                &lt;span class=&quot;token function&quot;&gt;UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;OUT&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+                &lt;span class=&quot;token keyword&quot;&gt;half&lt;/span&gt; width &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; _OutlineWidth&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+                OUT&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;positionHCS &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;TransformObjectToHClip&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;IN&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;positionOS&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;xyz&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+                &lt;span class=&quot;token keyword&quot;&gt;float3&lt;/span&gt; normalHCS &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;mul&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;float3x3&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;UNITY_MATRIX_VP&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;mul&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;float3x3&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;UNITY_MATRIX_M&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; IN&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;normalOS&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+                OUT&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;positionHCS&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;xy &lt;span class=&quot;token operator&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;normalize&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;normalHCS&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;xy&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt; _ScreenParams&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;xy &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; OUT&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;positionHCS&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;w &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; width &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+                &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; OUT&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+            &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+            ENDHLSL
+        &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;If you would like more information on how this outline shader works exactly, you can read &lt;a href=&quot;https://ameye.dev/notes/rendering-outlines&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;5 ways to draw an outline&lt;/a&gt;.&lt;/p&gt;
+&lt;h3 id=&quot;2.-stencil-pass&quot; tabindex=&quot;-1&quot;&gt;&lt;a class=&quot;anchor-link&quot; href=&quot;https://ameye.dev/notes/easiest-outline-in-unity/#2.-stencil-pass&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;
+                  &lt;span class=&quot;screen-reader-only&quot;&gt;Jump to heading&lt;/span&gt;
+                  &lt;span aria-hidden=&quot;true&quot; class=&quot;anchor-symbol&quot;&gt;##&lt;/span&gt;
+                &lt;/a&gt; 2. Stencil Pass&lt;/h3&gt;
+&lt;p&gt;We will use a first pass to render the object with a stencil mask. This pass has the following settings.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;The Layer Mask set to &lt;b&gt;Everything&lt;/b&gt;&lt;/li&gt;
+&lt;li&gt;The Stencil Options set to &lt;b&gt;Ref 1, Comp Always, Pass Replace&lt;/b&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Simply said, this renders the objects with a stencil mask.&lt;/p&gt;
+&lt;p&gt;&lt;picture&gt;&lt;source type=&quot;image/webp&quot; srcset=&quot;https://ameye.dev/notes/easiest-outline-in-unity/pass-1.png-400w.webp 400w, https://ameye.dev/notes/easiest-outline-in-unity/pass-1.png-800w.webp 800w&quot; sizes=&quot;(min-width: 30em) 50vw, 100vw&quot; /&gt;&lt;img class=&quot;note-image&quot; alt=&quot;Stencil pass.&quot; style=&quot;width:;&quot; loading=&quot;lazy&quot; decoding=&quot;async&quot; src=&quot;https://ameye.dev/notes/easiest-outline-in-unity/pass-1.png-400w.jpeg&quot; width=&quot;800&quot; height=&quot;868&quot; srcset=&quot;https://ameye.dev/notes/easiest-outline-in-unity/pass-1.png-400w.jpeg 400w, https://ameye.dev/notes/easiest-outline-in-unity/pass-1.png-800w.jpeg 800w&quot; sizes=&quot;(min-width: 30em) 50vw, 100vw&quot; /&gt;&lt;/picture&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;💡 I am using the Universal Render Pipeline. You&#39;ll need to use this for the Render Objects pass to be available.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;3.-outline-pass&quot; tabindex=&quot;-1&quot;&gt;&lt;a class=&quot;anchor-link&quot; href=&quot;https://ameye.dev/notes/easiest-outline-in-unity/#3.-outline-pass&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;
+                  &lt;span class=&quot;screen-reader-only&quot;&gt;Jump to heading&lt;/span&gt;
+                  &lt;span aria-hidden=&quot;true&quot; class=&quot;anchor-symbol&quot;&gt;##&lt;/span&gt;
+                &lt;/a&gt; 3. Outline Pass&lt;/h3&gt;
+&lt;p&gt;We will use a second pass to render the outline. This pass has the following settings.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;The Layer Mask set to &lt;b&gt;Everything&lt;/b&gt; (matching with the first pass)&lt;/li&gt;
+&lt;li&gt;The Override Material set to our outline material we created in step 1&lt;/li&gt;
+&lt;li&gt;The Depth Test set to &lt;b&gt;Less Equal&lt;/b&gt;&lt;/li&gt;
+&lt;li&gt;The Stencil Options set to &lt;b&gt;Ref 1, Comp Not Equal, Pass Keep&lt;/b&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Simply said, this renders the extruded version of the objects except where the stencil mask is present. Doing this produces the outline.&lt;/p&gt;
+&lt;p&gt;&lt;picture&gt;&lt;source type=&quot;image/webp&quot; srcset=&quot;https://ameye.dev/notes/easiest-outline-in-unity/pass-2.png-400w.webp 400w, https://ameye.dev/notes/easiest-outline-in-unity/pass-2.png-800w.webp 800w&quot; sizes=&quot;(min-width: 30em) 50vw, 100vw&quot; /&gt;&lt;img class=&quot;note-image&quot; alt=&quot;Outline pass.&quot; style=&quot;width:;&quot; loading=&quot;lazy&quot; decoding=&quot;async&quot; src=&quot;https://ameye.dev/notes/easiest-outline-in-unity/pass-2.png-400w.jpeg&quot; width=&quot;800&quot; height=&quot;926&quot; srcset=&quot;https://ameye.dev/notes/easiest-outline-in-unity/pass-2.png-400w.jpeg 400w, https://ameye.dev/notes/easiest-outline-in-unity/pass-2.png-800w.jpeg 800w&quot; sizes=&quot;(min-width: 30em) 50vw, 100vw&quot; /&gt;&lt;/picture&gt;&lt;/p&gt;
+&lt;h2 id=&quot;what-now&quot; tabindex=&quot;-1&quot;&gt;&lt;a class=&quot;anchor-link&quot; href=&quot;https://ameye.dev/notes/easiest-outline-in-unity/#what-now&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;
+                  &lt;span class=&quot;screen-reader-only&quot;&gt;Jump to heading&lt;/span&gt;
+                  &lt;span aria-hidden=&quot;true&quot; class=&quot;anchor-symbol&quot;&gt;#&lt;/span&gt;
+                &lt;/a&gt; What now&lt;/h2&gt;
+&lt;p&gt;You have an outline! Congratulations!&lt;/p&gt;
+&lt;p&gt;Some considerations:&lt;/p&gt;
+&lt;h3 id=&quot;layer-masks&quot; tabindex=&quot;-1&quot;&gt;&lt;a class=&quot;anchor-link&quot; href=&quot;https://ameye.dev/notes/easiest-outline-in-unity/#layer-masks&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;
+                  &lt;span class=&quot;screen-reader-only&quot;&gt;Jump to heading&lt;/span&gt;
+                  &lt;span aria-hidden=&quot;true&quot; class=&quot;anchor-symbol&quot;&gt;##&lt;/span&gt;
+                &lt;/a&gt; Layer Masks&lt;/h3&gt;
+&lt;p&gt;You can use the Layer Mask option to configure which objects receive an outline. You can at runtime change the layer of an object to add/remove outlines.&lt;/p&gt;
+&lt;h3 id=&quot;other-outline-techniques&quot; tabindex=&quot;-1&quot;&gt;&lt;a class=&quot;anchor-link&quot; href=&quot;https://ameye.dev/notes/easiest-outline-in-unity/#other-outline-techniques&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;
+                  &lt;span class=&quot;screen-reader-only&quot;&gt;Jump to heading&lt;/span&gt;
+                  &lt;span aria-hidden=&quot;true&quot; class=&quot;anchor-symbol&quot;&gt;##&lt;/span&gt;
+                &lt;/a&gt; Other Outline Techniques&lt;/h3&gt;
+&lt;p&gt;This outline is rendered using the vertex extrusion technique. There are many other possible techniques, each with their own drawbacks and advantages. Read &lt;a href=&quot;https://ameye.dev/notes/rendering-outlines&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;5 ways to draw an outline&lt;/a&gt; for an overview.&lt;/p&gt;
+&lt;h3 id=&quot;custom-renderer-feature&quot; tabindex=&quot;-1&quot;&gt;&lt;a class=&quot;anchor-link&quot; href=&quot;https://ameye.dev/notes/easiest-outline-in-unity/#custom-renderer-feature&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;
+                  &lt;span class=&quot;screen-reader-only&quot;&gt;Jump to heading&lt;/span&gt;
+                  &lt;span aria-hidden=&quot;true&quot; class=&quot;anchor-symbol&quot;&gt;##&lt;/span&gt;
+                &lt;/a&gt; Custom Renderer Feature&lt;/h3&gt;
+&lt;p&gt;You could make a custom Renderer Feature that is specifically made for rendering outlines like this. This would work similarly to the Render Objects pass (made by Unity), but you will only need to add a single pass in this case. See &lt;a href=&quot;https://docs.unity3d.com/6000.2/Documentation/Manual/urp/renderer-features/custom-rendering-pass-workflow-in-urp.html&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;this documentation&lt;/a&gt; on how to start with this.&lt;/p&gt;
+&lt;h3 id=&quot;rendering-layers&quot; tabindex=&quot;-1&quot;&gt;&lt;a class=&quot;anchor-link&quot; href=&quot;https://ameye.dev/notes/easiest-outline-in-unity/#rendering-layers&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;
+                  &lt;span class=&quot;screen-reader-only&quot;&gt;Jump to heading&lt;/span&gt;
+                  &lt;span aria-hidden=&quot;true&quot; class=&quot;anchor-symbol&quot;&gt;##&lt;/span&gt;
+                &lt;/a&gt; Rendering Layers&lt;/h3&gt;
+&lt;p&gt;The Render Objects pass has a Layer Mask option. This can be used to only apply outlines selectively to specific objects. However, Unity also has &lt;a href=&quot;https://docs.unity3d.com/6000.1/Documentation/Manual/urp/features/rendering-layers-introduction.html&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;Rendering Layers&lt;/a&gt; which are better suited for this. If you make a custom pass, you can add support for these.&lt;/p&gt;
+&lt;h3 id=&quot;single-pass&quot; tabindex=&quot;-1&quot;&gt;&lt;a class=&quot;anchor-link&quot; href=&quot;https://ameye.dev/notes/easiest-outline-in-unity/#single-pass&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;
+                  &lt;span class=&quot;screen-reader-only&quot;&gt;Jump to heading&lt;/span&gt;
+                  &lt;span aria-hidden=&quot;true&quot; class=&quot;anchor-symbol&quot;&gt;##&lt;/span&gt;
+                &lt;/a&gt; Single Pass&lt;/h3&gt;
+&lt;p&gt;Instead of using a stencil mask, you could remove the first pass and change your shader from &lt;code&gt;Cull Off&lt;/code&gt; to &lt;code&gt;Cull Front&lt;/code&gt;. This will cull the front-facing triangles of your extruded mesh and might be acceptable for your use case.&lt;/p&gt;
+&lt;p&gt;&lt;picture&gt;&lt;source type=&quot;image/webp&quot; srcset=&quot;https://ameye.dev/notes/easiest-outline-in-unity/single-pass.png-400w.webp 400w, https://ameye.dev/notes/easiest-outline-in-unity/single-pass.png-800w.webp 800w, https://ameye.dev/notes/easiest-outline-in-unity/single-pass.png-958w.webp 958w&quot; sizes=&quot;(min-width: 30em) 50vw, 100vw&quot; /&gt;&lt;img class=&quot;note-image&quot; alt=&quot;Single outline pass.&quot; style=&quot;width:;&quot; loading=&quot;lazy&quot; decoding=&quot;async&quot; src=&quot;https://ameye.dev/notes/easiest-outline-in-unity/single-pass.png-400w.jpeg&quot; width=&quot;958&quot; height=&quot;926&quot; srcset=&quot;https://ameye.dev/notes/easiest-outline-in-unity/single-pass.png-400w.jpeg 400w, https://ameye.dev/notes/easiest-outline-in-unity/single-pass.png-800w.jpeg 800w, https://ameye.dev/notes/easiest-outline-in-unity/single-pass.png-958w.jpeg 958w&quot; sizes=&quot;(min-width: 30em) 50vw, 100vw&quot; /&gt;&lt;/picture&gt;&lt;/p&gt;
+</content>
+  </entry>
   
   <entry>
     <title>Edge Detection Outlines</title>

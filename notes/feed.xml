@@ -4,12 +4,104 @@
   <subtitle>Personal internet space of Alexander Ameye. Writing notes about Unity, gamedev, graphics programming and occasionally other things.</subtitle>
   <link href="https://alexanderameye.github.io/notes/feed.xml" rel="self"/>
   <link href="https://ameye.dev/"/>
-  <updated>2025-06-17T00:00:00Z</updated>
+  <updated>2025-10-16T00:00:00Z</updated>
   <id>https://ameye.dev/</id>
   <author>
     <name>Alexander Ameye</name>
     <email>alexanderameye@gmail.com</email>
   </author>
+  
+  <entry>
+    <title>Screen Space Cavity Shader</title>
+    <link href="https://ameye.dev/notes/screen-space-cavity/"/>
+    <updated>2025-10-16T00:00:00Z</updated>
+    <id>https://ameye.dev/notes/screen-space-cavity/</id>
+    <content type="html">&lt;h2 id=&quot;installation-guide&quot; tabindex=&quot;-1&quot;&gt;&lt;a class=&quot;anchor-link&quot; href=&quot;https://ameye.dev/notes/screen-space-cavity/#installation-guide&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;
+                  &lt;span class=&quot;screen-reader-only&quot;&gt;Jump to heading&lt;/span&gt;
+                  &lt;span aria-hidden=&quot;true&quot; class=&quot;anchor-symbol&quot;&gt;#&lt;/span&gt;
+                &lt;/a&gt; Installation Guide&lt;/h2&gt;
+&lt;p&gt;You can download Screen Space Cavity Shader from the Unity Asset Store.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://assetstore.unity.com/packages/slug/341046&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;https://assetstore.unity.com/screen-space-cavity&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;installing%2C-updating-and-removing-the-package&quot; tabindex=&quot;-1&quot;&gt;&lt;a class=&quot;anchor-link&quot; href=&quot;https://ameye.dev/notes/screen-space-cavity/#installing%2C-updating-and-removing-the-package&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;
+                  &lt;span class=&quot;screen-reader-only&quot;&gt;Jump to heading&lt;/span&gt;
+                  &lt;span aria-hidden=&quot;true&quot; class=&quot;anchor-symbol&quot;&gt;##&lt;/span&gt;
+                &lt;/a&gt; Installing, updating and removing the package&lt;/h3&gt;
+&lt;p&gt;After having obtained a license, the Screen Space Cavity Shader package can be installed through Unity&#39;s package manager (&lt;mark&gt;Window &amp;gt; Package Manager&lt;/mark&gt;).&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;To update, see &lt;a href=&quot;https://docs.unity3d.com/Manual/upm-ui-update2.html&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;https://docs.unity3d.com/Manual/upm-ui-update2.html&lt;/a&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;To remove, see &lt;a href=&quot;https://docs.unity3d.com/Manual/upm-ui-remove.html&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;https://docs.unity3d.com/Manual/upm-ui-remove.html&lt;/a&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;checking-for-compatibility-issues&quot; tabindex=&quot;-1&quot;&gt;&lt;a class=&quot;anchor-link&quot; href=&quot;https://ameye.dev/notes/screen-space-cavity/#checking-for-compatibility-issues&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;
+                  &lt;span class=&quot;screen-reader-only&quot;&gt;Jump to heading&lt;/span&gt;
+                  &lt;span aria-hidden=&quot;true&quot; class=&quot;anchor-symbol&quot;&gt;##&lt;/span&gt;
+                &lt;/a&gt; Checking for compatibility issues&lt;/h3&gt;
+&lt;p&gt;To check for compatibility issues between Screen Space Cavity Shader and your project, open up the compatibility check window (&lt;mark&gt;Window &amp;gt; Screen Space Cavity &amp;gt; Compatibility&lt;/mark&gt;).&lt;/p&gt;
+&lt;p&gt;Click on the Check Compatibility button and see if all checkmarks are green (pass) or white (informational). If not, you can click on any of them to see an explanation.&lt;/p&gt;
+&lt;h2 id=&quot;using-the-cavity-shader&quot; tabindex=&quot;-1&quot;&gt;&lt;a class=&quot;anchor-link&quot; href=&quot;https://ameye.dev/notes/screen-space-cavity/#using-the-cavity-shader&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;
+                  &lt;span class=&quot;screen-reader-only&quot;&gt;Jump to heading&lt;/span&gt;
+                  &lt;span aria-hidden=&quot;true&quot; class=&quot;anchor-symbol&quot;&gt;#&lt;/span&gt;
+                &lt;/a&gt; Using the Cavity Shader&lt;/h2&gt;
+&lt;p&gt;After installation, you can simply start using the effect by adding the &lt;mark&gt;Screen Space Cavity Renderer Feature&lt;/mark&gt; to your active Renderer. Not sure what your active Renderer is? Check &lt;mark&gt;Edit &amp;gt; Project Settings &amp;gt; Graphics&lt;/mark&gt; and you will see the Default Render Pipeline there. This Pipeline Asset has a Renderer of type Universal Renderer Data assigned to it within the Renderer List. You need to add the &lt;mark&gt;Screen Space Cavity Renderer Feature&lt;/mark&gt; to the Renderer Features list of that Renderer.&lt;/p&gt;
+&lt;h3 id=&quot;settings&quot; tabindex=&quot;-1&quot;&gt;&lt;a class=&quot;anchor-link&quot; href=&quot;https://ameye.dev/notes/screen-space-cavity/#settings&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;
+                  &lt;span class=&quot;screen-reader-only&quot;&gt;Jump to heading&lt;/span&gt;
+                  &lt;span aria-hidden=&quot;true&quot; class=&quot;anchor-symbol&quot;&gt;##&lt;/span&gt;
+                &lt;/a&gt; Settings&lt;/h3&gt;
+&lt;p&gt;The Screen Space Cavity Renderer Feature has the following settings:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Rendering&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Injection Point**: Controls when the render pass executes.&lt;/li&gt;
+&lt;li&gt;Show In Scene View: Sets whether to render the pass in the scene view.&lt;/li&gt;
+&lt;li&gt;Debug: Show the calculated cavity as a debug view (R: ridges, G: valleys, B: cavity).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Selective Application&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Enable: Only selectively apply the cavity effect to specific mesh renderers in the scene.&lt;/li&gt;
+&lt;li&gt;Rendering Layer: Only mesh renderers on this rendering layer will be influenced by the cavity effect.&lt;/li&gt;
+&lt;li&gt;Layer Mask: Only gameobjects on this layer will be influenced by the cavity effect.&lt;/li&gt;
+&lt;li&gt;Queue: Only gameobjects using this render queue will be influenced by the cavity effect.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Curvature&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Enable: Enable curvature effect.&lt;/li&gt;
+&lt;li&gt;Width: The width that the curvature calculation takes into account.&lt;/li&gt;
+&lt;li&gt;Ridge Strength: How strongly ridges should be shown.&lt;/li&gt;
+&lt;li&gt;Valley Strength: How strongly valleys should be shown.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Cavity&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Enable: Enable cavity effect&lt;/li&gt;
+&lt;li&gt;Samples: How many samples are used to calculate cavity. More samples means more performance intensive.&lt;/li&gt;
+&lt;li&gt;Softness: How soft the cavity effect should look.&lt;/li&gt;
+&lt;li&gt;Contrast: A contrast modifier to limit.&lt;/li&gt;
+&lt;li&gt;Cavity Strength: Controls when the render pass executes.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Fade&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Fade By Distance: Fade the edges by distance.&lt;/li&gt;
+&lt;li&gt;Fade By Height: Fade the edges by height.&lt;/li&gt;
+&lt;li&gt;Start (meters): The distance/height from which to start fading the edges.&lt;/li&gt;
+&lt;li&gt;Distance (meters): The distance/height over which the edges are faded.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;changelog&quot; tabindex=&quot;-1&quot;&gt;&lt;a class=&quot;anchor-link&quot; href=&quot;https://ameye.dev/notes/screen-space-cavity/#changelog&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;
+                  &lt;span class=&quot;screen-reader-only&quot;&gt;Jump to heading&lt;/span&gt;
+                  &lt;span aria-hidden=&quot;true&quot; class=&quot;anchor-symbol&quot;&gt;#&lt;/span&gt;
+                &lt;/a&gt; Changelog&lt;/h2&gt;
+&lt;h3 id=&quot;%5B1.0.0%5D---2025-10-22&quot; tabindex=&quot;-1&quot;&gt;&lt;a class=&quot;anchor-link&quot; href=&quot;https://ameye.dev/notes/screen-space-cavity/#%5B1.0.0%5D---2025-10-22&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;
+                  &lt;span class=&quot;screen-reader-only&quot;&gt;Jump to heading&lt;/span&gt;
+                  &lt;span aria-hidden=&quot;true&quot; class=&quot;anchor-symbol&quot;&gt;##&lt;/span&gt;
+                &lt;/a&gt; [1.0.0] - 2025-10-22&lt;/h3&gt;
+&lt;p&gt;Initial Release.&lt;/p&gt;
+&lt;h2 id=&quot;contact&quot; tabindex=&quot;-1&quot;&gt;&lt;a class=&quot;anchor-link&quot; href=&quot;https://ameye.dev/notes/screen-space-cavity/#contact&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;
+                  &lt;span class=&quot;screen-reader-only&quot;&gt;Jump to heading&lt;/span&gt;
+                  &lt;span aria-hidden=&quot;true&quot; class=&quot;anchor-symbol&quot;&gt;#&lt;/span&gt;
+                &lt;/a&gt; Contact&lt;/h2&gt;
+&lt;p&gt;Need help? Contact me at &lt;a href=&quot;mailto:alexanderameye@gmail.com&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;alexanderameye@gmail.com&lt;/a&gt;.&lt;/p&gt;
+</content>
+  </entry>
   
   <entry>
     <title>The easiest way to render an outline in Unity</title>
